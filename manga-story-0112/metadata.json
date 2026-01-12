@@ -1,0 +1,5 @@
+{
+  "name": "NEW 書籍→物語AI Manga Story Weaver",
+  "description": "An application that transforms how-to book chapters about creating AI manga into an engaging narrative story featuring a beginner artist and her mentor cat, using the Gemini API.",
+  "requestFramePermissions": []
+}

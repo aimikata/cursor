@@ -1,0 +1,5 @@
+{
+  "name": "Amazon Bestseller Assistant",
+  "description": "An AI-powered tool to generate compelling introductions, suggest optimal categories and keywords, and create A+ content for your book on Amazon, based on your concept, story, and images.",
+  "requestFramePermissions": []
+}

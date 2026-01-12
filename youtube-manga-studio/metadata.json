@@ -1,0 +1,5 @@
+{
+  "name": "YouTube Manga Gen Studio",
+  "description": "YouTube風の16:9マンガ動画用パネル作成ツール。キャラクターの一貫性を保ちながらシネマティックなレイアウトを生成します。",
+  "requestFramePermissions": []
+}

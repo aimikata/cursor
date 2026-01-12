@@ -1,0 +1,5 @@
+{
+  "name": "J-MangaGen AI Studio",
+  "description": "A professional AI-powered manga creation tool using Gemini 2.5 Flash Image. Upload CSV scripts and character sheets to generate full manga pages, and refine them with natural language prompts.",
+  "requestFramePermissions": []
+}
