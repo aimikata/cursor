@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
-const IMAGE_MODEL = 'gemini-2.0-flash-exp';
+const IMAGE_MODEL = 'gemini-3.0-pro';
 
 // 429エラー対策のリトライ関数（RetryInfoを尊重）
 async function fetchWithRetry<T>(fn: () => Promise<T>, maxRetries = 5, initialDelay = 2000): Promise<T> {

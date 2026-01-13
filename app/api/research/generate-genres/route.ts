@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import { getGenreProposalPrompt } from '@/app/lib/research/constants';
 
-const FLASH_MODEL = 'gemini-2.0-flash-exp';
+const FLASH_MODEL = 'gemini-2.5-flash';
 
 // 429エラー対策のリトライ関数（RetryInfoを尊重）
 async function fetchWithRetry<T>(fn: () => Promise<T>, maxRetries = 5, initialDelay = 2000): Promise<T> {
