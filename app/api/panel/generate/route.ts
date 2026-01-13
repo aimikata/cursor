@@ -112,7 +112,7 @@ ${includeCover ? '表紙を含めて生成してください。' : ''}
               responseSchema: responseSchema as any,
             },
             systemInstruction: SYSTEM_INSTRUCTION,
-          })
+          } as any)
         );
 
         const response = await result.response;
@@ -137,8 +137,8 @@ ${includeCover ? '表紙を含めて生成してください。' : ''}
           ['Page', 'Template', 'Prompt'], // ヘッダー
           ...rows.map((row: any) => [row.pageNumber, row.template, row.prompt]),
         ];
-        const csvString = csvRows.map(row => 
-          row.map(cell => `"${String(cell).replace(/"/g, '""')}"`).join(',')
+        const csvString = csvRows.map(row =>
+          row.map((cell: any) => `"${String(cell).replace(/"/g, '""')}"`).join(',')
         ).join('\n');
 
         return NextResponse.json({ 

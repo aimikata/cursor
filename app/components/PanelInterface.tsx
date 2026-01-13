@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
 import { PanelToolType, PanelInputData } from '@/app/lib/panel/types';
-import { ArrowLeft, Layout, Wand2, Sparkles, Loader2 } from 'lucide-react';
+import { ArrowLeft, Layout, Wand2, Sparkles, Loader2, Check } from 'lucide-react';
 
 interface PanelInterfaceProps {
   toolType: PanelToolType;
@@ -32,6 +32,7 @@ export const PanelInterface: React.FC<PanelInterfaceProps> = ({
   inputData,
   onClose,
   mode = 'manual',
+  onComplete,
 }) => {
   const [scenario, setScenario] = useState<string>('');
   const [worldSettings, setWorldSettings] = useState<string>('');

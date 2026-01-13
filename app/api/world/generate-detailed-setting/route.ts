@@ -196,7 +196,7 @@ export async function POST(req: NextRequest) {
           responseMimeType: 'application/json',
           responseSchema: detailedSettingSchema as any,
         },
-      })
+      } as any)
     );
 
     const response = await result.response;

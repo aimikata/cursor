@@ -6,7 +6,7 @@ import {
   CharacterSetting, TargetMarket, VolumeDetail 
 } from '@/app/lib/world/types';
 import { GENRES } from '@/app/lib/world/constants';
-import { ArrowLeft, Download, RefreshCw, Sparkles, WandSparkles, FileText, BookMarked, Chart, Lightbulb, Globe, Image as ImageIcon } from 'lucide-react';
+import { ArrowLeft, Download, RefreshCw, Sparkles, WandSparkles, FileText, BookMarked, ChartBar, Lightbulb, Globe, Image as ImageIcon, Wrench } from 'lucide-react';
 import { CharacterSelectionInterface } from './CharacterSelectionInterface';
 import { WorldGenerationResult, StoryGenerationData, ImageReferenceMap } from '@/app/lib/world/types';
 

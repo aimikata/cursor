@@ -129,7 +129,7 @@ export async function POST(req: NextRequest) {
     }
 
     const response = await model.generateContent({
-      contents: { parts },
+      contents: [{ role: 'user', parts }],
       systemInstruction: SYSTEM_INSTRUCTION,
       generationConfig: {
         responseMimeType: 'application/json',
@@ -191,7 +191,7 @@ export async function POST(req: NextRequest) {
               },
             },
           },
-        },
+        } as any,
       },
     });
 

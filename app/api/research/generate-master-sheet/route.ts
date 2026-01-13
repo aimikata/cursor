@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { GoogleGenerativeAI } from '@google/generative-ai';
-import { getMasterSheetOnlyPrompt } from '../../../../lib/research/constants';
+import { getMasterSheetOnlyPrompt } from '@/app/lib/research/constants';
 
 const FLASH_MODEL = 'gemini-2.0-flash-exp';
 

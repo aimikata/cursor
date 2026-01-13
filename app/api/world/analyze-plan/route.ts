@@ -80,7 +80,7 @@ export async function POST(req: NextRequest) {
           responseMimeType: 'application/json',
           responseSchema: analysisSchema as any,
         },
-      })
+      } as any)
     );
 
     const response = await result.response;

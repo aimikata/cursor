@@ -101,7 +101,7 @@ export async function POST(req: NextRequest) {
             responseSchema: seriesResponseSchema as any,
           },
           systemInstruction: SYSTEM_INSTRUCTION,
-        })
+        } as any)
       );
     } catch (error: any) {
       console.warn('Primary model failed, trying fallback:', error);
@@ -115,7 +115,7 @@ export async function POST(req: NextRequest) {
             responseSchema: seriesResponseSchema as any,
           },
           systemInstruction: SYSTEM_INSTRUCTION,
-        })
+        } as any)
       );
     }
 

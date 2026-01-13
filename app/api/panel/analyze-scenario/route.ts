@@ -95,7 +95,7 @@ ${worldSettings || "None"}
               responseMimeType: 'application/json',
               responseSchema: responseSchema as any,
             },
-          })
+          } as any)
         );
 
         const response = await result.response;

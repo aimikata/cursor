@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { GoogleGenerativeAI } from '@google/generative-ai';
-import { getGenreProposalPrompt } from '../../../../lib/research/constants';
+import { getGenreProposalPrompt } from '@/app/lib/research/constants';
 
 const FLASH_MODEL = 'gemini-2.0-flash-exp';
 

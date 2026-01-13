@@ -59,7 +59,7 @@ export async function POST(req: NextRequest) {
           generationConfig: {
             responseMimeType: 'image/png',
           },
-        })
+        } as any)
       );
 
       const response = await result.response;

@@ -3,7 +3,7 @@
 import React, { useState, useCallback } from 'react';
 import { AppState, TargetRegion } from '@/app/lib/research/types';
 import { GENRE_LIST } from '@/app/lib/research/constants';
-import { ArrowLeft, Download, RefreshCw, Sparkles, WandSparkles, FileText, BookMarked, Chart, Lightbulb } from 'lucide-react';
+import { ArrowLeft, Download, RefreshCw, Sparkles, WandSparkles, FileText, BookMarked, ChartBar, Lightbulb } from 'lucide-react';
 
 // ==========================================
 // リサーチツールの型定義とコンポーネント
@@ -195,7 +195,7 @@ const GenreSelectionSection = ({
         <div className="animate-fadeIn">
           <div className="bg-gradient-to-r from-purple-900/40 to-indigo-900/40 border border-purple-500/30 rounded-lg p-4 mb-6">
             <h3 className="text-lg font-bold text-center text-purple-300 mb-1 flex items-center justify-center gap-2">
-              <Chart className="h-5 w-5" />
+              <ChartBar className="h-5 w-5" />
               分析完了：{regionLabel}のブルーオーシャン
             </h3>
             <p className="text-sm text-gray-400 text-center">
@@ -333,7 +333,7 @@ const TopicProposalSection = ({
 
       <div className="flex items-center gap-4 mb-4 mt-2">
         <div className="bg-teal-900/50 p-3 rounded-full">
-          <Chart className="h-8 w-8 text-teal-400" />
+          <ChartBar className="h-8 w-8 text-teal-400" />
         </div>
         <div>
           <h2 className="text-2xl font-bold text-white">ステップ2: テーマを探求</h2>
