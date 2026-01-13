@@ -6,7 +6,7 @@ import { directScene, generateMangaImage } from './services/geminiService';
 // Default characters in Japanese
 const DEFAULT_CHAR_A: CharacterProfile = {
   id: 'char_a',
-  name: '田中 祐一',
+  name: '',
   description: 'ビジネススーツ（青いベストとパンツ）、知的な短髪の男性。白シャツ、ネクタイなし。',
   imageData: null,
   mimeType: 'image/png'
@@ -14,7 +14,7 @@ const DEFAULT_CHAR_A: CharacterProfile = {
 
 const DEFAULT_CHAR_B: CharacterProfile = {
   id: 'char_b',
-  name: 'アカリ',
+  name: '',
   description: '茶髪のセミロングヘア。グレーのジャケット、白いインナー、黒のパンツ。フリーランスのWebデザイナー。',
   imageData: null,
   mimeType: 'image/png'
@@ -26,7 +26,7 @@ const App: React.FC = () => {
   const [charB, setCharB] = useState<CharacterProfile>(DEFAULT_CHAR_B);
   
   const [panelConfig, setPanelConfig] = useState<PanelConfig>({
-    scenario: '田中が自信満々に、フリーランスとして成功するための秘訣をアカリに熱弁している。アカリは目を輝かせてそれを聞いている。'
+    scenario: '主人公が自信満々に、フリーランスとして成功するための秘訣を生徒に熱弁している。生徒は目を輝かせてそれを聞いている。'
   });
 
   const [result, setResult] = useState<GenerationResult>({
