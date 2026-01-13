@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import { getConceptPrompt } from '@/app/lib/research/constants';
 
-const PRO_MODEL = 'gemini-2.0-flash-thinking-exp-01-21';
+const PRO_MODEL = 'gemini-2.0-flash-exp';
 
 export async function POST(req: NextRequest) {
   try {

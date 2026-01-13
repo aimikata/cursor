@@ -89,15 +89,18 @@ const InputField = ({
 
 const WorldviewInputForm = ({ 
   onSubmit, 
-  initialData 
+  initialData,
+  autoSubmit = false
 }: { 
   onSubmit: (proposal: WorldviewProposal) => void;
   initialData?: { title?: string; coreConcept?: string; protagonistIdea?: string; firstEpisodeHook?: string };
+  autoSubmit?: boolean;
 }) => {
   const [title, setTitle] = useState(initialData?.title || '');
   const [coreConcept, setCoreConcept] = useState(initialData?.coreConcept || '');
   const [protagonistIdea, setProtagonistIdea] = useState(initialData?.protagonistIdea || '');
   const [firstEpisodeHook, setFirstEpisodeHook] = useState(initialData?.firstEpisodeHook || '');
+  const [hasAutoSubmitted, setHasAutoSubmitted] = useState(false);
 
   useEffect(() => {
     if (initialData) {
@@ -107,6 +110,19 @@ const WorldviewInputForm = ({
       setFirstEpisodeHook(initialData.firstEpisodeHook || '');
     }
   }, [initialData]);
+
+  // セミオートモード：初期データが揃ったら自動的に送信
+  useEffect(() => {
+    if (autoSubmit && !hasAutoSubmitted && title && coreConcept && protagonistIdea && firstEpisodeHook) {
+      setHasAutoSubmitted(true);
+      // 少し遅延を入れて、ユーザーに処理中であることを示す
+      const timer = setTimeout(() => {
+        onSubmit({ title, coreConcept, protagonistIdea, firstEpisodeHook });
+      }, 500);
+      return () => clearTimeout(timer);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [autoSubmit, hasAutoSubmitted, title, coreConcept, protagonistIdea, firstEpisodeHook]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -434,7 +450,7 @@ export const WorldBuildingInterface: React.FC<WorldBuildingInterfaceProps> = ({ 
 
   const handleWorldviewSubmit = async (proposal: WorldviewProposal, genreOverride?: Genre) => {
     setIsLoading(true);
-    setLoadingMessage('最高に魅力的なキャラクターと世界観を構築中...');
+    setLoadingMessage(isSemiAutoMode ? '世界観レポートを構成中...' : '最高に魅力的なキャラクターと世界観を構築中...');
     setError(null);
     setProposalData(proposal);
 
@@ -448,7 +464,8 @@ export const WorldBuildingInterface: React.FC<WorldBuildingInterfaceProps> = ({ 
         body: JSON.stringify({ 
           proposal, 
           genreId: genreToUse.id,
-          genres: GENRES 
+          genres: GENRES,
+          apiKey: typeof window !== 'undefined' ? (localStorage.getItem('gemini_api_key_world') || localStorage.getItem('gemini_api_key_default')) : undefined
         }),
       });
       
@@ -711,15 +728,20 @@ export const WorldBuildingInterface: React.FC<WorldBuildingInterfaceProps> = ({ 
             </div>
             
             <StepHeader step={2} title="企画の骨子を確認" icon={<Globe className="w-6 h-6"/>} />
-            <WorldviewInputForm 
-              onSubmit={handleWorldviewSubmit} 
-              initialData={isSemiAutoMode && initialData ? {
-                title: initialData.title,
-                coreConcept: initialData.concept,
-                protagonistIdea: initialData.protagonistIdea,
-                firstEpisodeHook: initialData.firstEpisodeHook
-              } : undefined}
-            />
+            {isLoading && loadingMessage ? (
+              <LoadingSpinner message={loadingMessage} />
+            ) : (
+              <WorldviewInputForm 
+                onSubmit={handleWorldviewSubmit} 
+                initialData={isSemiAutoMode && initialData ? {
+                  title: initialData.title,
+                  coreConcept: initialData.concept,
+                  protagonistIdea: initialData.protagonistIdea,
+                  firstEpisodeHook: initialData.firstEpisodeHook
+                } : undefined}
+                autoSubmit={isSemiAutoMode}
+              />
+            )}
           </div>
         );
       case 3:

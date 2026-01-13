@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
-const PRIMARY_MODEL = 'gemini-2.0-flash-thinking-exp-01-21';
+const PRIMARY_MODEL = 'gemini-2.0-flash-exp';
 const FALLBACK_MODEL = 'gemini-2.0-flash-exp';
 
 async function fetchWithRetry<T>(fn: () => Promise<T>, maxRetries = 3, initialDelay = 2000): Promise<T> {

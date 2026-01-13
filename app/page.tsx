@@ -541,38 +541,28 @@ const MangaHubScreen = ({ user, onBack }: { user: User, onBack: () => void }) =>
   // ストーリーツールが表示されている場合は、それだけを表示
   if (showStory) {
     return (
-      <>
-        <StoryInterface 
-          onClose={() => setShowStory(false)}
-          initialData={storyInputData || undefined}
-          onComplete={(storyOutput) => {
-            // ストーリー確定時の処理（次の工程へ進む準備）
-            if (typeof window !== 'undefined') {
-              localStorage.setItem('story_output', JSON.stringify(storyOutput, null, 2));
-            }
-            // マニュアルモードの場合は選択モーダルを表示
-            if (mode === 'manual') {
-              setIsPanelSelectionModalOpen(true);
-            }
-          }}
-          onProceedToPanel={(panelData) => {
-            // セミオートモード：コマ割りツール選択モーダルを表示
-            setPanelInputData(panelData);
+      <StoryInterface 
+        onClose={() => {
+          setShowStory(false);
+          setIsPanelSelectionModalOpen(false); // 閉じる時にモーダルも閉じる
+        }}
+        initialData={storyInputData || undefined}
+        onComplete={(storyOutput) => {
+          // ストーリー確定時の処理（次の工程へ進む準備）
+          if (typeof window !== 'undefined') {
+            localStorage.setItem('story_output', JSON.stringify(storyOutput, null, 2));
+          }
+          // マニュアルモードの場合は選択モーダルを表示
+          if (mode === 'manual') {
             setIsPanelSelectionModalOpen(true);
-          }}
-        />
-        <PanelToolSelectionModal
-          isOpen={isPanelSelectionModalOpen}
-          onClose={() => setIsPanelSelectionModalOpen(false)}
-          onSelect={(toolType) => {
-            setSelectedPanelTool(toolType);
-            setIsPanelSelectionModalOpen(false);
-            setShowStory(false);
-            setShowPanelTool(true);
-          }}
-          mode={mode}
-        />
-      </>
+          }
+        }}
+        onProceedToPanel={(panelData) => {
+          // セミオートモード：コマ割りツール選択モーダルを表示
+          setPanelInputData(panelData);
+          setIsPanelSelectionModalOpen(true);
+        }}
+      />
     );
   }
 
@@ -776,8 +766,10 @@ const MangaHubScreen = ({ user, onBack }: { user: User, onBack: () => void }) =>
                         // マニュアルモード：ストーリーツールを開く
                         setShowStory(true);
                         setStoryInputData(null); // マニュアルモードなので初期データをクリア
+                        setIsPanelSelectionModalOpen(false); // ストーリーツールを開く時はモーダルを閉じる
                       } else if (tool.id === 'panel') {
                         // マニュアルモード：コマ割りツール選択モーダルを表示
+                        setPanelInputData(null); // マニュアルモードなので初期データをクリア
                         setIsPanelSelectionModalOpen(true);
                       } else if (tool.id === 'image') {
                         // マニュアルモード：画像生成ツール選択モーダルを表示
@@ -824,6 +816,19 @@ const MangaHubScreen = ({ user, onBack }: { user: User, onBack: () => void }) =>
         isOpen={isPanelModalOpen} 
         onClose={() => setIsPanelModalOpen(false)}
         onComplete={handlePanelConfigComplete}
+      />
+
+      {/* コマ割りツール選択モーダル（常に表示可能） */}
+      <PanelToolSelectionModal
+        isOpen={isPanelSelectionModalOpen}
+        onClose={() => setIsPanelSelectionModalOpen(false)}
+        onSelect={(toolType) => {
+          setSelectedPanelTool(toolType);
+          setIsPanelSelectionModalOpen(false);
+          setShowStory(false); // ストーリーツールが開いている場合は閉じる
+          setShowPanelTool(true);
+        }}
+        mode={mode}
       />
     </div>
   );

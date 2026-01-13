@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
-const MODELS_TO_TRY = ['gemini-2.0-flash-thinking-exp-01-21', 'gemini-2.0-flash-exp'];
+const MODELS_TO_TRY = ['gemini-2.0-flash-exp'];
 
 async function fetchWithRetry<T>(fn: () => Promise<T>, maxRetries = 3, initialDelay = 2000): Promise<T> {
   let lastError: any;

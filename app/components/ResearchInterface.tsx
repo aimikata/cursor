@@ -481,7 +481,7 @@ const ConceptProposalSection = ({
         </div>
       )}
 
-      {isLoading && <Loader text={isRefineMode ? "マスターシートを生成中..." : "ヒット企画を考案中...（これには少し時間がかかります）"} />}
+      {isLoading && <Loader text={isRefineMode ? "マスターシートを生成中..." : "企画案を練っています...（これには少し時間がかかります）"} />}
 
       {conceptResult && (
         <div className="mt-6 p-6 bg-gray-900/70 rounded-xl border border-gray-700 animate-fadeIn">
