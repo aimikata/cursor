@@ -203,14 +203,13 @@ export async function POST(req: NextRequest) {
       ${JSON.stringify(proposal)}
     `;
 
-    const result = await fetchWithRetry(() =>
-      model.generateContent({
-        contents: prompt,
+    const result: any = await fetchWithRetry(() =>
+      (model as any).generateContent(prompt, {
         generationConfig: {
           responseMimeType: 'application/json',
           responseSchema: detailedSettingSchema as any,
         },
-      } as any)
+      })
     );
 
     const response = await result.response;
