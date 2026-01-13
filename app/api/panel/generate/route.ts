@@ -48,17 +48,21 @@ export async function POST(req: NextRequest) {
       includeCover, 
       title,
       target,
-      characterImages 
+      characterImages,
+      apiKey
     } = await req.json();
     
-    if (!process.env.GEMINI_API_KEY) {
+    // リクエストボディからAPIキーを取得、なければ環境変数を使用
+    const geminiApiKey = apiKey || process.env.GEMINI_API_KEY;
+    
+    if (!geminiApiKey) {
       return NextResponse.json(
-        { error: 'GEMINI_API_KEY is not configured' },
+        { error: 'GEMINI_API_KEY is not configured. Please provide an API key in the request or set it as an environment variable.' },
         { status: 500 }
       );
     }
 
-    const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+    const genAI = new GoogleGenerativeAI(geminiApiKey);
 
     // ページリストの生成
     const pageList = Array.from({ length: pageCount }, (_, i) => `Page ${i + 1}`);

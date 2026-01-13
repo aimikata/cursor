@@ -75,16 +75,19 @@ function formatStory(parsed: any): string {
 
 export async function POST(req: NextRequest) {
   try {
-    const { worldSetting, characters, storyTheme, episodeTitle } = await req.json();
+    const { worldSetting, characters, storyTheme, episodeTitle, apiKey } = await req.json();
     
-    if (!process.env.GEMINI_API_KEY) {
+    // リクエストボディからAPIキーを取得、なければ環境変数を使用
+    const geminiApiKey = apiKey || process.env.GEMINI_API_KEY;
+    
+    if (!geminiApiKey) {
       return NextResponse.json(
-        { error: 'GEMINI_API_KEY is not configured' },
+        { error: 'GEMINI_API_KEY is not configured. Please provide an API key in the request or set it as an environment variable.' },
         { status: 500 }
       );
     }
 
-    const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+    const genAI = new GoogleGenerativeAI(geminiApiKey);
     
     const charDetails = characters.map((c: any) => `【${c.name}】: ${c.role || c.description || ''}`).join('\n');
     const prompt = `世界観・設定: ${worldSetting}\n連載全体のテーマ・未回収リスト: ${storyTheme}\n第1章タイトル案: ${episodeTitle || ''}\n登場人物:\n${charDetails}\n\n第1章を「日本語」で執筆してください。`;

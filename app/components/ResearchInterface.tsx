@@ -1,9 +1,11 @@
 'use client';
 
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { AppState, TargetRegion } from '@/app/lib/research/types';
 import { GENRE_LIST } from '@/app/lib/research/constants';
 import { ArrowLeft, Download, RefreshCw, Sparkles, WandSparkles, FileText, BookMarked, ChartBar, Lightbulb } from 'lucide-react';
+import { ApiKeyManager } from './ApiKeyManager';
+import { getApiKey, ApiKeyType } from '@/app/lib/api-keys';
 
 // ==========================================
 // リサーチツールの型定義とコンポーネント
@@ -75,7 +77,7 @@ const MarkdownRenderer = ({ content }: { content: string }) => {
 const GenreSelectionSection = ({ 
   onSelectGenre, 
   onRefineConcept, 
-  targetRegion 
+  targetRegion
 }: { 
   onSelectGenre: (genre: string) => void; 
   onRefineConcept: (text: string) => void; 
@@ -95,7 +97,10 @@ const GenreSelectionSection = ({
       const res = await fetch('/api/research/generate-genres', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ region: targetRegion }),
+        body: JSON.stringify({ 
+          region: targetRegion, 
+          apiKey: getApiKey('research') || getApiKey('default') 
+        }),
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || 'Failed to generate genres');
@@ -529,6 +534,22 @@ export const ResearchInterface = ({
   const [error, setError] = useState<string>('');
   const [userKeyword, setUserKeyword] = useState<string>('');
   const [targetRegion, setTargetRegion] = useState<TargetRegion>('global');
+  const [apiKey, setApiKey] = useState<string | null>(null);
+
+  // APIキーの変更を処理
+  const handleApiKeyChange = (type: ApiKeyType, key: string | null) => {
+    // リサーチ用のキーがあればそれを使用、なければデフォルト
+    const researchKey = getApiKey('research');
+    const defaultKey = getApiKey('default');
+    setApiKey(researchKey || defaultKey);
+  };
+
+  useEffect(() => {
+    // 初期化時にAPIキーを読み込む
+    const researchKey = getApiKey('research');
+    const defaultKey = getApiKey('default');
+    setApiKey(researchKey || defaultKey);
+  }, []);
 
   const handleSelectGenre = (genre: string) => {
     setSelectedGenre(genre);
@@ -548,7 +569,7 @@ export const ResearchInterface = ({
     setConceptResult('');
     setError('');
     setUserKeyword('');
-  }, []);
+  }, [apiKey]);
 
   const handleRefineConcept = useCallback(async (text: string) => {
     setSelectedGenre(REFINE_MODE_GENRE);
@@ -561,7 +582,10 @@ export const ResearchInterface = ({
       const res = await fetch('/api/research/generate-master-sheet', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ concept: text }),
+        body: JSON.stringify({ 
+          concept: text, 
+          apiKey: getApiKey('research') || getApiKey('default') 
+        }),
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || 'Failed to generate master sheet');
@@ -574,7 +598,7 @@ export const ResearchInterface = ({
       setAppState(AppState.IDLE); 
       setSelectedGenre(null); 
     }
-  }, []);
+  }, [apiKey]);
 
   const handleStartTopicProposal = useCallback(async () => {
     if (!selectedGenre || selectedGenre === REFINE_MODE_GENRE) return;
@@ -587,7 +611,12 @@ export const ResearchInterface = ({
       const res = await fetch('/api/research/generate-topics', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ genre: selectedGenre, keyword: userKeyword, region: targetRegion }),
+        body: JSON.stringify({ 
+          genre: selectedGenre, 
+          keyword: userKeyword, 
+          region: targetRegion, 
+          apiKey: getApiKey('research') || getApiKey('default') 
+        }),
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || 'Failed to generate topics');
@@ -608,7 +637,11 @@ export const ResearchInterface = ({
       const res = await fetch('/api/research/generate-concept', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ topic: selectedTopic, region: targetRegion }),
+        body: JSON.stringify({ 
+          topic: selectedTopic, 
+          region: targetRegion, 
+          apiKey: getApiKey('research') || getApiKey('default') 
+        }),
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || 'Failed to generate concept');
@@ -741,6 +774,10 @@ export const ResearchInterface = ({
             }
           </p>
         </header>
+
+        <div className="max-w-2xl mx-auto mb-6">
+          <ApiKeyManager onApiKeyChange={handleApiKeyChange} defaultType="research" />
+        </div>
 
         {error && (
           <div className="bg-red-900/40 border border-red-700 p-6 rounded-2xl mb-8 max-w-2xl mx-auto shadow-2xl backdrop-blur-sm animate-fadeIn">

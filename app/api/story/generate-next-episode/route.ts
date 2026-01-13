@@ -75,16 +75,19 @@ function formatStory(parsed: any): string {
 
 export async function POST(req: NextRequest) {
   try {
-    const { previousSummary, worldSetting, characters, storyTheme, episodeNumber, episodeTitle, history, previousMasterSheet } = await req.json();
+    const { previousSummary, worldSetting, characters, storyTheme, episodeNumber, episodeTitle, history, previousMasterSheet, apiKey } = await req.json();
     
-    if (!process.env.GEMINI_API_KEY) {
+    // リクエストボディからAPIキーを取得、なければ環境変数を使用
+    const geminiApiKey = apiKey || process.env.GEMINI_API_KEY;
+    
+    if (!geminiApiKey) {
       return NextResponse.json(
-        { error: 'GEMINI_API_KEY is not configured' },
+        { error: 'GEMINI_API_KEY is not configured. Please provide an API key in the request or set it as an environment variable.' },
         { status: 500 }
       );
     }
 
-    const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+    const genAI = new GoogleGenerativeAI(geminiApiKey);
     
     const masterSheetContext = previousMasterSheet 
       ? `現状進行度: ${previousMasterSheet.progress}\n未回収・伏線: ${previousMasterSheet.unrecovered_list?.join(',') || ''}` 

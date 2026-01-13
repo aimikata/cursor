@@ -24,16 +24,20 @@ async function fetchWithRetry<T>(fn: () => Promise<T>, maxRetries = 3, initialDe
 
 export async function POST(req: NextRequest) {
   try {
-    const { character, artStylePrompt } = await req.json();
+    const { character, artStylePrompt, apiKey } = await req.json();
     
-    if (!process.env.GEMINI_API_KEY) {
+    // リクエストボディからAPIキーを取得、なければ環境変数を使用
+    // 画像生成用のキーを優先的に使用
+    const geminiApiKey = apiKey || process.env.GEMINI_API_KEY;
+    
+    if (!geminiApiKey) {
       return NextResponse.json(
-        { error: 'GEMINI_API_KEY is not configured' },
+        { error: 'GEMINI_API_KEY is not configured. Please provide an API key in the request or set it as an environment variable.' },
         { status: 500 }
       );
     }
 
-    const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+    const genAI = new GoogleGenerativeAI(geminiApiKey);
     const model = genAI.getGenerativeModel({ model: IMAGE_MODEL });
     
     const designs: string[] = [];
