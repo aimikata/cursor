@@ -6,6 +6,7 @@ import {
   CharacterSetting, TargetMarket, VolumeDetail 
 } from '@/app/lib/world/types';
 import { GENRES } from '@/app/lib/world/constants';
+import { saveReport, getAllReports, deleteReport, SavedReport, downloadAllReportsAsZip } from '@/app/lib/report-manager';
 
 // リサーチツールのジャンル名を世界観構築ツールのGenreオブジェクトにマッピング
 const mapResearchGenreToWorldGenre = (researchGenre: string): Genre | null => {
@@ -37,7 +38,7 @@ const mapResearchGenreToWorldGenre = (researchGenre: string): Genre | null => {
   // 直接マッチする場合（既にGENRESのnameやidが渡されている場合）
   return GENRES.find(g => g.name === researchGenre || g.id === researchGenre) || null;
 };
-import { ArrowLeft, Download, RefreshCw, Sparkles, WandSparkles, FileText, BookMarked, ChartBar, Lightbulb, Globe, Image as ImageIcon, Wrench } from 'lucide-react';
+import { ArrowLeft, Download, RefreshCw, Sparkles, WandSparkles, FileText, BookMarked, ChartBar, Lightbulb, Globe, Image as ImageIcon, Wrench, Folder, X, Package } from 'lucide-react';
 import { CharacterSelectionInterface } from './CharacterSelectionInterface';
 import { WorldGenerationResult, StoryGenerationData, ImageReferenceMap } from '@/app/lib/world/types';
 
@@ -444,8 +445,8 @@ interface WorldBuildingInterfaceProps {
 }
 
 export const WorldBuildingInterface: React.FC<WorldBuildingInterfaceProps> = ({ onClose, initialData, onProceedToStory }) => {
-  // モード判定：initialDataがある場合はセミオートモード、ない場合はマニュアルモード
-  const isSemiAutoMode = !!initialData && (!!initialData.title || !!initialData.concept);
+  // セミオートモードを無効化：常にマニュアルモード
+  const isSemiAutoMode = false;
   
   const [step, setStep] = useState(1);
   const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
@@ -460,6 +461,8 @@ export const WorldBuildingInterface: React.FC<WorldBuildingInterfaceProps> = ({ 
   const [proposalData, setProposalData] = useState<WorldviewProposal | null>(null);
   const [showCharacterSelection, setShowCharacterSelection] = useState(false);
   const [worldGenerationResult, setWorldGenerationResult] = useState<WorldGenerationResult | null>(null);
+  const [savedReports, setSavedReports] = useState<SavedReport[]>([]);
+  const [showReportsPanel, setShowReportsPanel] = useState(false);
 
   // セミオートモード：初期データからジャンルとステップを設定
   useEffect(() => {
@@ -619,10 +622,8 @@ export const WorldBuildingInterface: React.FC<WorldBuildingInterfaceProps> = ({ 
     // この処理は親コンポーネント（app/page.tsx）で実装
   }, []);
 
-  const handleCopySettings = useCallback(() => {
-    if (!detailedSetting) return;
-    const s = detailedSetting;
-    
+  const generateReportText = useCallback((setting: DetailedSetting) => {
+    const s = setting;
     let text = `--- [SERIES ARCHITECTURE MASTER SHEET] ---\n`;
     text += `TITLE: ${s.seriesTitle}\n\n`;
     
@@ -657,12 +658,189 @@ export const WorldBuildingInterface: React.FC<WorldBuildingInterfaceProps> = ({ 
     
     text += `### DEVELOPMENT ROADMAP\n`;
     text += s.unresolvedList;
+    
+    return text;
+  }, []);
 
+  const handleCopySettings = useCallback(() => {
+    if (!detailedSetting) return;
+    const text = generateReportText(detailedSetting);
     navigator.clipboard.writeText(text).then(() => {
       setCopyStatus('copied');
       setTimeout(() => setCopyStatus('idle'), 2000);
     });
+  }, [detailedSetting, generateReportText]);
+
+  const handleDownloadSettings = useCallback(() => {
+    if (!detailedSetting) return;
+    const text = generateReportText(detailedSetting);
+    const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `${detailedSetting.seriesTitle || 'world_report'}.txt`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  }, [detailedSetting, generateReportText]);
+
+  // レポートを保存
+  const handleSaveReport = useCallback(() => {
+    if (!detailedSetting) return;
+    const text = generateReportText(detailedSetting);
+    saveReport({
+      type: 'world',
+      title: detailedSetting.seriesTitle || '世界観レポート',
+      content: text,
+      data: detailedSetting,
+    });
+    setSavedReports(getAllReports());
+    alert('レポートを保存しました。');
+  }, [detailedSetting, generateReportText]);
+
+  // 保存されたレポートを読み込む
+  const handleLoadReport = useCallback((report: SavedReport) => {
+    if (report.data && report.type === 'world') {
+      setDetailedSetting(report.data);
+      setStep(3);
+      setShowReportsPanel(false);
+      alert('レポートを読み込みました。');
+    }
+  }, []);
+
+  // レポート一覧を更新
+  useEffect(() => {
+    setSavedReports(getAllReports());
   }, [detailedSetting]);
+
+  // レポートパネルを表示
+  if (showReportsPanel) {
+    const worldReports = savedReports.filter(r => r.type === 'world');
+    const allReports = savedReports;
+    
+    return (
+      <div className="min-h-screen bg-black text-white p-8">
+        <div className="max-w-6xl mx-auto">
+          <div className="flex justify-between items-center mb-8">
+            <h2 className="text-3xl font-bold flex items-center space-x-3">
+              <Folder className="w-8 h-8 text-blue-400" />
+              <span>保存済みレポート</span>
+            </h2>
+            <div className="flex space-x-4">
+              <button
+                onClick={() => downloadAllReportsAsZip()}
+                className="flex items-center space-x-2 px-6 py-3 bg-teal-600 hover:bg-teal-500 rounded-full font-bold text-sm"
+              >
+                <Package className="w-5 h-5" />
+                <span>一式ダウンロード</span>
+              </button>
+              <button
+                onClick={() => setShowReportsPanel(false)}
+                className="p-3 bg-gray-800 hover:bg-gray-700 rounded-full"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+          </div>
+
+          <div className="space-y-6">
+            <div className="bg-gray-900 rounded-2xl p-6 border border-gray-800">
+              <h3 className="text-xl font-bold mb-4 text-blue-400">世界観レポート ({worldReports.length})</h3>
+              {worldReports.length === 0 ? (
+                <p className="text-gray-400">保存されたレポートがありません。</p>
+              ) : (
+                <div className="space-y-3">
+                  {worldReports.map(report => (
+                    <div key={report.id} className="bg-gray-800 rounded-xl p-4 border border-gray-700 flex justify-between items-center">
+                      <div className="flex-1">
+                        <h4 className="font-bold text-white mb-1">{report.title}</h4>
+                        <p className="text-xs text-gray-400">
+                          {new Date(report.createdAt).toLocaleString('ja-JP')}
+                        </p>
+                      </div>
+                      <div className="flex space-x-2">
+                        <button
+                          onClick={() => handleLoadReport(report)}
+                          className="px-4 py-2 bg-indigo-600 hover:bg-indigo-500 rounded-lg text-sm font-bold"
+                        >
+                          読み込む
+                        </button>
+                        {onProceedToStory && report.data && (
+                          <button
+                            onClick={() => {
+                              if (report.data && report.type === 'world') {
+                                const setting = report.data as DetailedSetting;
+                                const storyInput = {
+                                  world_setting: JSON.stringify(setting, null, 2),
+                                  characters: [setting.protagonist, ...setting.rivals].map((c, idx) => ({
+                                    id: `char_${idx}`,
+                                    name: c.name,
+                                    role: idx === 0 ? '主人公' : 'サブキャラクター',
+                                    description: `${c.publicPersona} / ${c.hiddenSelf}`,
+                                  })),
+                                };
+                                onProceedToStory(storyInput);
+                                setShowReportsPanel(false);
+                              }
+                            }}
+                            className="px-4 py-2 bg-teal-600 hover:bg-teal-500 rounded-lg text-sm font-bold"
+                          >
+                            ストーリーツールへ
+                          </button>
+                        )}
+                        <button
+                          onClick={() => {
+                            deleteReport(report.id);
+                            setSavedReports(getAllReports());
+                          }}
+                          className="px-4 py-2 bg-red-600 hover:bg-red-500 rounded-lg text-sm font-bold"
+                        >
+                          削除
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {allReports.length > worldReports.length && (
+              <div className="bg-gray-900 rounded-2xl p-6 border border-gray-800">
+                <h3 className="text-xl font-bold mb-4 text-purple-400">すべてのレポート ({allReports.length})</h3>
+                <div className="space-y-3">
+                  {allReports.map(report => (
+                    <div key={report.id} className="bg-gray-800 rounded-xl p-4 border border-gray-700">
+                      <div className="flex justify-between items-center">
+                        <div className="flex-1">
+                          <div className="flex items-center space-x-2 mb-1">
+                            <span className="text-xs px-2 py-1 bg-gray-700 rounded text-gray-300">{report.type}</span>
+                            <h4 className="font-bold text-white">{report.title}</h4>
+                          </div>
+                          <p className="text-xs text-gray-400">
+                            {new Date(report.createdAt).toLocaleString('ja-JP')}
+                          </p>
+                        </div>
+                        <button
+                          onClick={() => {
+                            deleteReport(report.id);
+                            setSavedReports(getAllReports());
+                          }}
+                          className="px-4 py-2 bg-red-600 hover:bg-red-500 rounded-lg text-sm font-bold"
+                        >
+                          削除
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   // 画像選択画面を表示
   if (showCharacterSelection && worldGenerationResult) {
@@ -808,9 +986,21 @@ export const WorldBuildingInterface: React.FC<WorldBuildingInterfaceProps> = ({ 
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center bg-gray-900/90 p-8 rounded-[2.5rem] border border-gray-800 sticky top-4 z-20 shadow-2xl backdrop-blur-2xl space-y-4 md:space-y-0">
               <StepHeader step={3} title="マスターシート完成 (極限深掘り)" icon={<Sparkles className="w-6 h-6"/>} />
               <div className="flex space-x-4">
+                <button onClick={handleSaveReport} className="flex items-center justify-center space-x-4 py-5 px-10 rounded-full font-black text-xs uppercase tracking-widest transition-all bg-purple-600 hover:bg-purple-500 shadow-purple-600/20 shadow-xl text-white">
+                  <FileText className="w-4 h-4"/>
+                  <span>レポートを保存</span>
+                </button>
+                <button onClick={() => setShowReportsPanel(true)} className="flex items-center justify-center space-x-4 py-5 px-10 rounded-full font-black text-xs uppercase tracking-widest transition-all bg-blue-600 hover:bg-blue-500 shadow-blue-600/20 shadow-xl text-white">
+                  <Folder className="w-4 h-4"/>
+                  <span>保存済みレポート</span>
+                </button>
                 <button onClick={handleCopySettings} className={`flex items-center justify-center space-x-4 py-5 px-10 rounded-full font-black text-xs uppercase tracking-widest transition-all ${copyStatus === 'copied' ? 'bg-green-600' : 'bg-indigo-600 hover:bg-indigo-500 shadow-indigo-600/20 shadow-xl'} text-white`}>
                   <FileText className="w-4 h-4"/>
                   <span>{copyStatus === 'copied' ? 'コピー完了!' : '設定を全文コピー'}</span>
+                </button>
+                <button onClick={handleDownloadSettings} className="flex items-center justify-center space-x-4 py-5 px-10 rounded-full font-black text-xs uppercase tracking-widest transition-all bg-teal-600 hover:bg-teal-500 shadow-teal-600/20 shadow-xl text-white">
+                  <Download className="w-4 h-4"/>
+                  <span>ダウンロード</span>
                 </button>
                 <button onClick={handleReset} className="p-5 bg-gray-800 hover:bg-gray-700 rounded-full border border-gray-700 transition-all text-white"><RefreshCw className="w-5 h-5"/></button>
               </div>

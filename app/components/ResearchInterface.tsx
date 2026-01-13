@@ -3,9 +3,10 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { AppState, TargetRegion } from '@/app/lib/research/types';
 import { GENRE_LIST } from '@/app/lib/research/constants';
-import { ArrowLeft, Download, RefreshCw, Sparkles, WandSparkles, FileText, BookMarked, ChartBar, Lightbulb } from 'lucide-react';
+import { ArrowLeft, Download, RefreshCw, Sparkles, WandSparkles, FileText, BookMarked, ChartBar, Lightbulb, Copy, Folder, X, Package } from 'lucide-react';
 import { ApiKeyManager } from './ApiKeyManager';
 import { getApiKey, ApiKeyType } from '@/app/lib/api-keys';
+import { saveReport, getAllReports, deleteReport, SavedReport, downloadAllReportsAsZip } from '@/app/lib/report-manager';
 
 // ==========================================
 // リサーチツールの型定義とコンポーネント
@@ -415,16 +416,42 @@ const ConceptProposalSection = ({
   conceptResult,
   appState,
   selectedTopic,
+  selectedGenre,
+  onSaveReport,
+  onShowReportsPanel,
 }: {
   onCreateConcept: () => void;
   conceptResult: string;
   appState: AppState;
   selectedTopic: string | null;
+  selectedGenre: string | null;
+  onSaveReport?: () => void;
+  onShowReportsPanel?: () => void;
 }) => {
   const isReady = !!selectedTopic;
   const isLoading = appState === AppState.GENERATING_CONCEPT;
   const isComplete = appState === AppState.CONCEPT_COMPLETE;
   const isRefineMode = selectedTopic === "既存の企画案 (インポート済み)";
+
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = async () => {
+    if (!conceptResult) return;
+    try {
+      await navigator.clipboard.writeText(conceptResult);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch (err) {
+      console.error('Failed to copy:', err);
+    }
+  };
+
+  const handleSaveReportClick = () => {
+    if (onSaveReport) {
+      onSaveReport();
+    }
+  };
+
 
   const handleDownload = () => {
     if (!conceptResult) return;
@@ -489,6 +516,29 @@ const ConceptProposalSection = ({
           
           <div className="mt-8 pt-6 border-t border-gray-700 flex flex-wrap justify-center gap-4">
             <button
+              onClick={handleSaveReportClick}
+              className="flex items-center gap-2 text-white bg-purple-700 hover:bg-purple-600 py-2 px-6 rounded-full transition-all duration-300 shadow-md hover:shadow-lg"
+            >
+              <FileText className="h-4 w-4" />
+              <span>レポートを保存</span>
+            </button>
+            <button
+              onClick={() => onShowReportsPanel && onShowReportsPanel()}
+              className="flex items-center gap-2 text-white bg-blue-700 hover:bg-blue-600 py-2 px-6 rounded-full transition-all duration-300 shadow-md hover:shadow-lg"
+            >
+              <Folder className="h-4 w-4" />
+              <span>保存済みレポート</span>
+            </button>
+            <button
+              onClick={handleCopy}
+              className={`flex items-center gap-2 py-2 px-6 rounded-full transition-all duration-300 shadow-md hover:shadow-lg ${
+                copied ? 'bg-green-600 text-white' : 'text-white bg-blue-700 hover:bg-blue-600'
+              }`}
+            >
+              <Copy className="h-4 w-4" />
+              <span>{copied ? 'コピー完了!' : 'クリップボードにコピー'}</span>
+            </button>
+            <button
               onClick={handleDownload}
               className="flex items-center gap-2 text-white bg-green-700 hover:bg-green-600 py-2 px-6 rounded-full transition-all duration-300 shadow-md hover:shadow-lg"
             >
@@ -535,6 +585,8 @@ export const ResearchInterface = ({
   const [userKeyword, setUserKeyword] = useState<string>('');
   const [targetRegion, setTargetRegion] = useState<TargetRegion>('global');
   const [apiKey, setApiKey] = useState<string | null>(null);
+  const [savedReports, setSavedReports] = useState<SavedReport[]>([]);
+  const [showReportsPanel, setShowReportsPanel] = useState(false);
 
   // APIキーの変更を処理
   const handleApiKeyChange = (type: ApiKeyType, key: string | null) => {
@@ -735,6 +787,167 @@ export const ResearchInterface = ({
     setTargetRegion(prev => prev === 'global' ? 'domestic' : 'global');
   };
 
+  // レポートを保存
+  const handleSaveReport = useCallback(() => {
+    if (!conceptResult) return;
+    const title = selectedTopic ? selectedTopic.split('\n')[0].replace(/^#+\s*/, '').substring(0, 50) : '企画レポート';
+    saveReport({
+      type: 'research',
+      title: title,
+      content: conceptResult,
+      data: { conceptResult, selectedTopic, selectedGenre },
+    });
+    setSavedReports(getAllReports());
+    alert('レポートを保存しました。');
+  }, [conceptResult, selectedTopic, selectedGenre]);
+
+  // 保存されたレポートを読み込む
+  const handleLoadReport = useCallback((report: SavedReport) => {
+    if (report.data && report.type === 'research') {
+      if (report.data.conceptResult) {
+        setConceptResult(report.data.conceptResult);
+        if (report.data.selectedTopic) setSelectedTopic(report.data.selectedTopic);
+        if (report.data.selectedGenre) setSelectedGenre(report.data.selectedGenre);
+        setAppState(AppState.CONCEPT_COMPLETE);
+        setShowReportsPanel(false);
+        alert('レポートを読み込みました。');
+      }
+    }
+  }, []);
+
+  // 保存されたレポートを世界観構築ツールに渡す
+  const handleUseReportForWorld = useCallback((report: SavedReport) => {
+    if (report.data && report.type === 'research' && onComplete) {
+      const data = report.data;
+      onComplete({
+        genre: data.selectedGenre,
+        title: data.selectedTopic?.split('\n')[0]?.replace(/^#+\s*/, '') || '',
+        concept: data.conceptResult?.substring(0, 1000) || '',
+        protagonistIdea: '',
+        firstEpisodeHook: '',
+      });
+      setShowReportsPanel(false);
+    }
+  }, [onComplete]);
+
+  // レポート一覧を更新
+  useEffect(() => {
+    setSavedReports(getAllReports());
+  }, [conceptResult]);
+
+  // レポートパネルを表示
+  if (showReportsPanel) {
+    const researchReports = savedReports.filter(r => r.type === 'research');
+    const allReports = savedReports;
+    
+    return (
+      <div className="min-h-screen bg-gray-900 text-white font-sans p-8">
+        <div className="max-w-6xl mx-auto">
+          <div className="flex justify-between items-center mb-8">
+            <h2 className="text-3xl font-bold flex items-center space-x-3">
+              <Folder className="w-8 h-8 text-blue-400" />
+              <span>保存済みレポート</span>
+            </h2>
+            <div className="flex space-x-4">
+              <button
+                onClick={() => downloadAllReportsAsZip()}
+                className="flex items-center space-x-2 px-6 py-3 bg-teal-600 hover:bg-teal-500 rounded-full font-bold text-sm"
+              >
+                <Package className="w-5 h-5" />
+                <span>一式ダウンロード</span>
+              </button>
+              <button
+                onClick={() => setShowReportsPanel(false)}
+                className="p-3 bg-gray-800 hover:bg-gray-700 rounded-full"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+          </div>
+
+          <div className="space-y-6">
+            <div className="bg-gray-800 rounded-2xl p-6 border border-gray-700">
+              <h3 className="text-xl font-bold mb-4 text-teal-400">企画レポート ({researchReports.length})</h3>
+              {researchReports.length === 0 ? (
+                <p className="text-gray-400">保存されたレポートがありません。</p>
+              ) : (
+                <div className="space-y-3">
+                  {researchReports.map(report => (
+                    <div key={report.id} className="bg-gray-900 rounded-xl p-4 border border-gray-600 flex justify-between items-center">
+                      <div className="flex-1">
+                        <h4 className="font-bold text-white mb-1">{report.title}</h4>
+                        <p className="text-xs text-gray-400">
+                          {new Date(report.createdAt).toLocaleString('ja-JP')}
+                        </p>
+                      </div>
+                      <div className="flex space-x-2">
+                        <button
+                          onClick={() => handleLoadReport(report)}
+                          className="px-4 py-2 bg-indigo-600 hover:bg-indigo-500 rounded-lg text-sm font-bold"
+                        >
+                          読み込む
+                        </button>
+                        {onComplete && (
+                          <button
+                            onClick={() => handleUseReportForWorld(report)}
+                            className="px-4 py-2 bg-teal-600 hover:bg-teal-500 rounded-lg text-sm font-bold"
+                          >
+                            世界観ツールへ
+                          </button>
+                        )}
+                        <button
+                          onClick={() => {
+                            deleteReport(report.id);
+                            setSavedReports(getAllReports());
+                          }}
+                          className="px-4 py-2 bg-red-600 hover:bg-red-500 rounded-lg text-sm font-bold"
+                        >
+                          削除
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {allReports.length > researchReports.length && (
+              <div className="bg-gray-800 rounded-2xl p-6 border border-gray-700">
+                <h3 className="text-xl font-bold mb-4 text-purple-400">すべてのレポート ({allReports.length})</h3>
+                <div className="space-y-3">
+                  {allReports.map(report => (
+                    <div key={report.id} className="bg-gray-900 rounded-xl p-4 border border-gray-600">
+                      <div className="flex justify-between items-center">
+                        <div className="flex-1">
+                          <div className="flex items-center space-x-2 mb-1">
+                            <span className="text-xs px-2 py-1 bg-gray-700 rounded text-gray-300">{report.type}</span>
+                            <h4 className="font-bold text-white">{report.title}</h4>
+                          </div>
+                          <p className="text-xs text-gray-400">
+                            {new Date(report.createdAt).toLocaleString('ja-JP')}
+                          </p>
+                        </div>
+                        <button
+                          onClick={() => {
+                            deleteReport(report.id);
+                            setSavedReports(getAllReports());
+                          }}
+                          className="px-4 py-2 bg-red-600 hover:bg-red-500 rounded-lg text-sm font-bold"
+                        >
+                          削除
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-gray-900 text-white font-sans">
       <main className="container mx-auto px-4 py-8 md:py-12">
@@ -843,6 +1056,9 @@ export const ResearchInterface = ({
                 conceptResult={conceptResult}
                 appState={appState}
                 selectedTopic={selectedTopic}
+                selectedGenre={selectedGenre}
+                onSaveReport={handleSaveReport}
+                onShowReportsPanel={() => setShowReportsPanel(true)}
               />
             </>
           )}

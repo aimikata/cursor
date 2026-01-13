@@ -57,24 +57,13 @@ export const PanelInterface: React.FC<PanelInterfaceProps> = ({
     }
   }, [inputData]);
 
-  // 自動解析：シナリオが設定されたら自動的に解析を実行（セミオートモードのみ）
-  useEffect(() => {
-    if (scenario && !autoAnalyzed && mode === 'semi-auto' && !isAnalyzing) {
-      // 少し遅延を入れて、シナリオが完全に設定されるのを待つ
-      const timer = setTimeout(() => {
-        handleAutoAnalyze();
-      }, 500);
-      return () => clearTimeout(timer);
-    }
-  }, [scenario, mode]); // autoAnalyzedとisAnalyzingを依存配列から除外
+  // セミオートモードは無効化：自動解析を削除
 
   const handleAutoAnalyze = useCallback(async () => {
     if (!scenario.trim() || isAnalyzing) return;
 
     setIsAnalyzing(true);
-    if (mode === 'semi-auto') {
-      setAutoAnalyzed(true); // セミオートモードでは一度だけ実行
-    }
+    // セミオートモードは無効化
 
     try {
       const res = await fetch('/api/panel/analyze-scenario', {
@@ -96,14 +85,11 @@ export const PanelInterface: React.FC<PanelInterfaceProps> = ({
     } catch (error: any) {
       console.error('Analysis failed:', error);
       // エラーが発生しても処理を続行（デフォルト値を使用）
-      if (mode === 'semi-auto') {
-        // セミオートモードではエラーでも解析済みとしてマーク
-        setAutoAnalyzed(true);
-      }
+      // セミオートモードは無効化
     } finally {
       setIsAnalyzing(false);
     }
-  }, [scenario, worldSettings, toolType, mode]);
+  }, [scenario, worldSettings, toolType]);
 
   const handleGenerate = useCallback(async () => {
     if (!scenario.trim()) {
@@ -194,9 +180,7 @@ export const PanelInterface: React.FC<PanelInterfaceProps> = ({
         <header className="flex justify-between items-center mb-12 border-b border-gray-900 pb-8">
           <div className="flex items-center space-x-8">
             <div className={`p-6 rounded-[2rem] shadow-2xl ${
-              mode === 'semi-auto' 
-                ? 'bg-green-600 shadow-green-600/30' 
-                : 'bg-indigo-600 shadow-indigo-600/30'
+              'bg-indigo-600 shadow-indigo-600/30'
             }`}>
               <Layout className="w-10 h-10 text-white" />
             </div>
@@ -205,7 +189,7 @@ export const PanelInterface: React.FC<PanelInterfaceProps> = ({
                 {toolNames[toolType]}
               </h1>
               <p className="text-[10px] text-gray-600 font-black uppercase tracking-[0.6em] mt-3">
-                {mode === 'semi-auto' ? 'Semi-Auto Mode' : 'Manual Mode'}
+                Manual Mode
               </p>
             </div>
           </div>
@@ -222,33 +206,15 @@ export const PanelInterface: React.FC<PanelInterfaceProps> = ({
           </div>
         </header>
 
-        {/* モード表示 */}
-        <div className={`border rounded-2xl p-4 mb-8 ${
-          mode === 'semi-auto' 
-            ? 'bg-green-900/20 border-green-500/30' 
-            : 'bg-indigo-900/20 border-indigo-500/30'
-        }`}>
+        {/* モード表示（セミオートモードは無効化：常にマニュアルモード） */}
+        <div className="border rounded-2xl p-4 mb-8 bg-indigo-900/20 border-indigo-500/30">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
-              {mode === 'semi-auto' ? (
-                <>
-                  <Sparkles className="w-5 h-5 text-green-400" />
-                  <div>
-                    <p className="text-sm font-bold text-green-400 uppercase tracking-widest">Semi-Auto Mode</p>
-                    <p className="text-xs text-gray-400">
-                      {autoAnalyzed ? '✓ 自動解析完了' : '自動解析中...'}
-                    </p>
-                  </div>
-                </>
-              ) : (
-                <>
-                  <Wand2 className="w-5 h-5 text-indigo-400" />
-                  <div>
-                    <p className="text-sm font-bold text-indigo-400 uppercase tracking-widest">Manual Mode</p>
-                    <p className="text-xs text-gray-400">手動で設定を調整できます</p>
-                  </div>
-                </>
-              )}
+              <Wand2 className="w-5 h-5 text-indigo-400" />
+              <div>
+                <p className="text-sm font-bold text-indigo-400 uppercase tracking-widest">Manual Mode</p>
+                <p className="text-xs text-gray-400">手動で設定を調整できます</p>
+              </div>
             </div>
           </div>
         </div>
@@ -270,7 +236,7 @@ export const PanelInterface: React.FC<PanelInterfaceProps> = ({
                 rows={10}
                 className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg text-white resize-none focus:ring-2 focus:ring-indigo-500"
                 placeholder="ストーリーのシナリオを入力..."
-                disabled={mode === 'semi-auto' && !!inputData}
+                disabled={false}
               />
             </div>
 
@@ -283,7 +249,7 @@ export const PanelInterface: React.FC<PanelInterfaceProps> = ({
                 rows={4}
                 className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg text-white resize-none focus:ring-2 focus:ring-indigo-500"
                 placeholder="世界観や補足情報..."
-                disabled={mode === 'semi-auto' && !!inputData}
+                disabled={false}
               />
             </div>
 
@@ -300,7 +266,7 @@ export const PanelInterface: React.FC<PanelInterfaceProps> = ({
                     onChange={(e) => setPageCount(parseInt(e.target.value) || 4)}
                     className="w-full p-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-indigo-500"
                   />
-                  {mode === 'manual' && (
+                  {(
                     <button
                       onClick={handleAutoAnalyze}
                       disabled={isAnalyzing || !scenario.trim()}
@@ -409,34 +375,7 @@ export const PanelInterface: React.FC<PanelInterfaceProps> = ({
           </div>
         </div>
 
-        {/* 自動化の状態表示 */}
-        {mode === 'semi-auto' && (
-          <div className="mt-8 bg-indigo-900/20 border border-indigo-500/30 rounded-2xl p-4">
-            <div className="flex items-center space-x-3">
-              <div className="flex-shrink-0">
-                {isAnalyzing ? (
-                  <Loader2 className="w-5 h-5 text-indigo-400 animate-spin" />
-                ) : autoAnalyzed ? (
-                  <Check className="w-5 h-5 text-green-400" />
-                ) : (
-                  <Wand2 className="w-5 h-5 text-indigo-400" />
-                )}
-              </div>
-              <div className="flex-1">
-                <p className="text-sm font-bold text-indigo-400">
-                  {isAnalyzing 
-                    ? 'シナリオを自動解析中...' 
-                    : autoAnalyzed 
-                      ? `✓ 自動解析完了: ${pageCount}ページ、ジャンル「${genre}」` 
-                      : 'シナリオが設定され次第、自動解析を開始します'}
-                </p>
-                <p className="text-xs text-gray-400 mt-1">
-                  {includeCover ? '✓ 表紙も自動的に生成されます' : '表紙は含まれません'}
-                </p>
-              </div>
-            </div>
-          </div>
-        )}
+        {/* セミオートモードは無効化 */}
       </div>
     </div>
   );

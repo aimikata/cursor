@@ -216,6 +216,9 @@ export async function POST(req: NextRequest) {
     const response = await result.response;
     let text = response.text().trim();
     
+    // デバッグ用：レスポンスの最初の500文字をログに出力
+    console.log('API Response (first 500 chars):', text.substring(0, 500));
+    
     // JSONの修復処理（バッククォートや余計なテキストを削除）
     if (text.startsWith('```')) {
       text = text.replace(/^```json\s*/, '').replace(/^```\s*/, '').replace(/\s*```$/, '');
@@ -226,9 +229,20 @@ export async function POST(req: NextRequest) {
     const endIdx = text.lastIndexOf('}');
     if (startIdx !== -1 && endIdx !== -1 && endIdx > startIdx) {
       text = text.substring(startIdx, endIdx + 1);
+    } else {
+      // JSONが見つからない場合、エラーメッセージを返す
+      console.error('JSON not found in response. Full response:', text);
+      throw new Error(`Invalid response format. Expected JSON but got: ${text.substring(0, 200)}...`);
     }
     
-    const detailedSetting = JSON.parse(text);
+    let detailedSetting;
+    try {
+      detailedSetting = JSON.parse(text);
+    } catch (parseError: any) {
+      console.error('JSON parse error:', parseError);
+      console.error('Text that failed to parse:', text);
+      throw new Error(`Failed to parse JSON: ${parseError.message}. Response: ${text.substring(0, 200)}...`);
+    }
 
     return NextResponse.json({ detailedSetting });
   } catch (error: any) {

@@ -312,7 +312,8 @@ const PanelSelectionModal = ({
 
 // ■ マンガスタジオ（Hub画面）
 const MangaHubScreen = ({ user, onBack }: { user: User, onBack: () => void }) => {
-  const [mode, setMode] = useState<'semi-auto' | 'manual'>('semi-auto'); // デフォルトはセミオート
+  // セミオートモードは無効化：常にマニュアルモード
+  const mode: 'manual' = 'manual';
   const [isPanelModalOpen, setIsPanelModalOpen] = useState(false);
   const [showResearch, setShowResearch] = useState(false);
   const [showWorldBuilding, setShowWorldBuilding] = useState(false);
@@ -376,10 +377,7 @@ const MangaHubScreen = ({ user, onBack }: { user: User, onBack: () => void }) =>
     { id: 'strategy', title: 'アマゾン戦略', description: 'Kindle販売・メタデータ戦略', icon: <ShoppingBag className="w-5 h-5" />, color: 'bg-emerald-500' }
   ];
 
-  const handleSemiAutoStart = () => {
-    // セミオート開始ボタン -> リサーチツールを表示
-    setShowResearch(true);
-  };
+  // セミオートモードは無効化
 
   // amazon-assistant用のデータを収集
   const collectAmazonAssistantData = useCallback(() => {
@@ -488,17 +486,7 @@ const MangaHubScreen = ({ user, onBack }: { user: User, onBack: () => void }) =>
 
   const handlePanelConfigComplete = (selection: PanelLayoutSelection) => {
     setIsPanelModalOpen(false);
-    
-    // 選択結果の確認（デモ用アラート）
-    // 実際にはここでAPIに投げる、または次の画面へ遷移する
-    let modeDescription = "";
-    if (selection.category === 'story') {
-      modeDescription = "【物語向け】自由レイアウト";
-    } else {
-      modeDescription = `【ビジネス向け】${selection.media === 'youtube' ? 'YouTube(16:9)' : 'マンガ(LP/資料)'}レイアウト`;
-    }
-
-    alert(`セミオート生成を開始します。\n\n設定: ${modeDescription}\n\n①脚本生成\n②コマ割り(${modeDescription})\n③画像生成\n\nこれらを一括で実行します。`);
+    // セミオートモードは無効化：この関数は使用されていません
   };
 
   // リサーチツールが表示されている場合は、それだけを表示
@@ -508,8 +496,9 @@ const MangaHubScreen = ({ user, onBack }: { user: User, onBack: () => void }) =>
         onClose={() => setShowResearch(false)}
         onComplete={(data) => {
           setResearchData(data);
-          setShowResearch(false);
-          setShowWorldBuilding(true);
+          // セミオートモードを無効化：自動遷移しない
+          // setShowResearch(false);
+          // setShowWorldBuilding(true);
         }}
       />
     );
@@ -554,11 +543,28 @@ const MangaHubScreen = ({ user, onBack }: { user: User, onBack: () => void }) =>
           }
           // マニュアルモードの場合は選択モーダルを表示
           if (mode === 'manual') {
+            // キャラクター画像を取得してpanelInputDataに設定
+            const imageRefsStr = localStorage.getItem('image_references');
+            const imageRefs: Map<string, string> = new Map();
+            if (imageRefsStr) {
+              try {
+                const refs = JSON.parse(imageRefsStr);
+                Object.entries(refs).forEach(([id, img]) => {
+                  imageRefs.set(id, img as string);
+                });
+              } catch (e) {
+                console.error('Failed to parse image references:', e);
+              }
+            }
+            setPanelInputData({
+              storyData: storyOutput,
+              characterImages: imageRefs,
+            });
             setIsPanelSelectionModalOpen(true);
           }
         }}
         onProceedToPanel={(panelData) => {
-          // セミオートモード：コマ割りツール選択モーダルを表示
+          // コマ割りツール選択モーダルを表示
           setPanelInputData(panelData);
           setIsPanelSelectionModalOpen(true);
         }}
@@ -642,22 +648,7 @@ const MangaHubScreen = ({ user, onBack }: { user: User, onBack: () => void }) =>
                 ページ番号: {proofreadingData.pageNumbers.join(', ')}
               </p>
             </div>
-            {mode === 'semi-auto' && (
-              <div className="mt-4">
-                <button
-                  onClick={() => {
-                    // データを収集してamazon-assistantへ遷移
-                    collectAmazonAssistantData();
-                  }}
-                  className="px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700"
-                >
-                  Amazon戦略アシスタントへ進む
-                </button>
-                <p className="text-sm text-gray-500 mt-2">
-                  セミオートモードでは、proofreading完了後に自動的にAmazon戦略アシスタントへ進みます。
-                </p>
-              </div>
-            )}
+            {/* セミオートモードは無効化 */}
           </div>
         </div>
       </div>
@@ -687,18 +678,7 @@ const MangaHubScreen = ({ user, onBack }: { user: User, onBack: () => void }) =>
             <ArrowLeft className="w-4 h-4 mr-1 transition-transform group-hover:-translate-x-1" /> ホームへ戻る
           </button>
           <div className="flex space-x-1 bg-slate-100 p-1 rounded-lg">
-            <button 
-              onClick={() => setMode('semi-auto')}
-              className={`px-4 py-1.5 rounded-md text-sm font-bold flex items-center transition-all ${mode === 'semi-auto' ? 'bg-white text-indigo-600 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}
-            >
-              <Zap className="w-4 h-4 mr-2" /> Semi-Auto Mode
-            </button>
-            <button 
-              onClick={() => setMode('manual')}
-              className={`px-4 py-1.5 rounded-md text-sm font-bold flex items-center transition-all ${mode === 'manual' ? 'bg-white text-indigo-600 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}
-            >
-              <Wrench className="w-4 h-4 mr-2" /> Manual Mode
-            </button>
+            {/* セミオートモードは無効化：常にマニュアルモード */}
           </div>
           <div className="text-xs text-slate-400 font-mono w-24 text-right truncate">{user.email}</div>
         </div>
@@ -707,40 +687,8 @@ const MangaHubScreen = ({ user, onBack }: { user: User, onBack: () => void }) =>
       <main className="flex-grow p-8">
         <div className="max-w-6xl mx-auto">
           
-          {/* セミオートモードの表示 */}
-          {mode === 'semi-auto' && (
-            <div className="animate-in fade-in slide-in-from-bottom-4 duration-300">
-              <div className="text-center mb-10">
-                <h1 className="text-3xl font-extrabold text-slate-900 mb-4">
-                  <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600">
-                    Semi-Auto Creation
-                  </span>
-                </h1>
-                <p className="text-slate-600 max-w-2xl mx-auto">
-                  マンガ企画リサーチツールを使用して、市場調査とターゲット分析を行い、売れる企画の種を見つけます。
-                </p>
-              </div>
-
-              <div className="bg-white rounded-2xl shadow-xl border border-indigo-100 p-8 max-w-3xl mx-auto relative overflow-hidden">
-                <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"></div>
-                
-                <div className="space-y-6">
-                  <div className="text-center">
-                    <p className="text-slate-700 mb-6">
-                      リサーチツールを起動して、市場トレンドから「売れるテーマ」を分析し、詳細な企画案レポートを生成します。
-                    </p>
-                    
-                    <Button onClick={handleSemiAutoStart} className="w-full py-4 text-lg shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all bg-gradient-to-r from-indigo-600 to-purple-600 border-none">
-                      <Sparkles className="w-5 h-5 mr-2" /> リサーチツールを開始
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
-
           {/* マニュアルモードの表示 */}
-          {mode === 'manual' && (
+          {(
             <div className="animate-in fade-in slide-in-from-bottom-4 duration-300">
               <div className="mb-8 flex items-center justify-between">
                 <div>
@@ -769,7 +717,40 @@ const MangaHubScreen = ({ user, onBack }: { user: User, onBack: () => void }) =>
                         setIsPanelSelectionModalOpen(false); // ストーリーツールを開く時はモーダルを閉じる
                       } else if (tool.id === 'panel') {
                         // マニュアルモード：コマ割りツール選択モーダルを表示
-                        setPanelInputData(null); // マニュアルモードなので初期データをクリア
+                        // ストーリー確定済みの場合はデータを取得、未確定の場合はnull
+                        if (typeof window !== 'undefined') {
+                          const storyOutputStr = localStorage.getItem('story_output');
+                          if (storyOutputStr) {
+                            try {
+                              const storyOutput = JSON.parse(storyOutputStr);
+                              const imageRefsStr = localStorage.getItem('image_references');
+                              const imageRefs: Map<string, string> = new Map();
+                              
+                              if (imageRefsStr) {
+                                try {
+                                  const refs = JSON.parse(imageRefsStr);
+                                  Object.entries(refs).forEach(([id, img]) => {
+                                    imageRefs.set(id, img as string);
+                                  });
+                                } catch (e) {
+                                  console.error('Failed to parse image references:', e);
+                                }
+                              }
+                              
+                              setPanelInputData({
+                                storyData: storyOutput,
+                                characterImages: imageRefs,
+                              });
+                            } catch (e) {
+                              console.error('Failed to parse story output:', e);
+                              setPanelInputData(null);
+                            }
+                          } else {
+                            setPanelInputData(null);
+                          }
+                        } else {
+                          setPanelInputData(null);
+                        }
                         setIsPanelSelectionModalOpen(true);
                       } else if (tool.id === 'image') {
                         // マニュアルモード：画像生成ツール選択モーダルを表示
@@ -823,6 +804,37 @@ const MangaHubScreen = ({ user, onBack }: { user: User, onBack: () => void }) =>
         isOpen={isPanelSelectionModalOpen}
         onClose={() => setIsPanelSelectionModalOpen(false)}
         onSelect={(toolType) => {
+          // panelInputDataがnullの場合、localStorageからストーリーデータとキャラクター画像を取得
+          if (!panelInputData && typeof window !== 'undefined') {
+            const storyOutputStr = localStorage.getItem('story_output');
+            const imageRefsStr = localStorage.getItem('image_references');
+            
+            if (storyOutputStr) {
+              try {
+                const storyOutput = JSON.parse(storyOutputStr);
+                const imageRefs: Map<string, string> = new Map();
+                
+                if (imageRefsStr) {
+                  try {
+                    const refs = JSON.parse(imageRefsStr);
+                    Object.entries(refs).forEach(([id, img]) => {
+                      imageRefs.set(id, img as string);
+                    });
+                  } catch (e) {
+                    console.error('Failed to parse image references:', e);
+                  }
+                }
+                
+                setPanelInputData({
+                  storyData: storyOutput,
+                  characterImages: imageRefs,
+                });
+              } catch (e) {
+                console.error('Failed to parse story output:', e);
+              }
+            }
+          }
+          
           setSelectedPanelTool(toolType);
           setIsPanelSelectionModalOpen(false);
           setShowStory(false); // ストーリーツールが開いている場合は閉じる

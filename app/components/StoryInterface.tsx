@@ -4,7 +4,8 @@ import React, { useState, useCallback, useEffect } from 'react';
 import { 
   GenerationMode, Character, Episode, StoryGenerationInput, StoryOutput 
 } from '@/app/lib/story/types';
-import { ArrowLeft, Sparkles, Wrench, FileText, Save, Download, Copy, Edit3, Check, Layout } from 'lucide-react';
+import { ArrowLeft, Sparkles, Wrench, FileText, Save, Download, Copy, Edit3, Check, Layout, Folder, X, Package } from 'lucide-react';
+import { saveReport, getAllReports, deleteReport, SavedReport, downloadAllReportsAsZip } from '@/app/lib/report-manager';
 
 interface StoryInterfaceProps {
   onClose?: () => void;
@@ -27,7 +28,8 @@ export const StoryInterface: React.FC<StoryInterfaceProps> = ({
   onProceedToPanel
 }) => {
   // モード判定
-  const isSemiAutoMode = !!initialData;
+  // セミオートモードは無効化
+  const isSemiAutoMode = false;
   
   // 基本状態
   const [generationMode, setGenerationMode] = useState<GenerationMode>('series');
@@ -45,6 +47,8 @@ export const StoryInterface: React.FC<StoryInterfaceProps> = ({
   const [isEditing, setIsEditing] = useState<boolean>(false);
   const [editedStory, setEditedStory] = useState<string>('');
   const [copied, setCopied] = useState<boolean>(false);
+  const [savedReports, setSavedReports] = useState<SavedReport[]>([]);
+  const [showReportsPanel, setShowReportsPanel] = useState(false);
 
   // セミオートモード：初期データを設定
   useEffect(() => {
@@ -192,27 +196,27 @@ export const StoryInterface: React.FC<StoryInterfaceProps> = ({
       localStorage.setItem('story_output', JSON.stringify(storyOutput, null, 2));
     }
 
+    // キャラクター画像を取得（localStorageから）
+    const imageRefsStr = localStorage.getItem('image_references');
+    const imageRefs: Map<string, string> = new Map();
+    if (imageRefsStr) {
+      try {
+        const refs = JSON.parse(imageRefsStr);
+        Object.entries(refs).forEach(([id, img]) => {
+          imageRefs.set(id, img as string);
+        });
+      } catch (e) {
+        console.error('Failed to parse image references:', e);
+      }
+    }
+
     // 親コンポーネントに通知
     if (onComplete) {
       onComplete(storyOutput);
     }
 
-    // コマ割りツールへ進む（セミオートモードの場合）
-    if (onProceedToPanel && isSemiAutoMode) {
-      // キャラクター画像を取得（localStorageから）
-      const imageRefsStr = localStorage.getItem('image_references');
-      const imageRefs: Map<string, string> = new Map();
-      if (imageRefsStr) {
-        try {
-          const refs = JSON.parse(imageRefsStr);
-          Object.entries(refs).forEach(([id, img]) => {
-            imageRefs.set(id, img as string);
-          });
-        } catch (e) {
-          console.error('Failed to parse image references:', e);
-        }
-      }
-      
+    // マニュアルモード：コマ割りツール選択時にデータを渡せるように準備
+    if (onProceedToPanel) {
       onProceedToPanel({
         storyData: storyOutput,
         characterImages: imageRefs,
@@ -222,10 +226,14 @@ export const StoryInterface: React.FC<StoryInterfaceProps> = ({
     }
   }, [episodes, worldSetting, characters, generationMode, onComplete, onProceedToPanel, isSemiAutoMode]);
 
+  const generateEpisodeText = useCallback((ep: Episode) => {
+    return `【${ep.title}】\n\n${ep.story}\n\n${ep.commentary ? `【深層解析】\n\n${ep.commentary}\n\n` : ''}`;
+  }, []);
+
   const handleCopy = useCallback(async () => {
     if (episodes.length > 0 && selectedEpisode < episodes.length) {
       const ep = episodes[selectedEpisode];
-      const text = `【${ep.title}】\n\n${ep.story}\n\n${ep.commentary ? `【深層解析】\n\n${ep.commentary}\n\n` : ''}`;
+      const text = generateEpisodeText(ep);
       try {
         await navigator.clipboard.writeText(text);
         setCopied(true);
@@ -234,9 +242,177 @@ export const StoryInterface: React.FC<StoryInterfaceProps> = ({
         console.error('Failed to copy:', err);
       }
     }
-  }, [episodes, selectedEpisode]);
+  }, [episodes, selectedEpisode, generateEpisodeText]);
+
+  const handleDownload = useCallback(() => {
+    if (episodes.length > 0 && selectedEpisode < episodes.length) {
+      const ep = episodes[selectedEpisode];
+      const text = generateEpisodeText(ep);
+      const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      const safeTitle = (ep.title || `Episode_${selectedEpisode + 1}`).replace(/[\/\?<>\\:\*\|":]/g, '').replace(/\s+/g, '_');
+      link.download = `${safeTitle}.txt`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+    }
+  }, [episodes, selectedEpisode, generateEpisodeText]);
+
+  // レポートを保存
+  const handleSaveReport = useCallback(() => {
+    if (episodes.length === 0) return;
+    const allEpisodesText = episodes.map((ep, idx) => 
+      generateEpisodeText(ep)
+    ).join('\n\n' + '='.repeat(60) + '\n\n');
+    
+    const storyOutput: StoryOutput = {
+      world_setting: worldSetting,
+      characters,
+      episodes,
+      generationMode,
+      metadata: {
+        createdAt: Date.now(),
+        updatedAt: Date.now(),
+      },
+    };
+
+    saveReport({
+      type: 'story',
+      title: episodes[0]?.title || `ストーリー_${generationMode}`,
+      content: allEpisodesText,
+      data: storyOutput,
+    });
+    setSavedReports(getAllReports());
+    alert('レポートを保存しました。');
+  }, [episodes, worldSetting, characters, generationMode, generateEpisodeText]);
+
+  // 保存されたレポートを読み込む
+  const handleLoadReport = useCallback((report: SavedReport) => {
+    if (report.data && report.type === 'story') {
+      const storyData = report.data as StoryOutput;
+      setWorldSetting(storyData.world_setting || '');
+      setCharacters(storyData.characters || DEFAULT_CHARACTERS);
+      setEpisodes(storyData.episodes || []);
+      setGenerationMode(storyData.generationMode || 'series');
+      setShowReportsPanel(false);
+      alert('レポートを読み込みました。');
+    }
+  }, []);
+
+  // レポート一覧を更新
+  useEffect(() => {
+    setSavedReports(getAllReports());
+  }, [episodes]);
 
   const isSeriesStarted = generationMode === 'series' && episodes.length > 0;
+
+  // レポートパネルを表示
+  if (showReportsPanel) {
+    const storyReports = savedReports.filter(r => r.type === 'story');
+    const allReports = savedReports;
+    
+    return (
+      <div className="min-h-screen bg-black text-white font-sans p-8">
+        <div className="max-w-6xl mx-auto">
+          <div className="flex justify-between items-center mb-8">
+            <h2 className="text-3xl font-bold flex items-center space-x-3">
+              <Folder className="w-8 h-8 text-blue-400" />
+              <span>保存済みレポート</span>
+            </h2>
+            <div className="flex space-x-4">
+              <button
+                onClick={() => downloadAllReportsAsZip()}
+                className="flex items-center space-x-2 px-6 py-3 bg-teal-600 hover:bg-teal-500 rounded-full font-bold text-sm"
+              >
+                <Package className="w-5 h-5" />
+                <span>一式ダウンロード</span>
+              </button>
+              <button
+                onClick={() => setShowReportsPanel(false)}
+                className="p-3 bg-gray-800 hover:bg-gray-700 rounded-full"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+          </div>
+
+          <div className="space-y-6">
+            <div className="bg-gray-900 rounded-2xl p-6 border border-gray-800">
+              <h3 className="text-xl font-bold mb-4 text-purple-400">ストーリーレポート ({storyReports.length})</h3>
+              {storyReports.length === 0 ? (
+                <p className="text-gray-400">保存されたレポートがありません。</p>
+              ) : (
+                <div className="space-y-3">
+                  {storyReports.map(report => (
+                    <div key={report.id} className="bg-gray-800 rounded-xl p-4 border border-gray-700 flex justify-between items-center">
+                      <div className="flex-1">
+                        <h4 className="font-bold text-white mb-1">{report.title}</h4>
+                        <p className="text-xs text-gray-400">
+                          {new Date(report.createdAt).toLocaleString('ja-JP')}
+                        </p>
+                      </div>
+                      <div className="flex space-x-2">
+                        <button
+                          onClick={() => handleLoadReport(report)}
+                          className="px-4 py-2 bg-indigo-600 hover:bg-indigo-500 rounded-lg text-sm font-bold"
+                        >
+                          読み込む
+                        </button>
+                        <button
+                          onClick={() => {
+                            deleteReport(report.id);
+                            setSavedReports(getAllReports());
+                          }}
+                          className="px-4 py-2 bg-red-600 hover:bg-red-500 rounded-lg text-sm font-bold"
+                        >
+                          削除
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {allReports.length > storyReports.length && (
+              <div className="bg-gray-900 rounded-2xl p-6 border border-gray-800">
+                <h3 className="text-xl font-bold mb-4 text-purple-400">すべてのレポート ({allReports.length})</h3>
+                <div className="space-y-3">
+                  {allReports.map(report => (
+                    <div key={report.id} className="bg-gray-800 rounded-xl p-4 border border-gray-700">
+                      <div className="flex justify-between items-center">
+                        <div className="flex-1">
+                          <div className="flex items-center space-x-2 mb-1">
+                            <span className="text-xs px-2 py-1 bg-gray-700 rounded text-gray-300">{report.type}</span>
+                            <h4 className="font-bold text-white">{report.title}</h4>
+                          </div>
+                          <p className="text-xs text-gray-400">
+                            {new Date(report.createdAt).toLocaleString('ja-JP')}
+                          </p>
+                        </div>
+                        <button
+                          onClick={() => {
+                            deleteReport(report.id);
+                            setSavedReports(getAllReports());
+                          }}
+                          className="px-4 py-2 bg-red-600 hover:bg-red-500 rounded-lg text-sm font-bold"
+                        >
+                          削除
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-black text-white font-sans pb-32">
@@ -426,11 +602,32 @@ export const StoryInterface: React.FC<StoryInterfaceProps> = ({
               {episodes.length > 0 && (
                 <div className="flex space-x-2">
                   <button
+                    onClick={handleSaveReport}
+                    className="px-4 py-2 bg-purple-600 hover:bg-purple-500 rounded-lg text-sm font-bold flex items-center space-x-2"
+                  >
+                    <FileText className="w-4 h-4" />
+                    <span>レポートを保存</span>
+                  </button>
+                  <button
+                    onClick={() => setShowReportsPanel(true)}
+                    className="px-4 py-2 bg-blue-600 hover:bg-blue-500 rounded-lg text-sm font-bold flex items-center space-x-2"
+                  >
+                    <Folder className="w-4 h-4" />
+                    <span>保存済み</span>
+                  </button>
+                  <button
                     onClick={handleCopy}
                     className="px-4 py-2 bg-gray-800 hover:bg-gray-700 rounded-lg text-sm font-bold flex items-center space-x-2"
                   >
                     <Copy className="w-4 h-4" />
                     <span>{copied ? 'コピー済み!' : 'コピー'}</span>
+                  </button>
+                  <button
+                    onClick={handleDownload}
+                    className="px-4 py-2 bg-teal-600 hover:bg-teal-500 rounded-lg text-sm font-bold flex items-center space-x-2"
+                  >
+                    <Download className="w-4 h-4" />
+                    <span>ダウンロード</span>
                   </button>
                   {isEditing ? (
                     <button
