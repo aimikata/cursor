@@ -213,7 +213,20 @@ export async function POST(req: NextRequest) {
     );
 
     const response = await result.response;
-    const text = response.text();
+    let text = response.text().trim();
+    
+    // JSONの修復処理（バッククォートや余計なテキストを削除）
+    if (text.startsWith('```')) {
+      text = text.replace(/^```json\s*/, '').replace(/^```\s*/, '').replace(/\s*```$/, '');
+    }
+    
+    // JSONオブジェクトの開始と終了を探す
+    const startIdx = text.indexOf('{');
+    const endIdx = text.lastIndexOf('}');
+    if (startIdx !== -1 && endIdx !== -1 && endIdx > startIdx) {
+      text = text.substring(startIdx, endIdx + 1);
+    }
+    
     const detailedSetting = JSON.parse(text);
 
     return NextResponse.json({ detailedSetting });
