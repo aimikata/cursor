@@ -2,6 +2,36 @@ import { NextRequest, NextResponse } from 'next/server';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import type { GeneratedContent, AllImagePayloads } from '@/app/lib/amazon-assistant/types';
 
+// 429エラー対策のリトライ関数（RetryInfoを尊重）
+async function fetchWithRetry<T>(fn: () => Promise<T>, maxRetries = 5, initialDelay = 2000): Promise<T> {
+  let lastError: any;
+  for (let i = 0; i < maxRetries; i++) {
+    try {
+      return await fn();
+    } catch (error: any) {
+      lastError = error;
+      const errorMessage = error.message || '';
+      const isRateLimit = errorMessage.includes('429') || errorMessage.includes('quota') || errorMessage.includes('Quota exceeded');
+      
+      if (isRateLimit && i < maxRetries - 1) {
+        // RetryInfoからretryDelayを抽出（"Please retry in 21.229469642s" の形式）
+        let delay = initialDelay * Math.pow(2, i);
+        const retryMatch = errorMessage.match(/Please retry in ([\d.]+)s/i);
+        if (retryMatch) {
+          const retrySeconds = parseFloat(retryMatch[1]);
+          delay = Math.max(delay, retrySeconds * 1000 + 1000); // 秒をミリ秒に変換し、少し余裕を持たせる
+        }
+        
+        console.warn(`クォータ超過 (429)。${Math.round(delay/1000)}秒後にリトライします... (試行 ${i + 1}/${maxRetries})`);
+        await new Promise(resolve => setTimeout(resolve, delay));
+        continue;
+      }
+      throw error;
+    }
+  }
+  throw lastError;
+}
+
 const SYSTEM_INSTRUCTION = `
 あなたは、Amazon KDPのベストセラー作家兼マーケティングコンサルタントです。
 ユーザーが提供する書籍のコンセプトに基づいて、KDPの出版申請画面にそのままコピペできる完璧な申請データと、戦略的なマーケティング資料を作成してください。
@@ -131,7 +161,7 @@ export async function POST(req: NextRequest) {
       parts.push({ text: '[著者プロフィール画像]' });
     }
 
-    const response = await model.generateContent({
+    const response = await fetchWithRetry(() => model.generateContent({
       contents: [{ role: 'user', parts }],
       systemInstruction: SYSTEM_INSTRUCTION,
       generationConfig: {
@@ -196,7 +226,7 @@ export async function POST(req: NextRequest) {
           },
         } as any,
       },
-    });
+    }));
 
     const responseText = response.response.text();
     let cleanText = responseText.trim();

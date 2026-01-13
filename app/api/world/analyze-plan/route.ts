@@ -3,16 +3,27 @@ import { GoogleGenerativeAI } from '@google/generative-ai';
 
 const PRO_MODEL = 'gemini-2.0-flash-exp';
 
-async function fetchWithRetry<T>(fn: () => Promise<T>, maxRetries = 3, initialDelay = 2000): Promise<T> {
+// 429エラー対策のリトライ関数（RetryInfoを尊重）
+async function fetchWithRetry<T>(fn: () => Promise<T>, maxRetries = 5, initialDelay = 2000): Promise<T> {
   let lastError: any;
   for (let i = 0; i < maxRetries; i++) {
     try {
       return await fn();
     } catch (error: any) {
       lastError = error;
-      if (error.message?.includes('429') || error.status === 429) {
-        const delay = initialDelay * Math.pow(2, i);
-        console.warn(`Quota exceeded (429). Retrying in ${delay}ms... (Attempt ${i + 1}/${maxRetries})`);
+      const errorMessage = error.message || '';
+      const isRateLimit = errorMessage.includes('429') || errorMessage.includes('quota') || errorMessage.includes('Quota exceeded');
+      
+      if (isRateLimit && i < maxRetries - 1) {
+        // RetryInfoからretryDelayを抽出（"Please retry in 21.229469642s" の形式）
+        let delay = initialDelay * Math.pow(2, i);
+        const retryMatch = errorMessage.match(/Please retry in ([\d.]+)s/i);
+        if (retryMatch) {
+          const retrySeconds = parseFloat(retryMatch[1]);
+          delay = Math.max(delay, retrySeconds * 1000 + 1000); // 秒をミリ秒に変換し、少し余裕を持たせる
+        }
+        
+        console.warn(`クォータ超過 (429)。${Math.round(delay/1000)}秒後にリトライします... (試行 ${i + 1}/${maxRetries})`);
         await new Promise(resolve => setTimeout(resolve, delay));
         continue;
       }
