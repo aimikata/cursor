@@ -717,6 +717,7 @@ export const WorldBuildingInterface: React.FC<WorldBuildingInterfaceProps> = ({ 
   // レポートパネルを表示
   if (showReportsPanel) {
     const worldReports = savedReports.filter(r => r.type === 'world');
+    const researchReports = savedReports.filter(r => r.type === 'research');
     const allReports = savedReports;
     
     return (
@@ -745,6 +746,79 @@ export const WorldBuildingInterface: React.FC<WorldBuildingInterfaceProps> = ({ 
           </div>
 
           <div className="space-y-6">
+            {/* 企画レポート（リサーチツール） */}
+            <div className="bg-gray-900 rounded-2xl p-6 border border-gray-800">
+              <h3 className="text-xl font-bold mb-4 text-teal-400">企画レポート ({researchReports.length})</h3>
+              {researchReports.length === 0 ? (
+                <p className="text-gray-400">保存された企画レポートがありません。</p>
+              ) : (
+                <div className="space-y-3">
+                  {researchReports.map(report => (
+                    <div key={report.id} className="bg-gray-800 rounded-xl p-4 border border-gray-700 flex justify-between items-center">
+                      <div className="flex-1">
+                        <h4 className="font-bold text-white mb-1">{report.title}</h4>
+                        <p className="text-xs text-gray-400">
+                          {new Date(report.createdAt).toLocaleString('ja-JP')}
+                        </p>
+                      </div>
+                      <div className="flex space-x-2">
+                        <button
+                          onClick={() => {
+                            // リサーチレポートを世界観ツールの初期データとして使用
+                            if (report.data && report.type === 'research') {
+                              const data = report.data;
+                              // リサーチデータを世界観ツールの形式に変換
+                              if (data.selectedGenre) {
+                                const genre = mapResearchGenreToWorldGenre(data.selectedGenre);
+                                if (genre) {
+                                  setSelectedGenre(genre);
+                                }
+                              }
+                              // ステップ2（企画入力）に進む
+                              setStep(2);
+                              setShowReportsPanel(false);
+                              // 企画レポートの内容を初期データとして設定（localStorageに保存）
+                              if (typeof window !== 'undefined' && data.conceptResult) {
+                                // 企画レポートの内容を解析して、タイトルやコンセプトを抽出
+                                const conceptText = data.conceptResult;
+                                // タイトルを抽出（最初の見出しから）
+                                const titleMatch = conceptText.match(/^#+\s*(.+)$/m);
+                                const title = titleMatch ? titleMatch[1].trim() : '';
+                                // コンセプトを抽出（最初の1000文字）
+                                const concept = conceptText.substring(0, 1000);
+                                // 初期データとして設定するために、一時的にlocalStorageに保存
+                                // これはWorldviewInputFormで使用される
+                                localStorage.setItem('world_building_initial_data', JSON.stringify({
+                                  title: title || data.selectedTopic?.split('\n')[0]?.replace(/^#+\s*/, '') || '',
+                                  coreConcept: concept,
+                                  protagonistIdea: '',
+                                  firstEpisodeHook: '',
+                                }));
+                              }
+                              alert('企画レポートを読み込みました。世界観ツールで使用できます。');
+                            }
+                          }}
+                          className="px-4 py-2 bg-indigo-600 hover:bg-indigo-500 rounded-lg text-sm font-bold"
+                        >
+                          読み込む
+                        </button>
+                        <button
+                          onClick={() => {
+                            deleteReport(report.id);
+                            setSavedReports(getAllReports());
+                          }}
+                          className="px-4 py-2 bg-red-600 hover:bg-red-500 rounded-lg text-sm font-bold"
+                        >
+                          削除
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* 世界観レポート */}
             <div className="bg-gray-900 rounded-2xl p-6 border border-gray-800">
               <h3 className="text-xl font-bold mb-4 text-blue-400">世界観レポート ({worldReports.length})</h3>
               {worldReports.length === 0 ? (
@@ -967,12 +1041,32 @@ export const WorldBuildingInterface: React.FC<WorldBuildingInterfaceProps> = ({ 
             ) : (
               <WorldviewInputForm 
                 onSubmit={handleWorldviewSubmit} 
-                initialData={isSemiAutoMode && initialData ? {
-                  title: initialData.title,
-                  coreConcept: initialData.concept,
-                  protagonistIdea: initialData.protagonistIdea,
-                  firstEpisodeHook: initialData.firstEpisodeHook
-                } : undefined}
+                initialData={(() => {
+                  // セミオートモードの初期データ
+                  if (isSemiAutoMode && initialData) {
+                    return {
+                      title: initialData.title,
+                      coreConcept: initialData.concept,
+                      protagonistIdea: initialData.protagonistIdea,
+                      firstEpisodeHook: initialData.firstEpisodeHook
+                    };
+                  }
+                  // localStorageから読み込んだ企画レポートのデータ
+                  if (typeof window !== 'undefined') {
+                    const savedDataStr = localStorage.getItem('world_building_initial_data');
+                    if (savedDataStr) {
+                      try {
+                        const savedData = JSON.parse(savedDataStr);
+                        // 使用後は削除
+                        localStorage.removeItem('world_building_initial_data');
+                        return savedData;
+                      } catch (e) {
+                        console.error('Failed to parse initial data:', e);
+                      }
+                    }
+                  }
+                  return undefined;
+                })()}
                 autoSubmit={isSemiAutoMode}
               />
             )}

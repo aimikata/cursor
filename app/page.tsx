@@ -7,8 +7,9 @@ import {
   ArrowLeft, Search, Globe, Image as ImageIcon, 
   Languages, ShoppingBag, ExternalLink, AlertCircle, Loader2,
   Video, Layout, FileText, X, ChevronRight, ChevronsRight,
-  Sparkles, Wrench, PlayCircle, Settings, Zap
+  Sparkles, Wrench, PlayCircle, Settings, Zap, Folder, Package
 } from 'lucide-react';
+import { getAllReports, deleteReport, SavedReport, downloadAllReportsAsZip } from '@/app/lib/report-manager';
 import { ResearchInterface } from '@/app/components/ResearchInterface';
 import { WorldBuildingInterface } from '@/app/components/WorldBuildingInterface';
 import { StoryInterface } from '@/app/components/StoryInterface';
@@ -315,6 +316,13 @@ const MangaHubScreen = ({ user, onBack }: { user: User, onBack: () => void }) =>
   // セミオートモードは無効化：常にマニュアルモード
   const mode: 'manual' = 'manual';
   const [isPanelModalOpen, setIsPanelModalOpen] = useState(false);
+  const [showReportsPanel, setShowReportsPanel] = useState(false);
+  const [savedReports, setSavedReports] = useState<SavedReport[]>([]);
+
+  // レポート一覧を更新
+  React.useEffect(() => {
+    setSavedReports(getAllReports());
+  }, []);
   const [showResearch, setShowResearch] = useState(false);
   const [showWorldBuilding, setShowWorldBuilding] = useState(false);
   const [showStory, setShowStory] = useState(false);
@@ -687,6 +695,165 @@ const MangaHubScreen = ({ user, onBack }: { user: User, onBack: () => void }) =>
       <main className="flex-grow p-8">
         <div className="max-w-6xl mx-auto">
           
+          {/* 保存済みレポートパネル */}
+          {showReportsPanel && (
+            <div className="mb-8 bg-white rounded-2xl shadow-xl border border-slate-200 p-6">
+              <div className="flex justify-between items-center mb-6">
+                <h2 className="text-2xl font-bold text-slate-900 flex items-center space-x-3">
+                  <Folder className="w-6 h-6 text-indigo-600" />
+                  <span>保存済みレポート</span>
+                </h2>
+                <div className="flex space-x-4">
+                  <button
+                    onClick={() => downloadAllReportsAsZip()}
+                    className="flex items-center space-x-2 px-4 py-2 bg-teal-600 hover:bg-teal-500 rounded-lg text-white font-bold text-sm"
+                  >
+                    <Package className="w-4 h-4" />
+                    <span>一式ダウンロード</span>
+                  </button>
+                  <button
+                    onClick={() => {
+                      setShowReportsPanel(false);
+                      setSavedReports(getAllReports());
+                    }}
+                    className="p-2 bg-slate-100 hover:bg-slate-200 rounded-lg"
+                  >
+                    <X className="w-5 h-5 text-slate-600" />
+                  </button>
+                </div>
+              </div>
+
+              <div className="space-y-4">
+                {/* 企画レポート */}
+                {savedReports.filter(r => r.type === 'research').length > 0 && (
+                  <div className="bg-slate-50 rounded-xl p-4 border border-slate-200">
+                    <h3 className="text-lg font-bold mb-3 text-teal-600">企画レポート ({savedReports.filter(r => r.type === 'research').length})</h3>
+                    <div className="space-y-2">
+                      {savedReports.filter(r => r.type === 'research').map(report => (
+                        <div key={report.id} className="bg-white rounded-lg p-3 border border-slate-200 flex justify-between items-center">
+                          <div className="flex-1">
+                            <h4 className="font-bold text-slate-900 text-sm">{report.title}</h4>
+                            <p className="text-xs text-slate-500">
+                              {new Date(report.createdAt).toLocaleString('ja-JP')}
+                            </p>
+                          </div>
+                          <div className="flex space-x-2">
+                            <button
+                              onClick={() => {
+                                setShowReportsPanel(false);
+                                setShowResearch(true);
+                                // レポートを読み込む処理はResearchInterfaceで行う
+                              }}
+                              className="px-3 py-1 bg-indigo-600 hover:bg-indigo-500 rounded text-white text-xs font-bold"
+                            >
+                              開く
+                            </button>
+                            <button
+                              onClick={() => {
+                                deleteReport(report.id);
+                                setSavedReports(getAllReports());
+                              }}
+                              className="px-3 py-1 bg-red-600 hover:bg-red-500 rounded text-white text-xs font-bold"
+                            >
+                              削除
+                            </button>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* 世界観レポート */}
+                {savedReports.filter(r => r.type === 'world').length > 0 && (
+                  <div className="bg-slate-50 rounded-xl p-4 border border-slate-200">
+                    <h3 className="text-lg font-bold mb-3 text-blue-600">世界観レポート ({savedReports.filter(r => r.type === 'world').length})</h3>
+                    <div className="space-y-2">
+                      {savedReports.filter(r => r.type === 'world').map(report => (
+                        <div key={report.id} className="bg-white rounded-lg p-3 border border-slate-200 flex justify-between items-center">
+                          <div className="flex-1">
+                            <h4 className="font-bold text-slate-900 text-sm">{report.title}</h4>
+                            <p className="text-xs text-slate-500">
+                              {new Date(report.createdAt).toLocaleString('ja-JP')}
+                            </p>
+                          </div>
+                          <div className="flex space-x-2">
+                            <button
+                              onClick={() => {
+                                setShowReportsPanel(false);
+                                setShowWorldBuilding(true);
+                              }}
+                              className="px-3 py-1 bg-indigo-600 hover:bg-indigo-500 rounded text-white text-xs font-bold"
+                            >
+                              開く
+                            </button>
+                            <button
+                              onClick={() => {
+                                deleteReport(report.id);
+                                setSavedReports(getAllReports());
+                              }}
+                              className="px-3 py-1 bg-red-600 hover:bg-red-500 rounded text-white text-xs font-bold"
+                            >
+                              削除
+                            </button>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* ストーリーレポート */}
+                {savedReports.filter(r => r.type === 'story').length > 0 && (
+                  <div className="bg-slate-50 rounded-xl p-4 border border-slate-200">
+                    <h3 className="text-lg font-bold mb-3 text-purple-600">ストーリーレポート ({savedReports.filter(r => r.type === 'story').length})</h3>
+                    <div className="space-y-2">
+                      {savedReports.filter(r => r.type === 'story').map(report => (
+                        <div key={report.id} className="bg-white rounded-lg p-3 border border-slate-200 flex justify-between items-center">
+                          <div className="flex-1">
+                            <h4 className="font-bold text-slate-900 text-sm">{report.title}</h4>
+                            <p className="text-xs text-slate-500">
+                              {new Date(report.createdAt).toLocaleString('ja-JP')}
+                            </p>
+                          </div>
+                          <div className="flex space-x-2">
+                            <button
+                              onClick={() => {
+                                setShowReportsPanel(false);
+                                setShowStory(true);
+                              }}
+                              className="px-3 py-1 bg-indigo-600 hover:bg-indigo-500 rounded text-white text-xs font-bold"
+                            >
+                              開く
+                            </button>
+                            <button
+                              onClick={() => {
+                                deleteReport(report.id);
+                                setSavedReports(getAllReports());
+                              }}
+                              className="px-3 py-1 bg-red-600 hover:bg-red-500 rounded text-white text-xs font-bold"
+                            >
+                              削除
+                            </button>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* レポートがない場合 */}
+                {savedReports.length === 0 && (
+                  <div className="text-center py-8 text-slate-500">
+                    <Folder className="w-12 h-12 mx-auto mb-3 text-slate-300" />
+                    <p>保存されたレポートがありません。</p>
+                    <p className="text-sm mt-1">各ツールでレポートを保存すると、ここに表示されます。</p>
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
+
           {/* マニュアルモードの表示 */}
           {(
             <div className="animate-in fade-in slide-in-from-bottom-4 duration-300">
@@ -697,6 +864,16 @@ const MangaHubScreen = ({ user, onBack }: { user: User, onBack: () => void }) =>
                   </h1>
                   <p className="text-slate-600 mt-1">各工程を個別に調整・制作するためのプロ向けツールキットです。</p>
                 </div>
+                <button
+                  onClick={() => {
+                    setSavedReports(getAllReports());
+                    setShowReportsPanel(!showReportsPanel);
+                  }}
+                  className="flex items-center space-x-2 px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg font-bold text-sm shadow-md"
+                >
+                  <Folder className="w-4 h-4" />
+                  <span>保存済みレポート ({savedReports.length})</span>
+                </button>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
