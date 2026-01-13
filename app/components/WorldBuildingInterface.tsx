@@ -6,6 +6,37 @@ import {
   CharacterSetting, TargetMarket, VolumeDetail 
 } from '@/app/lib/world/types';
 import { GENRES } from '@/app/lib/world/constants';
+
+// リサーチツールのジャンル名を世界観構築ツールのGenreオブジェクトにマッピング
+const mapResearchGenreToWorldGenre = (researchGenre: string): Genre | null => {
+  // リサーチツールのジャンル名から世界観構築ツールのGenreを検索
+  const genreMap: Record<string, string> = {
+    '「マンガでわかる」・解説学習系': 'educational',
+    '恋愛・人間ドラマ系': 'romance',
+    'ライフハック・自己成長・教育系': 'educational',
+    'マネー・経済・キャリア系': 'business',
+    'AI・テクノロジー系（2025年トレンド）': 'sci_fi',
+    'ライト文芸・ストーリー系': 'romance',
+    '実用系・ノウハウ系': 'educational',
+    'ビジネス・起業ストーリー系': 'business',
+    '実話ベース・ドキュメンタリー系': 'slice_of_life',
+    '美容・健康・ライフスタイル系': 'slice_of_life',
+    'クリエイター・アート系': 'slice_of_life',
+    'パーソナルストーリー・半自伝系': 'slice_of_life',
+    'SNS向けショート系': 'slice_of_life',
+    'アクション・アドベンチャー': 'battle',
+    'ミーム・ユーモア・風刺': 'slice_of_life',
+    '古典文学・名作リメイク': 'romance',
+  };
+  
+  const genreId = genreMap[researchGenre];
+  if (genreId) {
+    return GENRES.find(g => g.id === genreId) || null;
+  }
+  
+  // 直接マッチする場合（既にGENRESのnameやidが渡されている場合）
+  return GENRES.find(g => g.name === researchGenre || g.id === researchGenre) || null;
+};
 import { ArrowLeft, Download, RefreshCw, Sparkles, WandSparkles, FileText, BookMarked, ChartBar, Lightbulb, Globe, Image as ImageIcon, Wrench } from 'lucide-react';
 import { CharacterSelectionInterface } from './CharacterSelectionInterface';
 import { WorldGenerationResult, StoryGenerationData, ImageReferenceMap } from '@/app/lib/world/types';
@@ -108,18 +139,31 @@ const WorldviewInputForm = ({
       setCoreConcept(initialData.coreConcept || '');
       setProtagonistIdea(initialData.protagonistIdea || '');
       setFirstEpisodeHook(initialData.firstEpisodeHook || '');
+      // セミオートモードで初期データが設定されたら、hasAutoSubmittedをリセット
+      if (autoSubmit) {
+        setHasAutoSubmitted(false);
+      }
     }
-  }, [initialData]);
+  }, [initialData, autoSubmit]);
 
   // セミオートモード：初期データが揃ったら自動的に送信
   useEffect(() => {
-    if (autoSubmit && !hasAutoSubmitted && title && coreConcept && protagonistIdea && firstEpisodeHook) {
-      setHasAutoSubmitted(true);
-      // 少し遅延を入れて、ユーザーに処理中であることを示す
-      const timer = setTimeout(() => {
-        onSubmit({ title, coreConcept, protagonistIdea, firstEpisodeHook });
-      }, 500);
-      return () => clearTimeout(timer);
+    if (autoSubmit && !hasAutoSubmitted) {
+      // セミオートモードでは、タイトルとコアコンセプトがあれば自動送信
+      // 他のフィールドは空でもデフォルト値で補完
+      if (title && coreConcept) {
+        setHasAutoSubmitted(true);
+        // 少し遅延を入れて、ユーザーに処理中であることを示す
+        const timer = setTimeout(() => {
+          onSubmit({ 
+            title, 
+            coreConcept, 
+            protagonistIdea: protagonistIdea || '主人公の詳細は世界観レポート生成時に自動補完されます', 
+            firstEpisodeHook: firstEpisodeHook || '第1話の展開は世界観レポート生成時に自動補完されます' 
+          });
+        }, 500);
+        return () => clearTimeout(timer);
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [autoSubmit, hasAutoSubmitted, title, coreConcept, protagonistIdea, firstEpisodeHook]);
@@ -422,9 +466,15 @@ export const WorldBuildingInterface: React.FC<WorldBuildingInterfaceProps> = ({ 
     if (isSemiAutoMode && initialData) {
       // ジャンルを設定
       if (initialData.genre) {
-        const genre = GENRES.find(g => g.name === initialData.genre || g.id === initialData.genre);
+        const genre = mapResearchGenreToWorldGenre(initialData.genre);
         if (genre) {
           setSelectedGenre(genre);
+        } else {
+          console.warn(`ジャンル "${initialData.genre}" が見つかりませんでした。デフォルトのジャンルを使用します。`);
+          // デフォルトとして最初のジャンルを設定
+          if (GENRES.length > 0) {
+            setSelectedGenre(GENRES[0]);
+          }
         }
       }
       // セミオートモードの場合は直接ステップ2（企画入力）へ
@@ -655,10 +705,16 @@ export const WorldBuildingInterface: React.FC<WorldBuildingInterfaceProps> = ({ 
                     onClick={() => {
                       // セミオートモードに切り替え（初期データを使用）
                       if (initialData?.genre) {
-                        const genre = GENRES.find(g => g.name === initialData.genre || g.id === initialData.genre);
+                        const genre = mapResearchGenreToWorldGenre(initialData.genre);
                         if (genre) {
                           setSelectedGenre(genre);
                           setStep(2);
+                        } else {
+                          // デフォルトとして最初のジャンルを設定
+                          if (GENRES.length > 0) {
+                            setSelectedGenre(GENRES[0]);
+                            setStep(2);
+                          }
                         }
                       }
                     }}
