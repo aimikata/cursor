@@ -19,6 +19,7 @@ import { PanelToolSelectionModal, PanelToolType } from '@/app/components/PanelTo
 import { PanelInterface } from '@/app/components/PanelInterface';
 import { ImageStudioInterface } from '@/app/components/ImageStudioInterface';
 import { AmazonAssistantInterface } from '@/app/components/AmazonAssistantInterface';
+import { CoverGeneratorInterface } from '@/app/components/CoverGeneratorInterface';
 
 // ==========================================
 // 1. 型定義 (Types)
@@ -379,6 +380,7 @@ const MangaHubScreen = ({ user, onBack }: { user: User, onBack: () => void }) =>
     memorableImages?: string[];
     language?: 'ja' | 'en';
   } | null>(null);
+  const [showCoverGenerator, setShowCoverGenerator] = useState(false);
 
   // マニュアルモード用ツール
   const tools = [
@@ -387,6 +389,7 @@ const MangaHubScreen = ({ user, onBack }: { user: User, onBack: () => void }) =>
     { id: 'script', title: '物語脚本', description: 'プロット作成〜脚本執筆', icon: <FileText className="w-5 h-5" />, color: 'bg-purple-500' },
     { id: 'panel', title: 'コマ割りディレクター', description: '演出プランとコマ割り構成', icon: <Layout className="w-5 h-5" />, color: 'bg-pink-500' },
     { id: 'image', title: '画像ジェネレーター', description: '生成AIプロンプト作成', icon: <ImageIcon className="w-5 h-5" />, color: 'bg-rose-500' },
+    { id: 'cover', title: '表紙生成', description: '書籍表紙の自動生成', icon: <ImageIcon className="w-5 h-5" />, color: 'bg-cyan-500' },
     { id: 'proof', title: '英語校正', description: '翻訳・グラマーチェック', icon: <Languages className="w-5 h-5" />, color: 'bg-orange-500' },
     { id: 'strategy', title: 'アマゾン戦略', description: 'Kindle販売・メタデータ戦略', icon: <ShoppingBag className="w-5 h-5" />, color: 'bg-emerald-500' }
   ];
@@ -679,6 +682,25 @@ const MangaHubScreen = ({ user, onBack }: { user: User, onBack: () => void }) =>
           setShowAmazonAssistant(false);
           setAmazonAssistantData(null);
         }}
+      />
+    );
+  }
+
+  // 表紙生成ツールが表示されている場合
+  if (showCoverGenerator) {
+    // 世界観レポートを取得（localStorageから）
+    let worldviewReportText = '';
+    if (typeof window !== 'undefined') {
+      const worldReports = getAllReports().filter(r => r.type === 'world');
+      if (worldReports.length > 0) {
+        worldviewReportText = worldReports[worldReports.length - 1].content;
+      }
+    }
+
+    return (
+      <CoverGeneratorInterface
+        onClose={() => setShowCoverGenerator(false)}
+        initialWorldviewReport={worldviewReportText || undefined}
       />
     );
   }
@@ -1000,6 +1022,9 @@ const MangaHubScreen = ({ user, onBack }: { user: User, onBack: () => void }) =>
                         // マニュアルモード：画像生成ツール選択モーダルを表示
                         // まずコマ割りツールを選択してもらう必要がある
                         alert('画像生成ツールを使用するには、先にコマ割りツールで構成案を生成してください。');
+                      } else if (tool.id === 'cover') {
+                        // 表紙生成ツールを開く
+                        setShowCoverGenerator(true);
                       } else if (tool.id === 'proof') {
                         // マニュアルモード：proofreadingツールを開く
                         // 画像ファイルとCSVファイルを手動でアップロードする必要がある

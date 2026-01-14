@@ -38,7 +38,7 @@ export const PanelInterface: React.FC<PanelInterfaceProps> = ({
   const [worldSettings, setWorldSettings] = useState<string>('');
   const [pageCount, setPageCount] = useState<number>(4);
   const [genre, setGenre] = useState<string>('AIおまかせ');
-  const [includeCover, setIncludeCover] = useState<boolean>(true); // デフォルトで表紙を含める
+  const [includeChapterTitle, setIncludeChapterTitle] = useState<boolean>(true); // デフォルトで章扉を含める
   const [isAnalyzing, setIsAnalyzing] = useState<boolean>(false);
   const [isGenerating, setIsGenerating] = useState<boolean>(false);
   const [autoAnalyzed, setAutoAnalyzed] = useState<boolean>(false);
@@ -123,8 +123,10 @@ export const PanelInterface: React.FC<PanelInterfaceProps> = ({
           worldSettings,
           pageCount,
           genre,
-          includeCover,
+          includeCover: false, // 表紙生成機能は独立ツールに移行
+          includeChapterTitle, // 章扉を含めるかどうか
           title: inputData?.storyData.episodes[0]?.title || '無題',
+          chapterTitle: inputData?.storyData.episodes[0]?.title || 'Chapter 1',
           target,
           characterImages: characterImagesForAPI,
         }),
@@ -165,7 +167,7 @@ export const PanelInterface: React.FC<PanelInterfaceProps> = ({
     } finally {
       setIsGenerating(false);
     }
-  }, [scenario, worldSettings, pageCount, genre, includeCover, toolType, target, inputData, onComplete]);
+  }, [scenario, worldSettings, pageCount, genre, includeChapterTitle, toolType, target, inputData, onComplete]);
 
   const toolNames = {
     normal: '通常用コマ割り',
@@ -293,19 +295,19 @@ export const PanelInterface: React.FC<PanelInterfaceProps> = ({
               </div>
             </div>
 
-            {/* 表紙を含める */}
+            {/* 章扉を含める */}
             <div className="mb-6">
               <label className="flex items-center gap-2 cursor-pointer">
                 <input
                   type="checkbox"
-                  checked={includeCover}
-                  onChange={(e) => setIncludeCover(e.target.checked)}
+                  checked={includeChapterTitle}
+                  onChange={(e) => setIncludeChapterTitle(e.target.checked)}
                   className="w-5 h-5 text-indigo-600 rounded border-gray-700 focus:ring-indigo-500"
                 />
-                <span className="text-sm font-bold">表紙/章扉を含める</span>
+                <span className="text-sm font-bold">章扉（Chapter Title Page）を含める</span>
               </label>
               <p className="text-xs text-gray-400 mt-1 ml-7">
-                {includeCover ? '✓ 表紙が自動的に生成されます' : '表紙なしで生成されます'}
+                {includeChapterTitle ? '✓ Page 1が章扉として生成されます' : '章扉なしで生成されます'}
               </p>
             </div>
 

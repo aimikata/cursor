@@ -41,7 +41,8 @@ const SYSTEM_INSTRUCTION = `
 【最重要命令】
 - 全ての出力は必ず「日本語」で行ってください。
 - 指定されたページ数分、すべてのページのプロンプトを生成してください。
-- 表紙が含まれる場合は、表紙も含めて生成してください。
+- 表紙は生成しません（表紙生成は独立ツールを使用してください）。
+- 章扉（Chapter Title Page）が指定されている場合は、Page 1を章扉として生成してください。
 
 【出力形式】
 - 各ページに対して、pageNumber、template、promptの3つのフィールドを持つJSONオブジェクトを生成してください。
@@ -57,7 +58,9 @@ export async function POST(req: NextRequest) {
       pageCount, 
       genre, 
       includeCover, 
+      includeChapterTitle,
       title,
+      chapterTitle,
       target,
       characterImages,
       apiKey
@@ -75,31 +78,43 @@ export async function POST(req: NextRequest) {
 
     const genAI = new GoogleGenerativeAI(geminiApiKey);
 
-    // ページリストの生成
+    // ページリストの生成（表紙生成機能は独立ツールに移行したため、常に表紙なし）
+    // 章扉を含める場合は、Page 1を章扉として扱う
     const pageList = Array.from({ length: pageCount }, (_, i) => `Page ${i + 1}`);
-    const expectedPages = includeCover ? ["Cover", ...pageList] : pageList;
+    const expectedPages = pageList; // 表紙は含めない（章扉はPage 1として含まれる）
+
+    // 章扉の指示を追加
+    const chapterTitleInstruction = includeChapterTitle && pageCount > 1
+      ? `\n**重要**: Page 1は章扉（Chapter Title Page / Tobira）として生成してください。Template: T01_CHAPTER_COVER。章タイトル「${chapterTitle || title || 'Chapter 1'}」を表示する象徴的な見開きイラストとして作成してください。`
+      : '';
 
     // プロンプトの構築（簡易版 - 実際には元のロジックを移植する必要があります）
     const prompt = `
 コマ割り構成案を生成してください。
 
 タイトル: ${title || '無題'}
+章タイトル: ${chapterTitle || title || 'Chapter 1'}
 ジャンル: ${genre}
 ページ数: ${expectedPages.length}ページ
 ターゲット: ${target || 'JP'}
 世界観設定: ${worldSettings || 'なし'}
+${chapterTitleInstruction}
 
 シナリオ:
 ${scenario}
 
-${includeCover ? '表紙を含めて生成してください。' : ''}
-
 各ページに対して、以下の形式でJSON配列を返してください:
-[
-  { "pageNumber": "Cover", "template": "T01_COVER", "prompt": "..." },
-  { "pageNumber": "Page 1", "template": "T01", "prompt": "..." },
+${includeChapterTitle && pageCount > 1
+  ? `[
+  { "pageNumber": "Page 1", "template": "T01_CHAPTER_COVER", "prompt": "章扉: ${chapterTitle || title || 'Chapter 1'}を表示する象徴的な見開きイラスト..." },
+  { "pageNumber": "Page 2", "template": "T01", "prompt": "..." },
   ...
-]
+]`
+  : `[
+  { "pageNumber": "Page 1", "template": "T01", "prompt": "..." },
+  { "pageNumber": "Page 2", "template": "T01", "prompt": "..." },
+  ...
+]`}
 `;
 
     const responseSchema = {
