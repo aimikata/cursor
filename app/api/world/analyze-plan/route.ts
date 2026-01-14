@@ -89,7 +89,7 @@ export async function POST(req: NextRequest) {
 
     const result = await fetchWithRetry(() =>
       model.generateContent({
-        contents: prompt,
+        contents: [{ role: 'user', parts: [{ text: prompt }] }],
         generationConfig: {
           responseMimeType: 'application/json',
           responseSchema: analysisSchema as any,
