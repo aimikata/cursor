@@ -87,10 +87,7 @@ const ProjectPlanAnalyzer: React.FC<ProjectPlanAnalyzerProps> = ({ onAnalysisCom
       const response = await fetchWithRetry<GenerateContentResponse>(() => 
           ai.models.generateContent({
               model: "gemini-3-pro-preview",
-              contents: {
-                  role: 'user',
-                  parts: [{ text: prompt }]
-              },
+              contents: { role: "user", parts: [{ text: prompt }] },
               config: {
                   responseMimeType: "application/json",
                   responseSchema: analysisSchema,

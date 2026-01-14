@@ -206,10 +206,7 @@ const App: React.FC = () => {
             const response = await fetchWithRetry<GenerateContentResponse>(() => 
                 ai.models.generateContent({
                     model: "gemini-3-pro-preview",
-                    contents: {
-                        role: 'user',
-                        parts: [{ text: prompt }]
-                    },
+                    contents: { role: "user", parts: [{ text: prompt }] },
                     config: {
                         responseMimeType: "application/json",
                         responseSchema: detailedSettingSchema,
@@ -263,10 +260,7 @@ const App: React.FC = () => {
                 const response = await fetchWithRetry<GenerateContentResponse>(() => 
                     ai.models.generateContent({
                         model: 'gemini-2.5-flash-image',
-                        contents: {
-                            role: 'user',
-                            parts: [{ text: imagePrompt }]
-                        },
+                        contents: { role: "user", parts: [{ text: imagePrompt }] },
                         config: { imageConfig: { aspectRatio: "9:16" } }
                     })
                 );
