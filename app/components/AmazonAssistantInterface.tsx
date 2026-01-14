@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { ArrowLeft, ShoppingBag, Loader2, Download, CheckCircle } from 'lucide-react';
 import type { GeneratedContent, ImageFiles, AllImagePayloads, ImagePayload } from '@/app/lib/amazon-assistant/types';
+import { getApiKey } from '@/app/lib/api-keys';
 
 interface AmazonAssistantData {
   // テキストデータ
@@ -151,6 +152,12 @@ export const AmazonAssistantInterface: React.FC<AmazonAssistantInterfaceProps> =
       }
 
       // API呼び出し
+      // getApiKey('amazon')は内部でdefaultキーにフォールバックする
+      const apiKey = getApiKey('amazon');
+      if (!apiKey) {
+        throw new Error('APIキーが設定されていません。マンガハブの「APIキー設定」からキーを入力してください。');
+      }
+
       const response = await fetch('/api/amazon-assistant/generate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -158,6 +165,7 @@ export const AmazonAssistantInterface: React.FC<AmazonAssistantInterfaceProps> =
           promptText: textInput,
           images: payloads,
           language: lang,
+          apiKey,
         }),
       });
 

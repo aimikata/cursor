@@ -240,10 +240,15 @@ const ProjectPlanAnalyzer = ({
     setIsLoading(true);
     setError(null);
     try {
+      const apiKey = getApiKey('world') || getApiKey('default');
+      if (!apiKey) {
+        throw new Error('APIキーが設定されていません。設定画面からキーを入力してください。');
+      }
+
       const res = await fetch('/api/world/analyze-plan', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ planText, genres: GENRES }),
+        body: JSON.stringify({ planText, genres: GENRES, apiKey }),
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || 'Failed to analyze plan');
@@ -512,6 +517,11 @@ export const WorldBuildingInterface: React.FC<WorldBuildingInterfaceProps> = ({ 
       const genreToUse = genreOverride || selectedGenre;
       if (!genreToUse) throw new Error("Genre not selected");
       
+      const apiKey = getApiKey('world') || getApiKey('default');
+      if (!apiKey) {
+        throw new Error('APIキーが設定されていません。設定画面からキーを入力してください。');
+      }
+
       const res = await fetch('/api/world/generate-detailed-setting', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -519,7 +529,7 @@ export const WorldBuildingInterface: React.FC<WorldBuildingInterfaceProps> = ({ 
           proposal, 
           genreId: genreToUse.id,
           genres: GENRES,
-          apiKey: getApiKey('world')
+          apiKey
         }),
       });
       
@@ -551,12 +561,19 @@ export const WorldBuildingInterface: React.FC<WorldBuildingInterfaceProps> = ({ 
     try {
       setLoadingMessage(`「${character.name}」の完全な全身立ち絵を生成中...`);
       
+      // 画像生成の場合は、world > image_generation > default の順で取得
+      const apiKey = getApiKey('world') || getApiKey('image_generation') || getApiKey('default');
+      if (!apiKey) {
+        throw new Error('APIキーが設定されていません。マンガハブの「APIキー設定」からキーを入力してください。');
+      }
+
       const res = await fetch('/api/world/generate-image', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ 
           character,
-          artStylePrompt: selectedGenre.artStylePrompt 
+          artStylePrompt: selectedGenre.artStylePrompt,
+          apiKey
         }),
       });
       

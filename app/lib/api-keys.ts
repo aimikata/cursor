@@ -17,7 +17,7 @@ const STORAGE_KEYS: Record<ApiKeyType, string> = {
 
 /**
  * 指定された機能タイプのAPIキーを取得
- * 優先順位: 機能固有キー > デフォルトキー > 環境変数
+ * 優先順位: 機能固有キー > デフォルトキー > 古いキー名（互換性） > 環境変数
  */
 export function getApiKey(type: ApiKeyType = 'default'): string | null {
   if (typeof window === 'undefined') {
@@ -34,6 +34,10 @@ export function getApiKey(type: ApiKeyType = 'default'): string | null {
   // デフォルトキーを取得
   const defaultKey = localStorage.getItem(STORAGE_KEYS.default);
   if (defaultKey) return defaultKey;
+
+  // 古いキー名との互換性（gemini_api_key）
+  const legacyKey = localStorage.getItem('gemini_api_key');
+  if (legacyKey) return legacyKey;
 
   return null;
 }

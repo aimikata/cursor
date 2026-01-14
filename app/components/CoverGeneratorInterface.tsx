@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { ArrowLeft } from 'lucide-react';
-import { getAllApiKeys } from '@/app/lib/api-keys';
+import { getApiKey } from '@/app/lib/api-keys';
 
 // 世界観レポートの型定義（簡易版）
 interface WorldviewReport {
@@ -52,9 +52,9 @@ export const CoverGeneratorInterface: React.FC<CoverGeneratorInterfaceProps> = (
   const [generatedCover, setGeneratedCover] = useState<{ imageData: string; prompt: string } | null>(null);
 
   useEffect(() => {
-    // APIキーを取得
-    const apiKeys = getAllApiKeys();
-    setApiKey(apiKeys.default || '');
+    // APIキーを取得（デフォルトキーを優先、古いキー名にもフォールバック）
+    const defaultKey = getApiKey('default');
+    setApiKey(defaultKey || '');
 
     // 初期世界観レポートがあればパース
     if (initialWorldviewReport) {
@@ -101,8 +101,11 @@ export const CoverGeneratorInterface: React.FC<CoverGeneratorInterfaceProps> = (
       return;
     }
 
-    if (!apiKey) {
-      setError('APIキーが設定されていません。設定画面からキーを入力してください。');
+    // APIキーを再取得（最新の状態を取得）
+    // getApiKey('default')は内部で古いキー名にもフォールバックする
+    const currentApiKey = getApiKey('default');
+    if (!currentApiKey) {
+      setError('APIキーが設定されていません。マンガハブの「APIキー設定」からキーを入力してください。');
       return;
     }
 
@@ -120,7 +123,7 @@ export const CoverGeneratorInterface: React.FC<CoverGeneratorInterfaceProps> = (
           genre,
           worldviewReport: worldviewReport || undefined,
           customConcept: customConcept.trim() || undefined,
-          apiKey
+          apiKey: currentApiKey
         })
       });
 

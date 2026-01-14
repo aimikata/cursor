@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { PanelToolType, PanelInputData } from '@/app/lib/panel/types';
 import { ArrowLeft, Layout, Wand2, Sparkles, Loader2, Check } from 'lucide-react';
+import { getApiKey } from '@/app/lib/api-keys';
 
 interface PanelInterfaceProps {
   toolType: PanelToolType;
@@ -66,6 +67,12 @@ export const PanelInterface: React.FC<PanelInterfaceProps> = ({
     // セミオートモードは無効化
 
     try {
+      // getApiKey('panel')は内部でdefaultキーにフォールバックする
+      const apiKey = getApiKey('panel');
+      if (!apiKey) {
+        throw new Error('APIキーが設定されていません。マンガハブの「APIキー設定」からキーを入力してください。');
+      }
+
       const res = await fetch('/api/panel/analyze-scenario', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -74,6 +81,7 @@ export const PanelInterface: React.FC<PanelInterfaceProps> = ({
           worldSettings,
           mode: 'story', // 通常はストーリーモード
           toolType,
+          apiKey,
         }),
       });
 
@@ -114,6 +122,12 @@ export const PanelInterface: React.FC<PanelInterfaceProps> = ({
         });
       }
 
+      // getApiKey('panel')は内部でdefaultキーにフォールバックする
+      const apiKey = getApiKey('panel');
+      if (!apiKey) {
+        throw new Error('APIキーが設定されていません。マンガハブの「APIキー設定」からキーを入力してください。');
+      }
+
       const res = await fetch('/api/panel/generate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -129,6 +143,7 @@ export const PanelInterface: React.FC<PanelInterfaceProps> = ({
           chapterTitle: inputData?.storyData.episodes[0]?.title || 'Chapter 1',
           target,
           characterImages: characterImagesForAPI,
+          apiKey,
         }),
       });
 

@@ -6,6 +6,7 @@ import {
 } from '@/app/lib/story/types';
 import { ArrowLeft, Sparkles, Wrench, FileText, Save, Download, Copy, Edit3, Check, Layout, Folder, X, Package } from 'lucide-react';
 import { saveReport, getAllReports, deleteReport, SavedReport, downloadAllReportsAsZip } from '@/app/lib/report-manager';
+import { getApiKey } from '@/app/lib/api-keys';
 
 interface StoryInterfaceProps {
   onClose?: () => void;
@@ -106,6 +107,12 @@ export const StoryInterface: React.FC<StoryInterfaceProps> = ({
         const isContinuing = chatHistory && episodes.length > 0;
         if (isContinuing) {
           const lastEpisode = episodes[episodes.length - 1];
+          // getApiKey('story')は内部でdefaultキーにフォールバックする
+          const apiKey = getApiKey('story');
+          if (!apiKey) {
+            throw new Error('APIキーが設定されていません。マンガハブの「APIキー設定」からキーを入力してください。');
+          }
+
           const res = await fetch('/api/story/generate-next-episode', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -118,6 +125,7 @@ export const StoryInterface: React.FC<StoryInterfaceProps> = ({
               episodeTitle: episodeTitles[episodes.length] || '',
               history: chatHistory,
               previousMasterSheet: lastEpisode.masterSheet,
+              apiKey,
             }),
           });
           const data = await res.json();
@@ -125,6 +133,12 @@ export const StoryInterface: React.FC<StoryInterfaceProps> = ({
           setEpisodes(prev => [...prev, data.episode]);
           setChatHistory(data.history);
         } else {
+          // getApiKey('story')は内部でdefaultキーにフォールバックする
+          const apiKey = getApiKey('story');
+          if (!apiKey) {
+            throw new Error('APIキーが設定されていません。マンガハブの「APIキー設定」からキーを入力してください。');
+          }
+
           const res = await fetch('/api/story/generate-first-episode', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -133,6 +147,7 @@ export const StoryInterface: React.FC<StoryInterfaceProps> = ({
               characters,
               storyTheme,
               episodeTitle: episodeTitles[0] || '',
+              apiKey,
             }),
           });
           const data = await res.json();
@@ -148,10 +163,15 @@ export const StoryInterface: React.FC<StoryInterfaceProps> = ({
           }
         }
       } else if (generationMode === 'oneshot') {
+        const apiKey = getApiKey('story') || getApiKey('default');
+        if (!apiKey) {
+          throw new Error('APIキーが設定されていません。設定画面からキーを入力してください。');
+        }
+
         const res = await fetch('/api/story/generate-oneshot', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ worldSetting, characters, storyTheme }),
+          body: JSON.stringify({ worldSetting, characters, storyTheme, apiKey }),
         });
         const data = await res.json();
         if (!res.ok) throw new Error(data.error || 'Failed to generate oneshot story');

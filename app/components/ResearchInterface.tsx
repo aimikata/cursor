@@ -95,12 +95,17 @@ const GenreSelectionSection = ({
     setError(null);
     setProposedGenres([]);
     try {
+      const apiKey = getApiKey('research');
+      if (!apiKey) {
+        throw new Error('APIキーが設定されていません。マンガハブの「APIキー設定」からキーを入力してください。');
+      }
+
       const res = await fetch('/api/research/generate-genres', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ 
-          region: targetRegion, 
-          apiKey: getApiKey('research') || getApiKey('default') 
+        body: JSON.stringify({
+          region: targetRegion,
+          apiKey
         }),
       });
       const data = await res.json();
@@ -630,13 +635,21 @@ export const ResearchInterface = ({
     setAppState(AppState.GENERATING_CONCEPT);
     setError('');
     
+    const apiKey = getApiKey('research');
+    if (!apiKey) {
+      setError('APIキーが設定されていません。マンガハブの「APIキー設定」からキーを入力してください。');
+      setAppState(AppState.IDLE);
+      setSelectedGenre(null);
+      return;
+    }
+    
     try {
       const res = await fetch('/api/research/generate-master-sheet', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ 
           concept: text, 
-          apiKey: getApiKey('research') || getApiKey('default') 
+          apiKey
         }),
       });
       const data = await res.json();
@@ -650,10 +663,16 @@ export const ResearchInterface = ({
       setAppState(AppState.IDLE); 
       setSelectedGenre(null); 
     }
-  }, [apiKey]);
+  }, []);
 
   const handleStartTopicProposal = useCallback(async () => {
     if (!selectedGenre || selectedGenre === REFINE_MODE_GENRE) return;
+
+    const apiKey = getApiKey('research');
+    if (!apiKey) {
+      setError('APIキーが設定されていません。マンガハブの「APIキー設定」からキーを入力してください。');
+      return;
+    }
 
     setAppState(AppState.PROPOSING_TOPICS);
     setError('');
@@ -667,7 +686,7 @@ export const ResearchInterface = ({
           genre: selectedGenre, 
           keyword: userKeyword, 
           region: targetRegion, 
-          apiKey: getApiKey('research') || getApiKey('default') 
+          apiKey
         }),
       });
       const data = await res.json();
@@ -683,6 +702,13 @@ export const ResearchInterface = ({
 
   const handleCreateConcept = useCallback(async () => {
     if (!selectedTopic) return;
+    
+    const apiKey = getApiKey('research');
+    if (!apiKey) {
+      setError('APIキーが設定されていません。マンガハブの「APIキー設定」からキーを入力してください。');
+      return;
+    }
+
     setAppState(AppState.GENERATING_CONCEPT);
     setError('');
     try {
@@ -692,7 +718,7 @@ export const ResearchInterface = ({
         body: JSON.stringify({ 
           topic: selectedTopic, 
           region: targetRegion, 
-          apiKey: getApiKey('research') || getApiKey('default') 
+          apiKey
         }),
       });
       const data = await res.json();
