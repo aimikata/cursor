@@ -7,9 +7,11 @@ import {
   ArrowLeft, Search, Globe, Image as ImageIcon, 
   Languages, ShoppingBag, ExternalLink, AlertCircle, Loader2,
   Video, Layout, FileText, X, ChevronRight, ChevronsRight,
-  Sparkles, Wrench, PlayCircle, Settings, Zap, Folder, Package
+  Sparkles, Wrench, PlayCircle, Settings, Zap, Folder, Package, Copy, Check
 } from 'lucide-react';
 import { getAllReports, deleteReport, SavedReport, downloadAllReportsAsZip } from '@/app/lib/report-manager';
+import { getAllApiKeys, getApiKeyTypeLabel, ApiKeyType, setApiKey } from '@/app/lib/api-keys';
+import { ApiKeyManager } from '@/app/components/ApiKeyManager';
 import { ResearchInterface } from '@/app/components/ResearchInterface';
 import { WorldBuildingInterface } from '@/app/components/WorldBuildingInterface';
 import { StoryInterface } from '@/app/components/StoryInterface';
@@ -318,10 +320,14 @@ const MangaHubScreen = ({ user, onBack }: { user: User, onBack: () => void }) =>
   const [isPanelModalOpen, setIsPanelModalOpen] = useState(false);
   const [showReportsPanel, setShowReportsPanel] = useState(false);
   const [savedReports, setSavedReports] = useState<SavedReport[]>([]);
+  const [showApiKeyPanel, setShowApiKeyPanel] = useState(false);
+  const [apiKeys, setApiKeys] = useState<Record<ApiKeyType, string | null>>({} as Record<ApiKeyType, string | null>);
+  const [copiedReportId, setCopiedReportId] = useState<string | null>(null);
 
-  // レポート一覧を更新
+  // レポート一覧とAPIキーを更新
   React.useEffect(() => {
     setSavedReports(getAllReports());
+    setApiKeys(getAllApiKeys());
   }, []);
   const [showResearch, setShowResearch] = useState(false);
   const [showWorldBuilding, setShowWorldBuilding] = useState(false);
@@ -695,6 +701,37 @@ const MangaHubScreen = ({ user, onBack }: { user: User, onBack: () => void }) =>
       <main className="flex-grow p-8">
         <div className="max-w-6xl mx-auto">
           
+          {/* APIキー管理パネル */}
+          {showApiKeyPanel && (
+            <div className="mb-8 bg-white rounded-2xl shadow-xl border border-slate-200 p-6">
+              <div className="flex justify-between items-center mb-6">
+                <h2 className="text-2xl font-bold text-slate-900 flex items-center space-x-3">
+                  <Key className="w-6 h-6 text-indigo-600" />
+                  <span>APIキー設定</span>
+                </h2>
+                <button
+                  onClick={() => {
+                    setShowApiKeyPanel(false);
+                    setApiKeys(getAllApiKeys());
+                  }}
+                  className="p-2 bg-slate-100 hover:bg-slate-200 rounded-lg"
+                >
+                  <X className="w-5 h-5 text-slate-600" />
+                </button>
+              </div>
+
+              <div className="space-y-4">
+                <ApiKeyManager 
+                  onApiKeyChange={(type, key) => {
+                    setApiKeys(getAllApiKeys());
+                  }}
+                  defaultType="default"
+                  showAdvanced={true}
+                />
+              </div>
+            </div>
+          )}
+
           {/* 保存済みレポートパネル */}
           {showReportsPanel && (
             <div className="mb-8 bg-white rounded-2xl shadow-xl border border-slate-200 p-6">
@@ -739,14 +776,29 @@ const MangaHubScreen = ({ user, onBack }: { user: User, onBack: () => void }) =>
                           </div>
                           <div className="flex space-x-2">
                             <button
-                              onClick={() => {
-                                setShowReportsPanel(false);
-                                setShowResearch(true);
-                                // レポートを読み込む処理はResearchInterfaceで行う
+                              onClick={async () => {
+                                try {
+                                  await navigator.clipboard.writeText(report.content);
+                                  setCopiedReportId(report.id);
+                                  setTimeout(() => setCopiedReportId(null), 2000);
+                                } catch (err) {
+                                  console.error('Failed to copy:', err);
+                                  alert('コピーに失敗しました。');
+                                }
                               }}
-                              className="px-3 py-1 bg-indigo-600 hover:bg-indigo-500 rounded text-white text-xs font-bold"
+                              className="px-3 py-1 bg-indigo-600 hover:bg-indigo-500 rounded text-white text-xs font-bold flex items-center space-x-1"
                             >
-                              開く
+                              {copiedReportId === report.id ? (
+                                <>
+                                  <Check className="w-3 h-3" />
+                                  <span>コピー済み</span>
+                                </>
+                              ) : (
+                                <>
+                                  <Copy className="w-3 h-3" />
+                                  <span>コピー</span>
+                                </>
+                              )}
                             </button>
                             <button
                               onClick={() => {
@@ -864,16 +916,31 @@ const MangaHubScreen = ({ user, onBack }: { user: User, onBack: () => void }) =>
                   </h1>
                   <p className="text-slate-600 mt-1">各工程を個別に調整・制作するためのプロ向けツールキットです。</p>
                 </div>
-                <button
-                  onClick={() => {
-                    setSavedReports(getAllReports());
-                    setShowReportsPanel(!showReportsPanel);
-                  }}
-                  className="flex items-center space-x-2 px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg font-bold text-sm shadow-md"
-                >
-                  <Folder className="w-4 h-4" />
-                  <span>保存済みレポート ({savedReports.length})</span>
-                </button>
+                <div className="flex space-x-3">
+                  <button
+                    onClick={() => {
+                      setApiKeys(getAllApiKeys());
+                      setShowApiKeyPanel(!showApiKeyPanel);
+                    }}
+                    className="flex items-center space-x-2 px-4 py-2 bg-purple-600 hover:bg-purple-500 text-white rounded-lg font-bold text-sm shadow-md"
+                  >
+                    <Key className="w-4 h-4" />
+                    <span>APIキー設定</span>
+                    {apiKeys.default && (
+                      <span className="ml-1 px-2 py-0.5 bg-purple-700 rounded text-xs">✓</span>
+                    )}
+                  </button>
+                  <button
+                    onClick={() => {
+                      setSavedReports(getAllReports());
+                      setShowReportsPanel(!showReportsPanel);
+                    }}
+                    className="flex items-center space-x-2 px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg font-bold text-sm shadow-md"
+                  >
+                    <Folder className="w-4 h-4" />
+                    <span>保存済みレポート ({savedReports.length})</span>
+                  </button>
+                </div>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">

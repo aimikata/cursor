@@ -1,0 +1,5 @@
+{
+  "name": "マンガ企画リサーチ",
+  "description": "Gemini APIを使用して、対象市場（英語圏・日本国内）でヒットする可能性のある漫画の知的フレームワークを分析・提案するアプリケーションです。",
+  "requestFramePermissions": []
+}

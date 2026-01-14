@@ -7,6 +7,7 @@ import {
 } from '@/app/lib/world/types';
 import { GENRES } from '@/app/lib/world/constants';
 import { saveReport, getAllReports, deleteReport, SavedReport, downloadAllReportsAsZip } from '@/app/lib/report-manager';
+import { getApiKey, ApiKeyType } from '@/app/lib/api-keys';
 
 // リサーチツールのジャンル名を世界観構築ツールのGenreオブジェクトにマッピング
 const mapResearchGenreToWorldGenre = (researchGenre: string): Genre | null => {
@@ -518,7 +519,7 @@ export const WorldBuildingInterface: React.FC<WorldBuildingInterfaceProps> = ({ 
           proposal, 
           genreId: genreToUse.id,
           genres: GENRES,
-          apiKey: typeof window !== 'undefined' ? (localStorage.getItem('gemini_api_key_world') || localStorage.getItem('gemini_api_key_default')) : undefined
+          apiKey: getApiKey('world')
         }),
       });
       
