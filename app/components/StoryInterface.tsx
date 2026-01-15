@@ -66,6 +66,7 @@ export const StoryInterface: React.FC<StoryInterfaceProps> = ({
   const [copied, setCopied] = useState<boolean>(false);
   const [savedReports, setSavedReports] = useState<SavedReport[]>([]);
   const [showReportsPanel, setShowReportsPanel] = useState(false);
+  const [showInlineReportsPanel, setShowInlineReportsPanel] = useState(false);
 
   // セミオートモード：初期データを設定
   useEffect(() => {
@@ -509,6 +510,17 @@ export const StoryInterface: React.FC<StoryInterfaceProps> = ({
     setSavedReports(getAllReports());
   }, [episodes]);
 
+  const handleCopyReport = useCallback(async (content: string) => {
+    try {
+      await navigator.clipboard.writeText(content);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch (err) {
+      console.error('Failed to copy:', err);
+      alert('コピーに失敗しました。');
+    }
+  }, []);
+
   const isSerializedMode = generationMode === 'series' || generationMode === 'chapter';
   const isSeriesStarted = isSerializedMode && episodes.length > 0;
 
@@ -684,7 +696,57 @@ export const StoryInterface: React.FC<StoryInterfaceProps> = ({
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* 入力パネル */}
           <div className="bg-gray-900 rounded-2xl p-6 border border-gray-800">
-            <h2 className="text-2xl font-bold mb-6">入力</h2>
+            <div className="flex items-center justify-between mb-6">
+              <h2 className="text-2xl font-bold">入力</h2>
+              <button
+                onClick={() => setShowInlineReportsPanel(!showInlineReportsPanel)}
+                className="px-3 py-1 bg-gray-800 hover:bg-gray-700 rounded text-xs font-bold"
+              >
+                保存済みレポート
+              </button>
+            </div>
+
+            {showInlineReportsPanel && (
+              <div className="mb-6 border border-gray-800 rounded-xl p-4 bg-gray-950/60">
+                <div className="flex items-center justify-between mb-3">
+                  <p className="text-xs text-gray-400 font-bold uppercase tracking-widest">コピペ用リスト</p>
+                  <button
+                    onClick={() => setShowInlineReportsPanel(false)}
+                    className="text-gray-400 hover:text-gray-200 text-xs"
+                  >
+                    閉じる
+                  </button>
+                </div>
+                {savedReports.length === 0 ? (
+                  <p className="text-gray-500 text-sm">保存済みレポートがありません。</p>
+                ) : (
+                  <div className="space-y-2 max-h-64 overflow-y-auto">
+                    {savedReports.map(report => (
+                      <div key={report.id} className="flex items-center justify-between bg-gray-900 border border-gray-800 rounded-lg p-3">
+                        <div className="min-w-0">
+                          <p className="text-sm text-white truncate">{report.title}</p>
+                          <p className="text-[10px] text-gray-500 uppercase">{report.type}</p>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <button
+                            onClick={() => handleCopyReport(report.content)}
+                            className="px-2 py-1 bg-indigo-600 hover:bg-indigo-500 text-white text-xs rounded"
+                          >
+                            コピー
+                          </button>
+                          <button
+                            onClick={() => setWorldSetting(report.content)}
+                            className="px-2 py-1 bg-gray-800 hover:bg-gray-700 text-white text-xs rounded"
+                          >
+                            世界観に貼付
+                          </button>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
             
             {/* モード選択（マニュアルモードのみ） */}
             {!isSemiAutoMode && (
