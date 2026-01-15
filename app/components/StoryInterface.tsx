@@ -91,6 +91,71 @@ export const StoryInterface: React.FC<StoryInterfaceProps> = ({
     }
   }, [selectedEpisode, episodes]);
 
+  const deriveSeriesTitle = useCallback(() => {
+    const bilingualMatch = worldSetting.match(/【TITLE\s*\/\s*シリーズタイトル】\s*\n([^\n]+)/);
+    if (bilingualMatch?.[1]) return bilingualMatch[1].trim();
+    const simpleMatch = worldSetting.match(/TITLE:\s*([^\n]+)/);
+    if (simpleMatch?.[1]) return simpleMatch[1].trim();
+    return '';
+  }, [worldSetting]);
+
+  const parseWorldVolumePlan = useCallback(() => {
+    const lines = worldSetting.split('\n');
+    const volumeHeaders: { volume: number; startIndex: number }[] = [];
+    lines.forEach((line, idx) => {
+      const match = line.match(/####\s*Vol\.(\d+)/i);
+      if (match) {
+        volumeHeaders.push({ volume: Number(match[1]), startIndex: idx });
+      }
+    });
+
+    if (volumeHeaders.length === 0) {
+      return null;
+    }
+
+    const volumeChapterCounts: { volume: number; chapters: number }[] = [];
+    for (let i = 0; i < volumeHeaders.length; i += 1) {
+      const start = volumeHeaders[i].startIndex + 1;
+      const end = i + 1 < volumeHeaders.length ? volumeHeaders[i + 1].startIndex : lines.length;
+      const block = lines.slice(start, end).join('\n');
+      const chapters = (block.match(/Chapter\s+\d+/gi) || []).length;
+      volumeChapterCounts.push({
+        volume: volumeHeaders[i].volume,
+        chapters: chapters > 0 ? chapters : chaptersPerVolume,
+      });
+    }
+
+    return volumeChapterCounts;
+  }, [worldSetting, chaptersPerVolume]);
+
+  const computeVolumeChapterForIndex = useCallback((index: number) => {
+    const absoluteEpisodeNumber = startEpisodeNumber + index;
+    if (!autoVolumeIncrement) {
+      return { volume: volumeNumber, chapter: absoluteEpisodeNumber, absoluteEpisodeNumber };
+    }
+
+    const plan = parseWorldVolumePlan();
+    if (plan && plan.length > 0) {
+      let remaining = absoluteEpisodeNumber;
+      for (const { volume, chapters } of plan) {
+        const size = Math.max(1, chapters);
+        if (remaining <= size) {
+          return { volume, chapter: remaining, absoluteEpisodeNumber };
+        }
+        remaining -= size;
+      }
+      const fallbackVolume = plan[plan.length - 1].volume + 1;
+      const fallbackChapter = remaining;
+      return { volume: fallbackVolume, chapter: fallbackChapter, absoluteEpisodeNumber };
+    }
+
+    const safeChaptersPerVolume = Math.max(1, Math.floor(chaptersPerVolume));
+    const volumeOffset = Math.floor((absoluteEpisodeNumber - 1) / safeChaptersPerVolume);
+    const volume = volumeNumber + volumeOffset;
+    const chapter = ((absoluteEpisodeNumber - 1) % safeChaptersPerVolume) + 1;
+    return { volume, chapter, absoluteEpisodeNumber };
+  }, [autoVolumeIncrement, chaptersPerVolume, parseWorldVolumePlan, startEpisodeNumber, volumeNumber]);
+
   const handleCharacterChange = useCallback((index: number, updatedCharacter: Partial<Character>) => {
     setCharacters(prev => 
       prev.map((char, i) => i === index ? { ...char, ...updatedCharacter } : char)
@@ -287,7 +352,7 @@ export const StoryInterface: React.FC<StoryInterfaceProps> = ({
     } finally {
       setIsLoading(false);
     }
-  }, [isLoading, generationMode, chatHistory, episodes, worldSetting, characters, storyTheme, episodeTitles, volumeNumber, startEpisodeNumber, continueFromMiddle, previousSummaryInput, progressInput, unrecoveredListInput, computeVolumeChapterForIndex, masterCoreRule, masterMerit, masterDemerit, masterCharacterSetting, masterSeriesTitle, masterVolumeTitle, masterDraftManga, masterDraftCommentary, deriveSeriesTitle]);
+  }, [isLoading, generationMode, chatHistory, episodes, worldSetting, characters, storyTheme, episodeTitles, volumeNumber, startEpisodeNumber, autoVolumeIncrement, chaptersPerVolume, parseWorldVolumePlan, continueFromMiddle, previousSummaryInput, progressInput, unrecoveredListInput, masterCoreRule, masterMerit, masterDemerit, masterCharacterSetting, masterSeriesTitle, masterVolumeTitle, masterDraftManga, masterDraftCommentary, deriveSeriesTitle]);
 
   const handleSaveEdit = useCallback(() => {
     if (episodes.length > 0 && selectedEpisode < episodes.length) {
@@ -349,71 +414,6 @@ export const StoryInterface: React.FC<StoryInterfaceProps> = ({
       alert('ストーリーを確定しました。\n\n次の工程（コマ割り生成）に進む準備が整いました。');
     }
   }, [episodes, worldSetting, characters, generationMode, onComplete, onProceedToPanel, isSemiAutoMode]);
-
-  const deriveSeriesTitle = useCallback(() => {
-    const bilingualMatch = worldSetting.match(/【TITLE\s*\/\s*シリーズタイトル】\s*\n([^\n]+)/);
-    if (bilingualMatch?.[1]) return bilingualMatch[1].trim();
-    const simpleMatch = worldSetting.match(/TITLE:\s*([^\n]+)/);
-    if (simpleMatch?.[1]) return simpleMatch[1].trim();
-    return '';
-  }, [worldSetting]);
-
-  const parseWorldVolumePlan = useCallback(() => {
-    const lines = worldSetting.split('\n');
-    const volumeHeaders: { volume: number; startIndex: number }[] = [];
-    lines.forEach((line, idx) => {
-      const match = line.match(/####\s*Vol\.(\d+)/i);
-      if (match) {
-        volumeHeaders.push({ volume: Number(match[1]), startIndex: idx });
-      }
-    });
-
-    if (volumeHeaders.length === 0) {
-      return null;
-    }
-
-    const volumeChapterCounts: { volume: number; chapters: number }[] = [];
-    for (let i = 0; i < volumeHeaders.length; i += 1) {
-      const start = volumeHeaders[i].startIndex + 1;
-      const end = i + 1 < volumeHeaders.length ? volumeHeaders[i + 1].startIndex : lines.length;
-      const block = lines.slice(start, end).join('\n');
-      const chapters = (block.match(/Chapter\s+\d+/gi) || []).length;
-      volumeChapterCounts.push({
-        volume: volumeHeaders[i].volume,
-        chapters: chapters > 0 ? chapters : chaptersPerVolume,
-      });
-    }
-
-    return volumeChapterCounts;
-  }, [worldSetting, chaptersPerVolume]);
-
-  const computeVolumeChapterForIndex = useCallback((index: number) => {
-    const absoluteEpisodeNumber = startEpisodeNumber + index;
-    if (!autoVolumeIncrement) {
-      return { volume: volumeNumber, chapter: absoluteEpisodeNumber, absoluteEpisodeNumber };
-    }
-
-    const plan = parseWorldVolumePlan();
-    if (plan && plan.length > 0) {
-      let remaining = absoluteEpisodeNumber;
-      for (const { volume, chapters } of plan) {
-        const size = Math.max(1, chapters);
-        if (remaining <= size) {
-          return { volume, chapter: remaining, absoluteEpisodeNumber };
-        }
-        remaining -= size;
-      }
-      const fallbackVolume = plan[plan.length - 1].volume + 1;
-      const fallbackChapter = remaining;
-      return { volume: fallbackVolume, chapter: fallbackChapter, absoluteEpisodeNumber };
-    }
-
-    const safeChaptersPerVolume = Math.max(1, Math.floor(chaptersPerVolume));
-    const volumeOffset = Math.floor((absoluteEpisodeNumber - 1) / safeChaptersPerVolume);
-    const volume = volumeNumber + volumeOffset;
-    const chapter = ((absoluteEpisodeNumber - 1) % safeChaptersPerVolume) + 1;
-    return { volume, chapter, absoluteEpisodeNumber };
-  }, [autoVolumeIncrement, chaptersPerVolume, parseWorldVolumePlan, startEpisodeNumber, volumeNumber]);
 
   const buildEpisodeLabel = useCallback((ep: Episode, index: number) => {
     if (ep.title && /Vol\.\s*\d+|Chapter\s*\d+|第\d+章/.test(ep.title)) {
