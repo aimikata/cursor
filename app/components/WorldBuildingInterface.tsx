@@ -343,7 +343,7 @@ const CharacterVisualizer = ({
   generatedData: GeneratedImageData | null;
   isGenerating: boolean;
 }) => {
-  const characters = [setting.protagonist, ...setting.rivals];
+    const characters = [setting.protagonist, ...setting.rivals, ...(setting.supportingCharacters || [])];
   const [selectedCharacterName, setSelectedCharacterName] = useState(characters[0].name);
 
   const handleGenerateClick = () => {
@@ -599,11 +599,13 @@ export const WorldBuildingInterface: React.FC<WorldBuildingInterfaceProps> = ({ 
   const handleProceedToSelection = useCallback(() => {
     if (!detailedSetting) return;
 
-    const characters = [detailedSetting.protagonist, ...detailedSetting.rivals];
-    const allGenerated = characters.every(char => allCharacterImages.has(char.name));
+    const characters = [detailedSetting.protagonist, ...detailedSetting.rivals, ...(detailedSetting.supportingCharacters || [])];
+    const isOptionalRole = (role?: string) => !!role && /(家族|同僚|family|coworker|colleague)/i.test(role);
+    const requiredCharacters = characters.filter(char => !isOptionalRole(char.roleType || char.relationshipWithProtagonist));
+    const allGenerated = requiredCharacters.every(char => allCharacterImages.has(char.name));
 
     if (!allGenerated) {
-      alert('すべてのキャラクターの画像を生成してください。');
+      alert('必須キャラクターの画像を生成してください。');
       return;
     }
 
@@ -617,8 +619,8 @@ export const WorldBuildingInterface: React.FC<WorldBuildingInterfaceProps> = ({ 
         return {
           id: `char_${String(index + 1).padStart(3, '0')}`,
           name: char.name,
-          role: index === 0 ? '主人公' : 'サブキャラクター',
-          description: `${char.publicPersona}\n${char.hiddenSelf}\n年齢: ${char.age}, 職業: ${char.occupation}`,
+          role: index === 0 ? '主人公' : (char.roleType || char.relationshipWithProtagonist || 'サブキャラクター'),
+          description: `${char.publicPersona}\n${char.hiddenSelf}\n年齢: ${char.age}, 職業: ${char.occupation}\n外見: ${char.visualTags}`,
           candidate_images: imageData?.fullBodyDesigns || [],
         };
       }),
@@ -683,13 +685,17 @@ export const WorldBuildingInterface: React.FC<WorldBuildingInterfaceProps> = ({ 
     
     text += `============================================================\n`;
     text += `【CHARACTERS / キャラクター設定】\n`;
-    const chars = [s.protagonist, ...s.rivals];
+    const chars = [s.protagonist, ...s.rivals, ...(s.supportingCharacters || [])];
     chars.forEach((c, idx) => {
-      text += `#### ${idx === 0 ? 'Protagonist' : 'Sub-Character'}: ${c.name} (${c.englishName})\n`;
+      const roleLabel = idx === 0 ? 'Protagonist' : (c.roleType || 'Sub-Character');
+      text += `#### ${roleLabel}: ${c.name} (${c.englishName})\n`;
       text += `- Age: ${c.age} / Occupation: ${c.occupation}\n`;
       text += `- Public Persona: ${c.publicPersona}\n`;
       text += `- Hidden Self: ${c.hiddenSelf}\n`;
       text += `- Trauma: ${c.pastTrauma}\n`;
+      if (c.relationshipWithProtagonist) {
+        text += `- Relationship: ${c.relationshipWithProtagonist}\n`;
+      }
       text += `- Visual Tags: ${c.visualTags}\n\n`;
     });
     
@@ -885,7 +891,7 @@ export const WorldBuildingInterface: React.FC<WorldBuildingInterfaceProps> = ({ 
                                 const setting = report.data as DetailedSetting;
                                 const storyInput = {
                                   world_setting: JSON.stringify(setting, null, 2),
-                                  characters: [setting.protagonist, ...setting.rivals].map((c, idx) => ({
+                                characters: [setting.protagonist, ...setting.rivals, ...(setting.supportingCharacters || [])].map((c, idx) => ({
                                     id: `char_${idx}`,
                                     name: c.name,
                                     role: idx === 0 ? '主人公' : 'サブキャラクター',
@@ -1187,6 +1193,13 @@ export const WorldBuildingInterface: React.FC<WorldBuildingInterfaceProps> = ({ 
                 {s.rivals.map((r, i) => (
                   <CharacterCard key={i} character={r} title="サブキャラクター" />
                 ))}
+                {(s.supportingCharacters || []).map((r, i) => (
+                  <CharacterCard
+                    key={`supporting-${i}`}
+                    character={r}
+                    title={r.roleType || 'サブキャラクター'}
+                  />
+                ))}
               </div>
               <div className="lg:col-span-4">
                 <div className="sticky top-32 space-y-10">
@@ -1203,18 +1216,18 @@ export const WorldBuildingInterface: React.FC<WorldBuildingInterfaceProps> = ({ 
                   {/* 画像選択画面へ進むボタン */}
                   <div className="bg-indigo-900/20 p-6 rounded-2xl border border-indigo-500/30">
                     <p className="text-sm text-gray-300 mb-4">
-                      {allCharacterImages.size} / {[s.protagonist, ...s.rivals].length} キャラクターの画像を生成済み
+                      {allCharacterImages.size} / {[s.protagonist, ...s.rivals, ...(s.supportingCharacters || [])].length} キャラクターの画像を生成済み
                     </p>
                     <button
                       onClick={handleProceedToSelection}
-                      disabled={allCharacterImages.size < [s.protagonist, ...s.rivals].length}
+                      disabled={allCharacterImages.size < [s.protagonist, ...s.rivals, ...(s.supportingCharacters || [])].length}
                       className={`w-full py-4 px-6 rounded-xl font-black text-sm uppercase tracking-widest transition-all ${
-                        allCharacterImages.size >= [s.protagonist, ...s.rivals].length
+                        allCharacterImages.size >= [s.protagonist, ...s.rivals, ...(s.supportingCharacters || [])].length
                           ? 'bg-indigo-600 hover:bg-indigo-500 text-white shadow-2xl shadow-indigo-600/30'
                           : 'bg-gray-700 text-gray-500 cursor-not-allowed'
                       }`}
                     >
-                      {allCharacterImages.size >= [s.protagonist, ...s.rivals].length
+                      {allCharacterImages.size >= [s.protagonist, ...s.rivals, ...(s.supportingCharacters || [])].length
                         ? '画像選択画面へ進む →'
                         : 'すべてのキャラクターの画像を生成してください'
                       }

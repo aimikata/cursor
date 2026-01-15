@@ -92,15 +92,22 @@ export const CharacterSelectionInterface: React.FC<CharacterSelectionInterfacePr
     });
   }, []);
 
-  // 全キャラクターの画像が選択されているかチェック
-  const allCharactersSelected = worldData.characters.every(char => 
+  const isOptionalRole = useCallback((role?: string) => {
+    return !!role && /(家族|同僚|family|coworker|colleague)/i.test(role);
+  }, []);
+
+  const requiredCharacters = worldData.characters.filter(char => !isOptionalRole(char.role));
+  const selectedRequiredCount = requiredCharacters.filter(char => selectedImages.has(char.id)).length;
+
+  // 必須キャラクターの画像が選択されているかチェック
+  const allCharactersSelected = requiredCharacters.every(char => 
     selectedImages.has(char.id)
   );
 
   // データ整形と確定処理
   const handleConfirm = useCallback(() => {
     if (!allCharactersSelected) {
-      alert('すべてのキャラクターの画像を選択してください。');
+      alert('必須キャラクターの画像を選択してください。');
       return;
     }
 
@@ -194,7 +201,7 @@ export const CharacterSelectionInterface: React.FC<CharacterSelectionInterfacePr
           <p className="text-gray-300 leading-relaxed">
             各キャラクターの候補画像から<strong className="text-indigo-400">ベストな1枚を選択</strong>してください。
             気に入らない場合は、ローカルから画像をアップロードして差し替えることもできます。
-            すべてのキャラクターの画像を選択したら、「設定を確定して次へ」ボタンをクリックしてください。
+            必須キャラクターの画像を選択したら、「設定を確定して次へ」ボタンをクリックしてください。
           </p>
         </div>
 
@@ -220,11 +227,16 @@ export const CharacterSelectionInterface: React.FC<CharacterSelectionInterfacePr
                       <h3 className="text-3xl font-black text-white">{character.name}</h3>
                       <p className="text-gray-400 mt-2 text-sm">{character.description}</p>
                     </div>
-                    {selected && (
+                    {selected ? (
                       <div className="flex items-center space-x-2 bg-green-600/20 px-4 py-2 rounded-full border border-green-500/30">
                         <Check className="w-5 h-5 text-green-400" />
                         <span className="text-green-400 font-bold text-sm">選択済み</span>
                       </div>
+                    ) : isOptionalRole(character.role) ? (
+                      <div className="flex items-center space-x-2 bg-gray-600/20 px-4 py-2 rounded-full border border-gray-500/30">
+                        <span className="text-gray-300 font-bold text-sm">任意</span>
+                      </div>
+                    ) : null}
                     )}
                   </div>
                 </div>
@@ -344,12 +356,12 @@ export const CharacterSelectionInterface: React.FC<CharacterSelectionInterfacePr
                   <>
                     <Check className="w-5 h-5 text-green-400" />
                     <span className="text-green-400 font-bold text-sm">
-                      {worldData.characters.length} / {worldData.characters.length} キャラクター選択済み
+                      {requiredCharacters.length} / {requiredCharacters.length} 必須キャラクター選択済み
                     </span>
                   </>
                 ) : (
                   <span className="text-yellow-400 font-bold text-sm">
-                    {selectedImages.size} / {worldData.characters.length} キャラクター選択済み
+                    {selectedRequiredCount} / {requiredCharacters.length} 必須キャラクター選択済み
                   </span>
                 )}
               </div>

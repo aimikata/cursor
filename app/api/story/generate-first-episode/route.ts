@@ -135,7 +135,7 @@ DRAFT PLAN:
     const baseContext = generationMode === 'chapter' && masterSection
       ? `MASTER SHEET INPUT (MUST FOLLOW EXACTLY):\n${masterSection}`
       : `世界観・設定: ${worldSetting}\n連載全体のテーマ・未回収リスト: ${storyTheme}\n第${resolvedEpisodeNumber}章タイトル案: ${episodeTitle || ''}\n登場人物:\n${charDetails}`;
-    const prompt = `${baseContext}\n\n${modeInstruction}\n\n【厳守】\n- 提示されたMASTER SHEETの項目構成に完全準拠すること。\n- episode_title は必ず「Vol.${resolvedVolumeNumber} Chapter ${resolvedEpisodeNumber}: <章タイトル>」の形式で出力すること。\n- 章タイトルは指定があればそれを優先し、未指定なら文脈に合うタイトルを付与すること。\n- 物語パートは「情熱的で没入感のある描写」。解説パートは「大学院レベルの高度な分析」。\n\n第${resolvedEpisodeNumber}章を「日本語」で執筆してください。`;
+    const prompt = `${baseContext}\n\n${modeInstruction}\n\n【厳守】\n- 登場人物は「提示された人物リスト」に含まれる固有名のみを使用すること（未定義の家族・同僚・友人を追加しない）。\n- 提示されたMASTER SHEETの項目構成に完全準拠すること。\n- episode_title は必ず「Vol.${resolvedVolumeNumber} Chapter ${resolvedEpisodeNumber}: <章タイトル>」の形式で出力すること。\n- 章タイトルは指定があればそれを優先し、未指定なら文脈に合うタイトルを付与すること。\n- 物語パートは「情熱的で没入感のある描写」。解説パートは「大学院レベルの高度な分析」。\n\n第${resolvedEpisodeNumber}章を「日本語」で執筆してください。`;
 
     let usedModel = PRIMARY_MODEL;
     let result: any;

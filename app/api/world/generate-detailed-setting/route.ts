@@ -180,8 +180,31 @@ export async function POST(req: NextRequest) {
             required: ['name', 'englishName', 'age', 'occupation', 'publicPersona', 'hiddenSelf', 'pastTrauma', 'greatestWeakness', 'potentialWhenOvercome', 'relationshipWithProtagonist', 'goal', 'secret', 'visualTags'],
           },
         },
+        supportingCharacters: {
+          type: 'array',
+          items: {
+            type: 'object',
+            properties: {
+              roleType: { type: 'string' },
+              name: { type: 'string' },
+              englishName: { type: 'string' },
+              age: { type: 'string' },
+              occupation: { type: 'string' },
+              publicPersona: { type: 'string' },
+              hiddenSelf: { type: 'string' },
+              pastTrauma: { type: 'string' },
+              greatestWeakness: { type: 'string' },
+              potentialWhenOvercome: { type: 'string' },
+              relationshipWithProtagonist: { type: 'string' },
+              goal: { type: 'string' },
+              secret: { type: 'string' },
+              visualTags: { type: 'string' },
+            },
+            required: ['roleType', 'name', 'englishName', 'age', 'occupation', 'publicPersona', 'hiddenSelf', 'pastTrauma', 'greatestWeakness', 'potentialWhenOvercome', 'relationshipWithProtagonist', 'goal', 'secret', 'visualTags'],
+          },
+        },
       },
-      required: ['seriesTitle', 'volumes', 'currentStatus', 'unresolvedList', 'progress', 'worldview', 'protagonist', 'rivals', 'artStyleTags', 'backgroundTags'],
+      required: ['seriesTitle', 'volumes', 'currentStatus', 'unresolvedList', 'progress', 'worldview', 'protagonist', 'rivals', 'supportingCharacters', 'artStyleTags', 'backgroundTags'],
     };
 
     const prompt = `
@@ -195,6 +218,15 @@ export async function POST(req: NextRequest) {
 
       **【指示：キャラクター名の絶対的多様性】**
       名前が似通ったパターンにならないよう、徹底的に個性を出してください。
+
+      **【指示：キャラクターの厳密化（ブレ防止）】**
+      物語で頻出する「主人公の家族」「主人公の同僚」などが曖昧にならないよう、
+      supportingCharacters を**2〜4名**で設計してください。以下は必須:
+      - 家族（母 or 父 など）
+      - 同僚（同じ職場の主要人物）
+      余裕があれば「メンター」「ライバル/相棒」を追加してください。
+      これらの人物は必ず「固有名」と「visualTags」を持つこと。
+      以後、物語内で新規の家族/同僚/上司/友人を追加しないこと。
       
       **【指示：情報の完全継承】**
       入力された構成案（Vol.1〜5等）の内容はすべて詳細に継承してください。

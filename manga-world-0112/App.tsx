@@ -178,8 +178,31 @@ const App: React.FC = () => {
                             required: ["name", "englishName", "age", "occupation", "publicPersona", "hiddenSelf", "pastTrauma", "greatestWeakness", "potentialWhenOvercome", "relationshipWithProtagonist", "goal", "secret", "visualTags"],
                         },
                     },
+                    supportingCharacters: {
+                        type: Type.ARRAY,
+                        items: {
+                            type: Type.OBJECT,
+                            properties: {
+                                roleType: { type: Type.STRING },
+                                name: { type: Type.STRING },
+                                englishName: { type: Type.STRING },
+                                age: { type: Type.STRING },
+                                occupation: { type: Type.STRING },
+                                publicPersona: { type: Type.STRING },
+                                hiddenSelf: { type: Type.STRING },
+                                pastTrauma: { type: Type.STRING },
+                                greatestWeakness: { type: Type.STRING },
+                                potentialWhenOvercome: { type: Type.STRING },
+                                relationshipWithProtagonist: { type: Type.STRING },
+                                goal: { type: Type.STRING },
+                                secret: { type: Type.STRING },
+                                visualTags: { type: Type.STRING, description: "外見描写。役割が一目で分かる印象的なビジュアル。身体と服のみ。nanobanana形式" },
+                            },
+                            required: ["roleType", "name", "englishName", "age", "occupation", "publicPersona", "hiddenSelf", "pastTrauma", "greatestWeakness", "potentialWhenOvercome", "relationshipWithProtagonist", "goal", "secret", "visualTags"],
+                        },
+                    },
                 },
-                required: ["seriesTitle", "volumes", "currentStatus", "unresolvedList", "progress", "worldview", "protagonist", "rivals", "artStyleTags", "backgroundTags"],
+                required: ["seriesTitle", "volumes", "currentStatus", "unresolvedList", "progress", "worldview", "protagonist", "rivals", "supportingCharacters", "artStyleTags", "backgroundTags"],
             };
 
             const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
@@ -195,6 +218,14 @@ const App: React.FC = () => {
 
                 **【指示：キャラクター名の絶対的多様性】**
                 名前が似通ったパターンにならないよう、徹底的に個性を出してください。
+                
+                **【指示：キャラクターの厳密化（ブレ防止）】**
+                supportingCharacters を**2〜4名**で設計してください。以下は必須:
+                - 家族（母 or 父 など）
+                - 同僚（同じ職場の主要人物）
+                余裕があれば「メンター」「ライバル/相棒」を追加してください。
+                これらの人物は必ず「固有名」と「visualTags」を持つこと。
+                以後、物語内で新規の家族/同僚/上司/友人を追加しないこと。
                 
                 **【指示：情報の完全継承】**
                 入力された構成案（Vol.1〜5等）の内容はすべて詳細に継承してください。
@@ -332,13 +363,17 @@ const App: React.FC = () => {
         
         text += `============================================================\n`;
         text += `【CHARACTERS / キャラクター設定】\n`;
-        const chars = [s.protagonist, ...s.rivals];
+        const chars = [s.protagonist, ...s.rivals, ...(s.supportingCharacters || [])];
         chars.forEach((c, idx) => {
-            text += `#### ${idx === 0 ? 'Protagonist' : 'Sub-Character'}: ${c.name} (${c.englishName})\n`;
+            const roleLabel = idx === 0 ? 'Protagonist' : (c.roleType || 'Sub-Character');
+            text += `#### ${roleLabel}: ${c.name} (${c.englishName})\n`;
             text += `- Age: ${c.age} / Occupation: ${c.occupation}\n`;
             text += `- Public Persona: ${c.publicPersona}\n`;
             text += `- Hidden Self: ${c.hiddenSelf}\n`;
             text += `- Trauma: ${c.pastTrauma}\n`;
+            if (c.relationshipWithProtagonist) {
+                text += `- Relationship: ${c.relationshipWithProtagonist}\n`;
+            }
             text += `- Visual Tags: ${c.visualTags}\n\n`;
         });
         
@@ -451,6 +486,9 @@ const App: React.FC = () => {
                                 <CharacterCard character={s.protagonist} title="主人公" />
                                 {s.rivals.map((r, i) => (
                                     <CharacterCard key={i} character={r} title="サブキャラクター" />
+                                ))}
+                                {(s.supportingCharacters || []).map((r, i) => (
+                                    <CharacterCard key={`supporting-${i}`} character={r} title={r.roleType || "サブキャラクター"} />
                                 ))}
                             </div>
                             <div className="lg:col-span-4">

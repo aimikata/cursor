@@ -46,6 +46,7 @@ export interface CharacterSetting {
   pastTrauma: string;
   greatestWeakness: string;
   potentialWhenOvercome: string;
+  roleType?: string;
   relationshipWithProtagonist?: string;
   goal?: string;
   reasonForConflictOrCooperation?: string;
@@ -81,6 +82,7 @@ export interface DetailedSetting {
   worldview: WorldviewSetting;
   protagonist: CharacterSetting;
   rivals: CharacterSetting[];
+  supportingCharacters?: CharacterSetting[];
   artStyleTags: string;
   backgroundTags: string;
 }
