@@ -291,14 +291,32 @@ const App: React.FC = () => {
         const s = detailedSetting;
         
         // 詳細設定をすべてテキスト化
-        let text = `--- [SERIES ARCHITECTURE MASTER SHEET] ---\n`;
-        text += `TITLE: ${s.seriesTitle}\n\n`;
-        
-        text += `### WORLDVIEW SETTING\n`;
-        text += `- Core Rule: ${s.worldview.coreRule.name}\n`;
-        text += `  Merit: ${s.worldview.coreRule.merit}\n`;
-        text += `  Demerit: ${s.worldview.coreRule.demerit}\n\n`;
-        
+        let text = `--- [SERIES ARCHITECTURE MASTER SHEET: BILINGUAL VERSION] ---\n`;
+        text += `【TITLE / シリーズタイトル】\n`;
+        text += `${s.seriesTitle}\n\n`;
+
+        text += `【CORE STRATEGY / 核心戦略】\n`;
+        text += `- Core Rule / 核心ルール: ${s.worldview.coreRule.name}\n`;
+        text += `- Merit / 強み: ${s.worldview.coreRule.merit}\n`;
+        text += `- Demerit / 弱み: ${s.worldview.coreRule.demerit}\n`;
+        if (s.currentStatus) {
+            text += `- Status Analysis / 現状分析: ${s.currentStatus}\n`;
+        }
+        if (s.progress) {
+            text += `- Progress / 進捗: ${s.progress}\n`;
+        }
+        if (s.artStyleTags) {
+            text += `- Art Style Tags / 作画スタイル: ${s.artStyleTags}\n`;
+        }
+        if (s.backgroundTags) {
+            text += `- Background Tags / 背景タグ: ${s.backgroundTags}\n`;
+        }
+        text += `- Unresolved Roadmap / 執筆ロードマップ:\n`;
+        text += `${s.unresolvedList}\n\n`;
+
+        text += `============================================================\n`;
+        text += `【FULL VOLUME CONFIGURATION / 全巻深掘り構成】\n\n`;
+
         text += `### VOLUMES & CHAPTERS\n`;
         s.volumes.forEach(v => {
             text += `#### Vol.${v.volumeNumber}: ${v.title}\n`;
@@ -312,7 +330,8 @@ const App: React.FC = () => {
             text += `\n`;
         });
         
-        text += `### CHARACTERS\n`;
+        text += `============================================================\n`;
+        text += `【CHARACTERS / キャラクター設定】\n`;
         const chars = [s.protagonist, ...s.rivals];
         chars.forEach((c, idx) => {
             text += `#### ${idx === 0 ? 'Protagonist' : 'Sub-Character'}: ${c.name} (${c.englishName})\n`;
@@ -323,7 +342,8 @@ const App: React.FC = () => {
             text += `- Visual Tags: ${c.visualTags}\n\n`;
         });
         
-        text += `### DEVELOPMENT ROADMAP\n`;
+        text += `============================================================\n`;
+        text += `【DEVELOPMENT ROADMAP / 執筆ロードマップ】\n`;
         text += s.unresolvedList;
 
         navigator.clipboard.writeText(text).then(() => {

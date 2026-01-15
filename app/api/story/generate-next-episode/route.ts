@@ -115,7 +115,7 @@ export async function POST(req: NextRequest) {
       const model = genAI.getGenerativeModel({ model: PRIMARY_MODEL });
       result = await fetchWithRetry(() =>
         model.generateContent({
-          contents: followupPrompt,
+          contents: [{ role: 'user', parts: [{ text: followupPrompt }] }],
           generationConfig: {
             responseMimeType: 'application/json',
             responseSchema: seriesResponseSchema as any,
@@ -129,7 +129,7 @@ export async function POST(req: NextRequest) {
       usedModel = FALLBACK_MODEL;
       result = await fetchWithRetry(() =>
         fallbackModel.generateContent({
-          contents: followupPrompt,
+          contents: [{ role: 'user', parts: [{ text: followupPrompt }] }],
           generationConfig: {
             responseMimeType: 'application/json',
             responseSchema: seriesResponseSchema as any,
