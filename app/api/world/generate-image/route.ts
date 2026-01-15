@@ -52,8 +52,9 @@ export async function POST(req: NextRequest) {
     const model = genAI.getGenerativeModel({ model: IMAGE_MODEL });
     
     const designs: string[] = [];
+    const imageCount = 1;
     
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < imageCount; i++) {
       const imagePrompt = `
         MASTERPIECE character concept art. 
         STRICTLY ONE CHARISMATIC AND ATTRACTIVE CHARACTER IN THE CENTER. 
@@ -72,7 +73,7 @@ export async function POST(req: NextRequest) {
         model.generateContent({
           contents: [{ role: 'user', parts: [{ text: imagePrompt }] }],
         } as any)
-      );
+      , 2);
 
       const response = await result.response;
       
@@ -93,6 +94,18 @@ export async function POST(req: NextRequest) {
       fullBodyDesigns: designs 
     });
   } catch (error: any) {
+    const message = error?.message || '';
+    if (message.includes('Quota exceeded') || message.includes('429')) {
+      return NextResponse.json(
+        { 
+          warning: '画像生成のクォータ上限に達しました。少し待って再試行するか、有料プランのAPIキーをご利用ください。',
+          characterName: character?.name,
+          characterEnglishName: character?.englishName,
+          fullBodyDesigns: []
+        },
+        { status: 200 }
+      );
+    }
     console.error('Error generating image:', error);
     return NextResponse.json(
       { error: error.message || 'Failed to generate image' },

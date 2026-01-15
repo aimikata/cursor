@@ -579,6 +579,10 @@ export const WorldBuildingInterface: React.FC<WorldBuildingInterfaceProps> = ({ 
       
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || 'Failed to generate image');
+      if (data.warning) {
+        alert(data.warning);
+        return;
+      }
       
       setGeneratedImageData(data);
       
