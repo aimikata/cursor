@@ -95,7 +95,9 @@ export async function POST(req: NextRequest) {
     });
   } catch (error: any) {
     const message = error?.message || '';
-    if (message.includes('Quota exceeded') || message.includes('429')) {
+    const status = error?.status || error?.statusCode || error?.response?.status || error?.cause?.status;
+    const isQuota = status === 429 || /Quota exceeded|429/.test(message);
+    if (isQuota) {
       return NextResponse.json(
         { 
           warning: '画像生成のクォータ上限に達しました。少し待って再試行するか、有料プランのAPIキーをご利用ください。',
