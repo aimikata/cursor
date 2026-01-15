@@ -84,9 +84,13 @@ function formatStory(parsed: any): string {
   return `${parsed.joban}\n\n${parsed.chuban}\n\n${parsed.shuban}`;
 }
 
+function getModeInstruction(mode?: string): string {
+  return `【モード: 短編】\n- 1話で必ず完結させ、伏線はその回で回収する。\n- 緊密で読み切りの構成にする。`;
+}
+
 export async function POST(req: NextRequest) {
   try {
-    const { worldSetting, characters, storyTheme, apiKey } = await req.json();
+    const { worldSetting, characters, storyTheme, generationMode, apiKey } = await req.json();
     
     // リクエストボディからAPIキーを取得、なければ環境変数を使用
     const geminiApiKey = apiKey || process.env.GEMINI_API_KEY;
@@ -100,7 +104,8 @@ export async function POST(req: NextRequest) {
 
     const genAI = new GoogleGenerativeAI(geminiApiKey);
     
-    const prompt = `テーマ: ${storyTheme}\n世界観・設定: ${worldSetting}\nこの一話で完結する重厚な傑作物語を「日本語」で執筆してください。`;
+    const modeInstruction = getModeInstruction(generationMode);
+    const prompt = `テーマ: ${storyTheme}\n世界観・設定: ${worldSetting}\n${modeInstruction}\nこの一話で完結する重厚な傑作物語を「日本語」で執筆してください。`;
 
     let usedModel = PRIMARY_MODEL;
     let result: any;

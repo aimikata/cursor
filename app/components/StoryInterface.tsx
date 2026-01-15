@@ -40,6 +40,22 @@ export const StoryInterface: React.FC<StoryInterfaceProps> = ({
   const [episodeTitles, setEpisodeTitles] = useState<string[]>(Array(12).fill(''));
   const [episodes, setEpisodes] = useState<Episode[]>([]);
   const [chatHistory, setChatHistory] = useState<any[] | null>(null);
+  const [volumeNumber, setVolumeNumber] = useState<number>(1);
+  const [startEpisodeNumber, setStartEpisodeNumber] = useState<number>(1);
+  const [autoVolumeIncrement, setAutoVolumeIncrement] = useState<boolean>(true);
+  const [chaptersPerVolume, setChaptersPerVolume] = useState<number>(4);
+  const [continueFromMiddle, setContinueFromMiddle] = useState<boolean>(false);
+  const [previousSummaryInput, setPreviousSummaryInput] = useState<string>('');
+  const [progressInput, setProgressInput] = useState<string>('');
+  const [unrecoveredListInput, setUnrecoveredListInput] = useState<string>('');
+  const [masterSeriesTitle, setMasterSeriesTitle] = useState<string>('');
+  const [masterCoreRule, setMasterCoreRule] = useState<string>('');
+  const [masterMerit, setMasterMerit] = useState<string>('');
+  const [masterDemerit, setMasterDemerit] = useState<string>('');
+  const [masterCharacterSetting, setMasterCharacterSetting] = useState<string>('');
+  const [masterVolumeTitle, setMasterVolumeTitle] = useState<string>('');
+  const [masterDraftManga, setMasterDraftManga] = useState<string>('');
+  const [masterDraftCommentary, setMasterDraftCommentary] = useState<string>('');
   
   // UI状態
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -98,12 +114,44 @@ export const StoryInterface: React.FC<StoryInterfaceProps> = ({
       setError('世界観を入力してください。');
       return;
     }
+    if (continueFromMiddle && startEpisodeNumber > 1 && !previousSummaryInput.trim()) {
+      setError('途中から執筆する場合は「前章までのあらすじ」を入力してください。');
+      return;
+    }
 
     setIsLoading(true);
     setError(null);
 
     try {
-      if (generationMode === 'series') {
+      if (generationMode === 'series' || generationMode === 'chapter') {
+        const combinedStoryTheme = [
+          storyTheme.trim(),
+          unrecoveredListInput.trim() ? `未回収リスト:\n${unrecoveredListInput.trim()}` : '',
+        ].filter(Boolean).join('\n\n');
+        const targetEpisodeIndex = episodes.length;
+        const { volume: volumeForPrompt, chapter: chapterForPrompt } = computeVolumeChapterForIndex(targetEpisodeIndex);
+        const targetEpisodeTitle = episodeTitles[targetEpisodeIndex] || '';
+        const masterInput = generationMode === 'chapter' ? {
+          worldviewSetting: {
+            coreRule: masterCoreRule,
+            merit: masterMerit,
+            demerit: masterDemerit,
+          },
+          characterSetting: masterCharacterSetting,
+          series: {
+            title: masterSeriesTitle || deriveSeriesTitle(),
+            volumeNumber: volumeForPrompt,
+            volumeTitle: masterVolumeTitle,
+          },
+          chapter: {
+            number: chapterForPrompt,
+            title: targetEpisodeTitle,
+          },
+          draftPlan: {
+            mangaPart: masterDraftManga,
+            commentaryPart: masterDraftCommentary,
+          },
+        } : null;
         const isContinuing = chatHistory && episodes.length > 0;
         if (isContinuing) {
           const lastEpisode = episodes[episodes.length - 1];
@@ -120,9 +168,12 @@ export const StoryInterface: React.FC<StoryInterfaceProps> = ({
               previousSummary: lastEpisode.summary,
               worldSetting,
               characters,
-              storyTheme,
-              episodeNumber: episodes.length + 1,
-              episodeTitle: episodeTitles[episodes.length] || '',
+              storyTheme: combinedStoryTheme,
+              episodeNumber: chapterForPrompt,
+              episodeTitle: targetEpisodeTitle,
+              volumeNumber: volumeForPrompt,
+              generationMode,
+              masterInput,
               history: chatHistory,
               previousMasterSheet: lastEpisode.masterSheet,
               apiKey,
@@ -132,6 +183,12 @@ export const StoryInterface: React.FC<StoryInterfaceProps> = ({
           if (!res.ok) throw new Error(data.error || 'Failed to generate next episode');
           setEpisodes(prev => [...prev, data.episode]);
           setChatHistory(data.history);
+          if (data.episode?.masterSheet?.progress) {
+            setProgressInput(data.episode.masterSheet.progress);
+          }
+          if (Array.isArray(data.episode?.masterSheet?.unrecovered_list)) {
+            setUnrecoveredListInput(data.episode.masterSheet.unrecovered_list.join('\n'));
+          }
         } else {
           // getApiKey('story')は内部でdefaultキーにフォールバックする
           const apiKey = getApiKey('story');
@@ -139,27 +196,74 @@ export const StoryInterface: React.FC<StoryInterfaceProps> = ({
             throw new Error('APIキーが設定されていません。マンガハブの「APIキー設定」からキーを入力してください。');
           }
 
-          const res = await fetch('/api/story/generate-first-episode', {
+          const shouldContinueFromMiddle = continueFromMiddle && startEpisodeNumber > 1;
+          if (shouldContinueFromMiddle) {
+            const unrecoveredList = unrecoveredListInput
+              .split('\n')
+              .map(item => item.trim())
+              .filter(Boolean);
+            const res = await fetch('/api/story/generate-next-episode', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                previousSummary: previousSummaryInput,
+                worldSetting,
+                characters,
+                storyTheme: combinedStoryTheme,
+                episodeNumber: chapterForPrompt,
+                episodeTitle: targetEpisodeTitle,
+                volumeNumber: volumeForPrompt,
+                generationMode,
+                masterInput,
+                previousMasterSheet: (progressInput || unrecoveredList.length > 0)
+                  ? { progress: progressInput, unrecovered_list: unrecoveredList }
+                  : null,
+                apiKey,
+              }),
+            });
+            const data = await res.json();
+            if (!res.ok) throw new Error(data.error || 'Failed to generate next episode');
+            setEpisodes([data.episode]);
+            setChatHistory(data.history);
+            if (data.episode?.masterSheet?.progress) {
+              setProgressInput(data.episode.masterSheet.progress);
+            }
+            if (Array.isArray(data.episode?.masterSheet?.unrecovered_list)) {
+              setUnrecoveredListInput(data.episode.masterSheet.unrecovered_list.join('\n'));
+            }
+          } else {
+            const res = await fetch('/api/story/generate-first-episode', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
               worldSetting,
               characters,
-              storyTheme,
-              episodeTitle: episodeTitles[0] || '',
+              storyTheme: combinedStoryTheme,
+              episodeTitle: targetEpisodeTitle,
+              episodeNumber: chapterForPrompt,
+              volumeNumber: volumeForPrompt,
+              generationMode,
+              masterInput,
               apiKey,
             }),
           });
-          const data = await res.json();
-          if (!res.ok) throw new Error(data.error || 'Failed to generate first episode');
-          setEpisodes([data.episode]);
-          setChatHistory(data.history);
-          if (!episodeTitles[0] && data.episode.title) {
-            setEpisodeTitles(prev => {
-              const newTitles = [...prev];
-              newTitles[0] = data.episode.title;
-              return newTitles;
-            });
+            const data = await res.json();
+            if (!res.ok) throw new Error(data.error || 'Failed to generate first episode');
+            setEpisodes([data.episode]);
+            setChatHistory(data.history);
+            if (data.episode?.masterSheet?.progress) {
+              setProgressInput(data.episode.masterSheet.progress);
+            }
+            if (Array.isArray(data.episode?.masterSheet?.unrecovered_list)) {
+              setUnrecoveredListInput(data.episode.masterSheet.unrecovered_list.join('\n'));
+            }
+            if (!episodeTitles[targetEpisodeIndex] && data.episode.title) {
+              setEpisodeTitles(prev => {
+                const newTitles = [...prev];
+                newTitles[targetEpisodeIndex] = data.episode.title;
+                return newTitles;
+              });
+            }
           }
         }
       } else if (generationMode === 'oneshot') {
@@ -171,7 +275,7 @@ export const StoryInterface: React.FC<StoryInterfaceProps> = ({
         const res = await fetch('/api/story/generate-oneshot', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ worldSetting, characters, storyTheme, apiKey }),
+          body: JSON.stringify({ worldSetting, characters, storyTheme, generationMode, apiKey }),
         });
         const data = await res.json();
         if (!res.ok) throw new Error(data.error || 'Failed to generate oneshot story');
@@ -183,7 +287,7 @@ export const StoryInterface: React.FC<StoryInterfaceProps> = ({
     } finally {
       setIsLoading(false);
     }
-  }, [isLoading, generationMode, chatHistory, episodes, worldSetting, characters, storyTheme, episodeTitles]);
+  }, [isLoading, generationMode, chatHistory, episodes, worldSetting, characters, storyTheme, episodeTitles, volumeNumber, startEpisodeNumber, continueFromMiddle, previousSummaryInput, progressInput, unrecoveredListInput, computeVolumeChapterForIndex, masterCoreRule, masterMerit, masterDemerit, masterCharacterSetting, masterSeriesTitle, masterVolumeTitle, masterDraftManga, masterDraftCommentary, deriveSeriesTitle]);
 
   const handleSaveEdit = useCallback(() => {
     if (episodes.length > 0 && selectedEpisode < episodes.length) {
@@ -246,14 +350,88 @@ export const StoryInterface: React.FC<StoryInterfaceProps> = ({
     }
   }, [episodes, worldSetting, characters, generationMode, onComplete, onProceedToPanel, isSemiAutoMode]);
 
-  const generateEpisodeText = useCallback((ep: Episode) => {
-    return `【${ep.title}】\n\n${ep.story}\n\n${ep.commentary ? `【深層解析】\n\n${ep.commentary}\n\n` : ''}`;
-  }, []);
+  const deriveSeriesTitle = useCallback(() => {
+    const bilingualMatch = worldSetting.match(/【TITLE\s*\/\s*シリーズタイトル】\s*\n([^\n]+)/);
+    if (bilingualMatch?.[1]) return bilingualMatch[1].trim();
+    const simpleMatch = worldSetting.match(/TITLE:\s*([^\n]+)/);
+    if (simpleMatch?.[1]) return simpleMatch[1].trim();
+    return '';
+  }, [worldSetting]);
+
+  const parseWorldVolumePlan = useCallback(() => {
+    const lines = worldSetting.split('\n');
+    const volumeHeaders: { volume: number; startIndex: number }[] = [];
+    lines.forEach((line, idx) => {
+      const match = line.match(/####\s*Vol\.(\d+)/i);
+      if (match) {
+        volumeHeaders.push({ volume: Number(match[1]), startIndex: idx });
+      }
+    });
+
+    if (volumeHeaders.length === 0) {
+      return null;
+    }
+
+    const volumeChapterCounts: { volume: number; chapters: number }[] = [];
+    for (let i = 0; i < volumeHeaders.length; i += 1) {
+      const start = volumeHeaders[i].startIndex + 1;
+      const end = i + 1 < volumeHeaders.length ? volumeHeaders[i + 1].startIndex : lines.length;
+      const block = lines.slice(start, end).join('\n');
+      const chapters = (block.match(/Chapter\s+\d+/gi) || []).length;
+      volumeChapterCounts.push({
+        volume: volumeHeaders[i].volume,
+        chapters: chapters > 0 ? chapters : chaptersPerVolume,
+      });
+    }
+
+    return volumeChapterCounts;
+  }, [worldSetting, chaptersPerVolume]);
+
+  const computeVolumeChapterForIndex = useCallback((index: number) => {
+    const absoluteEpisodeNumber = startEpisodeNumber + index;
+    if (!autoVolumeIncrement) {
+      return { volume: volumeNumber, chapter: absoluteEpisodeNumber, absoluteEpisodeNumber };
+    }
+
+    const plan = parseWorldVolumePlan();
+    if (plan && plan.length > 0) {
+      let remaining = absoluteEpisodeNumber;
+      for (const { volume, chapters } of plan) {
+        const size = Math.max(1, chapters);
+        if (remaining <= size) {
+          return { volume, chapter: remaining, absoluteEpisodeNumber };
+        }
+        remaining -= size;
+      }
+      const fallbackVolume = plan[plan.length - 1].volume + 1;
+      const fallbackChapter = remaining;
+      return { volume: fallbackVolume, chapter: fallbackChapter, absoluteEpisodeNumber };
+    }
+
+    const safeChaptersPerVolume = Math.max(1, Math.floor(chaptersPerVolume));
+    const volumeOffset = Math.floor((absoluteEpisodeNumber - 1) / safeChaptersPerVolume);
+    const volume = volumeNumber + volumeOffset;
+    const chapter = ((absoluteEpisodeNumber - 1) % safeChaptersPerVolume) + 1;
+    return { volume, chapter, absoluteEpisodeNumber };
+  }, [autoVolumeIncrement, chaptersPerVolume, parseWorldVolumePlan, startEpisodeNumber, volumeNumber]);
+
+  const buildEpisodeLabel = useCallback((ep: Episode, index: number) => {
+    if (ep.title && /Vol\.\s*\d+|Chapter\s*\d+|第\d+章/.test(ep.title)) {
+      return ep.title;
+    }
+    const { volume, chapter } = computeVolumeChapterForIndex(index);
+    return `Vol.${volume} Chapter ${chapter}: ${ep.title || `第${chapter}章`}`;
+  }, [computeVolumeChapterForIndex]);
+
+  const generateEpisodeText = useCallback((ep: Episode, index: number) => {
+    const label = buildEpisodeLabel(ep, index);
+    return `【${label}】\n\n${ep.story}\n\n${ep.commentary ? `【深層解析】\n\n${ep.commentary}\n\n` : ''}`;
+  }, [buildEpisodeLabel]);
 
   const handleCopy = useCallback(async () => {
     if (episodes.length > 0 && selectedEpisode < episodes.length) {
       const ep = episodes[selectedEpisode];
-      const text = generateEpisodeText(ep);
+      const text = generateEpisodeText(ep, selectedEpisode);
       try {
         await navigator.clipboard.writeText(text);
         setCopied(true);
@@ -267,7 +445,7 @@ export const StoryInterface: React.FC<StoryInterfaceProps> = ({
   const handleDownload = useCallback(() => {
     if (episodes.length > 0 && selectedEpisode < episodes.length) {
       const ep = episodes[selectedEpisode];
-      const text = generateEpisodeText(ep);
+      const text = generateEpisodeText(ep, selectedEpisode);
       const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
       const url = URL.createObjectURL(blob);
       const link = document.createElement('a');
@@ -285,7 +463,7 @@ export const StoryInterface: React.FC<StoryInterfaceProps> = ({
   const handleSaveReport = useCallback(() => {
     if (episodes.length === 0) return;
     const allEpisodesText = episodes.map((ep, idx) => 
-      generateEpisodeText(ep)
+      generateEpisodeText(ep, idx)
     ).join('\n\n' + '='.repeat(60) + '\n\n');
     
     const storyOutput: StoryOutput = {
@@ -299,9 +477,13 @@ export const StoryInterface: React.FC<StoryInterfaceProps> = ({
       },
     };
 
+    const seriesTitle = deriveSeriesTitle();
+    const reportTitle = seriesTitle
+      ? `${seriesTitle} - 全${episodes.length}話`
+      : `ストーリー_${generationMode}_全${episodes.length}話`;
     saveReport({
       type: 'story',
-      title: episodes[0]?.title || `ストーリー_${generationMode}`,
+      title: reportTitle,
       content: allEpisodesText,
       data: storyOutput,
     });
@@ -327,7 +509,8 @@ export const StoryInterface: React.FC<StoryInterfaceProps> = ({
     setSavedReports(getAllReports());
   }, [episodes]);
 
-  const isSeriesStarted = generationMode === 'series' && episodes.length > 0;
+  const isSerializedMode = generationMode === 'series' || generationMode === 'chapter';
+  const isSeriesStarted = isSerializedMode && episodes.length > 0;
 
   // レポートパネルを表示
   if (showReportsPanel) {
@@ -508,7 +691,7 @@ export const StoryInterface: React.FC<StoryInterfaceProps> = ({
               <div className="mb-6">
                 <label className="block text-sm font-bold mb-2">生成モード</label>
                 <div className="flex space-x-2">
-                  {(['series', 'oneshot'] as GenerationMode[]).map(mode => (
+                  {(['series', 'oneshot', 'chapter'] as GenerationMode[]).map(mode => (
                     <button
                       key={mode}
                       onClick={() => setGenerationMode(mode)}
@@ -518,10 +701,68 @@ export const StoryInterface: React.FC<StoryInterfaceProps> = ({
                           : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
                       }`}
                     >
-                      {mode === 'series' ? '連載' : '一話完結'}
+                      {mode === 'series' ? '連載' : mode === 'oneshot' ? '短編' : 'MASTER形式'}
                     </button>
                   ))}
                 </div>
+              </div>
+            )}
+
+            {/* 巻数・開始章 */}
+            {!isSemiAutoMode && isSerializedMode && (
+              <div className="mb-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-bold mb-2">巻数（Vol.）</label>
+                  <input
+                    type="number"
+                    min={1}
+                    value={volumeNumber}
+                    onChange={(e) => setVolumeNumber(Math.max(1, Number(e.target.value)))}
+                    className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg text-white"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-bold mb-2">開始章（Chapter）</label>
+                  <input
+                    type="number"
+                    min={1}
+                    value={startEpisodeNumber}
+                    onChange={(e) => setStartEpisodeNumber(Math.max(1, Number(e.target.value)))}
+                    className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg text-white"
+                  />
+                </div>
+              </div>
+            )}
+
+            {!isSemiAutoMode && isSerializedMode && (
+              <div className="mb-6 space-y-2 bg-gray-800/60 border border-gray-700 rounded-lg p-3">
+                <label className="flex items-center space-x-2 text-sm font-bold">
+                  <input
+                    type="checkbox"
+                    checked={autoVolumeIncrement}
+                    onChange={(e) => setAutoVolumeIncrement(e.target.checked)}
+                    className="h-4 w-4"
+                  />
+                  <span>巻数を自動加算する（世界観レポート基準）</span>
+                </label>
+                <div className="text-xs text-gray-400">
+                  {parseWorldVolumePlan()
+                    ? `レポートから検出: ${parseWorldVolumePlan()!.map(v => `Vol.${v.volume}=${v.chapters}章`).join(' / ')}`
+                    : `レポートに巻構成がないため、暫定で「1巻あたり${chaptersPerVolume}章」を使用します。`}
+                </div>
+                {!parseWorldVolumePlan() && (
+                  <div className="flex items-center space-x-2">
+                    <span className="text-xs text-gray-400">1巻あたりの章数</span>
+                    <input
+                      type="number"
+                      min={1}
+                      value={chaptersPerVolume}
+                      onChange={(e) => setChaptersPerVolume(Math.max(1, Number(e.target.value)))}
+                      className="w-20 p-2 bg-gray-900 border border-gray-700 rounded text-white text-sm"
+                      disabled={!autoVolumeIncrement}
+                    />
+                  </div>
+                )}
               </div>
             )}
 
@@ -538,17 +779,156 @@ export const StoryInterface: React.FC<StoryInterfaceProps> = ({
               />
             </div>
 
+            {!isSemiAutoMode && generationMode === 'chapter' && (
+              <div className="mb-6 space-y-4">
+                <div className="text-sm font-bold text-indigo-300">MASTERシート入力（解説書→物語化）</div>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                  <input
+                    type="text"
+                    value={masterCoreRule}
+                    onChange={(e) => setMasterCoreRule(e.target.value)}
+                    className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg text-white"
+                    placeholder="CORE RULE（核心ルール）"
+                  />
+                  <input
+                    type="text"
+                    value={masterMerit}
+                    onChange={(e) => setMasterMerit(e.target.value)}
+                    className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg text-white"
+                    placeholder="MERIT（メリット）"
+                  />
+                  <input
+                    type="text"
+                    value={masterDemerit}
+                    onChange={(e) => setMasterDemerit(e.target.value)}
+                    className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg text-white"
+                    placeholder="DEMERIT（デメリット）"
+                  />
+                </div>
+                <textarea
+                  value={masterCharacterSetting}
+                  onChange={(e) => setMasterCharacterSetting(e.target.value)}
+                  rows={3}
+                  className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg text-white resize-none focus:ring-2 focus:ring-indigo-500"
+                  placeholder="CHARACTER SETTING（登場人物）"
+                />
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  <input
+                    type="text"
+                    value={masterSeriesTitle}
+                    onChange={(e) => setMasterSeriesTitle(e.target.value)}
+                    className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg text-white"
+                    placeholder="SERIES TITLE（シリーズタイトル）"
+                  />
+                  <input
+                    type="text"
+                    value={masterVolumeTitle}
+                    onChange={(e) => setMasterVolumeTitle(e.target.value)}
+                    className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg text-white"
+                    placeholder="VOLUME TITLE（巻タイトル・任意）"
+                  />
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  <textarea
+                    value={masterDraftManga}
+                    onChange={(e) => setMasterDraftManga(e.target.value)}
+                    rows={3}
+                    className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg text-white resize-none focus:ring-2 focus:ring-indigo-500"
+                    placeholder="DRAFT PLAN（マンガパート）"
+                  />
+                  <textarea
+                    value={masterDraftCommentary}
+                    onChange={(e) => setMasterDraftCommentary(e.target.value)}
+                    rows={3}
+                    className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg text-white resize-none focus:ring-2 focus:ring-indigo-500"
+                    placeholder="DRAFT PLAN（解説パート）"
+                  />
+                </div>
+              </div>
+            )}
+
             {/* テーマ（マニュアルモードのみ） */}
             {!isSemiAutoMode && (
               <div className="mb-6">
-                <label className="block text-sm font-bold mb-2">テーマ・未回収リスト</label>
+                <label className="block text-sm font-bold mb-2">テーマ</label>
                 <textarea
                   value={storyTheme}
                   onChange={(e) => setStoryTheme(e.target.value)}
                   rows={4}
                   className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg text-white resize-none focus:ring-2 focus:ring-indigo-500"
-                  placeholder="物語のテーマや伏線を入力..."
+                  placeholder="物語のテーマを入力..."
                 />
+              </div>
+            )}
+
+            {!isSemiAutoMode && (
+              <div className="mb-6">
+                <label className="block text-sm font-bold mb-2">未回収リスト</label>
+                <textarea
+                  value={unrecoveredListInput}
+                  onChange={(e) => setUnrecoveredListInput(e.target.value)}
+                  rows={4}
+                  className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg text-white resize-none focus:ring-2 focus:ring-indigo-500"
+                  placeholder="未回収の伏線やタスクを改行区切りで入力..."
+                />
+              </div>
+            )}
+
+            {!isSemiAutoMode && isSerializedMode && (
+              <div className="mb-6">
+                <label className="block text-sm font-bold mb-2">今回の章タイトル案</label>
+                <input
+                  type="text"
+                  value={episodeTitles[episodes.length] || ''}
+                  onChange={(e) => {
+                    const index = episodes.length;
+                    setEpisodeTitles(prev => {
+                      const next = [...prev];
+                      next[index] = e.target.value;
+                      return next;
+                    });
+                  }}
+                  className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg text-white"
+                  placeholder="例: 第1章「AI時代の幕開け」"
+                />
+              </div>
+            )}
+
+            {!isSemiAutoMode && isSerializedMode && (
+              <div className="mb-6">
+                <label className="flex items-center space-x-2 text-sm font-bold">
+                  <input
+                    type="checkbox"
+                    checked={continueFromMiddle}
+                    onChange={(e) => setContinueFromMiddle(e.target.checked)}
+                    className="h-4 w-4"
+                  />
+                  <span>途中から執筆する</span>
+                </label>
+                {continueFromMiddle && (
+                  <div className="mt-3 space-y-3">
+                    <div>
+                      <label className="block text-xs font-bold mb-1 text-gray-400">前章までのあらすじ（必須）</label>
+                      <textarea
+                        value={previousSummaryInput}
+                        onChange={(e) => setPreviousSummaryInput(e.target.value)}
+                        rows={4}
+                        className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg text-white resize-none focus:ring-2 focus:ring-indigo-500"
+                        placeholder="前章までの要約を入力..."
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-bold mb-1 text-gray-400">進行状況（任意）</label>
+                      <input
+                        type="text"
+                        value={progressInput}
+                        onChange={(e) => setProgressInput(e.target.value)}
+                        className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg text-white"
+                        placeholder="例: Vol.1 Chapter 3まで完了"
+                      />
+                    </div>
+                  </div>
+                )}
               </div>
             )}
 
@@ -689,7 +1069,7 @@ export const StoryInterface: React.FC<StoryInterfaceProps> = ({
                             : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
                         }`}
                       >
-                        {ep.title || `第${index + 1}話`}
+                        {buildEpisodeLabel(ep, index)}
                       </button>
                     ))}
                   </div>
@@ -699,7 +1079,7 @@ export const StoryInterface: React.FC<StoryInterfaceProps> = ({
                 {selectedEpisode < episodes.length && (
                   <div>
                     <h3 className="text-xl font-bold mb-4">
-                      {episodes[selectedEpisode].title || `第${selectedEpisode + 1}話`}
+                      {buildEpisodeLabel(episodes[selectedEpisode], selectedEpisode)}
                     </h3>
                     {isEditing ? (
                       <textarea
@@ -740,13 +1120,18 @@ export const StoryInterface: React.FC<StoryInterfaceProps> = ({
                   {episodes.length} エピソード生成済み
                 </span>
               </div>
-              <button
-                onClick={handleConfirm}
-                className="px-8 py-4 bg-indigo-600 hover:bg-indigo-500 rounded-lg font-bold text-white transition-all shadow-lg flex items-center space-x-2"
-              >
-                <Save className="w-5 h-5" />
-                <span>ストーリーを確定して次へ</span>
-              </button>
+              <div className="flex flex-col items-end space-y-2">
+                <button
+                  onClick={handleConfirm}
+                  className="px-8 py-4 bg-indigo-600 hover:bg-indigo-500 rounded-lg font-bold text-white transition-all shadow-lg flex items-center space-x-2"
+                >
+                  <Save className="w-5 h-5" />
+                  <span>ストーリーを確定して次へ</span>
+                </button>
+                <span className="text-xs text-gray-400">
+                  ストーリーを保存し、コマ割り生成の工程へ引き継ぎます
+                </span>
+              </div>
             </div>
           </div>
         )}

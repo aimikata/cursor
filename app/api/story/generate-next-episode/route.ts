@@ -84,9 +84,16 @@ function formatStory(parsed: any): string {
   return `${parsed.joban}\n\n${parsed.chuban}\n\n${parsed.shuban}`;
 }
 
+function getModeInstruction(mode?: string): string {
+  if (mode === 'chapter') {
+    return `【モード: MASTER】\n- 物語パートは要点重視で簡潔に。\n- 解説（深層解析）とマスターシートを最重要視し、学習ポイント・設計意図・次章への設計課題を具体的に書くこと。`;
+  }
+  return `【モード: 連載】\n- 次章への引きと未回収要素を必ず残す。\n- 章全体の流れがシリーズ構成と整合するように執筆する。`;
+}
+
 export async function POST(req: NextRequest) {
   try {
-    const { previousSummary, worldSetting, characters, storyTheme, episodeNumber, episodeTitle, history, previousMasterSheet, apiKey } = await req.json();
+    const { previousSummary, worldSetting, characters, storyTheme, episodeNumber, episodeTitle, history, previousMasterSheet, volumeNumber, generationMode, masterInput, apiKey } = await req.json();
     
     // リクエストボディからAPIキーを取得、なければ環境変数を使用
     const geminiApiKey = apiKey || process.env.GEMINI_API_KEY;
@@ -103,7 +110,35 @@ export async function POST(req: NextRequest) {
     const masterSheetContext = previousMasterSheet 
       ? `現状進行度: ${previousMasterSheet.progress}\n未回収・伏線: ${previousMasterSheet.unrecovered_list?.join(',') || ''}` 
       : '';
-    const followupPrompt = `前章までのあらすじ: ${previousSummary}\n${masterSheetContext}\n第${episodeNumber}章（タイトル: ${episodeTitle || ''}）を「日本語」で執筆してください。`;
+    const charDetails = characters.map((c: any) => `【${c.name}】: ${c.role || c.description || ''}`).join('\n');
+    const resolvedEpisodeNumber = Number.isInteger(episodeNumber) && episodeNumber > 0 ? episodeNumber : 1;
+    const resolvedVolumeNumber = Number.isInteger(volumeNumber) && volumeNumber > 0 ? volumeNumber : 1;
+    const modeInstruction = getModeInstruction(generationMode);
+    const masterSection = generationMode === 'chapter' && masterInput ? `
+WORLDVIEW SETTING:
+- Core Rule: ${masterInput.worldviewSetting?.coreRule || ''}
+- Merit: ${masterInput.worldviewSetting?.merit || ''}
+- Demerit: ${masterInput.worldviewSetting?.demerit || ''}
+
+CHARACTER SETTING:
+${masterInput.characterSetting || ''}
+
+SERIES / VOLUME:
+- Series Title: ${masterInput.series?.title || ''}
+- Volume: Vol.${masterInput.series?.volumeNumber || resolvedVolumeNumber}${masterInput.series?.volumeTitle ? ` / ${masterInput.series.volumeTitle}` : ''}
+
+CHAPTER:
+- Chapter: ${masterInput.chapter?.number || resolvedEpisodeNumber}
+- Title: ${masterInput.chapter?.title || episodeTitle || ''}
+
+DRAFT PLAN:
+- Manga Part (Story): ${masterInput.draftPlan?.mangaPart || ''}
+- Commentary Part (Theory): ${masterInput.draftPlan?.commentaryPart || ''}
+`.trim() : '';
+    const baseContext = generationMode === 'chapter' && masterSection
+      ? `MASTER SHEET INPUT (MUST FOLLOW EXACTLY):\n${masterSection}`
+      : `世界観・設定: ${worldSetting}\n連載全体のテーマ・未回収リスト: ${storyTheme}\n登場人物:\n${charDetails}\n\n前章までのあらすじ: ${previousSummary}\n${masterSheetContext}`;
+    const followupPrompt = `${baseContext}\n\n${modeInstruction}\n\n【厳守】\n- 提示されたMASTER SHEETの項目構成に完全準拠すること。\n- episode_title は必ず「Vol.${resolvedVolumeNumber} Chapter ${resolvedEpisodeNumber}: <章タイトル>」の形式で出力すること。\n- 章タイトルは指定があればそれを優先し、未指定なら文脈に合うタイトルを付与すること。\n- 物語パートは「情熱的で没入感のある描写」。解説パートは「大学院レベルの高度な分析」。\n\n第${resolvedEpisodeNumber}章（タイトル: ${episodeTitle || ''}）を「日本語」で執筆してください。`;
 
     // 履歴を構築（簡易版：実際の実装ではContent[]形式に変換が必要）
     const newHistory = history ? [...history, { role: 'user', parts: [{ text: followupPrompt }] }] : [{ role: 'user', parts: [{ text: followupPrompt }] }];
