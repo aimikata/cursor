@@ -56,6 +56,7 @@ export const StoryInterface: React.FC<StoryInterfaceProps> = ({
   const [masterVolumeTitle, setMasterVolumeTitle] = useState<string>('');
   const [masterDraftManga, setMasterDraftManga] = useState<string>('');
   const [masterDraftCommentary, setMasterDraftCommentary] = useState<string>('');
+  const [selectedMasterReportId, setSelectedMasterReportId] = useState<string>('');
   
   // UI状態
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -247,7 +248,12 @@ export const StoryInterface: React.FC<StoryInterfaceProps> = ({
           });
           const data = await res.json();
           if (!res.ok) throw new Error(data.error || 'Failed to generate next episode');
-          setEpisodes(prev => [...prev, data.episode]);
+          const episodeWithMeta = {
+            ...data.episode,
+            volumeNumber: volumeForPrompt,
+            chapterNumber: chapterForPrompt,
+          };
+          setEpisodes(prev => [...prev, episodeWithMeta]);
           setChatHistory(data.history);
           if (data.episode?.masterSheet?.progress) {
             setProgressInput(data.episode.masterSheet.progress);
@@ -289,7 +295,12 @@ export const StoryInterface: React.FC<StoryInterfaceProps> = ({
             });
             const data = await res.json();
             if (!res.ok) throw new Error(data.error || 'Failed to generate next episode');
-            setEpisodes([data.episode]);
+            const episodeWithMeta = {
+              ...data.episode,
+              volumeNumber: volumeForPrompt,
+              chapterNumber: chapterForPrompt,
+            };
+            setEpisodes([episodeWithMeta]);
             setChatHistory(data.history);
             if (data.episode?.masterSheet?.progress) {
               setProgressInput(data.episode.masterSheet.progress);
@@ -315,7 +326,12 @@ export const StoryInterface: React.FC<StoryInterfaceProps> = ({
           });
             const data = await res.json();
             if (!res.ok) throw new Error(data.error || 'Failed to generate first episode');
-            setEpisodes([data.episode]);
+            const episodeWithMeta = {
+              ...data.episode,
+              volumeNumber: volumeForPrompt,
+              chapterNumber: chapterForPrompt,
+            };
+            setEpisodes([episodeWithMeta]);
             setChatHistory(data.history);
             if (data.episode?.masterSheet?.progress) {
               setProgressInput(data.episode.masterSheet.progress);
@@ -420,7 +436,8 @@ export const StoryInterface: React.FC<StoryInterfaceProps> = ({
     if (ep.title && /Vol\.\s*\d+|Chapter\s*\d+|第\d+章/.test(ep.title)) {
       return ep.title;
     }
-    const { volume, chapter } = computeVolumeChapterForIndex(index);
+    const volume = ep.volumeNumber ?? computeVolumeChapterForIndex(index).volume;
+    const chapter = ep.chapterNumber ?? computeVolumeChapterForIndex(index).chapter;
     return `Vol.${volume} Chapter ${chapter}: ${ep.title || `第${chapter}章`}`;
   }, [computeVolumeChapterForIndex]);
 
@@ -520,6 +537,63 @@ export const StoryInterface: React.FC<StoryInterfaceProps> = ({
       alert('コピーに失敗しました。');
     }
   }, []);
+
+  const parseMasterFromWorldSetting = useCallback((text: string, volume: number, chapter: number) => {
+    const getLineValue = (label: string) => {
+      const match = text.match(new RegExp(`${label}\\s*[:：]\\s*([^\\n]+)`));
+      return match?.[1]?.trim() || '';
+    };
+    const getBlock = (start: RegExp, end: RegExp) => {
+      const startMatch = text.match(start);
+      if (!startMatch) return '';
+      const startIndex = text.indexOf(startMatch[0]) + startMatch[0].length;
+      const endMatch = text.slice(startIndex).match(end);
+      const endIndex = endMatch ? startIndex + endMatch.index! : text.length;
+      return text.slice(startIndex, endIndex).trim();
+    };
+
+    const seriesTitle = getLineValue('TITLE') || getLineValue('【TITLE / シリーズタイトル】');
+    const coreRule = getLineValue('Core Rule') || getLineValue('核心ルール');
+    const merit = getLineValue('Merit') || getLineValue('強み');
+    const demerit = getLineValue('Demerit') || getLineValue('弱み');
+
+    const charactersBlock = getBlock(/###\\s+CHARACTERS|【CHARACTERS\\s*\\/\\s*キャラクター設定】/i, /###\\s+DEVELOPMENT ROADMAP|【DEVELOPMENT ROADMAP\\s*\\/\\s*執筆ロードマップ】/i);
+
+    const volumeTitleMatch = text.match(new RegExp(`####\\s*Vol\\.${volume}:\\s*([^\\n]+)`));
+    const volumeTitle = volumeTitleMatch?.[1]?.trim() || '';
+
+    const chapterTitleMatch = text.match(new RegExp(`Chapter\\s*${chapter}\\s*:\\s*([^\\n]+)`));
+    const chapterTitle = chapterTitleMatch?.[1]?.trim() || '';
+
+    return {
+      seriesTitle,
+      coreRule,
+      merit,
+      demerit,
+      characterSetting: charactersBlock || '',
+      volumeTitle,
+      chapterTitle,
+    };
+  }, []);
+
+  const applyMasterFromText = useCallback((text: string) => {
+    const volume = volumeNumber;
+    const chapter = startEpisodeNumber + episodes.length;
+    const parsed = parseMasterFromWorldSetting(text, volume, chapter);
+    if (parsed.seriesTitle) setMasterSeriesTitle(parsed.seriesTitle);
+    if (parsed.coreRule) setMasterCoreRule(parsed.coreRule);
+    if (parsed.merit) setMasterMerit(parsed.merit);
+    if (parsed.demerit) setMasterDemerit(parsed.demerit);
+    if (parsed.characterSetting) setMasterCharacterSetting(parsed.characterSetting);
+    if (parsed.volumeTitle) setMasterVolumeTitle(parsed.volumeTitle);
+    if (parsed.chapterTitle) {
+      setEpisodeTitles(prev => {
+        const next = [...prev];
+        next[episodes.length] = parsed.chapterTitle;
+        return next;
+      });
+    }
+  }, [episodes.length, parseMasterFromWorldSetting, startEpisodeNumber, volumeNumber]);
 
   const isSerializedMode = generationMode === 'series' || generationMode === 'chapter';
   const isSeriesStarted = isSerializedMode && episodes.length > 0;
@@ -844,6 +918,41 @@ export const StoryInterface: React.FC<StoryInterfaceProps> = ({
             {!isSemiAutoMode && generationMode === 'chapter' && (
               <div className="mb-6 space-y-4">
                 <div className="text-sm font-bold text-indigo-300">MASTERシート入力（解説書→物語化）</div>
+                <div className="flex flex-wrap items-center gap-2">
+                  <button
+                    onClick={() => applyMasterFromText(worldSetting)}
+                    className="px-3 py-1 bg-gray-800 hover:bg-gray-700 rounded text-xs font-bold"
+                  >
+                    世界観レポートから反映
+                  </button>
+                  {savedReports.length > 0 && (
+                    <>
+                      <select
+                        value={selectedMasterReportId}
+                        onChange={(e) => setSelectedMasterReportId(e.target.value)}
+                        className="px-2 py-1 bg-gray-800 border border-gray-700 rounded text-xs text-white"
+                      >
+                        <option value="">保存済みレポートを選択</option>
+                        {savedReports.map(report => (
+                          <option key={report.id} value={report.id}>
+                            {report.title}
+                          </option>
+                        ))}
+                      </select>
+                      <button
+                        onClick={() => {
+                          const report = savedReports.find(r => r.id === selectedMasterReportId);
+                          if (report?.content) {
+                            applyMasterFromText(report.content);
+                          }
+                        }}
+                        className="px-3 py-1 bg-indigo-600 hover:bg-indigo-500 rounded text-xs font-bold text-white"
+                      >
+                        レポートを反映
+                      </button>
+                    </>
+                  )}
+                </div>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
                   <input
                     type="text"

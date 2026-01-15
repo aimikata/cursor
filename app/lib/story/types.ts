@@ -18,6 +18,8 @@ export interface Episode {
   title: string;
   story: string;
   summary: string;
+  volumeNumber?: number;
+  chapterNumber?: number;
   introduction?: string;
   commentary?: string;
   epilogue?: string;
