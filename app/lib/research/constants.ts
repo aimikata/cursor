@@ -96,6 +96,8 @@ Gemini 3.0の推論力を駆使し、以下の条件下で「勝率の高い」�
 # 前提条件
 - **Trend (ジャンル)**: ${genre}
 - **Target Market**: ${ctx.market}
+${ctx.admonition ? `- **文脈制約**: ${ctx.admonition}` : ''}
+${ctx.crossBorder ? `- **市場ギャップ**: ${ctx.crossBorder}` : ''}
 ${keywordConstraint}
 
 # 出力形式
@@ -104,7 +106,7 @@ ${keywordConstraint}
 - 各企画案は以下の形式で日本語で記述してください：
   - タイトル（日本語）
   - コンセプト（日本語）
-  - ターゲット読者（日本語）
+  - ターゲット読者（日本語、**必ず${ctx.audience}を明記**。日本国内向けの記述は禁止）
   - 主要要素（日本語）
 `;
 };
@@ -121,6 +123,8 @@ ${topic}
 # Target Market
 - ${ctx.market}
 - ${ctx.admonition}
+${ctx.crossBorder ? `- ${ctx.crossBorder}` : ''}
+${ctx.audience ? `- ターゲット読者は${ctx.audience}に限定し、日本国内向けの設定は避けてください。` : ''}
 
 # キャラクター・ネーミング方針（厳守）
 - **名前の多様性**: ${ctx.namingPolicy}
@@ -157,6 +161,7 @@ ${topic}
 #### ■ 1. 市場分析レポート
 * **分析テーマ**: ${topic}
 * **勝算の根拠**: (実在ツールの普及度、競合の不在など)
+* **対象読者**: ${ctx.audience}
 
 #### ■ 2. シリーズ構成案 (The Master Plan)
 
