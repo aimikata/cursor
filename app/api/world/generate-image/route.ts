@@ -71,9 +71,6 @@ export async function POST(req: NextRequest) {
       const result = await fetchWithRetry(() =>
         model.generateContent({
           contents: [{ role: 'user', parts: [{ text: imagePrompt }] }],
-          generationConfig: {
-            responseMimeType: 'image/png',
-          },
         } as any)
       );
 
