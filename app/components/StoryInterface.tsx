@@ -551,7 +551,6 @@ export const StoryInterface: React.FC<StoryInterfaceProps> = ({
       const endIndex = endMatch ? startIndex + endMatch.index! : text.length;
       return text.slice(startIndex, endIndex).trim();
     };
-    const escapeRegExp = (value: string) => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     const extractChapterBlock = () => {
       const volumeHeader = new RegExp(`###\\s*【?Vol\\.${volume}[^\\n]*`, 'i');
       const chapterHeader = new RegExp(`\\*\\*?Chapter\\s+${chapter}\\s*:\\s*([^\\n]+)`, 'i');
@@ -564,7 +563,7 @@ export const StoryInterface: React.FC<StoryInterfaceProps> = ({
       const chapterStart = volumeText.indexOf(chapterMatch[0]);
       if (chapterStart === -1) return '';
       const afterChapter = volumeText.slice(chapterStart + chapterMatch[0].length);
-      const nextChapter = afterChapter.match(/\\*\\*?Chapter\\s+\\d+\\s*:/i);
+      const nextChapter = afterChapter.match(new RegExp('\\\\*\\\\*?Chapter\\\\s+\\\\d+\\\\s*:', 'i'));
       const endIndex = nextChapter ? chapterStart + chapterMatch[0].length + nextChapter.index! : volumeText.length;
       return volumeText.slice(chapterStart, endIndex).trim();
     };
@@ -574,7 +573,10 @@ export const StoryInterface: React.FC<StoryInterfaceProps> = ({
     const merit = getLineValue('Merit') || getLineValue('強み');
     const demerit = getLineValue('Demerit') || getLineValue('弱み');
 
-    const charactersBlock = getBlock(/###\\s+CHARACTERS|【CHARACTERS\\s*\\/\\s*キャラクター設定】/i, /###\\s+DEVELOPMENT ROADMAP|【DEVELOPMENT ROADMAP\\s*\\/\\s*執筆ロードマップ】/i);
+    const charactersBlock = getBlock(
+      new RegExp('###\\\\s+CHARACTERS|【CHARACTERS\\\\s*/\\\\s*キャラクター設定】', 'i'),
+      new RegExp('###\\\\s+DEVELOPMENT ROADMAP|【DEVELOPMENT ROADMAP\\\\s*/\\\\s*執筆ロードマップ】', 'i')
+    );
 
     const volumeTitleMatch = text.match(new RegExp(`####\\s*Vol\\.${volume}:\\s*([^\\n]+)`));
     const volumeTitle = volumeTitleMatch?.[1]?.trim() || '';
@@ -583,8 +585,8 @@ export const StoryInterface: React.FC<StoryInterfaceProps> = ({
     const chapterTitle = chapterTitleMatch?.[1]?.trim() || '';
 
     const chapterBlock = extractChapterBlock();
-    const mangaMatch = chapterBlock.match(/\\*\\*?マンガ\\*\\*?[:：]\\s*([\\s\\S]+?)(?:\\n\\s*\\*\\*?解説\\*\\*?|$)/);
-    const commentaryMatch = chapterBlock.match(/\\*\\*?解説\\*\\*?[:：]\\s*([\\s\\S]+?)(?:\\n\\s*\\*\\*?Chapter|$)/);
+    const mangaMatch = chapterBlock.match(new RegExp('\\\\*\\\\*?マンガ\\\\*\\\\*?[:：]\\\\s*([\\\\s\\\\S]+?)(?:\\\\n\\\\s*\\\\*\\\\*?解説\\\\*\\\\*?|$)'));
+    const commentaryMatch = chapterBlock.match(new RegExp('\\\\*\\\\*?解説\\\\*\\\\*?[:：]\\\\s*([\\\\s\\\\S]+?)(?:\\\\n\\\\s*\\\\*\\\\*?Chapter|$)'));
     const draftManga = mangaMatch?.[1]?.trim() || '';
     const draftCommentary = commentaryMatch?.[1]?.trim() || '';
 
