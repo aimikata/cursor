@@ -172,8 +172,8 @@ const WorldviewInputForm = ({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!title || !coreConcept || !protagonistIdea || !firstEpisodeHook) {
-      alert("すべての項目を入力してください。");
+    if (!title || !coreConcept) {
+      alert("タイトルと世界観は入力してください。");
       return;
     }
     onSubmit({ title, coreConcept, protagonistIdea, firstEpisodeHook });
