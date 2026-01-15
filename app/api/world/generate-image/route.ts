@@ -34,8 +34,10 @@ async function fetchWithRetry<T>(fn: () => Promise<T>, maxRetries = 5, initialDe
 }
 
 export async function POST(req: NextRequest) {
+  let character: { name?: string; englishName?: string; visualTags?: string } | undefined;
   try {
-    const { character, artStylePrompt, apiKey } = await req.json();
+    const { character: characterPayload, artStylePrompt, apiKey } = await req.json();
+    character = characterPayload;
     
     // リクエストボディからAPIキーを取得、なければ環境変数を使用
     // 画像生成用のキーを優先的に使用
@@ -65,7 +67,7 @@ export async function POST(req: NextRequest) {
         HEALTHY, BEAUTIFUL, AND CHARMING FACE. NO DARK CIRCLES, NO TIRED EYES, NO EXHAUSTION.
         THE CHARACTER IS STANDING STRAIGHT IN AN EMPTY SPACE. 
         Clean, high-quality professional manga line art. 
-        Physical appearance and clothing: ${character.visualTags}.
+        Physical appearance and clothing: ${character?.visualTags}.
         Art Style: ${artStylePrompt}.
       `;
       
@@ -89,8 +91,8 @@ export async function POST(req: NextRequest) {
     }
 
     return NextResponse.json({ 
-      characterName: character.name,
-      characterEnglishName: character.englishName,
+      characterName: character?.name,
+      characterEnglishName: character?.englishName,
       fullBodyDesigns: designs 
     });
   } catch (error: any) {
