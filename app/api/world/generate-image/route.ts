@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
-const IMAGE_MODEL = 'gemini-3.0-pro';
+const IMAGE_MODEL = 'gemini-2.5-flash-image';
 
 // 429エラー対策のリトライ関数（RetryInfoを尊重）
 async function fetchWithRetry<T>(fn: () => Promise<T>, maxRetries = 5, initialDelay = 2000): Promise<T> {
@@ -70,7 +70,7 @@ export async function POST(req: NextRequest) {
       
       const result = await fetchWithRetry(() =>
         model.generateContent({
-          contents: imagePrompt,
+          contents: [{ role: 'user', parts: [{ text: imagePrompt }] }],
           generationConfig: {
             responseMimeType: 'image/png',
           },
