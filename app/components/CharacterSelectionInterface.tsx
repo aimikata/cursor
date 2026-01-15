@@ -237,7 +237,6 @@ export const CharacterSelectionInterface: React.FC<CharacterSelectionInterfacePr
                         <span className="text-gray-300 font-bold text-sm">任意</span>
                       </div>
                     ) : null}
-                    )}
                   </div>
                 </div>
 
