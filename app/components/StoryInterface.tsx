@@ -551,6 +551,23 @@ export const StoryInterface: React.FC<StoryInterfaceProps> = ({
       const endIndex = endMatch ? startIndex + endMatch.index! : text.length;
       return text.slice(startIndex, endIndex).trim();
     };
+    const escapeRegExp = (value: string) => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const extractChapterBlock = () => {
+      const volumeHeader = new RegExp(`###\\s*【?Vol\\.${volume}[^\\n]*`, 'i');
+      const chapterHeader = new RegExp(`\\*\\*?Chapter\\s+${chapter}\\s*:\\s*([^\\n]+)`, 'i');
+      const chapterLine = new RegExp(`Chapter\\s+${chapter}\\s*:\\s*([^\\n]+)`, 'i');
+      const volumeMatch = text.match(volumeHeader);
+      const startIndex = volumeMatch ? text.indexOf(volumeMatch[0]) : 0;
+      const volumeText = text.slice(startIndex);
+      const chapterMatch = volumeText.match(chapterHeader) || volumeText.match(chapterLine);
+      if (!chapterMatch) return '';
+      const chapterStart = volumeText.indexOf(chapterMatch[0]);
+      if (chapterStart === -1) return '';
+      const afterChapter = volumeText.slice(chapterStart + chapterMatch[0].length);
+      const nextChapter = afterChapter.match(/\\*\\*?Chapter\\s+\\d+\\s*:/i);
+      const endIndex = nextChapter ? chapterStart + chapterMatch[0].length + nextChapter.index! : volumeText.length;
+      return volumeText.slice(chapterStart, endIndex).trim();
+    };
 
     const seriesTitle = getLineValue('TITLE') || getLineValue('【TITLE / シリーズタイトル】');
     const coreRule = getLineValue('Core Rule') || getLineValue('核心ルール');
@@ -565,6 +582,12 @@ export const StoryInterface: React.FC<StoryInterfaceProps> = ({
     const chapterTitleMatch = text.match(new RegExp(`Chapter\\s*${chapter}\\s*:\\s*([^\\n]+)`));
     const chapterTitle = chapterTitleMatch?.[1]?.trim() || '';
 
+    const chapterBlock = extractChapterBlock();
+    const mangaMatch = chapterBlock.match(/\\*\\*?マンガ\\*\\*?[:：]\\s*([\\s\\S]+?)(?:\\n\\s*\\*\\*?解説\\*\\*?|$)/);
+    const commentaryMatch = chapterBlock.match(/\\*\\*?解説\\*\\*?[:：]\\s*([\\s\\S]+?)(?:\\n\\s*\\*\\*?Chapter|$)/);
+    const draftManga = mangaMatch?.[1]?.trim() || '';
+    const draftCommentary = commentaryMatch?.[1]?.trim() || '';
+
     return {
       seriesTitle,
       coreRule,
@@ -573,6 +596,8 @@ export const StoryInterface: React.FC<StoryInterfaceProps> = ({
       characterSetting: charactersBlock || '',
       volumeTitle,
       chapterTitle,
+      draftManga,
+      draftCommentary,
     };
   }, []);
 
@@ -593,6 +618,8 @@ export const StoryInterface: React.FC<StoryInterfaceProps> = ({
         return next;
       });
     }
+    if (parsed.draftManga) setMasterDraftManga(parsed.draftManga);
+    if (parsed.draftCommentary) setMasterDraftCommentary(parsed.draftCommentary);
   }, [episodes.length, parseMasterFromWorldSetting, startEpisodeNumber, volumeNumber]);
 
   const isSerializedMode = generationMode === 'series' || generationMode === 'chapter';
