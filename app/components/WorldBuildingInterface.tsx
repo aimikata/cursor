@@ -470,6 +470,22 @@ export const WorldBuildingInterface: React.FC<WorldBuildingInterfaceProps> = ({ 
   const [savedReports, setSavedReports] = useState<SavedReport[]>([]);
   const [showReportsPanel, setShowReportsPanel] = useState(false);
 
+  const normalizeWorldReportData = useCallback((report: SavedReport) => {
+    if (report.type !== 'world' || !report.data) return null;
+    const data = report.data as any;
+    if (data?.detailedSetting) {
+      return {
+        setting: data.detailedSetting as DetailedSetting,
+        genreId: data.genreId as string | undefined,
+        targetMarket: data.targetMarket as TargetMarket | undefined,
+      };
+    }
+    if (data?.seriesTitle && data?.worldview) {
+      return { setting: data as DetailedSetting };
+    }
+    return null;
+  }, []);
+
   // セミオートモード：初期データからジャンルとステップを設定
   useEffect(() => {
     if (isSemiAutoMode && initialData) {
@@ -500,6 +516,16 @@ export const WorldBuildingInterface: React.FC<WorldBuildingInterfaceProps> = ({ 
     setProposalData(null);
     setIsLoading(false);
     setError(null);
+  };
+
+  const handleBackToStep3 = () => {
+    setError(null);
+    setIsLoading(false);
+    if (detailedSetting) {
+      setStep(3);
+      return;
+    }
+    setStep(1);
   };
 
   const handleGenreSelect = (genre: Genre) => {
@@ -741,21 +767,34 @@ export const WorldBuildingInterface: React.FC<WorldBuildingInterfaceProps> = ({ 
       type: 'world',
       title: detailedSetting.seriesTitle || '世界観レポート',
       content: text,
-      data: detailedSetting,
+      data: {
+        detailedSetting,
+        genreId: selectedGenre?.id,
+        targetMarket,
+      },
     });
     setSavedReports(getAllReports());
     alert('レポートを保存しました。');
-  }, [detailedSetting, generateReportText]);
+  }, [detailedSetting, generateReportText, selectedGenre, targetMarket]);
 
   // 保存されたレポートを読み込む
   const handleLoadReport = useCallback((report: SavedReport) => {
-    if (report.data && report.type === 'world') {
-      setDetailedSetting(report.data);
-      setStep(3);
-      setShowReportsPanel(false);
-      alert('レポートを読み込みました。');
+    const normalized = normalizeWorldReportData(report);
+    if (!normalized) return;
+    setDetailedSetting(normalized.setting);
+    if (normalized.genreId) {
+      const genre = GENRES.find(g => g.id === normalized.genreId);
+      if (genre) setSelectedGenre(genre);
+    } else if (!selectedGenre && GENRES.length > 0) {
+      setSelectedGenre(GENRES[0]);
     }
-  }, []);
+    if (normalized.targetMarket) {
+      setTargetMarket(normalized.targetMarket);
+    }
+    setStep(3);
+    setShowReportsPanel(false);
+    alert('レポートを読み込みました。');
+  }, [normalizeWorldReportData, selectedGenre]);
 
   // レポート一覧を更新
   useEffect(() => {
@@ -891,8 +930,9 @@ export const WorldBuildingInterface: React.FC<WorldBuildingInterfaceProps> = ({ 
                         {onProceedToStory && report.data && (
                           <button
                             onClick={() => {
-                              if (report.data && report.type === 'world') {
-                                const setting = report.data as DetailedSetting;
+                              const normalized = normalizeWorldReportData(report);
+                              if (normalized) {
+                                const setting = normalized.setting;
                                 const storyInput = {
                                   world_setting: JSON.stringify(setting, null, 2),
                                 characters: [setting.protagonist, ...setting.rivals, ...(setting.supportingCharacters || [])].map((c, idx) => ({
@@ -981,7 +1021,14 @@ export const WorldBuildingInterface: React.FC<WorldBuildingInterfaceProps> = ({ 
     if (error) return (
       <div className="text-center p-12 bg-red-900/10 border border-red-500/20 rounded-[3rem] m-10">
         <p className="text-red-400 font-bold mb-4">{error}</p>
-        <button onClick={handleReset} className="px-8 py-3 bg-red-600 text-white rounded-full font-black text-xs uppercase">戻る</button>
+        <div className="flex items-center justify-center space-x-4">
+          {detailedSetting && (
+            <button onClick={handleBackToStep3} className="px-8 py-3 bg-indigo-600 text-white rounded-full font-black text-xs uppercase">
+              STEP3へ戻る
+            </button>
+          )}
+          <button onClick={handleReset} className="px-8 py-3 bg-red-600 text-white rounded-full font-black text-xs uppercase">最初から</button>
+        </div>
       </div>
     );
 
@@ -1264,6 +1311,13 @@ export const WorldBuildingInterface: React.FC<WorldBuildingInterfaceProps> = ({ 
                 <span>戻る</span>
               </button>
             )}
+            <button
+              onClick={() => setShowReportsPanel(true)}
+              className="px-10 py-4 rounded-full bg-blue-900/40 hover:bg-blue-800/60 text-[10px] font-black uppercase tracking-[0.3em] transition-all border border-blue-800 flex items-center space-x-2"
+            >
+              <Folder className="w-4 h-4" />
+              <span>保存済みレポート</span>
+            </button>
             <button onClick={handleReset} className="px-10 py-4 rounded-full bg-gray-900 hover:bg-gray-800 text-[10px] font-black uppercase tracking-[0.3em] transition-all border border-gray-800">Restart</button>
           </div>
         </header>
