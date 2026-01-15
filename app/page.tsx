@@ -853,13 +853,29 @@ const MangaHubScreen = ({ user, onBack }: { user: User, onBack: () => void }) =>
                           </div>
                           <div className="flex space-x-2">
                             <button
-                              onClick={() => {
-                                setShowReportsPanel(false);
-                                setShowWorldBuilding(true);
+                              onClick={async () => {
+                                try {
+                                  await navigator.clipboard.writeText(report.content);
+                                  setCopiedReportId(report.id);
+                                  setTimeout(() => setCopiedReportId(null), 2000);
+                                } catch (err) {
+                                  console.error('Failed to copy:', err);
+                                  alert('コピーに失敗しました。');
+                                }
                               }}
-                              className="px-3 py-1 bg-indigo-600 hover:bg-indigo-500 rounded text-white text-xs font-bold"
+                              className="px-3 py-1 bg-indigo-600 hover:bg-indigo-500 rounded text-white text-xs font-bold flex items-center space-x-1"
                             >
-                              開く
+                              {copiedReportId === report.id ? (
+                                <>
+                                  <Check className="w-3 h-3" />
+                                  <span>コピー済み</span>
+                                </>
+                              ) : (
+                                <>
+                                  <Copy className="w-3 h-3" />
+                                  <span>コピー</span>
+                                </>
+                              )}
                             </button>
                             <button
                               onClick={() => {
@@ -892,13 +908,29 @@ const MangaHubScreen = ({ user, onBack }: { user: User, onBack: () => void }) =>
                           </div>
                           <div className="flex space-x-2">
                             <button
-                              onClick={() => {
-                                setShowReportsPanel(false);
-                                setShowStory(true);
+                              onClick={async () => {
+                                try {
+                                  await navigator.clipboard.writeText(report.content);
+                                  setCopiedReportId(report.id);
+                                  setTimeout(() => setCopiedReportId(null), 2000);
+                                } catch (err) {
+                                  console.error('Failed to copy:', err);
+                                  alert('コピーに失敗しました。');
+                                }
                               }}
-                              className="px-3 py-1 bg-indigo-600 hover:bg-indigo-500 rounded text-white text-xs font-bold"
+                              className="px-3 py-1 bg-indigo-600 hover:bg-indigo-500 rounded text-white text-xs font-bold flex items-center space-x-1"
                             >
-                              開く
+                              {copiedReportId === report.id ? (
+                                <>
+                                  <Check className="w-3 h-3" />
+                                  <span>コピー済み</span>
+                                </>
+                              ) : (
+                                <>
+                                  <Copy className="w-3 h-3" />
+                                  <span>コピー</span>
+                                </>
+                              )}
                             </button>
                             <button
                               onClick={() => {
