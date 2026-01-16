@@ -469,6 +469,7 @@ export const WorldBuildingInterface: React.FC<WorldBuildingInterfaceProps> = ({ 
   const [worldGenerationResult, setWorldGenerationResult] = useState<WorldGenerationResult | null>(null);
   const [savedReports, setSavedReports] = useState<SavedReport[]>([]);
   const [showReportsPanel, setShowReportsPanel] = useState(false);
+  const [deferImageGeneration, setDeferImageGeneration] = useState(false);
 
   const normalizeWorldReportData = useCallback((report: SavedReport) => {
     if (report.type !== 'world' || !report.data) return null;
@@ -634,7 +635,7 @@ export const WorldBuildingInterface: React.FC<WorldBuildingInterfaceProps> = ({ 
     const requiredCharacters = characters.filter(char => !isOptionalRole(char.roleType || char.relationshipWithProtagonist));
     const allGenerated = requiredCharacters.every(char => allCharacterImages.has(char.name));
 
-    if (!allGenerated) {
+    if (!deferImageGeneration && !allGenerated) {
       alert('必須キャラクターの画像を生成してください。');
       return;
     }
@@ -658,7 +659,7 @@ export const WorldBuildingInterface: React.FC<WorldBuildingInterfaceProps> = ({ 
 
     setWorldGenerationResult(worldResult);
     setShowCharacterSelection(true);
-  }, [detailedSetting, allCharacterImages]);
+  }, [detailedSetting, allCharacterImages, deferImageGeneration]);
 
   // 画像選択完了時の処理
   const handleSelectionComplete = useCallback((storyData: StoryGenerationData, imageRefs: ImageReferenceMap) => {
@@ -1012,6 +1013,7 @@ export const WorldBuildingInterface: React.FC<WorldBuildingInterfaceProps> = ({ 
         onComplete={handleSelectionComplete}
         onClose={() => setShowCharacterSelection(false)}
         onProceedToStory={onProceedToStory}
+        allowSkipSelection={deferImageGeneration}
       />
     );
   }
@@ -1247,6 +1249,22 @@ export const WorldBuildingInterface: React.FC<WorldBuildingInterfaceProps> = ({ 
               <div className="lg:col-span-4">
                 <div className="sticky top-32 space-y-10">
                   <h3 className="text-3xl font-black text-white border-l-8 border-indigo-600 pl-8 uppercase tracking-widest text-center lg:text-left">立ち絵ビジュアライザー</h3>
+                  <div className="bg-gray-900/60 p-6 rounded-2xl border border-gray-800">
+                    <label className="flex items-start space-x-3 text-sm text-gray-200">
+                      <input
+                        type="checkbox"
+                        checked={deferImageGeneration}
+                        onChange={(e) => setDeferImageGeneration(e.target.checked)}
+                        className="mt-1 h-4 w-4 rounded border-gray-600 bg-gray-800 text-indigo-500 focus:ring-indigo-500"
+                      />
+                      <span>
+                        画像生成を後回しにする（クォータ節約）
+                        <span className="block text-xs text-gray-400 mt-1">
+                          後回しにすると、画像なしで次の工程へ進めます。
+                        </span>
+                      </span>
+                    </label>
+                  </div>
                   <div className="bg-gray-900 p-10 rounded-[3rem] border border-gray-800 shadow-2xl">
                     <CharacterVisualizer 
                       setting={s} 
@@ -1258,23 +1276,34 @@ export const WorldBuildingInterface: React.FC<WorldBuildingInterfaceProps> = ({ 
                   
                   {/* 画像選択画面へ進むボタン */}
                   <div className="bg-indigo-900/20 p-6 rounded-2xl border border-indigo-500/30">
-                    <p className="text-sm text-gray-300 mb-4">
-                      {allCharacterImages.size} / {[s.protagonist, ...s.rivals, ...(s.supportingCharacters || [])].length} キャラクターの画像を生成済み
-                    </p>
-                    <button
-                      onClick={handleProceedToSelection}
-                      disabled={allCharacterImages.size < [s.protagonist, ...s.rivals, ...(s.supportingCharacters || [])].length}
-                      className={`w-full py-4 px-6 rounded-xl font-black text-sm uppercase tracking-widest transition-all ${
-                        allCharacterImages.size >= [s.protagonist, ...s.rivals, ...(s.supportingCharacters || [])].length
-                          ? 'bg-indigo-600 hover:bg-indigo-500 text-white shadow-2xl shadow-indigo-600/30'
-                          : 'bg-gray-700 text-gray-500 cursor-not-allowed'
-                      }`}
-                    >
-                      {allCharacterImages.size >= [s.protagonist, ...s.rivals, ...(s.supportingCharacters || [])].length
-                        ? '画像選択画面へ進む →'
-                        : 'すべてのキャラクターの画像を生成してください'
-                      }
-                    </button>
+                    {(() => {
+                      const allCharacters = [s.protagonist, ...s.rivals, ...(s.supportingCharacters || [])];
+                      const isOptionalRole = (role?: string) => !!role && /(家族|同僚|family|coworker|colleague)/i.test(role);
+                      const requiredCharacters = allCharacters.filter(char => !isOptionalRole(char.roleType || char.relationshipWithProtagonist));
+                      const generatedRequiredCount = requiredCharacters.filter(char => allCharacterImages.has(char.name)).length;
+                      const canProceed = deferImageGeneration || generatedRequiredCount >= requiredCharacters.length;
+                      return (
+                        <>
+                          <p className="text-sm text-gray-300 mb-4">
+                            {generatedRequiredCount} / {requiredCharacters.length} 必須キャラクターの画像を生成済み
+                          </p>
+                          <button
+                            onClick={handleProceedToSelection}
+                            disabled={!canProceed}
+                            className={`w-full py-4 px-6 rounded-xl font-black text-sm uppercase tracking-widest transition-all ${
+                              canProceed
+                                ? 'bg-indigo-600 hover:bg-indigo-500 text-white shadow-2xl shadow-indigo-600/30'
+                                : 'bg-gray-700 text-gray-500 cursor-not-allowed'
+                            }`}
+                          >
+                            {canProceed
+                              ? '画像選択画面へ進む →'
+                              : '必須キャラクターの画像を生成してください'
+                            }
+                          </button>
+                        </>
+                      );
+                    })()}
                   </div>
                 </div>
               </div>

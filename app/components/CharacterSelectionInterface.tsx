@@ -22,6 +22,7 @@ interface CharacterSelectionInterfaceProps {
       description: string;
     }>;
   }) => void;
+  allowSkipSelection?: boolean;
 }
 
 export const CharacterSelectionInterface: React.FC<CharacterSelectionInterfaceProps> = ({
@@ -29,6 +30,7 @@ export const CharacterSelectionInterface: React.FC<CharacterSelectionInterfacePr
   onComplete,
   onClose,
   onProceedToStory,
+  allowSkipSelection = false,
 }) => {
   const [selectedImages, setSelectedImages] = useState<Map<string, SelectedCharacterImage>>(new Map());
   const [uploadedImages, setUploadedImages] = useState<Map<string, string>>(new Map());
@@ -105,8 +107,8 @@ export const CharacterSelectionInterface: React.FC<CharacterSelectionInterfacePr
   );
 
   // データ整形と確定処理
-  const handleConfirm = useCallback(() => {
-    if (!allCharactersSelected) {
+  const handleConfirm = useCallback((forceProceed = false) => {
+    if (!forceProceed && !allCharactersSelected) {
       alert('必須キャラクターの画像を選択してください。');
       return;
     }
@@ -150,7 +152,7 @@ export const CharacterSelectionInterface: React.FC<CharacterSelectionInterfacePr
       };
       onProceedToStory(storyInput);
     }
-  }, [worldData, selectedImages, allCharactersSelected, onComplete]);
+  }, [worldData, selectedImages, allCharactersSelected, onComplete, onProceedToStory]);
 
   // JSONファイルをダウンロード
   const handleDownloadJson = useCallback((data: any, filename: string) => {
@@ -364,6 +366,11 @@ export const CharacterSelectionInterface: React.FC<CharacterSelectionInterfacePr
                   </span>
                 )}
               </div>
+              {allowSkipSelection && !allCharactersSelected && (
+                <span className="text-xs text-gray-400">
+                  画像は後で追加できます（今は未選択でも進行可）
+                </span>
+              )}
             </div>
             <div className="flex space-x-4">
               <button
@@ -384,8 +391,17 @@ export const CharacterSelectionInterface: React.FC<CharacterSelectionInterfacePr
                 <FileText className="w-4 h-4" />
                 <span className="text-sm font-bold">ストーリー用データをダウンロード</span>
               </button>
+              {allowSkipSelection && !allCharactersSelected && (
+                <button
+                  onClick={() => handleConfirm(true)}
+                  className="flex items-center space-x-4 px-10 py-4 rounded-full font-black text-sm uppercase tracking-widest transition-all bg-indigo-900/60 hover:bg-indigo-800 text-white"
+                >
+                  <span>画像なしで次へ</span>
+                  <ChevronRight className="w-5 h-5" />
+                </button>
+              )}
               <button
-                onClick={handleConfirm}
+                onClick={() => handleConfirm(false)}
                 disabled={!allCharactersSelected}
                 className={`flex items-center space-x-4 px-10 py-4 rounded-full font-black text-sm uppercase tracking-widest transition-all ${
                   allCharactersSelected
