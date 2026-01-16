@@ -422,8 +422,6 @@ const ConceptProposalSection = ({
   appState,
   selectedTopic,
   selectedGenre,
-  onSaveReport,
-  onShowReportsPanel,
 }: {
   onCreateConcept: () => void;
   conceptResult: string;
