@@ -984,16 +984,6 @@ const MangaHubScreen = ({ user, onBack }: { user: User, onBack: () => void }) =>
                       <span className="ml-1 px-2 py-0.5 bg-purple-700 rounded text-xs">✓</span>
                     )}
                   </button>
-                  <button
-                    onClick={() => {
-                      setSavedReports(getAllReports());
-                      setShowReportsPanel(!showReportsPanel);
-                    }}
-                    className="flex items-center space-x-2 px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg font-bold text-sm shadow-md"
-                  >
-                    <Folder className="w-4 h-4" />
-                    <span>保存済みレポート ({savedReports.length})</span>
-                  </button>
                 </div>
               </div>
 

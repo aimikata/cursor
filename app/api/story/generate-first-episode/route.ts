@@ -1,8 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
-const PRIMARY_MODEL = 'gemini-2.5-flash';
-const FALLBACK_MODEL = 'gemini-2.5-flash';
+const MODELS_TO_TRY = ['gemini-2.5-flash-lite', 'gemini-2.5-flash', 'gemini-2.5'];
 
 // 429エラー対策のリトライ関数（RetryInfoを尊重）
 async function fetchWithRetry<T>(fn: () => Promise<T>, maxRetries = 5, initialDelay = 2000): Promise<T> {
@@ -137,35 +136,33 @@ DRAFT PLAN:
       : `世界観・設定: ${worldSetting}\n連載全体のテーマ・未回収リスト: ${storyTheme}\n第${resolvedEpisodeNumber}章タイトル案: ${episodeTitle || ''}\n登場人物:\n${charDetails}`;
     const prompt = `${baseContext}\n\n${modeInstruction}\n\n【厳守】\n- 登場人物は「提示された人物リスト」に含まれる固有名のみを使用すること（未定義の家族・同僚・友人を追加しない）。\n- 提示されたMASTER SHEETの項目構成に完全準拠すること。\n- episode_title は必ず「Vol.${resolvedVolumeNumber} Chapter ${resolvedEpisodeNumber}: <章タイトル>」の形式で出力すること。\n- 章タイトルは指定があればそれを優先し、未指定なら文脈に合うタイトルを付与すること。\n- 物語パートは「情熱的で没入感のある描写」。解説パートは「大学院レベルの高度な分析」。\n\n第${resolvedEpisodeNumber}章を「日本語」で執筆してください。`;
 
-    let usedModel = PRIMARY_MODEL;
+    let usedModel = MODELS_TO_TRY[0];
     let result: any;
+    let lastError: any;
 
-    try {
-      const model = genAI.getGenerativeModel({ model: PRIMARY_MODEL });
-      result = await fetchWithRetry(() =>
-        model.generateContent({
-          contents: [{ role: 'user', parts: [{ text: prompt }] }],
-          generationConfig: {
-            responseMimeType: 'application/json',
-            responseSchema: seriesResponseSchema as any,
-          },
-          systemInstruction: SYSTEM_INSTRUCTION,
-        } as any)
-      );
-    } catch (error: any) {
-      console.warn('Primary model failed, trying fallback:', error);
-      const fallbackModel = genAI.getGenerativeModel({ model: FALLBACK_MODEL });
-      usedModel = FALLBACK_MODEL;
-      result = await fetchWithRetry(() =>
-        fallbackModel.generateContent({
-          contents: [{ role: 'user', parts: [{ text: prompt }] }],
-          generationConfig: {
-            responseMimeType: 'application/json',
-            responseSchema: seriesResponseSchema as any,
-          },
-          systemInstruction: SYSTEM_INSTRUCTION,
-        } as any)
-      );
+    for (const modelName of MODELS_TO_TRY) {
+      try {
+        const model = genAI.getGenerativeModel({ model: modelName });
+        result = await fetchWithRetry(() =>
+          model.generateContent({
+            contents: [{ role: 'user', parts: [{ text: prompt }] }],
+            generationConfig: {
+              responseMimeType: 'application/json',
+              responseSchema: seriesResponseSchema as any,
+            },
+            systemInstruction: SYSTEM_INSTRUCTION,
+          } as any)
+        );
+        usedModel = modelName;
+        break;
+      } catch (error: any) {
+        lastError = error;
+        console.warn(`Model ${modelName} failed:`, error);
+      }
+    }
+
+    if (!result) {
+      throw lastError;
     }
 
     const response = await result.response;

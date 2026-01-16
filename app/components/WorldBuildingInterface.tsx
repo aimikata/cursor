@@ -6,7 +6,7 @@ import {
   CharacterSetting, TargetMarket, VolumeDetail 
 } from '@/app/lib/world/types';
 import { GENRES } from '@/app/lib/world/constants';
-import { saveReport, getAllReports, deleteReport, SavedReport, downloadAllReportsAsZip } from '@/app/lib/report-manager';
+import { getAllReports, deleteReport, SavedReport, downloadAllReportsAsZip } from '@/app/lib/report-manager';
 import { getApiKey, ApiKeyType } from '@/app/lib/api-keys';
 
 // リサーチツールのジャンル名を世界観構築ツールのGenreオブジェクトにマッピング
@@ -698,6 +698,24 @@ export const WorldBuildingInterface: React.FC<WorldBuildingInterfaceProps> = ({ 
     text += `${s.unresolvedList}\n\n`;
 
     text += `============================================================\n`;
+    text += `【WORLDVIEW DETAILS / 世界観詳細】\n`;
+    text += `### Key Locations / 主要ロケーション\n`;
+    s.worldview.keyLocations.forEach((loc, idx) => {
+      text += `- ${idx + 1}. ${loc.name}\n`;
+      text += `  - Historical Background: ${loc.historicalBackground}\n`;
+      text += `  - Structural Features: ${loc.structuralFeatures}\n`;
+    });
+    text += `\n`;
+    text += `### Organizations / 組織\n`;
+    s.worldview.organizations.forEach((org, idx) => {
+      text += `- ${idx + 1}. ${org.name}\n`;
+      text += `  - Purpose: ${org.purpose}\n`;
+      text += `  - Conflict: ${org.conflictRelationship}\n`;
+      text += `  - Hierarchy: ${org.hierarchySystem}\n`;
+    });
+    text += `\n`;
+
+    text += `============================================================\n`;
     text += `【FULL VOLUME CONFIGURATION / 全巻深掘り構成】\n\n`;
 
     text += `### VOLUMES & CHAPTERS\n`;
@@ -758,24 +776,6 @@ export const WorldBuildingInterface: React.FC<WorldBuildingInterfaceProps> = ({ 
     document.body.removeChild(link);
     URL.revokeObjectURL(url);
   }, [detailedSetting, generateReportText]);
-
-  // レポートを保存
-  const handleSaveReport = useCallback(() => {
-    if (!detailedSetting) return;
-    const text = generateReportText(detailedSetting);
-    saveReport({
-      type: 'world',
-      title: detailedSetting.seriesTitle || '世界観レポート',
-      content: text,
-      data: {
-        detailedSetting,
-        genreId: selectedGenre?.id,
-        targetMarket,
-      },
-    });
-    setSavedReports(getAllReports());
-    alert('レポートを保存しました。');
-  }, [detailedSetting, generateReportText, selectedGenre, targetMarket]);
 
   // 保存されたレポートを読み込む
   const handleLoadReport = useCallback((report: SavedReport) => {
@@ -1175,14 +1175,6 @@ export const WorldBuildingInterface: React.FC<WorldBuildingInterfaceProps> = ({ 
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center bg-gray-900/90 p-8 rounded-[2.5rem] border border-gray-800 sticky top-4 z-20 shadow-2xl backdrop-blur-2xl space-y-4 md:space-y-0">
               <StepHeader step={3} title="マスターシート完成 (極限深掘り)" icon={<Sparkles className="w-6 h-6"/>} />
               <div className="flex space-x-4">
-                <button onClick={handleSaveReport} className="flex items-center justify-center space-x-4 py-5 px-10 rounded-full font-black text-xs uppercase tracking-widest transition-all bg-purple-600 hover:bg-purple-500 shadow-purple-600/20 shadow-xl text-white">
-                  <FileText className="w-4 h-4"/>
-                  <span>レポートを保存</span>
-                </button>
-                <button onClick={() => setShowReportsPanel(true)} className="flex items-center justify-center space-x-4 py-5 px-10 rounded-full font-black text-xs uppercase tracking-widest transition-all bg-blue-600 hover:bg-blue-500 shadow-blue-600/20 shadow-xl text-white">
-                  <Folder className="w-4 h-4"/>
-                  <span>保存済みレポート</span>
-                </button>
                 <button onClick={handleCopySettings} className={`flex items-center justify-center space-x-4 py-5 px-10 rounded-full font-black text-xs uppercase tracking-widest transition-all ${copyStatus === 'copied' ? 'bg-green-600' : 'bg-indigo-600 hover:bg-indigo-500 shadow-indigo-600/20 shadow-xl'} text-white`}>
                   <FileText className="w-4 h-4"/>
                   <span>{copyStatus === 'copied' ? 'コピー完了!' : '設定を全文コピー'}</span>
@@ -1311,13 +1303,6 @@ export const WorldBuildingInterface: React.FC<WorldBuildingInterfaceProps> = ({ 
                 <span>戻る</span>
               </button>
             )}
-            <button
-              onClick={() => setShowReportsPanel(true)}
-              className="px-10 py-4 rounded-full bg-blue-900/40 hover:bg-blue-800/60 text-[10px] font-black uppercase tracking-[0.3em] transition-all border border-blue-800 flex items-center space-x-2"
-            >
-              <Folder className="w-4 h-4" />
-              <span>保存済みレポート</span>
-            </button>
             <button onClick={handleReset} className="px-10 py-4 rounded-full bg-gray-900 hover:bg-gray-800 text-[10px] font-black uppercase tracking-[0.3em] transition-all border border-gray-800">Restart</button>
           </div>
         </header>

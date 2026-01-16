@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import { getTopicProposalPrompt } from '@/app/lib/research/constants';
 
-const FLASH_MODEL = 'gemini-2.5-flash';
+const MODELS_TO_TRY = ['gemini-2.5-flash-lite', 'gemini-2.5-flash', 'gemini-2.5'];
 
 // 429エラー対策のリトライ関数（RetryInfoを尊重）
 async function fetchWithRetry<T>(fn: () => Promise<T>, maxRetries = 5, initialDelay = 2000): Promise<T> {
@@ -79,16 +79,27 @@ export async function POST(req: NextRequest) {
     }
 
     const genAI = new GoogleGenerativeAI(geminiApiKey);
-    const model = genAI.getGenerativeModel({ model: FLASH_MODEL });
-    
+
     const prompt = getTopicProposalPrompt(genre, keyword, region);
-    const result = await fetchWithRetry(() => model.generateContent(prompt));
-    const response = await result.response;
-    const text = response.text();
+    let lastError: any;
 
-    const topics = parseResponseList(text);
+    for (const modelName of MODELS_TO_TRY) {
+      try {
+        const model = genAI.getGenerativeModel({ model: modelName });
+        const result = await fetchWithRetry(() => model.generateContent(prompt));
+        const response = await result.response;
+        const text = response.text();
 
-    return NextResponse.json({ topics });
+        const topics = parseResponseList(text);
+
+        return NextResponse.json({ topics, usedModel: modelName });
+      } catch (error: any) {
+        lastError = error;
+        console.warn(`Model ${modelName} failed:`, error);
+      }
+    }
+
+    throw lastError;
   } catch (error: any) {
     console.error('Error generating topics:', error);
     return NextResponse.json(

@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import type { GeneratedContent, AllImagePayloads } from '@/app/lib/amazon-assistant/types';
 
+const MODELS_TO_TRY = ['gemini-2.5-flash-lite', 'gemini-2.5-flash', 'gemini-2.5'];
+
 // 429エラー対策のリトライ関数（RetryInfoを尊重）
 async function fetchWithRetry<T>(fn: () => Promise<T>, maxRetries = 5, initialDelay = 2000): Promise<T> {
   let lastError: any;
@@ -59,7 +61,6 @@ export async function POST(req: NextRequest) {
     }
 
     const genAI = new GoogleGenerativeAI(geminiApiKey);
-    const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });
 
     const isEnglish = language === 'en';
     
@@ -161,90 +162,107 @@ export async function POST(req: NextRequest) {
       parts.push({ text: '[著者プロフィール画像]' });
     }
 
-    const response = await fetchWithRetry(() => model.generateContent({
-      contents: [{ role: 'user', parts }],
-      systemInstruction: SYSTEM_INSTRUCTION,
-      generationConfig: {
-        responseMimeType: 'application/json',
-        responseSchema: {
-          type: 'object',
-          properties: {
-            kdpDetails: {
+    let lastError: any;
+    for (const modelName of MODELS_TO_TRY) {
+      try {
+        const model = genAI.getGenerativeModel({ model: modelName });
+        const response = await fetchWithRetry(() => model.generateContent({
+          contents: [{ role: 'user', parts }],
+          systemInstruction: SYSTEM_INSTRUCTION,
+          generationConfig: {
+            responseMimeType: 'application/json',
+            responseSchema: {
               type: 'object',
               properties: {
-                language: { type: 'string' },
-                title: { type: 'string' },
-                titleKana: { type: 'string' },
-                titleRomaji: { type: 'string' },
-                subtitle: { type: 'string' },
-                subtitleKana: { type: 'string' },
-                subtitleRomaji: { type: 'string' },
-                seriesName: { type: 'string' },
-                seriesVolume: { type: 'string' },
-                author: { type: 'string' },
-                description: { type: 'string' },
-                publishingRights: { type: 'string' },
-                keywords: { type: 'array', items: { type: 'string' } },
-                categories: { type: 'array', items: { type: 'string' } },
-                adultContent: { type: 'string' },
-              },
-              required: ['language', 'title', 'description', 'keywords', 'categories'],
-            },
-            kdpContent: {
-              type: 'object',
-              properties: {
-                drm: { type: 'string' },
-                manuscriptFileName: { type: 'string' },
-                coverFileName: { type: 'string' },
-                aiGeneratedContent: { type: 'string' },
-              },
-            },
-            kdpPricing: {
-              type: 'object',
-              properties: {
-                kdpSelect: { type: 'string' },
-                marketplace: { type: 'string' },
-                territory: { type: 'string' },
-                royaltyPlan: { type: 'string' },
-                price: { type: 'string' },
-              },
-            },
-            aPlusContent: {
-              type: 'array',
-              items: {
-                type: 'object',
-                properties: {
-                  moduleName: { type: 'string' },
-                  purpose: { type: 'string' },
-                  imageSuggestion: { type: 'string' },
-                  bigHeadline: { type: 'string' },
-                  headline: { type: 'string' },
-                  description: { type: 'string' },
+                kdpDetails: {
+                  type: 'object',
+                  properties: {
+                    language: { type: 'string' },
+                    title: { type: 'string' },
+                    titleKana: { type: 'string' },
+                    titleRomaji: { type: 'string' },
+                    subtitle: { type: 'string' },
+                    subtitleKana: { type: 'string' },
+                    subtitleRomaji: { type: 'string' },
+                    seriesName: { type: 'string' },
+                    seriesVolume: { type: 'string' },
+                    author: { type: 'string' },
+                    description: { type: 'string' },
+                    publishingRights: { type: 'string' },
+                    keywords: { type: 'array', items: { type: 'string' } },
+                    categories: { type: 'array', items: { type: 'string' } },
+                    adultContent: { type: 'string' },
+                  },
+                  required: ['language', 'title', 'description', 'keywords', 'categories'],
+                },
+                kdpContent: {
+                  type: 'object',
+                  properties: {
+                    drm: { type: 'string' },
+                    manuscriptFileName: { type: 'string' },
+                    coverFileName: { type: 'string' },
+                    aiGeneratedContent: { type: 'string' },
+                  },
+                },
+                kdpPricing: {
+                  type: 'object',
+                  properties: {
+                    kdpSelect: { type: 'string' },
+                    marketplace: { type: 'string' },
+                    territory: { type: 'string' },
+                    royaltyPlan: { type: 'string' },
+                    price: { type: 'string' },
+                  },
+                },
+                aPlusContent: {
+                  type: 'array',
+                  items: {
+                    type: 'object',
+                    properties: {
+                      moduleName: { type: 'string' },
+                      purpose: { type: 'string' },
+                      imageSuggestion: { type: 'string' },
+                      bigHeadline: { type: 'string' },
+                      headline: { type: 'string' },
+                      description: { type: 'string' },
+                    },
+                  },
                 },
               },
-            },
+            } as any,
           },
-        } as any,
-      },
-    }));
+        }));
 
-    const responseText = response.response.text();
-    let cleanText = responseText.trim();
-    
-    // JSONの修復処理
-    if (cleanText.startsWith('```')) {
-      cleanText = cleanText.replace(/^```json\s*/, '').replace(/^```\s*/, '').replace(/\s*```$/, '');
+        const generatedText = response?.response?.text?.() ?? '';
+        let cleanText = generatedText.trim();
+
+        if (cleanText.startsWith('```')) {
+          cleanText = cleanText.replace(/^```json\s*/, '').replace(/^```\s*/, '').replace(/\s*```$/, '');
+        }
+
+        if (!cleanText) {
+          throw new Error('Empty response from model');
+        }
+
+        const startIdx = cleanText.indexOf('{');
+        const endIdx = cleanText.lastIndexOf('}');
+        if (startIdx !== -1 && endIdx !== -1) {
+          cleanText = cleanText.substring(startIdx, endIdx + 1);
+        }
+
+        const parsed = JSON.parse(cleanText);
+
+        return NextResponse.json({
+          ...parsed,
+          usedModel: modelName
+        } as GeneratedContent);
+      } catch (error: any) {
+        lastError = error;
+        console.warn(`Model ${modelName} failed:`, error);
+      }
     }
 
-    const startIdx = cleanText.indexOf('{');
-    const endIdx = cleanText.lastIndexOf('}');
-    if (startIdx !== -1 && endIdx !== -1) {
-      cleanText = cleanText.substring(startIdx, endIdx + 1);
-    }
-
-    const generatedContent: GeneratedContent = JSON.parse(cleanText);
-
-    return NextResponse.json(generatedContent);
+    throw lastError;
   } catch (error: any) {
     console.error('Error generating Amazon assistant content:', error);
     return NextResponse.json(

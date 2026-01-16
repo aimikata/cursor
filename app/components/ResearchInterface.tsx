@@ -6,7 +6,7 @@ import { GENRE_LIST } from '@/app/lib/research/constants';
 import { ArrowLeft, Download, RefreshCw, Sparkles, WandSparkles, FileText, BookMarked, ChartBar, Lightbulb, Copy, Folder, X, Package } from 'lucide-react';
 import { ApiKeyManager } from './ApiKeyManager';
 import { getApiKey, ApiKeyType } from '@/app/lib/api-keys';
-import { saveReport, getAllReports, deleteReport, SavedReport, downloadAllReportsAsZip } from '@/app/lib/report-manager';
+import { getAllReports, deleteReport, SavedReport, downloadAllReportsAsZip } from '@/app/lib/report-manager';
 
 // ==========================================
 // リサーチツールの型定義とコンポーネント
@@ -430,8 +430,6 @@ const ConceptProposalSection = ({
   appState: AppState;
   selectedTopic: string | null;
   selectedGenre: string | null;
-  onSaveReport?: () => void;
-  onShowReportsPanel?: () => void;
 }) => {
   const isReady = !!selectedTopic;
   const isLoading = appState === AppState.GENERATING_CONCEPT;
@@ -450,13 +448,6 @@ const ConceptProposalSection = ({
       console.error('Failed to copy:', err);
     }
   };
-
-  const handleSaveReportClick = () => {
-    if (onSaveReport) {
-      onSaveReport();
-    }
-  };
-
 
   const handleDownload = () => {
     if (!conceptResult) return;
@@ -520,20 +511,6 @@ const ConceptProposalSection = ({
           <MarkdownRenderer content={conceptResult} />
           
           <div className="mt-8 pt-6 border-t border-gray-700 flex flex-wrap justify-center gap-4">
-            <button
-              onClick={handleSaveReportClick}
-              className="flex items-center gap-2 text-white bg-purple-700 hover:bg-purple-600 py-2 px-6 rounded-full transition-all duration-300 shadow-md hover:shadow-lg"
-            >
-              <FileText className="h-4 w-4" />
-              <span>レポートを保存</span>
-            </button>
-            <button
-              onClick={() => onShowReportsPanel && onShowReportsPanel()}
-              className="flex items-center gap-2 text-white bg-blue-700 hover:bg-blue-600 py-2 px-6 rounded-full transition-all duration-300 shadow-md hover:shadow-lg"
-            >
-              <Folder className="h-4 w-4" />
-              <span>保存済みレポート</span>
-            </button>
             <button
               onClick={handleCopy}
               className={`flex items-center gap-2 py-2 px-6 rounded-full transition-all duration-300 shadow-md hover:shadow-lg ${
@@ -813,20 +790,6 @@ export const ResearchInterface = ({
     setTargetRegion(prev => prev === 'global' ? 'domestic' : 'global');
   };
 
-  // レポートを保存
-  const handleSaveReport = useCallback(() => {
-    if (!conceptResult) return;
-    const title = selectedTopic ? selectedTopic.split('\n')[0].replace(/^#+\s*/, '').substring(0, 50) : '企画レポート';
-    saveReport({
-      type: 'research',
-      title: title,
-      content: conceptResult,
-      data: { conceptResult, selectedTopic, selectedGenre },
-    });
-    setSavedReports(getAllReports());
-    alert('レポートを保存しました。');
-  }, [conceptResult, selectedTopic, selectedGenre]);
-
   // 保存されたレポートを読み込む
   const handleLoadReport = useCallback((report: SavedReport) => {
     if (report.data && report.type === 'research') {
@@ -1083,8 +1046,6 @@ export const ResearchInterface = ({
                 appState={appState}
                 selectedTopic={selectedTopic}
                 selectedGenre={selectedGenre}
-                onSaveReport={handleSaveReport}
-                onShowReportsPanel={() => setShowReportsPanel(true)}
               />
             </>
           )}

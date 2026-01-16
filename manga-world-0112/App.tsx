@@ -346,6 +346,24 @@ const App: React.FC = () => {
         text += `${s.unresolvedList}\n\n`;
 
         text += `============================================================\n`;
+        text += `【WORLDVIEW DETAILS / 世界観詳細】\n`;
+        text += `### Key Locations / 主要ロケーション\n`;
+        s.worldview.keyLocations.forEach((loc, idx) => {
+            text += `- ${idx + 1}. ${loc.name}\n`;
+            text += `  - Historical Background: ${loc.historicalBackground}\n`;
+            text += `  - Structural Features: ${loc.structuralFeatures}\n`;
+        });
+        text += `\n`;
+        text += `### Organizations / 組織\n`;
+        s.worldview.organizations.forEach((org, idx) => {
+            text += `- ${idx + 1}. ${org.name}\n`;
+            text += `  - Purpose: ${org.purpose}\n`;
+            text += `  - Conflict: ${org.conflictRelationship}\n`;
+            text += `  - Hierarchy: ${org.hierarchySystem}\n`;
+        });
+        text += `\n`;
+
+        text += `============================================================\n`;
         text += `【FULL VOLUME CONFIGURATION / 全巻深掘り構成】\n\n`;
 
         text += `### VOLUMES & CHAPTERS\n`;

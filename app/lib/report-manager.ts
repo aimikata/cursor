@@ -12,41 +12,24 @@ export interface SavedReport {
   updatedAt: number;
 }
 
-const STORAGE_KEY = 'manga_studio_reports';
-
-// すべてのレポートを取得
+// すべてのレポートを取得（保存は無効化）
 export function getAllReports(): SavedReport[] {
-  if (typeof window === 'undefined') return [];
-  try {
-    const reportsJson = localStorage.getItem(STORAGE_KEY);
-    if (reportsJson) {
-      return JSON.parse(reportsJson);
-    }
-  } catch (error) {
-    console.error('Failed to load reports from localStorage', error);
-  }
   return [];
 }
 
-// レポートを保存
+// レポートを保存（保存は無効化）
 export function saveReport(report: Omit<SavedReport, 'id' | 'createdAt' | 'updatedAt'>): SavedReport {
-  const reports = getAllReports();
-  const newReport: SavedReport = {
+  return {
     ...report,
     id: `report_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
     createdAt: Date.now(),
     updatedAt: Date.now(),
   };
-  reports.push(newReport);
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(reports));
-  return newReport;
 }
 
-// レポートを削除
-export function deleteReport(reportId: string): void {
-  const reports = getAllReports();
-  const filtered = reports.filter(r => r.id !== reportId);
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(filtered));
+// レポートを削除（保存は無効化）
+export function deleteReport(_reportId: string): void {
+  return;
 }
 
 // タイプ別にレポートを取得
@@ -56,7 +39,7 @@ export function getReportsByType(type: ReportType): SavedReport[] {
 
 // すべてのレポートを削除
 export function clearAllReports(): void {
-  localStorage.removeItem(STORAGE_KEY);
+  return;
 }
 
 // すべてのレポートをZIP形式でダウンロード（テキストファイルとして）

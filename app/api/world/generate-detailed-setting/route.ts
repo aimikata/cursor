@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
-const PRO_MODEL = 'gemini-2.5-flash';
+const MODELS_TO_TRY = ['gemini-2.5-flash-lite', 'gemini-2.5-flash', 'gemini-2.5'];
 
 // 429エラー対策のリトライ関数（RetryInfoを尊重）
 async function fetchWithRetry<T>(fn: () => Promise<T>, maxRetries = 5, initialDelay = 2000): Promise<T> {
@@ -48,7 +48,6 @@ export async function POST(req: NextRequest) {
     }
 
     const genAI = new GoogleGenerativeAI(geminiApiKey);
-    const model = genAI.getGenerativeModel({ model: PRO_MODEL });
     
     const selectedGenre = genres.find((g: any) => g.id === genreId);
     if (!selectedGenre) {
@@ -231,52 +230,75 @@ export async function POST(req: NextRequest) {
       **【指示：情報の完全継承】**
       入力された構成案（Vol.1〜5等）の内容はすべて詳細に継承してください。
 
+      **【指示：情報の削除禁止】**
+      - 入力された情報は**一切削らない**でください。要約・短縮・簡略化は禁止です。
+      - 章立てや各章の内容は**詳細のまま**維持してください（長文可）。
+      - 既存の表現や語彙は、可能な限り原文を保ってください。
+      - JSON各フィールドは空にせず、必須項目はすべて埋めてください。
+
+      **【指示：執筆ロードマップの扱い】**
+      unresolvedList は「入力データのロードマップ/メモ」を**そのまま維持**してください。
+      - 章立てや本文の再掲でも構いません（削除禁止のため）
+      - 追加で新規作成する場合は、**入力に含まれる文脈からのみ**補完
+
       **入力データ:**
       ${JSON.stringify(proposal)}
     `;
 
-    const result: any = await fetchWithRetry(() =>
-      model.generateContent({
-        contents: [{ role: 'user', parts: [{ text: prompt }] }],
-        generationConfig: {
-          responseMimeType: 'application/json',
-          responseSchema: detailedSettingSchema as any,
-        },
-      } as any)
-    );
+    let lastError: any;
 
-    const response = await result.response;
-    let text = response.text().trim();
-    
-    // デバッグ用：レスポンスの最初の500文字をログに出力
-    console.log('API Response (first 500 chars):', text.substring(0, 500));
-    
-    // JSONの修復処理（バッククォートや余計なテキストを削除）
-    if (text.startsWith('```')) {
-      text = text.replace(/^```json\s*/, '').replace(/^```\s*/, '').replace(/\s*```$/, '');
-    }
-    
-    // JSONオブジェクトの開始と終了を探す
-    const startIdx = text.indexOf('{');
-    const endIdx = text.lastIndexOf('}');
-    if (startIdx !== -1 && endIdx !== -1 && endIdx > startIdx) {
-      text = text.substring(startIdx, endIdx + 1);
-    } else {
-      // JSONが見つからない場合、エラーメッセージを返す
-      console.error('JSON not found in response. Full response:', text);
-      throw new Error(`Invalid response format. Expected JSON but got: ${text.substring(0, 200)}...`);
-    }
-    
-    let detailedSetting;
-    try {
-      detailedSetting = JSON.parse(text);
-    } catch (parseError: any) {
-      console.error('JSON parse error:', parseError);
-      console.error('Text that failed to parse:', text);
-      throw new Error(`Failed to parse JSON: ${parseError.message}. Response: ${text.substring(0, 200)}...`);
+    for (const modelName of MODELS_TO_TRY) {
+      try {
+        const model = genAI.getGenerativeModel({ model: modelName });
+        const result: any = await fetchWithRetry(() =>
+          model.generateContent({
+            contents: [{ role: 'user', parts: [{ text: prompt }] }],
+            generationConfig: {
+              responseMimeType: 'application/json',
+              responseSchema: detailedSettingSchema as any,
+            },
+          } as any)
+        );
+
+        const response = await result.response;
+        let text = response.text().trim();
+        
+        // デバッグ用：レスポンスの最初の500文字をログに出力
+        console.log('API Response (first 500 chars):', text.substring(0, 500));
+        
+        // JSONの修復処理（バッククォートや余計なテキストを削除）
+        if (text.startsWith('```')) {
+          text = text.replace(/^```json\s*/, '').replace(/^```\s*/, '').replace(/\s*```$/, '');
+        }
+        
+        // JSONオブジェクトの開始と終了を探す
+        const startIdx = text.indexOf('{');
+        const endIdx = text.lastIndexOf('}');
+        if (startIdx !== -1 && endIdx !== -1 && endIdx > startIdx) {
+          text = text.substring(startIdx, endIdx + 1);
+        } else {
+          // JSONが見つからない場合、エラーメッセージを返す
+          console.error('JSON not found in response. Full response:', text);
+          throw new Error(`Invalid response format. Expected JSON but got: ${text.substring(0, 200)}...`);
+        }
+        
+        let detailedSetting;
+        try {
+          detailedSetting = JSON.parse(text);
+        } catch (parseError: any) {
+          console.error('JSON parse error:', parseError);
+          console.error('Text that failed to parse:', text);
+          throw new Error(`Failed to parse JSON: ${parseError.message}. Response: ${text.substring(0, 200)}...`);
+        }
+
+        return NextResponse.json({ detailedSetting, usedModel: modelName });
+      } catch (error: any) {
+        lastError = error;
+        console.warn(`Model ${modelName} failed:`, error);
+      }
     }
 
-    return NextResponse.json({ detailedSetting });
+    throw lastError;
   } catch (error: any) {
     console.error('Error generating detailed setting:', error);
     return NextResponse.json(

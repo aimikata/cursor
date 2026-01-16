@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import { getConceptPrompt } from '@/app/lib/research/constants';
 
-const PRO_MODEL = 'gemini-2.5-flash';
+const MODELS_TO_TRY = ['gemini-2.5-flash-lite', 'gemini-2.5-flash', 'gemini-2.5'];
 
 // 429エラー対策のリトライ関数（RetryInfoを尊重）
 async function fetchWithRetry<T>(fn: () => Promise<T>, maxRetries = 5, initialDelay = 2000): Promise<T> {
@@ -49,14 +49,25 @@ export async function POST(req: NextRequest) {
     }
 
     const genAI = new GoogleGenerativeAI(geminiApiKey);
-    const model = genAI.getGenerativeModel({ model: PRO_MODEL });
-    
-    const prompt = getConceptPrompt(topic, region);
-    const result = await fetchWithRetry(() => model.generateContent(prompt));
-    const response = await result.response;
-    const text = response.text();
 
-    return NextResponse.json({ concept: text });
+    const prompt = getConceptPrompt(topic, region);
+    let lastError: any;
+
+    for (const modelName of MODELS_TO_TRY) {
+      try {
+        const model = genAI.getGenerativeModel({ model: modelName });
+        const result = await fetchWithRetry(() => model.generateContent(prompt));
+        const response = await result.response;
+        const text = response.text();
+
+        return NextResponse.json({ concept: text, usedModel: modelName });
+      } catch (error: any) {
+        lastError = error;
+        console.warn(`Model ${modelName} failed:`, error);
+      }
+    }
+
+    throw lastError;
   } catch (error: any) {
     console.error('Error generating concept:', error);
     return NextResponse.json(

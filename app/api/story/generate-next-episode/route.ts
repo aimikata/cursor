@@ -1,8 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
-const PRIMARY_MODEL = 'gemini-2.5-flash';
-const FALLBACK_MODEL = 'gemini-2.5-flash';
+const MODELS_TO_TRY = ['gemini-2.5-flash-lite', 'gemini-2.5-flash', 'gemini-2.5'];
 
 // 429エラー対策のリトライ関数（RetryInfoを尊重）
 async function fetchWithRetry<T>(fn: () => Promise<T>, maxRetries = 5, initialDelay = 2000): Promise<T> {
@@ -143,35 +142,33 @@ DRAFT PLAN:
     // 履歴を構築（簡易版：実際の実装ではContent[]形式に変換が必要）
     const newHistory = history ? [...history, { role: 'user', parts: [{ text: followupPrompt }] }] : [{ role: 'user', parts: [{ text: followupPrompt }] }];
 
-    let usedModel = PRIMARY_MODEL;
+    let usedModel = MODELS_TO_TRY[0];
     let result: any;
+    let lastError: any;
 
-    try {
-      const model = genAI.getGenerativeModel({ model: PRIMARY_MODEL });
-      result = await fetchWithRetry(() =>
-        model.generateContent({
-          contents: [{ role: 'user', parts: [{ text: followupPrompt }] }],
-          generationConfig: {
-            responseMimeType: 'application/json',
-            responseSchema: seriesResponseSchema as any,
-          },
-          systemInstruction: SYSTEM_INSTRUCTION,
-        } as any)
-      );
-    } catch (error: any) {
-      console.warn('Primary model failed, trying fallback:', error);
-      const fallbackModel = genAI.getGenerativeModel({ model: FALLBACK_MODEL });
-      usedModel = FALLBACK_MODEL;
-      result = await fetchWithRetry(() =>
-        fallbackModel.generateContent({
-          contents: [{ role: 'user', parts: [{ text: followupPrompt }] }],
-          generationConfig: {
-            responseMimeType: 'application/json',
-            responseSchema: seriesResponseSchema as any,
-          },
-          systemInstruction: SYSTEM_INSTRUCTION,
-        } as any)
-      );
+    for (const modelName of MODELS_TO_TRY) {
+      try {
+        const model = genAI.getGenerativeModel({ model: modelName });
+        result = await fetchWithRetry(() =>
+          model.generateContent({
+            contents: [{ role: 'user', parts: [{ text: followupPrompt }] }],
+            generationConfig: {
+              responseMimeType: 'application/json',
+              responseSchema: seriesResponseSchema as any,
+            },
+            systemInstruction: SYSTEM_INSTRUCTION,
+          } as any)
+        );
+        usedModel = modelName;
+        break;
+      } catch (error: any) {
+        lastError = error;
+        console.warn(`Model ${modelName} failed:`, error);
+      }
+    }
+
+    if (!result) {
+      throw lastError;
     }
 
     const response = await result.response;

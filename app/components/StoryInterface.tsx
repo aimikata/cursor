@@ -4,8 +4,8 @@ import React, { useState, useCallback, useEffect } from 'react';
 import { 
   GenerationMode, Character, Episode, StoryGenerationInput, StoryOutput 
 } from '@/app/lib/story/types';
-import { ArrowLeft, Sparkles, Wrench, FileText, Save, Download, Copy, Edit3, Check, Layout, Folder, X, Package } from 'lucide-react';
-import { saveReport, getAllReports, deleteReport, SavedReport, downloadAllReportsAsZip } from '@/app/lib/report-manager';
+import { ArrowLeft, Sparkles, Wrench, Save, Download, Copy, Edit3, Check, Layout, Folder, X, Package, FileText } from 'lucide-react';
+import { getAllReports, deleteReport, SavedReport, downloadAllReportsAsZip } from '@/app/lib/report-manager';
 import { getApiKey } from '@/app/lib/api-keys';
 
 interface StoryInterfaceProps {
@@ -476,38 +476,6 @@ export const StoryInterface: React.FC<StoryInterfaceProps> = ({
       URL.revokeObjectURL(url);
     }
   }, [episodes, selectedEpisode, generateEpisodeText]);
-
-  // レポートを保存
-  const handleSaveReport = useCallback(() => {
-    if (episodes.length === 0) return;
-    const allEpisodesText = episodes.map((ep, idx) => 
-      generateEpisodeText(ep, idx)
-    ).join('\n\n' + '='.repeat(60) + '\n\n');
-    
-    const storyOutput: StoryOutput = {
-      world_setting: worldSetting,
-      characters,
-      episodes,
-      generationMode,
-      metadata: {
-        createdAt: Date.now(),
-        updatedAt: Date.now(),
-      },
-    };
-
-    const seriesTitle = deriveSeriesTitle();
-    const reportTitle = seriesTitle
-      ? `${seriesTitle} - 全${episodes.length}話`
-      : `ストーリー_${generationMode}_全${episodes.length}話`;
-    saveReport({
-      type: 'story',
-      title: reportTitle,
-      content: allEpisodesText,
-      data: storyOutput,
-    });
-    setSavedReports(getAllReports());
-    alert('レポートを保存しました。');
-  }, [episodes, worldSetting, characters, generationMode, generateEpisodeText]);
 
   // 保存されたレポートを読み込む
   const handleLoadReport = useCallback((report: SavedReport) => {
@@ -1201,20 +1169,6 @@ export const StoryInterface: React.FC<StoryInterfaceProps> = ({
               <h2 className="text-2xl font-bold">出力</h2>
               {episodes.length > 0 && (
                 <div className="flex space-x-2">
-                  <button
-                    onClick={handleSaveReport}
-                    className="px-4 py-2 bg-purple-600 hover:bg-purple-500 rounded-lg text-sm font-bold flex items-center space-x-2"
-                  >
-                    <FileText className="w-4 h-4" />
-                    <span>レポートを保存</span>
-                  </button>
-                  <button
-                    onClick={() => setShowReportsPanel(true)}
-                    className="px-4 py-2 bg-blue-600 hover:bg-blue-500 rounded-lg text-sm font-bold flex items-center space-x-2"
-                  >
-                    <Folder className="w-4 h-4" />
-                    <span>保存済み</span>
-                  </button>
                   <button
                     onClick={handleCopy}
                     className="px-4 py-2 bg-gray-800 hover:bg-gray-700 rounded-lg text-sm font-bold flex items-center space-x-2"
