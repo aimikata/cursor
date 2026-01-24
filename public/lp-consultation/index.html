@@ -1,0 +1,1408 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kindle印税資産シミュレーション｜無料個別相談</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      background: linear-gradient(180deg, #0a0a1a 0%, #1a1a2e 50%, #0a0a1a 100%);
+      color: #ffffff;
+      line-height: 1.8;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* ファーストビュー */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 60px 20px;
+      background: radial-gradient(ellipse at center, #1a1a3e 0%, #0a0a1a 70%);
+    }
+
+    .hero-label {
+      display: inline-block;
+      background: linear-gradient(90deg, #d4af37, #f4cf67);
+      color: #0a0a1a;
+      padding: 8px 24px;
+      border-radius: 30px;
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 30px;
+    }
+
+    .hero-title {
+      font-size: clamp(28px, 5vw, 48px);
+      font-weight: 900;
+      line-height: 1.4;
+      margin-bottom: 20px;
+    }
+
+    .hero-title .gold {
+      color: #d4af37;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(16px, 2.5vw, 20px);
+      color: #a0a0b0;
+      margin-bottom: 40px;
+      max-width: 600px;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background: linear-gradient(90deg, #d4af37, #f4cf67);
+      color: #0a0a1a;
+      padding: 20px 50px;
+      border-radius: 50px;
+      font-size: 18px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 4px 20px rgba(212, 175, 55, 0.3);
+    }
+
+    .cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(212, 175, 55, 0.5);
+    }
+
+    .cta-note {
+      margin-top: 15px;
+      font-size: 14px;
+      color: #808090;
+    }
+
+    /* セクション共通 */
+    section {
+      padding: 80px 20px;
+    }
+
+    .section-title {
+      font-size: clamp(24px, 4vw, 36px);
+      font-weight: 900;
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .section-title .gold {
+      color: #d4af37;
+    }
+
+    /* 問題提起 */
+    .problem {
+      background: #0f0f1f;
+    }
+
+    .problem-list {
+      list-style: none;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .problem-list li {
+      padding: 20px 0;
+      border-bottom: 1px solid #2a2a3a;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .problem-list li::before {
+      content: "✓";
+      color: #d4af37;
+      font-weight: bold;
+      font-size: 20px;
+    }
+
+    /* 投資比較 */
+    .investment-comparison {
+      text-align: center;
+    }
+
+    .comparison-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .comparison-card {
+      background: linear-gradient(135deg, #1a1a2e 0%, #2a2a3e 100%);
+      border: 1px solid #3a3a4a;
+      border-radius: 16px;
+      padding: 30px 20px;
+      text-align: center;
+    }
+
+    .comparison-card.highlight {
+      border: 2px solid #d4af37;
+      background: linear-gradient(135deg, #1a1a2e 0%, #2a2a3e 100%);
+    }
+
+    .comparison-card h4 {
+      font-size: 14px;
+      color: #a0a0b0;
+      margin-bottom: 15px;
+    }
+
+    .comparison-card .amount {
+      font-size: 32px;
+      font-weight: 900;
+      margin-bottom: 10px;
+    }
+
+    .comparison-card .amount.red {
+      color: #f87171;
+    }
+
+    .comparison-card .amount.gold {
+      color: #d4af37;
+    }
+
+    .comparison-card .note {
+      font-size: 12px;
+      color: #606070;
+    }
+
+    .comparison-result {
+      margin-top: 40px;
+      font-size: 20px;
+      color: #d4af37;
+      font-weight: 700;
+    }
+
+    /* 解決策 */
+    .solution {
+      text-align: center;
+    }
+
+    .solution-text {
+      font-size: clamp(18px, 3vw, 24px);
+      max-width: 700px;
+      margin: 0 auto 40px;
+      line-height: 2;
+    }
+
+    .solution-highlight {
+      background: linear-gradient(90deg, #d4af37, #f4cf67);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 900;
+      font-size: 1.2em;
+    }
+
+    /* 相談で得られること */
+    .benefits {
+      background: #0f0f1f;
+      text-align: center;
+    }
+
+    .benefit-list {
+      list-style: none;
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    .benefit-list li {
+      padding: 25px 0;
+      border-bottom: 1px solid #2a2a3a;
+      font-size: 18px;
+      display: flex;
+      align-items: flex-start;
+      gap: 15px;
+    }
+
+    .benefit-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(90deg, #d4af37, #f4cf67);
+      color: #0a0a1a;
+      border-radius: 50%;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .benefit-content strong {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .benefit-content span {
+      color: #a0a0b0;
+      font-size: 15px;
+    }
+
+    /* 実績 */
+    .results {
+      text-align: center;
+    }
+
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .result-card {
+      background: linear-gradient(135deg, #1a1a2e 0%, #2a2a3e 100%);
+      border: 1px solid #3a3a4a;
+      border-radius: 16px;
+      padding: 30px;
+    }
+
+    .result-card .number {
+      font-size: 48px;
+      font-weight: 900;
+      color: #d4af37;
+      line-height: 1;
+    }
+
+    .result-card .label {
+      font-size: 14px;
+      color: #a0a0b0;
+      margin-top: 10px;
+    }
+
+    .result-note {
+      margin-top: 30px;
+      font-size: 14px;
+      color: #606070;
+    }
+
+    /* 対象者 */
+    .target {
+      background: #0f0f1f;
+    }
+
+    .target-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .target-box {
+      padding: 30px;
+      border-radius: 16px;
+    }
+
+    .target-box.yes {
+      background: linear-gradient(135deg, #1a2a1a 0%, #1a3a2a 100%);
+      border: 1px solid #2a4a3a;
+    }
+
+    .target-box.no {
+      background: linear-gradient(135deg, #2a1a1a 0%, #3a1a2a 100%);
+      border: 1px solid #4a2a3a;
+    }
+
+    .target-box h3 {
+      font-size: 20px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .target-box.yes h3 {
+      color: #4ade80;
+    }
+
+    .target-box.no h3 {
+      color: #f87171;
+    }
+
+    .target-box ul {
+      list-style: none;
+    }
+
+    .target-box li {
+      padding: 10px 0;
+      font-size: 15px;
+      color: #c0c0d0;
+    }
+
+    /* 流れ */
+    .flow {
+      text-align: center;
+    }
+
+    .flow-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .flow-step {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      text-align: left;
+    }
+
+    .flow-number {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(90deg, #d4af37, #f4cf67);
+      color: #0a0a1a;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      font-weight: 900;
+      flex-shrink: 0;
+    }
+
+    .flow-content h4 {
+      font-size: 18px;
+      margin-bottom: 5px;
+    }
+
+    .flow-content p {
+      font-size: 14px;
+      color: #a0a0b0;
+    }
+
+    /* FAQ */
+    .faq {
+      background: #0f0f1f;
+    }
+
+    .faq-list {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid #2a2a3a;
+      padding: 25px 0;
+    }
+
+    .faq-question {
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .faq-question::before {
+      content: "Q";
+      background: #d4af37;
+      color: #0a0a1a;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+
+    .faq-answer {
+      font-size: 15px;
+      color: #a0a0b0;
+      padding-left: 38px;
+    }
+
+    /* 最終CTA */
+    .final-cta {
+      text-align: center;
+      padding: 100px 20px;
+      background: radial-gradient(ellipse at center, #1a1a3e 0%, #0a0a1a 70%);
+    }
+
+    .final-cta .section-title {
+      margin-bottom: 30px;
+    }
+
+    .final-cta-text {
+      font-size: 18px;
+      color: #a0a0b0;
+      margin-bottom: 40px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* フォーム */
+    .form-container {
+      background: linear-gradient(135deg, #1a1a2e 0%, #2a2a3e 100%);
+      border: 1px solid #3a3a4a;
+      border-radius: 20px;
+      padding: 40px;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .form-group {
+      margin-bottom: 25px;
+      text-align: left;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 15px;
+      border: 1px solid #3a3a4a;
+      border-radius: 10px;
+      background: #0f0f1f;
+      color: #ffffff;
+      font-size: 16px;
+      font-family: inherit;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #d4af37;
+    }
+
+    .form-group textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    .step-label {
+      display: block;
+      font-size: 16px;
+      font-weight: 700;
+      color: #d4af37;
+      margin-bottom: 15px;
+    }
+
+    .loading-text {
+      text-align: center;
+      color: #a0a0b0;
+      padding: 20px;
+    }
+
+    .error-text {
+      text-align: center;
+      color: #f87171;
+      padding: 15px;
+      font-weight: 500;
+    }
+
+    /* Flatpickrカスタマイズ */
+    .flatpickr-calendar {
+      background: #1a1a2e !important;
+      border: 1px solid #3a3a4a !important;
+      box-shadow: none !important;
+      margin: 0 auto !important;
+      font-family: 'Noto Sans JP', sans-serif !important;
+    }
+
+    .flatpickr-months {
+      background: #1a1a2e !important;
+    }
+
+    .flatpickr-months .flatpickr-month {
+      color: #ffffff !important;
+      fill: #ffffff !important;
+    }
+
+    .flatpickr-current-month .flatpickr-monthDropdown-months {
+      background: #1a1a2e !important;
+      color: #ffffff !important;
+    }
+
+    .flatpickr-current-month input.cur-year {
+      color: #ffffff !important;
+    }
+
+    .flatpickr-weekdays {
+      background: #1a1a2e !important;
+    }
+
+    .flatpickr-weekday {
+      color: #a0a0b0 !important;
+    }
+
+    .flatpickr-days {
+      background: #1a1a2e !important;
+    }
+
+    .flatpickr-day {
+      color: #ffffff !important;
+      border-radius: 8px !important;
+    }
+
+    .flatpickr-day.flatpickr-disabled {
+      color: #404050 !important;
+    }
+
+    .flatpickr-day:hover {
+      background: #3a3a4a !important;
+      border-color: #3a3a4a !important;
+    }
+
+    .flatpickr-day.selected {
+      background: linear-gradient(90deg, #d4af37, #f4cf67) !important;
+      border-color: #d4af37 !important;
+      color: #0a0a1a !important;
+    }
+
+    .flatpickr-day.today {
+      border-color: #d4af37 !important;
+    }
+
+    .form-submit {
+      width: 100%;
+      background: linear-gradient(90deg, #d4af37, #f4cf67);
+      color: #0a0a1a;
+      padding: 18px;
+      border: none;
+      border-radius: 50px;
+      font-size: 18px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .form-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(212, 175, 55, 0.5);
+    }
+
+    /* フッター */
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      font-size: 14px;
+      color: #606070;
+      border-top: 1px solid #2a2a3a;
+    }
+
+    /* レスポンシブ */
+    @media (max-width: 600px) {
+      .hero {
+        padding: 40px 20px;
+      }
+
+      .cta-button {
+        padding: 18px 40px;
+        font-size: 16px;
+      }
+
+      section {
+        padding: 60px 20px;
+      }
+
+      .form-container {
+        padding: 30px 20px;
+      }
+
+      .comparison-card .amount {
+        font-size: 24px;
+      }
+    }
+
+    /* カウントダウンタイマー */
+    .countdown-container {
+      background: linear-gradient(135deg, #1a1a2e 0%, #2a2a3e 100%);
+      border: 2px solid #d4af37;
+      border-radius: 16px;
+      padding: 25px;
+      margin: 30px auto;
+      max-width: 500px;
+      text-align: center;
+    }
+
+    .countdown-label {
+      font-size: 14px;
+      color: #a0a0b0;
+      margin-bottom: 10px;
+    }
+
+    .countdown-price {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .price-original {
+      font-size: 20px;
+      color: #808090;
+      text-decoration: line-through;
+    }
+
+    .price-discount {
+      font-size: 32px;
+      font-weight: 900;
+      color: #d4af37;
+    }
+
+    .price-tax {
+      font-size: 14px;
+      color: #a0a0b0;
+      margin-left: 5px;
+    }
+
+    .payment-button {
+      display: inline-block;
+      background: #6772e5; /* Stripe色 */
+      color: #ffffff;
+      padding: 18px 40px;
+      border-radius: 50px;
+      font-size: 20px;
+      font-weight: 700;
+      text-decoration: none;
+      margin-top: 25px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 4px 15px rgba(103, 114, 229, 0.4);
+    }
+
+    .payment-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(103, 114, 229, 0.6);
+      color: #ffffff;
+    }
+
+    .countdown-timer {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .timer-unit {
+      background: rgba(212, 175, 55, 0.1);
+      border: 1px solid #d4af37;
+      border-radius: 8px;
+      padding: 15px 20px;
+      min-width: 70px;
+    }
+
+    .timer-number {
+      font-size: 32px;
+      font-weight: 900;
+      color: #d4af37;
+      line-height: 1;
+    }
+
+    .timer-label {
+      font-size: 12px;
+      color: #a0a0b0;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ファーストビュー -->
+  <section class="hero">
+    <div class="container">
+      <h1 class="hero-title">
+        月20万円の不労所得を作るのに<br>
+        <span class="gold">必要な資金</span>を比較したことがありますか？
+      </h1>
+      <p class="hero-subtitle">
+        不動産でも株でもない、第3の選択肢。<br>
+        あなた専用のKindle印税資産シミュレーションを無料で作成します。
+      </p>
+      <a href="#demo" class="cta-button">まずはデモ動画を見る</a>
+      <p class="cta-note">※ 動画視聴後、個別相談（1,000円）にお申し込みいただけます</p>
+    </div>
+  </section>
+
+  <!-- 投資比較 -->
+  <section class="investment-comparison">
+    <div class="container">
+      <h2 class="section-title">月20万円の収入を得るために<span class="gold">必要な資金</span></h2>
+      <div class="comparison-grid">
+        <div class="comparison-card">
+          <h4>不動産投資</h4>
+          <div class="amount red">3,000万円〜</div>
+          <div class="note">空室リスク・維持費あり</div>
+        </div>
+        <div class="comparison-card">
+          <h4>高配当株（年5%）</h4>
+          <div class="amount red">4,800万円</div>
+          <div class="note">銘柄選定・株価下落リスク</div>
+        </div>
+        <div class="comparison-card">
+          <h4>インデックス投資（年4%）</h4>
+          <div class="amount red">6,000万円</div>
+          <div class="note">長期運用が前提・税金20%</div>
+        </div>
+        <div class="comparison-card highlight">
+          <h4>Kindle印税</h4>
+          <div class="amount gold">？</div>
+          <div class="note">無料相談でシミュレーション</div>
+        </div>
+      </div>
+      <p class="comparison-result">あなたの目標に必要な金額、無料でお伝えします</p>
+    </div>
+  </section>
+
+  <!-- 問題提起 -->
+  <section class="problem">
+    <div class="container">
+      <h2 class="section-title">こんな悩みはありませんか？</h2>
+      <ul class="problem-list">
+        <li>働いた分だけの収入に限界を感じている</li>
+        <li>NISAや株はやっているが、もっと効率的な方法を探している</li>
+        <li>不動産投資は資金がかかりすぎる</li>
+        <li>自分でコントロールできる収入源が欲しい</li>
+        <li>積み上がる資産を持ちたい</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 解決策 -->
+  <section class="solution">
+    <div class="container">
+      <h2 class="section-title"><span class="gold">Kindle印税</span>という資産</h2>
+      <p class="solution-text">
+        出版した本は、あなたの<span class="solution-highlight">資産</span>になります。<br><br>
+        1冊出版すれば、毎月印税が入り続ける。<br>
+        10冊、50冊と積み上げれば、毎月の印税も増えていく。<br><br>
+        株のように値動きを気にする必要はありません。<br>
+        不動産のように数千万円の初期費用もかかりません。<br><br>
+        <span class="solution-highlight">積み上げた分だけ、印税収入が増える。</span><br>
+        それがKindle印税資産という考え方です。
+      </p>
+    </div>
+  </section>
+
+  <!-- デモ動画 -->
+  <section class="demo" id="demo">
+    <div class="container">
+      <h2 class="section-title">実際の操作を<span class="gold">3分で見る</span></h2>
+      <p class="solution-text" style="margin-bottom: 30px;">
+        90分で1冊のマンガを出版する仕組みを、<br>
+        実際の操作画面でご紹介します。
+      </p>
+      <div style="max-width: 800px; margin: 0 auto; background: #0f0f1f; border-radius: 16px; padding: 20px;">
+        <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px; background: #1a1a2e;">
+          <iframe 
+            src="https://www.youtube.com/embed/JVGTDB-y7to" 
+            title="YouTube video player" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            allowfullscreen
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+          </iframe>
+        </div>
+        <p style="text-align: center; margin-top: 20px; font-size: 14px; color: #808090;">
+          ※ 動画は約3分です。プロジェクト作成から世界観設計まで、実際の操作をご覧いただけます。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- アンケート -->
+  <section class="survey" style="background: #0f0f1f;">
+    <div class="container">
+      <h2 class="section-title">動画を見た<span class="gold">感想をお聞かせください</span></h2>
+      <p style="text-align: center; margin-bottom: 30px; color: #a0a0b0;">
+        あなたの率直なご意見が、個別相談でより良いアドバイスをするために役立ちます
+      </p>
+      <div class="form-container" style="max-width: 600px;">
+        <form id="surveyForm">
+          <div class="form-group">
+            <label>動画を見て、良いと思った点（任意）</label>
+            <textarea id="surveyGood" placeholder="例：プロジェクト作成が簡単そう、世界観設計が分かりやすかった など" style="min-height: 100px;"></textarea>
+          </div>
+          <div class="form-group">
+            <label>動画を見て、不安に思った点・疑問点（任意）</label>
+            <textarea id="surveyConcern" placeholder="例：1冊作るのは大変そう、本当に90分でできるのか など" style="min-height: 100px;"></textarea>
+          </div>
+          <div class="form-group">
+            <label>個別相談で知りたいこと（任意）</label>
+            <textarea id="surveyWant" placeholder="例：自分でもできるか、投資回収期間、具体的な手順 など" style="min-height: 100px;"></textarea>
+          </div>
+
+          <!-- カウントダウンタイマー -->
+          <div class="countdown-container">
+            <div class="countdown-label">24時間限定価格</div>
+            <div class="countdown-price">
+              <span class="price-original">通常 3,000円</span>
+              <span class="price-discount">1,100円</span><span class="price-tax">(税込)</span>
+            </div>
+            <div class="countdown-timer" id="countdownTimer">
+              <div class="timer-unit">
+                <div class="timer-number" id="hours">00</div>
+                <div class="timer-label">時間</div>
+              </div>
+              <div class="timer-unit">
+                <div class="timer-number" id="minutes">00</div>
+                <div class="timer-label">分</div>
+              </div>
+              <div class="timer-unit">
+                <div class="timer-number" id="seconds">00</div>
+                <div class="timer-label">秒</div>
+              </div>
+            </div>
+          </div>
+
+          <button type="button" class="form-submit" onclick="goToConsultation()">個別相談に申し込む（1,100円）</button>
+          <p style="text-align: center; margin-top: 15px; font-size: 12px; color: #808090;" id="consultationNote1">
+            ※ ご購入いただいた場合、商品代金から1,100円を差し引きます（実質無料）
+          </p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- 相談で得られること -->
+  <section class="benefits">
+    <div class="container">
+      <h2 class="section-title">この相談で<span class="gold">得られること</span></h2>
+      <ul class="benefit-list">
+        <li>
+          <span class="benefit-number">1</span>
+          <div class="benefit-content">
+            <strong>あなた専用の印税シミュレーション</strong>
+            <span>目標収入を達成するために必要な金額と冊数を算出します</span>
+          </div>
+        </li>
+        <li>
+          <span class="benefit-number">2</span>
+          <div class="benefit-content">
+            <strong>他の投資との比較</strong>
+            <span>不動産・株・ETFと比較して、どれだけ効率的か数字で示します</span>
+          </div>
+        </li>
+        <li>
+          <span class="benefit-number">3</span>
+          <div class="benefit-content">
+            <strong>達成までのロードマップ</strong>
+            <span>あなたの使える時間に合わせた具体的な計画を作成します</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 実績 -->
+  <section class="results">
+    <div class="container">
+      <h2 class="section-title">実績数字</h2>
+      <div class="results-grid">
+        <div class="result-card">
+          <div class="number">5,000円</div>
+          <div class="label">1冊あたりの平均月間印税</div>
+        </div>
+        <div class="result-card">
+          <div class="number">100冊+</div>
+          <div class="label">コミュニティ出版実績</div>
+        </div>
+      </div>
+      <p class="result-note">※ 100冊以上出版者の実績平均。個人差があり成果を保証するものではありません。</p>
+    </div>
+  </section>
+
+  <!-- 対象者 -->
+  <section class="target">
+    <div class="container">
+      <h2 class="section-title">対象となる方</h2>
+      <div class="target-grid">
+        <div class="target-box yes">
+          <h3>✓ こんな方におすすめ</h3>
+          <ul>
+            <li>・ 労働収入以外の収入源を構築したい</li>
+            <li>・ 投資として資産形成を考えている</li>
+            <li>・ 積み上がる収入に興味がある</li>
+            <li>・ 本気で取り組む意思がある</li>
+          </ul>
+        </div>
+        <div class="target-box no">
+          <h3>✗ こんな方はご遠慮ください</h3>
+          <ul>
+            <li>・ 楽して稼ぎたいだけの方</li>
+            <li>・ 情報収集だけが目的の方</li>
+            <li>・ 行動する意思がない方</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 流れ -->
+  <section class="flow">
+    <div class="container">
+      <h2 class="section-title">相談の<span class="gold">流れ</span></h2>
+      <div class="flow-steps">
+        <div class="flow-step">
+          <div class="flow-number">1</div>
+          <div class="flow-content">
+            <h4>フォームから申し込み</h4>
+            <p>下記フォームに必要事項を入力してください</p>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-number">2</div>
+          <div class="flow-content">
+            <h4>日程確定</h4>
+            <p>確認メールをお送りします</p>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-number">3</div>
+          <div class="flow-content">
+            <h4>Zoom相談（約30分）</h4>
+            <p>ヒアリング→シミュレーション→ロードマップ作成</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq">
+    <div class="container">
+      <h2 class="section-title">よくある質問</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-question">本当に無料ですか？</div>
+          <p class="faq-answer">はい、相談は完全無料です。相談後に強引な営業は一切しません。</p>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">Kindle出版の経験がなくても大丈夫ですか？</div>
+          <p class="faq-answer">はい、むしろ初めての方が多いです。一から丁寧にご説明します。</p>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">本当に積み上がる収入になるのですか？</div>
+          <p class="faq-answer">Kindle印税は出版した本が売れ続ける限り入り続けます。100冊以上出版している方々の実績に基づいてシミュレーションを行います。</p>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">相談後、必ず申し込む必要がありますか？</div>
+          <p class="faq-answer">いいえ、相談だけでも問題ありません。シミュレーション結果を持ち帰っていただくだけでも結構です。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 最終CTA -->
+  <section class="final-cta" id="form">
+    <div class="container">
+      <h2 class="section-title">個別相談に<span class="gold">申し込む</span></h2>
+      <p class="final-cta-text">
+        あなた専用の印税資産シミュレーションを作成します。<br>
+        他の投資と比較して、どれだけ効率的か数字でお伝えします。
+      </p>
+
+      <!-- カウントダウンタイマー -->
+      <div class="countdown-container">
+        <div class="countdown-label">24時間限定価格</div>
+        <div class="countdown-price">
+          <span class="price-original">通常 3,000円</span>
+          <span class="price-discount">1,000円</span>
+        </div>
+        <div class="countdown-timer" id="countdownTimer2">
+          <div class="timer-unit">
+            <div class="timer-number" id="hours2">00</div>
+            <div class="timer-label">時間</div>
+          </div>
+          <div class="timer-unit">
+            <div class="timer-number" id="minutes2">00</div>
+            <div class="timer-label">分</div>
+          </div>
+          <div class="timer-unit">
+            <div class="timer-number" id="seconds2">00</div>
+            <div class="timer-label">秒</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-container" id="reservation-form">
+        <form id="myForm">
+          <!-- ステップ1: 日程選択 -->
+          <div class="form-group">
+            <label class="step-label">① 日程を選んでください</label>
+            <div id="calendar-container"></div>
+            <div id="loading-calendar" class="loading-text">空き状況を確認中...</div>
+          </div>
+
+          <!-- ステップ2: 時間選択 -->
+          <div class="form-group" id="time-container" style="display: none;">
+            <label class="step-label">② 時間を選んでください</label>
+            <select name="scheduleRow" id="timeSelect" required></select>
+          </div>
+
+          <!-- ステップ3: お客様情報 -->
+          <div class="form-group">
+            <label class="step-label">③ お客様情報</label>
+            <input type="text" id="inputName" required placeholder="お名前">
+            <input type="email" id="inputEmail" required placeholder="メールアドレス">
+
+            <label for="phone" style="display: block; margin-top: 15px; margin-bottom: 8px; font-size: 14px;">電話番号<span style="color: #f87171;">（必須）</span></label>
+            <input type="tel" id="inputPhone" required placeholder="090-1234-5678" pattern="[0-9\-]+">
+            <p style="font-size: 12px; color: #808090; margin-top: 5px;">
+              ※ 相談前日にSMSでリマインドをお送りします<br>
+              ※ 真剣に取り組む意思のある方のみお申し込みください
+            </p>
+
+            <label for="goal" style="display: block; margin-top: 15px; margin-bottom: 8px; font-size: 14px;">目標の月間印税収入</label>
+            <select id="inputGoal">
+              <option value="">選択してください</option>
+              <option value="1-3万円">月1〜3万円</option>
+              <option value="3-5万円">月3〜5万円</option>
+              <option value="5-10万円">月5〜10万円</option>
+              <option value="10-30万円">月10〜30万円</option>
+              <option value="30万円以上">月30万円以上</option>
+            </select>
+
+            <label for="time" style="display: block; margin-top: 15px; margin-bottom: 8px; font-size: 14px;">週に使える時間</label>
+            <select id="inputTime">
+              <option value="">選択してください</option>
+              <option value="週1-3時間">週1〜3時間</option>
+              <option value="週3-5時間">週3〜5時間</option>
+              <option value="週5-10時間">週5〜10時間</option>
+              <option value="週10時間以上">週10時間以上</option>
+            </select>
+
+            <label for="message" style="display: block; margin-top: 15px; margin-bottom: 8px; font-size: 14px;">ご質問・気になること（任意）</label>
+            <textarea id="inputMessage" placeholder="何でもお気軽にどうぞ" style="min-height: 80px;"></textarea>
+          </div>
+
+          <!-- アンケート回答（非表示） -->
+          <input type="hidden" id="hiddenSurveyGood" name="surveyGood">
+          <input type="hidden" id="hiddenSurveyConcern" name="surveyConcern">
+          <input type="hidden" id="hiddenSurveyWant" name="surveyWant">
+
+          <button type="submit" class="form-submit" id="submitBtn">個別相談を予約する（1,100円）</button>
+          <div id="loading" class="loading-text" style="display: none;">
+            処理中...<br>（しばらくお待ちください）
+          </div>
+          <div id="error-msg" class="error-text" style="display: none;"></div>
+        </form>
+
+        <!-- 完了メッセージ -->
+        <div id="success-message" style="display: none; text-align: center; padding: 40px 0;">
+          <div style="font-size: 48px; margin-bottom: 20px;">✓</div>
+          <h3 style="color: #d4af37; margin-bottom: 15px;">日時予約が完了しました</h3>
+          <p style="color: #a0a0b0; margin-bottom: 20px;" id="paymentMessage">
+            最後に、以下のボタンから相談料（<span id="paymentAmount">1,100円</span>）の決済をお願いいたします。<br>
+            決済完了をもって、ご予約確定となります。
+          </p>
+          <a href="https://buy.stripe.com/dRmfZgcrHdYM0T37doffy0c" id="paymentLink" class="payment-button">決済ページへ進む</a>
+          <p style="color: #606070; font-size: 12px; margin-top: 15px;">
+            ※Stripeの安全な決済ページへ移動します。
+          </p>
+        </div>
+      </div>
+
+      <p class="cta-note" style="margin-top: 20px;" id="consultationNote2">※ ご購入いただいた場合、商品代金から1,100円を差し引きます（実質無料）</p>
+    </div>
+  </section>
+
+  <!-- Flatpickr CSS/JS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/dark.css">
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ja.js"></script>
+
+  <script>
+    // ★★★ ここにGASのURLを設定してください ★★★
+    const GAS_API_URL = "https://script.google.com/macros/s/AKfycbxZJcRGBKdwCh4PylNiYl8X8Ek6I7DWaXsVpDLD9QnoL2mHE5OA1AcZ2QPNgmn0bodD/exec";
+    // ★★★★★★★★★★★★★★★★★★★★★★★★★★★
+
+    // ★★★ Stripe決済リンク ★★★
+    const STRIPE_LINK_1100 = "https://buy.stripe.com/dRmfZgcrHdYM0T37doffy0c"; // 1,100円（税込）
+    const STRIPE_LINK_3300 = "https://buy.stripe.com/14A7sK0IZ3k8dFPeFQffy0d"; // 3,300円（税込）
+    // ★★★★★★★★★★★★★★★★★★★★★★★★★★★
+
+    let allSchedules = [];
+
+    // カウントダウンタイマー機能
+    function initCountdown() {
+      const STORAGE_KEY = 'consultation_countdown_start';
+      const COUNTDOWN_HOURS = 24;
+
+      // localStorageから開始時刻を取得、なければ現在時刻を設定
+      let startTime = localStorage.getItem(STORAGE_KEY);
+      if (!startTime) {
+        startTime = new Date().getTime();
+        localStorage.setItem(STORAGE_KEY, startTime);
+      } else {
+        startTime = parseInt(startTime);
+      }
+
+      const endTime = startTime + (COUNTDOWN_HOURS * 60 * 60 * 1000);
+
+      function updateCountdown() {
+        const now = new Date().getTime();
+        const distance = endTime - now;
+
+        if (distance < 0) {
+          // カウントダウン終了時の処理
+          // タイマーを非表示
+          document.querySelectorAll('.countdown-timer').forEach(el => {
+            el.style.display = 'none';
+          });
+
+          // 価格表示を変更（3,300円に戻す）
+          document.querySelectorAll('.price-discount').forEach(el => {
+            el.textContent = '3,300円';
+            el.style.color = '#ffffff';
+          });
+
+          // 税込表示を更新
+          document.querySelectorAll('.price-tax').forEach(el => {
+            el.textContent = '(税込)';
+          });
+
+          // 通常価格の表示を削除（3,300円だけ表示）
+          document.querySelectorAll('.price-original').forEach(el => {
+            el.style.display = 'none';
+          });
+
+          // メッセージを変更
+          document.querySelectorAll('.countdown-label').forEach(el => {
+            el.textContent = '限定価格終了';
+            el.style.color = '#f87171';
+            el.style.fontWeight = '700';
+          });
+
+          // ボタンのテキストを変更
+          const submitButtons = document.querySelectorAll('.form-submit');
+          submitButtons.forEach(btn => {
+            if (btn.textContent.includes('1,100円')) {
+              btn.textContent = btn.textContent.replace('1,100円', '3,300円');
+            }
+          });
+
+          // アンケートセクションのボタンも変更
+          const surveyButton = document.querySelector('button[onclick="goToConsultation()"]');
+          if (surveyButton && surveyButton.textContent.includes('1,100円')) {
+            surveyButton.textContent = surveyButton.textContent.replace('1,100円', '3,300円');
+          }
+
+          // Stripe決済リンクを切り替え
+          const paymentLink = document.getElementById('paymentLink');
+          const paymentAmount = document.getElementById('paymentAmount');
+          if (paymentLink) {
+            paymentLink.href = STRIPE_LINK_3300;
+          }
+          if (paymentAmount) {
+            paymentAmount.textContent = '3,300円';
+          }
+
+          // 説明文を更新
+          const note1 = document.getElementById('consultationNote1');
+          const note2 = document.getElementById('consultationNote2');
+          if (note1) {
+            note1.textContent = '※ ご購入いただいた場合、商品代金から3,300円を差し引きます';
+          }
+          if (note2) {
+            note2.textContent = '※ ご購入いただいた場合、商品代金から3,300円を差し引きます';
+          }
+
+          return;
+        }
+
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+        document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+        document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+
+        if (document.getElementById('hours2')) {
+          document.getElementById('hours2').textContent = String(hours).padStart(2, '0');
+          document.getElementById('minutes2').textContent = String(minutes).padStart(2, '0');
+          document.getElementById('seconds2').textContent = String(seconds).padStart(2, '0');
+        }
+      }
+
+      // 1秒ごとに更新
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+    }
+
+    // アンケートから相談フォームへスクロール
+    function goToConsultation() {
+      // アンケートの内容をhiddenフィールドに保存
+      document.getElementById('hiddenSurveyGood').value = document.getElementById('surveyGood').value || '';
+      document.getElementById('hiddenSurveyConcern').value = document.getElementById('surveyConcern').value || '';
+      document.getElementById('hiddenSurveyWant').value = document.getElementById('surveyWant').value || '';
+
+      // フォームセクションへスクロール
+      document.getElementById('form').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // ページ読み込み時にGASからデータを取得
+    window.addEventListener('DOMContentLoaded', () => {
+      // カウントダウンタイマーを開始
+      initCountdown();
+
+      fetch(GAS_API_URL)
+        .then(response => response.json())
+        .then(data => {
+          document.getElementById('loading-calendar').style.display = 'none';
+          allSchedules = data;
+          initCalendar(data);
+        })
+        .catch(err => {
+          document.getElementById('loading-calendar').innerText = "読み込みエラー";
+          console.error(err);
+        });
+    });
+
+    // 日付をYYYY-MM-DD形式に変換
+    function formatDate(dateInput) {
+      const d = new Date(dateInput);
+      const year = d.getFullYear();
+      const month = String(d.getMonth() + 1).padStart(2, '0');
+      const day = String(d.getDate()).padStart(2, '0');
+      return `${year}-${month}-${day}`;
+    }
+
+    // カレンダー表示
+    function initCalendar(schedules) {
+      const enableDates = [...new Set(schedules.map(s => formatDate(s.date)))];
+
+      flatpickr("#calendar-container", {
+        locale: "ja",
+        inline: true,
+        minDate: "today",
+        enable: enableDates,
+        dateFormat: "Y-m-d",
+        onChange: function(selectedDates, dateStr) {
+          updateTimeSelect(dateStr);
+        }
+      });
+    }
+
+    // 時間選択肢の更新
+    function updateTimeSelect(dateStr) {
+      const container = document.getElementById('time-container');
+      const select = document.getElementById('timeSelect');
+      select.innerHTML = "";
+
+      const filtered = allSchedules.filter(s => formatDate(s.date) === dateStr);
+
+      const defaultOption = document.createElement('option');
+      defaultOption.text = "時間を選択してください";
+      defaultOption.value = "";
+      select.add(defaultOption);
+
+      filtered.forEach(s => {
+        const option = document.createElement('option');
+        option.value = s.row;
+        option.text = s.timeDisplay;
+        select.add(option);
+      });
+
+      container.style.display = 'block';
+    }
+
+    // 送信処理
+    document.getElementById('myForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const btn = document.getElementById('submitBtn');
+      const loading = document.getElementById('loading');
+      const errorMsg = document.getElementById('error-msg');
+      const form = document.getElementById('myForm');
+      const successMsg = document.getElementById('success-message');
+
+      const selectedRow = document.getElementById('timeSelect').value;
+      if(!selectedRow) {
+        alert("時間を選択してください");
+        return;
+      }
+
+      const phone = document.getElementById('inputPhone').value.trim();
+      if(!phone) {
+        alert("電話番号を入力してください");
+        document.getElementById('inputPhone').focus();
+        return;
+      }
+
+      const postData = {
+        scheduleRow: selectedRow,
+        name: document.getElementById('inputName').value,
+        email: document.getElementById('inputEmail').value,
+        phone: phone,
+        goal: document.getElementById('inputGoal').value,
+        time: document.getElementById('inputTime').value,
+        message: document.getElementById('inputMessage').value,
+        surveyGood: document.getElementById('hiddenSurveyGood').value || '',
+        surveyConcern: document.getElementById('hiddenSurveyConcern').value || '',
+        surveyWant: document.getElementById('hiddenSurveyWant').value || ''
+      };
+
+      btn.disabled = true;
+      loading.style.display = 'block';
+      errorMsg.style.display = 'none';
+
+      fetch(GAS_API_URL, {
+        method: "POST",
+        body: JSON.stringify(postData)
+      })
+      .then(response => response.json())
+      .then(result => {
+        if (result.success) {
+          form.style.display = 'none';
+          successMsg.style.display = 'block';
+        } else {
+          throw new Error(result.message || "予約に失敗しました");
+        }
+      })
+      .catch(err => {
+        btn.disabled = false;
+        loading.style.display = 'none';
+        errorMsg.innerText = "エラーが発生しました: " + err.message;
+        errorMsg.style.display = 'block';
+      });
+    });
+  </script>
+
+  <!-- フッター -->
+  <footer>
+    <p>&copy; 2025 All Rights Reserved.</p>
+  </footer>
+
+</body>
+</html>

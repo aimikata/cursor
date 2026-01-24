@@ -34,3 +34,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# 動画ファイル（GitHubのファイルサイズ制限を超えるため）
+*.mp4
+public/lp-consultation/*.mp4
+lp-consultation/*.mp4

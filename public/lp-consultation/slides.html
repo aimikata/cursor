@@ -1,0 +1,1233 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kindle印税資産 - セールスプレゼンテーション</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', 'Hiragino Sans', sans-serif;
+      background: #0a0a1a;
+      color: #ffffff;
+      overflow: hidden;
+    }
+
+    .slide-container {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      transition: transform 0.5s ease;
+    }
+
+    .slide {
+      min-width: 100vw;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 60px;
+      text-align: center;
+      background: linear-gradient(135deg, #0a0a1a 0%, #1a1a2e 100%);
+      overflow-y: auto;
+    }
+
+    .slide h1 {
+      font-size: clamp(36px, 6vw, 72px);
+      font-weight: 900;
+      margin-bottom: 30px;
+      line-height: 1.3;
+    }
+
+    .slide h2 {
+      font-size: clamp(28px, 4vw, 48px);
+      font-weight: 700;
+      margin-bottom: 40px;
+      color: #d4af37;
+    }
+
+    .slide p {
+      font-size: clamp(18px, 2.5vw, 28px);
+      color: #a0a0b0;
+      max-width: 900px;
+      line-height: 1.8;
+    }
+
+    .gold {
+      color: #d4af37;
+    }
+
+    .highlight {
+      background: linear-gradient(90deg, #d4af37, #f4cf67);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .big-number {
+      font-size: clamp(80px, 15vw, 200px);
+      font-weight: 900;
+      color: #d4af37;
+      line-height: 1;
+    }
+
+    .big-number span {
+      font-size: 0.4em;
+      color: #ffffff;
+    }
+
+    /* テーブルスタイル */
+    .cost-table {
+      width: 100%;
+      max-width: 900px;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: clamp(12px, 1.5vw, 16px);
+    }
+
+    .cost-table th {
+      background: rgba(212, 175, 55, 0.3);
+      color: #d4af37;
+      padding: 12px 15px;
+      text-align: left;
+      border-bottom: 2px solid #d4af37;
+    }
+
+    .cost-table td {
+      padding: 10px 15px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      color: #c0c0d0;
+    }
+
+    .cost-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .cost-table .total-row {
+      background: rgba(212, 175, 55, 0.1);
+      font-weight: 700;
+    }
+
+    .cost-table .total-row td {
+      color: #d4af37;
+      font-size: 1.1em;
+    }
+
+    .cost-table .right {
+      text-align: right;
+    }
+
+    /* 外注比較カード */
+    .outsource-cards {
+      display: flex;
+      gap: 20px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .outsource-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 25px;
+      width: 200px;
+      text-align: center;
+    }
+
+    .outsource-card h4 {
+      font-size: 14px;
+      color: #a0a0b0;
+      margin-bottom: 10px;
+    }
+
+    .outsource-card .price {
+      font-size: 28px;
+      font-weight: 700;
+      color: #f87171;
+    }
+
+    .outsource-card .price span {
+      font-size: 14px;
+      color: #a0a0b0;
+    }
+
+    .outsource-card .note {
+      font-size: 11px;
+      color: #606070;
+      margin-top: 8px;
+    }
+
+    /* 比較スライド */
+    .comparison {
+      display: flex;
+      gap: 40px;
+      margin-top: 40px;
+      width: 100%;
+      max-width: 1200px;
+    }
+
+    .comparison-item {
+      flex: 1;
+      padding: 40px;
+      border-radius: 20px;
+      text-align: left;
+    }
+
+    .comparison-item.bad {
+      background: rgba(248, 113, 113, 0.1);
+      border: 2px solid rgba(248, 113, 113, 0.3);
+    }
+
+    .comparison-item.good {
+      background: rgba(74, 222, 128, 0.1);
+      border: 2px solid rgba(74, 222, 128, 0.3);
+    }
+
+    .comparison-item h3 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .comparison-item.bad h3 {
+      color: #f87171;
+    }
+
+    .comparison-item.good h3 {
+      color: #4ade80;
+    }
+
+    .comparison-item ul {
+      list-style: none;
+    }
+
+    .comparison-item li {
+      padding: 10px 0;
+      font-size: 18px;
+      color: #c0c0d0;
+    }
+
+    /* ステップスライド */
+    .steps {
+      display: flex;
+      gap: 30px;
+      margin-top: 40px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .step-item {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 30px;
+      width: 280px;
+      text-align: center;
+    }
+
+    .step-number {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, #d4af37, #f4cf67);
+      color: #0a0a1a;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      font-weight: 900;
+      margin: 0 auto 20px;
+    }
+
+    .step-item h4 {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    .step-item p {
+      font-size: 14px;
+      color: #a0a0b0;
+    }
+
+    /* 価格スライド */
+    .price-section {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .original-price {
+      font-size: clamp(24px, 4vw, 40px);
+      color: #808090;
+      text-decoration: line-through;
+      margin-bottom: 10px;
+    }
+
+    .discount-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #ef4444, #f87171);
+      color: #ffffff;
+      padding: 8px 20px;
+      border-radius: 30px;
+      font-size: clamp(16px, 2vw, 24px);
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .price-box {
+      background: linear-gradient(135deg, #d4af37, #f4cf67);
+      color: #0a0a1a;
+      padding: 40px 60px;
+      border-radius: 30px;
+      display: inline-block;
+    }
+
+    .price-box .price {
+      font-size: clamp(48px, 10vw, 100px);
+      font-weight: 900;
+    }
+
+    .price-box .tax {
+      font-size: 20px;
+    }
+
+    /* 費用比較 */
+    .cost-comparison {
+      display: flex;
+      gap: 30px;
+      margin-top: 40px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .cost-compare-item {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 30px;
+      width: 280px;
+      text-align: center;
+    }
+
+    .cost-compare-item.highlight-card {
+      background: rgba(212, 175, 55, 0.1);
+      border: 2px solid #d4af37;
+    }
+
+    .cost-compare-item h4 {
+      font-size: 16px;
+      color: #a0a0b0;
+      margin-bottom: 15px;
+    }
+
+    .cost-compare-item .value {
+      font-size: 36px;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .cost-compare-item.highlight-card .value {
+      color: #d4af37;
+    }
+
+    .cost-compare-item .desc {
+      font-size: 14px;
+      color: #808090;
+      margin-top: 10px;
+    }
+
+    /* 含まれるもの */
+    .includes {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      margin-top: 40px;
+      max-width: 800px;
+    }
+
+    .include-item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      text-align: left;
+    }
+
+    .include-item .icon {
+      font-size: 30px;
+    }
+
+    .include-item span {
+      font-size: 16px;
+    }
+
+    /* ナビゲーション */
+    .nav {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+      z-index: 100;
+    }
+
+    .nav-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .nav-dot.active {
+      background: #d4af37;
+      width: 30px;
+      border-radius: 6px;
+    }
+
+    .nav-arrows {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      display: flex;
+      gap: 10px;
+      z-index: 100;
+    }
+
+    .nav-arrow {
+      width: 50px;
+      height: 50px;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      background: transparent;
+      color: #ffffff;
+      font-size: 20px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .nav-arrow:hover {
+      border-color: #d4af37;
+      color: #d4af37;
+    }
+
+    .slide-counter {
+      position: fixed;
+      top: 30px;
+      right: 30px;
+      font-size: 14px;
+      color: #606070;
+    }
+
+    /* スライド番号表示 */
+    .slide-number {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background: rgba(212, 175, 55, 0.2);
+      border: 1px solid rgba(212, 175, 55, 0.5);
+      color: #d4af37;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 700;
+      z-index: 10;
+    }
+
+    .keyboard-hint {
+      position: fixed;
+      bottom: 30px;
+      left: 30px;
+      font-size: 12px;
+      color: #404050;
+    }
+
+    .section-title {
+      font-size: 18px;
+      color: #808090;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    /* 隠し玉ボタン */
+    .hidden-slide-btn {
+      position: fixed;
+      top: 30px;
+      left: 30px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #606070;
+      padding: 8px 15px;
+      border-radius: 8px;
+      font-size: 12px;
+      cursor: pointer;
+      z-index: 100;
+    }
+
+    .hidden-slide-btn:hover {
+      background: rgba(212, 175, 55, 0.2);
+      border-color: #d4af37;
+      color: #d4af37;
+    }
+
+    /* シミュレーターiframe */
+    .simulator-container {
+      width: 100%;
+      max-width: 900px;
+      height: 80vh;
+      margin: 20px auto;
+      border: 2px solid rgba(212, 175, 55, 0.3);
+      border-radius: 16px;
+      overflow: hidden;
+      background: #0a0a1a;
+    }
+
+    .simulator-iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      background: transparent;
+    }
+
+    @media (max-width: 768px) {
+      .slide {
+        padding: 30px;
+      }
+
+      .comparison {
+        flex-direction: column;
+      }
+
+      .steps {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .includes {
+        grid-template-columns: 1fr;
+      }
+
+      .outsource-cards {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .cost-comparison {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .simulator-container {
+        height: 70vh;
+        margin: 10px auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="slide-container" id="slideContainer">
+    
+    <!-- スライド1: タイトル -->
+    <div class="slide">
+      <div class="slide-number">スライド 1/25</div>
+      <h1>Kindle印税資産<br><span class="highlight">シミュレーション</span></h1>
+      <p>○○さん専用の印税収入計画を作成します</p>
+    </div>
+
+    <!-- スライド2: 問題の確認 -->
+    <div class="slide">
+      <div class="slide-number">スライド 2/25</div>
+      <h2>確認させてください</h2>
+      <p>
+        先ほどお聞きした目標は<br><br>
+        <span class="gold" style="font-size: 1.3em;">月○○万円の印税収入</span><br><br>
+        ですね。<br><br>
+        これを達成するために必要なことをお伝えします。
+      </p>
+    </div>
+
+    <!-- スライド3: 他の投資との比較 -->
+    <div class="slide">
+      <div class="slide-number">スライド 3/25</div>
+      <h2>月20万円の収入を得るには？</h2>
+      <p class="section-title">まず、他の投資と比較してみましょう</p>
+      <div class="cost-comparison" style="margin-top: 20px;">
+        <div class="cost-compare-item">
+          <h4>不動産投資</h4>
+          <div class="value" style="color: #f87171;">3,000万円〜</div>
+          <div class="desc">
+            家賃4万円×5世帯<br>
+            建築費+土地代<br>
+            空室リスク・維持費あり
+          </div>
+        </div>
+        <div class="cost-compare-item">
+          <h4>高配当株（年5%）</h4>
+          <div class="value" style="color: #f87171;">4,800万円</div>
+          <div class="desc">
+            年間240万円÷5%<br>
+            銘柄選定が必要<br>
+            株価下落・減配リスク
+          </div>
+        </div>
+        <div class="cost-compare-item">
+          <h4>インデックス投資（年4%）</h4>
+          <div class="value" style="color: #f87171;">6,000万円</div>
+          <div class="desc">
+            年間240万円÷4%<br>
+            長期運用が前提<br>
+            税金20%かかる
+          </div>
+        </div>
+        <div class="cost-compare-item highlight-card">
+          <h4>Kindle印税</h4>
+          <div class="value">？</div>
+          <div class="desc">
+            必要な冊数で達成可能<br>
+            在庫・維持費なし<br>
+            後でシミュレーションします
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- スライド4: 投資としての優位性 -->
+    <div class="slide">
+      <div class="slide-number">スライド 4/25</div>
+      <h2>Kindle印税が<span class="gold">投資として優れている</span>理由</h2>
+      <p style="text-align: left; max-width: 800px; line-height: 2.2;">
+        <span class="gold" style="font-size: 1.1em;">✓ 初期投資が圧倒的に少ない</span><br>
+        　不動産・株の1/100以下で始められる<br><br>
+        
+        <span class="gold" style="font-size: 1.1em;">✓ 自分でコントロールできる</span><br>
+        　株価や不動産市況に左右されない<br>
+        　出せば出すほど、確実に資産が増える<br><br>
+        
+        <span class="gold" style="font-size: 1.1em;">✓ 維持費・ランニングコストがゼロ</span><br>
+        　不動産の修繕費・管理費なし<br><br>
+        
+        <span class="gold" style="font-size: 1.1em;">✓ 元本割れリスクがない</span><br>
+        　出版した本は消えない資産<br>
+        　最悪でも「売れない」だけ、マイナスにはならない
+      </p>
+    </div>
+
+    <!-- スライド5: Kindle印税という選択肢 -->
+    <div class="slide">
+      <div class="slide-number">スライド 5/25</div>
+      <h2>Kindle印税という<span class="gold">資産</span></h2>
+      <p>
+        出版した本は、あなたの資産になる<br><br>
+        1冊出せば、毎月印税が入り続ける<br><br>
+        10冊、50冊と積み上げれば、印税も増えていく<br><br>
+        <span class="gold">積み上げた分だけ、収入が増える</span>
+      </p>
+    </div>
+
+    <!-- スライド6: なぜマンガなのか -->
+    <div class="slide">
+      <div class="slide-number">スライド 6/25</div>
+      <h2>なぜ<span class="gold">マンガ</span>なのか</h2>
+      <div class="comparison" style="margin-top: 20px;">
+        <div class="comparison-item bad">
+          <h3>活字本</h3>
+          <ul>
+            <li>・読むのに時間がかかる</li>
+            <li>・途中離脱されやすい</li>
+            <li>・ページ単価が低くなりがち</li>
+            <li>・競合が非常に多い</li>
+          </ul>
+        </div>
+        <div class="comparison-item good">
+          <h3>マンガ</h3>
+          <ul>
+            <li>・サクサク読める</li>
+            <li>・完読率が高い</li>
+            <li>・ページ数を稼ぎやすい</li>
+            <li>・AI×マンガはまだブルーオーシャン</li>
+          </ul>
+        </div>
+      </div>
+      <p style="margin-top: 30px;">
+        <span class="gold">Kindle Unlimitedはページ読了数で印税が決まる</span><br>
+        マンガは「読まれやすい」= 「稼ぎやすい」
+      </p>
+    </div>
+
+    <!-- スライド7: 1冊あたりの印税 -->
+    <div class="slide">
+      <div class="slide-number">スライド 7/25</div>
+      <h2>1冊あたりの平均印税</h2>
+      <div class="big-number">5,000<span>円/月</span></div>
+      <p style="margin-top: 30px;">
+        ※ 100冊以上出版者の実績平均<br>
+        ※ Kindle Unlimitedのページ単価から計算
+      </p>
+    </div>
+
+    <!-- スライド7.5: 実績・証拠（新規追加） -->
+    <div class="slide">
+      <div class="slide-number">スライド 8/25</div>
+      <h2>本当に印税は入るのか？</h2>
+      <p class="section-title">実績数字でお答えします</p>
+      <div class="cost-comparison" style="margin-top: 20px;">
+        <div class="cost-compare-item highlight-card">
+          <h4>コミュニティ実績</h4>
+          <div class="value">100冊+</div>
+          <div class="desc">
+            出版実績がある方々の<br>
+            平均月間印税
+          </div>
+        </div>
+        <div class="cost-compare-item highlight-card">
+          <h4>1冊あたり平均</h4>
+          <div class="value">5,000円</div>
+          <div class="desc">
+            月間印税の実績平均<br>
+            （100冊以上出版者）
+          </div>
+        </div>
+        <div class="cost-compare-item highlight-card">
+          <h4>計算根拠</h4>
+          <div class="value" style="font-size: 20px;">ページ単価<br>0.4〜0.5円</div>
+          <div class="desc">
+            Kindle Unlimitedの<br>
+            実際のページ単価
+          </div>
+        </div>
+      </div>
+      <p style="margin-top: 30px; font-size: 14px; color: #808090;">
+        ※ 100ページの本が月100回読まれた場合：100ページ × 0.45円 × 100回 = 約4,500円<br>
+        ※ 個人差があり、成果を保証するものではありません
+      </p>
+    </div>
+
+    <!-- スライド8: シミュレーション -->
+    <div class="slide">
+      <div class="slide-number">スライド 9/25</div>
+      <h2>あなた専用の<span class="gold">シミュレーション</span></h2>
+      <p style="margin-bottom: 20px;">目標や使える時間を入力して、必要な冊数と期間を確認してください</p>
+      <div class="simulator-container">
+        <iframe class="simulator-iframe" src="simulator.html" title="Kindle印税シミュレーター"></iframe>
+      </div>
+      <p style="margin-top: 20px; font-size: 14px; color: #808090;">
+        ※ 1冊あたり月5,000円は、100冊以上出版者の実績平均です<br>
+        ※ 個人差があり、成果を約束するものではありません
+      </p>
+    </div>
+
+    <!-- スライド9: でも、マンガ制作は大変では？ -->
+    <div class="slide">
+      <div class="slide-number">スライド 10/25</div>
+      <h2>でも、マンガ制作は<span class="gold">大変</span>では？</h2>
+      <p>
+        普通に作ると…<br><br>
+        <span style="font-size: 1.3em; color: #f87171;">時間もお金もかかります</span>
+      </p>
+    </div>
+
+    <!-- スライド10: 通常のマンガ制作コスト（自分でやる場合） -->
+    <div class="slide">
+      <div class="slide-number">スライド 11/25</div>
+      <h2>通常のマンガ制作コスト</h2>
+      <p class="section-title">① 自分でやる場合（時給2,000円換算）</p>
+      <table class="cost-table">
+        <tr>
+          <th>工程</th>
+          <th class="right">時間</th>
+          <th class="right">費用換算</th>
+        </tr>
+        <tr>
+          <td>ジャンル調査・競合分析</td>
+          <td class="right">8時間（1日）</td>
+          <td class="right">16,000円</td>
+        </tr>
+        <tr>
+          <td>企画・コンセプト設計</td>
+          <td class="right">8時間（1日）</td>
+          <td class="right">16,000円</td>
+        </tr>
+        <tr>
+          <td>キャラクター設定・デザイン</td>
+          <td class="right">16時間（2日）</td>
+          <td class="right">32,000円</td>
+        </tr>
+        <tr>
+          <td>世界観・設定資料作成</td>
+          <td class="right">8時間（1日）</td>
+          <td class="right">16,000円</td>
+        </tr>
+        <tr>
+          <td>プロット・シナリオ執筆</td>
+          <td class="right">24時間（3日）</td>
+          <td class="right">48,000円</td>
+        </tr>
+        <tr>
+          <td>ネーム・コマ割り</td>
+          <td class="right">16時間（2日）</td>
+          <td class="right">32,000円</td>
+        </tr>
+        <tr>
+          <td>作画・背景・仕上げ</td>
+          <td class="right">160時間（20日）</td>
+          <td class="right">320,000円</td>
+        </tr>
+        <tr>
+          <td>表紙デザイン</td>
+          <td class="right">8時間（1日）</td>
+          <td class="right">16,000円</td>
+        </tr>
+        <tr>
+          <td>校正・修正・出版設定</td>
+          <td class="right">16時間（2日）</td>
+          <td class="right">32,000円</td>
+        </tr>
+        <tr class="total-row">
+          <td>合計</td>
+          <td class="right">264時間（約33日）</td>
+          <td class="right">528,000円</td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- スライド11: 外注した場合 -->
+    <div class="slide">
+      <div class="slide-number">スライド 12/25</div>
+      <h2>通常のマンガ制作コスト</h2>
+      <p class="section-title">② 外注した場合の相場（1冊30ページ）</p>
+      <div class="outsource-cards">
+        <div class="outsource-card">
+          <h4>格安クラウドソーシング</h4>
+          <div class="price">10〜20<span>万円</span></div>
+          <div class="note">ココナラ・ランサーズ等<br>品質にばらつきあり</div>
+        </div>
+        <div class="outsource-card">
+          <h4>マンガ制作会社A社</h4>
+          <div class="price">30〜50<span>万円</span></div>
+          <div class="note">モノクロ・標準クオリティ<br>納期：1〜2ヶ月</div>
+        </div>
+        <div class="outsource-card">
+          <h4>マンガ制作会社B社</h4>
+          <div class="price">50〜80<span>万円</span></div>
+          <div class="note">カラー・高クオリティ<br>納期：2〜3ヶ月</div>
+        </div>
+        <div class="outsource-card">
+          <h4>商業レベル制作</h4>
+          <div class="price">100〜150<span>万円</span></div>
+          <div class="note">プロ品質・フルカラー<br>納期：3ヶ月〜</div>
+        </div>
+      </div>
+      <p style="margin-top: 30px; font-size: 16px;">※ シナリオ込みの場合は +5〜10万円</p>
+    </div>
+
+    <!-- スライド12: このツールなら -->
+    <div class="slide">
+      <div class="slide-number">スライド 13/25</div>
+      <h2>このツール一式なら</h2>
+      <div class="big-number">90<span>分</span></div>
+      <p style="margin-top: 30px;">
+        1冊あたりの作成時間<br><br>
+        <span class="gold">しかも何冊作っても追加費用0円</span>
+      </p>
+    </div>
+
+    <!-- スライド13: なぜ90分で作れるのか -->
+    <div class="slide">
+      <div class="slide-number">スライド 14/25</div>
+      <h2>なぜ<span class="gold">90分</span>で1冊作れるのか</h2>
+      <div class="steps">
+        <div class="step-item">
+          <div class="step-number">1</div>
+          <h4>リサーチ</h4>
+          <p>3分</p>
+        </div>
+        <div class="step-item">
+          <div class="step-number">2</div>
+          <h4>世界観設計</h4>
+          <p>5分</p>
+        </div>
+        <div class="step-item">
+          <div class="step-number">3</div>
+          <h4>ストーリー</h4>
+          <p>5分</p>
+        </div>
+        <div class="step-item">
+          <div class="step-number">4</div>
+          <h4>コマ割り</h4>
+          <p>5分</p>
+        </div>
+        <div class="step-item">
+          <div class="step-number">5</div>
+          <h4>画像生成</h4>
+          <p>25分</p>
+        </div>
+        <div class="step-item">
+          <div class="step-number">6</div>
+          <h4>校正・出版</h4>
+          <p>10分</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- スライド13.5: 再現性の証明（新規追加） -->
+    <div class="slide">
+      <div class="slide-number">スライド 15/25</div>
+      <h2>本当に<span class="gold">90分</span>でできるのか？</h2>
+      <p class="section-title">再現性の証明</p>
+      <div style="max-width: 800px; margin: 0 auto; text-align: left;">
+        <p style="margin-bottom: 20px; line-height: 2;">
+          <span class="gold" style="font-size: 1.1em;">✓ 仕組みがすべてを自動化</span><br>
+          　AIがリサーチ、世界観設計、ストーリー生成、画像生成まで<br>
+          　すべて自動で行います。人間の作業は「ボタンを押す」だけ<br><br>
+          
+          <span class="gold" style="font-size: 1.1em;">✓ 100冊以上出版者の実績</span><br>
+          　コミュニティ内で100冊以上出版している方々が<br>
+          　実際に90分で1冊を作成しています<br><br>
+          
+          <span class="gold" style="font-size: 1.1em;">✓ スキルに依存しない</span><br>
+          　文章力も絵心も不要。仕組みに従うだけで<br>
+          　誰でも同じ結果が出ます<br><br>
+          
+          <span class="gold" style="font-size: 1.1em;">✓ 1冊目からフルサポート</span><br>
+          　初めての方でも、1冊目は完全サポートします<br>
+          　「分からない」をゼロにします
+        </p>
+      </div>
+    </div>
+
+    <!-- スライド14: スキル不要 -->
+    <div class="slide">
+      <div class="slide-number">スライド 16/25</div>
+      <h2>必要なスキルは<span class="gold">ゼロ</span></h2>
+      <p>
+        ✗ 文章力 → 不要<br><br>
+        ✗ 絵心 → 不要<br><br>
+        ✗ デザインセンス → 不要<br><br>
+        ✗ プログラミング → 不要<br><br>
+        <span class="gold">仕組みがすべてをサポート</span>
+      </p>
+    </div>
+
+    <!-- スライド14.5: 本当に自分でもできるのか？（新規追加） -->
+    <div class="slide">
+      <div class="slide-number">スライド 17/25</div>
+      <h2>本当に<span class="gold">自分でも</span>できるのか？</h2>
+      <p class="section-title">実際にできた方々の声</p>
+      <div style="max-width: 800px; margin: 0 auto; text-align: left;">
+        <p style="margin-bottom: 20px; line-height: 2;">
+          <span class="gold" style="font-size: 1.1em;">✓ 初めての出版でも90分で完成</span><br>
+          　「最初は不安でしたが、ツールが全部サポートしてくれて、思ったより簡単でした」（30代・会社員）<br><br>
+          
+          <span class="gold" style="font-size: 1.1em;">✓ スキルゼロからスタート</span><br>
+          　「絵も文章も書けない私でも、1冊目が出版できました」（40代・主婦）<br><br>
+          
+          <span class="gold" style="font-size: 1.1em;">✓ 本業と両立しながら継続</span><br>
+          　「週末の数時間で、月5冊ペースで出版できています」（30代・エンジニア）<br><br>
+          
+          <span class="gold" style="font-size: 1.1em;">✓ 1冊目から印税が入り始めた</span><br>
+          　「出版から1ヶ月後、初めての印税が入りました。感動しました」（20代・学生）
+        </p>
+      </div>
+      <p style="margin-top: 30px; font-size: 14px; color: #808090;">
+        ※ 個人の感想であり、成果を保証するものではありません
+      </p>
+    </div>
+
+    <!-- スライド15: 提供内容 -->
+    <div class="slide">
+      <div class="slide-number">スライド 18/25</div>
+      <h2>提供内容</h2>
+      <div class="includes">
+        <div class="include-item">
+          <span class="icon">🔧</span>
+          <span>出版ツール一式（8種類）</span>
+        </div>
+        <div class="include-item">
+          <span class="icon">👤</span>
+          <span>1冊出版までのフルサポート</span>
+        </div>
+        <div class="include-item">
+          <span class="icon">📚</span>
+          <span>マニュアル一式</span>
+        </div>
+        <div class="include-item">
+          <span class="icon">💬</span>
+          <span>チャットワークで質問し放題</span>
+        </div>
+        <div class="include-item">
+          <span class="icon">💼</span>
+          <span>代行制作OK（商用利用権付き）</span>
+        </div>
+        <div class="include-item">
+          <span class="icon">🎯</span>
+          <span>他者の制作代行で収益化可能</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- スライド15.5: 信頼性・安心感（新規追加） -->
+    <div class="slide">
+      <div class="slide-number">スライド 19/25</div>
+      <h2>安心して始められる<span class="gold">理由</span></h2>
+      <div style="max-width: 800px; margin: 0 auto; text-align: left;">
+        <p style="margin-bottom: 20px; line-height: 2;">
+          <span class="gold" style="font-size: 1.1em;">✓ 1冊目は完全サポート</span><br>
+          　初回セットアップから1冊目の出版まで、<br>
+          　Zoomで一緒に作業しながら進めます<br><br>
+          
+          <span class="gold" style="font-size: 1.1em;">✓ 質問し放題</span><br>
+          　チャットワークでいつでも質問できます<br>
+          　「分からない」をそのままにしません<br><br>
+          
+          <span class="gold" style="font-size: 1.1em;">✓ 実績に基づいた数字</span><br>
+          　100冊以上出版者の実績平均を使用<br>
+          　根拠のない数字ではありません<br><br>
+          
+          <span class="gold" style="font-size: 1.1em;">✓ 強引な営業は一切なし</span><br>
+          　無料相談で終わっても問題ありません<br>
+          　シミュレーション結果だけでもお持ち帰りいただけます
+        </p>
+      </div>
+    </div>
+
+    <!-- スライド16: 価格発表 -->
+    <div class="slide">
+      <div class="slide-number">スライド 20/25</div>
+      <h2>価格</h2>
+      <div class="price-section">
+        <div class="original-price">通常価格 680,000円（税抜）</div>
+        <div class="discount-badge">早期割引 56% OFF</div>
+        <div class="price-box">
+          <div class="price">300,000<span class="tax">円（税抜）</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- スライド17: この価格は何冊分？ -->
+    <div class="slide">
+      <div class="slide-number">スライド 21/25</div>
+      <h2>この価格は何冊分？</h2>
+      <div class="cost-comparison">
+        <div class="cost-compare-item">
+          <h4>自分でやる場合</h4>
+          <div class="value">0.6冊分</div>
+          <div class="desc">528,000円/冊 換算</div>
+        </div>
+        <div class="cost-compare-item">
+          <h4>外注（格安）</h4>
+          <div class="value">2冊分</div>
+          <div class="desc">15万円/冊 換算</div>
+        </div>
+        <div class="cost-compare-item">
+          <h4>外注（標準）</h4>
+          <div class="value">0.75冊分</div>
+          <div class="desc">40万円/冊 換算</div>
+        </div>
+        <div class="cost-compare-item highlight-card">
+          <h4>このツール</h4>
+          <div class="value">∞ 無制限</div>
+          <div class="desc">30万円で作り放題</div>
+        </div>
+      </div>
+      <p style="margin-top: 40px;">
+        <span class="gold">外注2冊分の価格で、無限に出版できる</span>
+      </p>
+    </div>
+
+    <!-- スライド18: 投資回収 -->
+    <div class="slide">
+      <div class="slide-number">スライド 22/25</div>
+      <h2>投資回収シミュレーション</h2>
+      <div class="cost-comparison">
+        <div class="cost-compare-item">
+          <h4>10冊出版</h4>
+          <div class="value">月5万円</div>
+          <div class="desc">6ヶ月で回収</div>
+        </div>
+        <div class="cost-compare-item">
+          <h4>20冊出版</h4>
+          <div class="value">月10万円</div>
+          <div class="desc">3ヶ月で回収</div>
+        </div>
+        <div class="cost-compare-item highlight-card">
+          <h4>60冊出版</h4>
+          <div class="value">月30万円</div>
+          <div class="desc">1ヶ月で回収</div>
+        </div>
+      </div>
+      <p style="margin-top: 40px;">
+        その後は<span class="gold">毎月の印税がすべて利益</span>
+      </p>
+    </div>
+
+    <!-- スライド19: なぜ今なのか -->
+    <div class="slide">
+      <div class="slide-number">スライド 23/25</div>
+      <h2>なぜ<span class="gold">今</span>なのか</h2>
+      <p style="text-align: left; max-width: 700px;">
+        <span class="gold" style="font-size: 1.2em;">① AI画像生成の進化</span><br>
+        2024年後半から品質が劇的に向上<br>
+        プロ並みのマンガが誰でも作れる時代に<br><br>
+        
+        <span class="gold" style="font-size: 1.2em;">② 先行者優位</span><br>
+        AI×マンガ出版はまだ少数<br>
+        今始めれば、市場を先取りできる<br><br>
+        
+        <span class="gold" style="font-size: 1.2em;">③ 早期割引は期間限定</span><br>
+        通常価格68万円 → 30万円（56%OFF）<br>
+        この価格で提供できるのは今だけ
+      </p>
+    </div>
+
+    <!-- スライド20: クロージング -->
+    <div class="slide">
+      <div class="slide-number">スライド 24/25</div>
+      <h2>始めてみませんか？</h2>
+      <p>
+        一緒に1冊目を出版しましょう<br><br>
+        <span class="gold">今日から始めれば、2ヶ月後には最初の印税が入ります</span>
+      </p>
+    </div>
+
+    <!-- スライド21: 海外市場（隠し玉） -->
+    <div class="slide" id="hiddenSlide">
+      <div class="slide-number">スライド 25/25（隠し玉）</div>
+      <h2>【特別情報】<span class="gold">海外市場</span>という選択肢</h2>
+      <div class="comparison" style="margin-top: 20px;">
+        <div class="comparison-item" style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1);">
+          <h3 style="color: #a0a0b0;">日本市場</h3>
+          <ul>
+            <li>・Kindleユーザー数：約500万人</li>
+            <li>・マンガ作家：多い</li>
+            <li>・競争：激しい</li>
+          </ul>
+        </div>
+        <div class="comparison-item good">
+          <h3>英語圏市場</h3>
+          <ul>
+            <li>・Kindleユーザー数：約5,000万人（10倍）</li>
+            <li>・日本式マンガ作家：ほぼいない</li>
+            <li>・競争：ブルーオーシャン</li>
+          </ul>
+        </div>
+      </div>
+      <p style="margin-top: 30px;">
+        <span class="gold">英語ができなくても、AIで翻訳可能</span><br>
+        日本人だからこそ作れる「MANGA」で世界へ<br><br>
+        <span style="font-size: 14px; color: #808090;">※ この情報は購入者限定です。SNS等での発信はお控えください。</span>
+      </p>
+    </div>
+
+  </div>
+
+  <!-- 隠し玉ボタン -->
+  <button class="hidden-slide-btn" onclick="goToHiddenSlide()">隠し玉</button>
+
+  <!-- ナビゲーション -->
+  <div class="nav" id="nav"></div>
+  
+  <div class="nav-arrows">
+    <button class="nav-arrow" onclick="prevSlide()">←</button>
+    <button class="nav-arrow" onclick="nextSlide()">→</button>
+  </div>
+
+  <div class="slide-counter" id="slideCounter">1 / 25</div>
+
+  <div class="keyboard-hint">← → キーで移動</div>
+
+  <script>
+    const container = document.getElementById('slideContainer');
+    const slides = document.querySelectorAll('.slide');
+    const nav = document.getElementById('nav');
+    const counter = document.getElementById('slideCounter');
+    let currentSlide = 0;
+    const mainSlideCount = slides.length - 1; // 隠し玉を除いた枚数
+
+    // ナビゲーションドット生成（メインスライドのみ）
+    for (let i = 0; i < mainSlideCount; i++) {
+      const dot = document.createElement('div');
+      dot.className = 'nav-dot' + (i === 0 ? ' active' : '');
+      dot.onclick = () => goToSlide(i);
+      nav.appendChild(dot);
+    }
+
+    function updateSlide() {
+      container.style.transform = `translateX(-${currentSlide * 100}vw)`;
+      
+      // ドット更新
+      document.querySelectorAll('.nav-dot').forEach((dot, i) => {
+        dot.classList.toggle('active', i === currentSlide);
+      });
+
+      // カウンター更新
+      if (currentSlide < mainSlideCount) {
+        counter.textContent = `${currentSlide + 1} / ${mainSlideCount}`;
+      } else {
+        counter.textContent = `隠し玉`;
+      }
+    }
+
+    function nextSlide() {
+      if (currentSlide < mainSlideCount - 1) { // 通常は隠し玉の前で止まる
+        currentSlide++;
+        updateSlide();
+      }
+    }
+
+    function prevSlide() {
+      if (currentSlide > 0) {
+        currentSlide--;
+        updateSlide();
+      }
+    }
+
+    function goToSlide(index) {
+      currentSlide = index;
+      updateSlide();
+    }
+
+    function goToHiddenSlide() {
+      currentSlide = mainSlideCount; // 最後のスライド（隠し玉）
+      updateSlide();
+    }
+
+    // キーボード操作
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ') {
+        nextSlide();
+      } else if (e.key === 'ArrowLeft') {
+        prevSlide();
+      } else if (e.key === 'h' || e.key === 'H') {
+        goToHiddenSlide();
+      }
+    });
+
+    // スワイプ操作（モバイル）
+    let touchStartX = 0;
+    document.addEventListener('touchstart', (e) => {
+      touchStartX = e.touches[0].clientX;
+    });
+
+    document.addEventListener('touchend', (e) => {
+      const touchEndX = e.changedTouches[0].clientX;
+      const diff = touchStartX - touchEndX;
+
+      if (diff > 50) {
+        nextSlide();
+      } else if (diff < -50) {
+        prevSlide();
+      }
+    });
+  </script>
+</body>
+</html>
