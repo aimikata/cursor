@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kindle印税シミュレーター</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', 'Hiragino Sans', sans-serif;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      min-height: 100vh;
+      padding: 40px 20px;
+      color: #ffffff;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 28px;
+      margin-bottom: 10px;
+      color: #d4af37;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #a0a0b0;
+      margin-bottom: 40px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 30px;
+      margin-bottom: 30px;
+    }
+
+    .card-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      color: #d4af37;
+    }
+
+    .input-group {
+      margin-bottom: 20px;
+    }
+
+    .input-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 14px;
+      color: #c0c0d0;
+    }
+
+    .input-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .input-row input {
+      flex: 1;
+      padding: 15px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 8px;
+      background: rgba(0, 0, 0, 0.3);
+      color: #ffffff;
+      font-size: 18px;
+      text-align: right;
+    }
+
+    .input-row input:focus {
+      outline: none;
+      border-color: #d4af37;
+    }
+
+    .input-row span {
+      color: #a0a0b0;
+      font-size: 16px;
+      min-width: 60px;
+    }
+
+    .slider-container {
+      margin-top: 10px;
+    }
+
+    .slider-container input[type="range"] {
+      width: 100%;
+      height: 8px;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.1);
+      outline: none;
+      -webkit-appearance: none;
+    }
+
+    .slider-container input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #d4af37, #f4cf67);
+      cursor: pointer;
+    }
+
+    .result-card {
+      background: linear-gradient(135deg, #d4af37 0%, #f4cf67 100%);
+      color: #1a1a2e;
+    }
+
+    .result-card .card-title {
+      color: #1a1a2e;
+    }
+
+    .result-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 0;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .result-item:last-child {
+      border-bottom: none;
+    }
+
+    .result-label {
+      font-size: 14px;
+    }
+
+    .result-value {
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .result-value.highlight {
+      font-size: 32px;
+    }
+
+    .timeline {
+      margin-top: 30px;
+    }
+
+    .timeline-title {
+      font-size: 16px;
+      margin-bottom: 15px;
+      color: #1a1a2e;
+      font-weight: 600;
+    }
+
+    .timeline-item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding: 10px 0;
+    }
+
+    .timeline-month {
+      background: rgba(0, 0, 0, 0.2);
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      min-width: 80px;
+      text-align: center;
+    }
+
+    .timeline-bar {
+      flex: 1;
+      height: 8px;
+      background: rgba(0, 0, 0, 0.1);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .timeline-bar-fill {
+      height: 100%;
+      background: #1a1a2e;
+      border-radius: 4px;
+      transition: width 0.3s;
+    }
+
+    .timeline-value {
+      font-size: 14px;
+      font-weight: 600;
+      min-width: 80px;
+      text-align: right;
+    }
+
+    .note {
+      text-align: center;
+      color: #808090;
+      font-size: 12px;
+      margin-top: 20px;
+    }
+
+    .assumptions {
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 8px;
+      padding: 15px;
+      margin-top: 20px;
+    }
+
+    .assumptions-title {
+      font-size: 12px;
+      color: #1a1a2e;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+
+    .assumptions-list {
+      font-size: 11px;
+      color: rgba(0, 0, 0, 0.7);
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Kindle印税シミュレーター</h1>
+    <p class="subtitle">あなたの目標を入力してください</p>
+
+    <!-- 入力カード -->
+    <div class="card">
+      <h2 class="card-title">目標設定</h2>
+      
+      <div class="input-group">
+        <label>目標の月間印税収入</label>
+        <div class="input-row">
+          <input type="number" id="targetIncome" value="50000" min="10000" step="10000">
+          <span>円/月</span>
+        </div>
+        <div class="slider-container">
+          <input type="range" id="targetIncomeSlider" min="10000" max="500000" step="10000" value="50000">
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label>週に使える時間</label>
+        <div class="input-row">
+          <input type="number" id="weeklyHours" value="5" min="1" max="40">
+          <span>時間/週</span>
+        </div>
+        <div class="slider-container">
+          <input type="range" id="weeklyHoursSlider" min="1" max="40" step="1" value="5">
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label>1冊あたりの平均印税（実績平均：5,000円）</label>
+        <div class="input-row">
+          <input type="number" id="royaltyPerBook" value="5000" min="500" step="500">
+          <span>円/冊</span>
+        </div>
+        <div class="slider-container">
+          <input type="range" id="royaltyPerBookSlider" min="500" max="10000" step="500" value="5000">
+        </div>
+      </div>
+    </div>
+
+    <!-- 結果カード -->
+    <div class="card result-card">
+      <h2 class="card-title">シミュレーション結果</h2>
+      
+      <div class="result-item">
+        <span class="result-label">必要な出版冊数</span>
+        <span class="result-value highlight" id="requiredBooks">10</span>
+      </div>
+      
+      <div class="result-item">
+        <span class="result-label">月間出版可能冊数</span>
+        <span class="result-value" id="monthlyBooks">13</span>
+      </div>
+      
+      <div class="result-item">
+        <span class="result-label">目標達成までの期間</span>
+        <span class="result-value highlight" id="monthsToGoal">1ヶ月</span>
+      </div>
+
+      <!-- タイムライン -->
+      <div class="timeline">
+        <div class="timeline-title">印税収入の推移予測</div>
+        <div id="timelineContainer"></div>
+      </div>
+
+      <!-- 前提条件 -->
+      <div class="assumptions">
+        <div class="assumptions-title">計算の前提条件</div>
+        <div class="assumptions-list">
+          ・1冊あたりの作成時間：90分（1.5時間）<br>
+          ・1冊あたりの平均印税：入力値を使用<br>
+          ・100冊以上出版者の実績平均：月5,000円/冊<br>
+          ・印税は出版後、継続的に発生
+        </div>
+      </div>
+    </div>
+
+    <p class="note">
+      ※ 実際の印税は本の内容・ジャンル・マーケティングにより変動します<br>
+      ※ Kindle Unlimitedのページ単価：約0.4〜0.5円/ページで計算
+    </p>
+  </div>
+
+  <script>
+    // 要素取得
+    const targetIncomeInput = document.getElementById('targetIncome');
+    const targetIncomeSlider = document.getElementById('targetIncomeSlider');
+    const weeklyHoursInput = document.getElementById('weeklyHours');
+    const weeklyHoursSlider = document.getElementById('weeklyHoursSlider');
+    const royaltyPerBookInput = document.getElementById('royaltyPerBook');
+    const royaltyPerBookSlider = document.getElementById('royaltyPerBookSlider');
+
+    // 結果表示要素
+    const requiredBooksEl = document.getElementById('requiredBooks');
+    const monthlyBooksEl = document.getElementById('monthlyBooks');
+    const monthsToGoalEl = document.getElementById('monthsToGoal');
+    const timelineContainer = document.getElementById('timelineContainer');
+
+    // 入力とスライダーの同期
+    function syncInputs() {
+      targetIncomeSlider.value = targetIncomeInput.value;
+      weeklyHoursSlider.value = weeklyHoursInput.value;
+      royaltyPerBookSlider.value = royaltyPerBookInput.value;
+    }
+
+    function syncSliders() {
+      targetIncomeInput.value = targetIncomeSlider.value;
+      weeklyHoursInput.value = weeklyHoursSlider.value;
+      royaltyPerBookInput.value = royaltyPerBookSlider.value;
+    }
+
+    // 計算関数
+    function calculate() {
+      const targetIncome = parseInt(targetIncomeInput.value) || 50000;
+      const weeklyHours = parseInt(weeklyHoursInput.value) || 5;
+      const royaltyPerBook = parseInt(royaltyPerBookInput.value) || 5000;
+
+      // 1冊あたり1.5時間（90分）
+      const hoursPerBook = 1.5;
+      
+      // 週に作れる冊数
+      const booksPerWeek = weeklyHours / hoursPerBook;
+      
+      // 月に作れる冊数（4.3週/月）
+      const booksPerMonth = Math.floor(booksPerWeek * 4.3);
+      
+      // 目標達成に必要な冊数
+      const requiredBooks = Math.ceil(targetIncome / royaltyPerBook);
+      
+      // 目標達成までの月数
+      const monthsToGoal = Math.ceil(requiredBooks / booksPerMonth);
+
+      // 結果表示
+      requiredBooksEl.textContent = requiredBooks + '冊';
+      monthlyBooksEl.textContent = booksPerMonth + '冊/月';
+      
+      if (monthsToGoal <= 1) {
+        monthsToGoalEl.textContent = '約1ヶ月';
+      } else {
+        monthsToGoalEl.textContent = '約' + monthsToGoal + 'ヶ月';
+      }
+
+      // タイムライン生成
+      generateTimeline(booksPerMonth, royaltyPerBook, targetIncome);
+    }
+
+    // タイムライン生成
+    function generateTimeline(booksPerMonth, royaltyPerBook, targetIncome) {
+      timelineContainer.innerHTML = '';
+      
+      let totalBooks = 0;
+      const maxMonths = 12;
+      
+      for (let month = 1; month <= maxMonths; month++) {
+        totalBooks += booksPerMonth;
+        const monthlyIncome = totalBooks * royaltyPerBook;
+        const percentage = Math.min((monthlyIncome / targetIncome) * 100, 100);
+        
+        const item = document.createElement('div');
+        item.className = 'timeline-item';
+        item.innerHTML = `
+          <span class="timeline-month">${month}ヶ月目</span>
+          <div class="timeline-bar">
+            <div class="timeline-bar-fill" style="width: ${percentage}%"></div>
+          </div>
+          <span class="timeline-value">${formatNumber(monthlyIncome)}円</span>
+        `;
+        timelineContainer.appendChild(item);
+        
+        // 目標達成したら終了
+        if (monthlyIncome >= targetIncome) {
+          break;
+        }
+      }
+    }
+
+    // 数字フォーマット
+    function formatNumber(num) {
+      return num.toLocaleString();
+    }
+
+    // イベントリスナー
+    targetIncomeInput.addEventListener('input', () => { syncInputs(); calculate(); });
+    targetIncomeSlider.addEventListener('input', () => { syncSliders(); calculate(); });
+    weeklyHoursInput.addEventListener('input', () => { syncInputs(); calculate(); });
+    weeklyHoursSlider.addEventListener('input', () => { syncSliders(); calculate(); });
+    royaltyPerBookInput.addEventListener('input', () => { syncInputs(); calculate(); });
+    royaltyPerBookSlider.addEventListener('input', () => { syncSliders(); calculate(); });
+
+    // 初期計算
+    calculate();
+  </script>
+</body>
+</html>
