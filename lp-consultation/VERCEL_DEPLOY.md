@@ -7,6 +7,26 @@
 
 ---
 
+## 🎬 動画差し替え後のデプロイ（いますぐやる場合）
+
+LPの埋め込み動画を差し替えたあと、本番（https://lp-consultation.vercel.app/）に反映するには、**下記のいずれか**を実行してください。
+
+### 方法A：Git でプッシュ（Vercel と連携している場合）
+
+1. **PowerShell** を開き、`cd f:\AI\manga\cursor` でリポジトリのルートへ移動
+2. `git add lp-consultation/index.html`
+3. `git commit -m "LP埋め込み動画を本編に差し替え（pCM2Dg3_iIk）"`
+4. `git push origin main`
+5. Vercel が連携されていれば、数分で本番に自動デプロイされます
+
+### 方法B：Vercel CLI で直接デプロイ
+
+1. **PowerShell** を開き、`cd f:\AI\manga\cursor\lp-consultation` で lp-consultation へ移動
+2. `vercel --prod` を実行（未ログインの場合は先に `vercel login`）
+3. 表示された URL が本番です
+
+---
+
 ## 💻 PowerShellの使い方（初心者向け）
 
 ### PowerShellとは？
