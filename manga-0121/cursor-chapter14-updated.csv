@@ -1,0 +1,703 @@
+Page,Template,Prompt
+Cover,Cover,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_2] :: Cursor
+[Ref: REF_IMG_3] :: David
+
+**[Heading]**
+- Section: Chapter 14: Project 1 — Building a ToDo App
+
+**[Visual Direction]**
+A high-quality, modern manga cover illustration. Center stage features Alex [Ref: REF_IMG_1] sitting at a desk with a determined smile, typing on a laptop. Behind him, a large holographic projection of a ToDo List application interface floats in the air. David [Ref: REF_IMG_3] stands to the side with arms crossed, smiling approvingly. The Cursor mascot [Ref: REF_IMG_2] is flying near the laptop screen, emitting a soft blue glow. The background is a stylish, modern co-working space in San Francisco with large windows. Title text ""Chapter 14: Project 1 — Building a ToDo App"" is prominent.
+
+**[Target Text]**
+(Title Only)"
+Page 1,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+**[Heading]**
+- Section: Opening Scene
+
+**[Visual Direction]**
+Panel 1: Alex [Ref: REF_IMG_1] is in his apartment, looking thoughtful. He is holding a coffee mug, staring at his laptop screen which shows a blank editor.
+Panel 2: A video call window pops up on the screen. David [Ref: REF_IMG_3] appears, waving. Alex looks surprised but happy.
+Panel 3: David is explaining with a gesture. Alex listens intently, looking inspired.
+
+**[Target Text]**
+Panel 1 Alex: ""I've learned Cursor features, but I want to **create an actual project**. However, I don't know **where to start**...""
+Panel 1 Alex (thinking): ""`daily_log` was a small project, but I want to create a **larger project**. However, I don't know **how to start**.""
+
+Panel 2 David: ""Let's build a **ToDo app**. A ToDo app is a simple app that can **add, delete, and complete tasks**.""
+Panel 2 David: ""You can **integrate** Cursor features learned so far.""
+Panel 2 Alex: ""How do I build a ToDo app? I don't know **where to start**...""
+
+Panel 3 David: ""Let's build it **step by step** together.""
+Panel 3 David: ""First, make a **project plan**, then use Cursor's **Chat** and **Composer** to build it **step by step**. We'll solve **common problems** together too."""
+Page 2,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Section: Chapter Overview
+
+**[Visual Direction]**
+A clean, modern infographic layout. Top half shows a mockup of the ""ToDo App"" interface (a list of tasks with checkboxes). Bottom half shows a flow chart with four steps connected by arrows. Cursor [Ref: REF_IMG_2] is pointing at the flow chart.
+
+**[Target Text]**
+WHAT WE WILL BUILD:
+ToDo App
+- Add Tasks
+- Delete Tasks
+- Complete Tasks
+
+CHAPTER FLOW:
+1. Plan Project (14.1)
+2. Step-by-Step Implementation (14.2)
+3. Solve Common Problems (14.3)
+4. Completion & Testing (14.4)
+
+TOOLS:
+Chat (Cmd+L), Composer (Cmd+I), Tab, Agent"
+Page 3,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+**[Heading]**
+- Section: 14.1 Project Planning and Setup
+
+**[Visual Direction]**
+Panel 1: David [Ref: REF_IMG_3] is holding up four fingers, listing requirements. Alex [Ref: REF_IMG_1] is taking notes on a notepad.
+Panel 2: Alex looks overwhelmed, holding his head slightly.
+Panel 3: David smiles and points to the Cursor interface on the screen. Alex looks relieved.
+
+**[Target Text]**
+David: Before coding, we plan. We need 4 features: Add, Delete, Complete, and List tasks.
+Alex: That sounds like a lot... I don't know how to structure the files.
+David: Don't worry. Just ask Cursor's Chat. Tell it what you want to build, and it will suggest the structure for you."
+Page 4,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Section: Project Structure Plan
+
+**[Visual Direction]**
+A diagram showing the file structure of the project. It looks like a folder tree. Cursor [Ref: REF_IMG_2] is sitting on top of the folder icon.
+
+**[Target Text]**
+PROJECT PLAN
+
+Folder: todo_app/
+
+1. todo.py
+   - Main application code
+   - Functions: add, delete, complete, list
+
+2. todo_data.json
+   - Database file
+   - Saves task data (JSON format)
+
+3. test_todo.py
+   - Test suite
+   - Verifies functionality"
+Page 5,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Section: Consulting Chat for Structure
+
+**[Visual Direction]**
+Panel 1: Close up of Alex's hands typing on the keyboard. The screen shows the Cursor Chat window.
+Panel 2: The Chat window displays a response. Cursor [Ref: REF_IMG_2] pops out of the screen holding a blueprint.
+Panel 3: Alex looks at the blueprint/code suggestion with wide eyes.
+
+**[Target Text]**
+Alex (Typing): ""I want to build a ToDo app that can add, delete, complete, and list tasks. Please suggest a project structure.""
+Cursor: Here is a suggested structure! `todo.py` for logic, `todo_data.json` for storage.
+Alex: It even suggested the functions I need inside `todo.py`! But... how do I write all this code?"
+Page 6,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Section: Steps to Consult Chat
+
+**[Visual Direction]**
+A step-by-step visual guide. Icons represent each action: Keyboard for shortcuts, Chat bubble for typing, Eye for checking.
+
+**[Target Text]**
+HOW TO PLAN WITH CHAT:
+
+1. Open Chat
+   - Press Cmd+L (Mac) or Ctrl+L (Win)
+
+2. Enter Your Goal
+   - ""I want to build a ToDo app...""
+
+3. Review Suggestion
+   - ALWAYS check the output with your own eyes.
+   - Understand the proposed structure before moving on."
+Page 7,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+**[Heading]**
+- Section: Creating with Composer
+
+**[Visual Direction]**
+Panel 1: David points to the Composer shortcut key on the keyboard. Alex nods.
+Panel 2: Alex types a command into the Composer window (floating overlay). The screen glows as code generates.
+Panel 3: Alex looks at the generated code, impressed but cautious. David reminds him to check it.
+
+**[Target Text]**
+David: Now, use Composer (Cmd+I) to actually create the files. Give it the instructions.
+Alex (Typing): ""Create a `todo_app` folder and `todo.py`. Implement features to add, delete, complete, and list tasks.""
+David: Wait! Before you click 'Accept', check the code. Understand what features are being implemented."
+Page 8,practical_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Section: The Generated Code
+
+**[Visual Direction]**
+A code snippet page showing the Python code for `todo.py`. Key parts are highlighted with annotations.
+
+**[Target Text]**
+# todo.py - Generated by Composer
+
+import json
+import os
+from datetime import datetime
+
+DATA_FILE = ""todo_data.json""
+
+def load_tasks():
+    if os.path.exists(DATA_FILE):
+        with open(DATA_FILE, ""r"", encoding=""utf-8"") as f:
+            return json.load(f)
+    return []
+
+def add_task(task):
+    tasks = load_tasks()
+    tasks.append({""task"": task, ""completed"": False})
+    save_tasks(tasks)
+    print(f""Task added: {task}"")
+
+def main():
+    # Command line argument handling...
+    pass
+
+if __name__ == ""__main__"":
+    main()"
+Page 9,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+**[Heading]**
+- Section: 14.2 Using Cursor Features Step by Step
+
+**[Visual Direction]**
+Panel 1: David creates a holographic staircase labeled ""Workflow"". Alex looks up at it.
+Panel 2: Close up on the steps: Tab, Chat, Composer, Agent.
+Panel 3: Alex sits down at his desk, cracking his knuckles, ready to code.
+
+**[Target Text]**
+David: Let's follow the Cursor Workflow.
+David: 1. Write with Tab. 2. Ask with Chat. 3. Build with Composer. 4. Test with Agent.
+Alex: I'll try writing the code myself first using Tab. I want to feel the flow."
+Page 10,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Section: The Cursor Workflow
+
+**[Visual Direction]**
+A circular flow diagram or a linear process map. Each node has an icon and a description.
+
+**[Target Text]**
+STEP-BY-STEP WORKFLOW
+
+1. TAB (Write)
+   - Use for single lines or function completions.
+
+2. CHAT (Ask)
+   - Use when you don't understand syntax or libraries.
+
+3. COMPOSER (Build)
+   - Use for multi-file edits or adding big features.
+
+4. AGENT (Run)
+   - Use for running terminal commands and tests."
+Page 11,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Section: Coding with Tab
+
+**[Visual Direction]**
+Panel 1: Alex is typing `def add_task(task):` and pauses. He looks unsure.
+Panel 2: Ghost text appears on his screen. Cursor [Ref: REF_IMG_2] appears next to the text, offering it.
+Panel 3: Alex presses Tab with a satisfied ""Click!"" sound effect.
+
+**[Target Text]**
+Alex: I know what I want to write, but the exact syntax...
+Cursor (Suggestion): 
+    tasks = load_tasks()
+    task_id = len(tasks) + 1...
+Alex: Ah, that's it! Tab to accept. It feels like reading my mind."
+Page 12,practical_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Section: Tab Practice
+
+**[Visual Direction]**
+A ""How-To"" card for the Tab feature. Shows code with ""Ghost Text"" in gray.
+
+**[Target Text]**
+PRACTICE: Writing with Tab
+
+1. Open `todo.py`
+2. Start typing a function definition.
+3. Wait for the Gray Text (Ghost Text) to appear.
+4. Press [Tab] to Accept.
+5. Press [Esc] to Reject if it's not what you want.
+
+Example:
+def delete_task(task_id): <cursor>
+    [Gray Text: tasks = load_tasks()...]"
+Page 13,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Section: Asking Chat for Help
+
+**[Visual Direction]**
+Panel 1: Alex stares at `json.dump` in the code. He looks confused.
+Panel 2: He opens the Chat sidebar. Cursor [Ref: REF_IMG_2] appears in the sidebar wearing a teacher's hat.
+Panel 3: Alex reads the explanation and nods, understanding dawning on his face.
+
+**[Target Text]**
+Alex: `json.dump`... I've seen it, but I don't really get how the arguments work.
+Alex (Typing): ""Teach me how to use json.dump()""
+Cursor: It writes Python objects to a file! `ensure_ascii=False` keeps Japanese characters readable, and `indent=2` makes it pretty."
+Page 14,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Section: Chat Best Practices
+
+**[Visual Direction]**
+A UI mockup of the Chat window. Callouts explain the parts of a good question and how to read the answer.
+
+**[Target Text]**
+ASKING QUESTIONS IN CHAT
+
+1. Be Specific
+   - Bad: ""It doesn't work.""
+   - Good: ""How do I use json.dump to save a list?""
+
+2. Context Matters
+   - Cursor sees your open file.
+
+3. Verify
+   - Read the explanation. Don't just copy-paste blindly."
+Page 15,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+**[Heading]**
+- Section: Adding Features with Composer
+
+**[Visual Direction]**
+Panel 1: Alex turns to David. ""I forgot the Edit feature!""
+Panel 2: David gestures to Composer. ""Use Composer for new features.""
+Panel 3: Alex types into Composer. The code window shows lines being inserted automatically.
+
+**[Target Text]**
+Alex: Wait, I want to edit tasks too. I don't want to write it all from scratch.
+David: Perfect job for Composer. Tell it: ""Add a feature to edit tasks.""
+Alex (Composer): ""Add a feature to edit tasks to todo.py. Create `edit_task` function.""
+Alex: It's inserting the function right where it belongs!"
+Page 16,practical_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Section: Composer Result
+
+**[Visual Direction]**
+Shows the code block for `edit_task` that was added. Also lists the steps to use Composer.
+
+**[Target Text]**
+GENERATED CODE: Edit Feature
+
+```python
+def edit_task(task_id, new_task):
+    """"""Edit a task""""""
+    tasks = load_tasks()
+    for task in tasks:
+        if task[""id""] == task_id:
+            task[""task""] = new_task
+            break
+    save_tasks(tasks)
+    print(f""Task edited: ID {task_id}"")
+```
+
+STEPS:
+1. Cmd+I to open Composer.
+2. Type instruction.
+3. Click Generate.
+4. Review & Accept."
+Page 17,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+**[Heading]**
+- Section: 14.3 Common Problems and Solutions
+
+**[Visual Direction]**
+Panel 1: Alex runs the code in the terminal. Background turns dark/red.
+Panel 2: A scary error message `IndexError: list index out of range` dominates the panel. Alex looks panicked.
+Panel 3: David puts a hand on Alex's shoulder. He looks calm.
+
+**[Target Text]**
+Alex: Okay, let's run it! `python todo.py add ""test""`
+System: IndexError: list index out of range
+Alex: Aah! An error! Did I break it?
+David: Errors are friends. Read the message. It tells you exactly what's wrong."
+Page 18,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Section: Common Error Dictionary
+
+**[Visual Direction]**
+A table or grid layout listing common Python errors, their causes, and solutions. Icons for ""Bug"" and ""Fix"".
+
+**[Target Text]**
+COMMON ERRORS
+
+1. IndexError: list index out of range
+   - Cause: Trying to access an argument that doesn't exist.
+   - Fix: Check `sys.argv` length before using it.
+
+2. FileNotFoundError
+   - Cause: `todo_data.json` doesn't exist yet.
+   - Fix: Check if file exists before opening.
+
+3. JSONDecodeError
+   - Cause: The JSON file is corrupted or empty.
+   - Fix: Reset the file or handle the exception."
+Page 19,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Section: Fixing with Chat
+
+**[Visual Direction]**
+Panel 1: Alex highlights the error message in the terminal.
+Panel 2: He pastes it into Chat. ""How do I fix this?""
+Panel 3: Cursor provides a solution code snippet. Alex looks relieved.
+
+**[Target Text]**
+Alex: I'll paste this error into Chat. ""What is the cause? How do I fix it?""
+Cursor: The error happens because `sys.argv[2]` is missing. You need to check if the user provided an argument first.
+Alex: I see! I need to add an `if` check."
+Page 20,practical_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Section: Debugging Steps
+
+**[Visual Direction]**
+A checklist for debugging. Visuals show the loop of Error -> Chat -> Fix -> Run.
+
+**[Target Text]**
+DEBUGGING WORKFLOW
+
+1. READ the error message in the terminal.
+2. COPY the error message.
+3. PASTE into Cursor Chat (Cmd+L).
+4. ASK: ""How do I fix this?""
+5. UNDERSTAND the fix (don't just copy).
+6. APPLY and RUN again."
+Page 21,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+**[Heading]**
+- Section: 14.4 Completion and Testing
+
+**[Visual Direction]**
+Panel 1: The code is working. Alex smiles. David shakes his head.
+Panel 2: David crosses his arms. ""It works now, but will it work later?""
+Panel 3: David explains the importance of automated tests. Alex looks intrigued.
+
+**[Target Text]**
+Alex: It works! I can add and list tasks. I'm done!
+David: Not yet. We need Tests.
+Alex: Tests? But I just tested it manually.
+David: Automated tests verify your features aren't broken when you change code later. Let's ask Composer to write them."
+Page 22,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Section: Testing Workflow
+
+**[Visual Direction]**
+A visual guide on how to generate tests. Shows `todo.py` going into the AI, and `test_todo.py` coming out.
+
+**[Target Text]**
+GENERATING TESTS
+
+1. Open Composer (Cmd+I)
+2. Instruction:
+   ""Create test_todo.py. Write pytest code for todo.py covering add, delete, and complete.""
+3. Generate & Accept
+4. Run Tests:
+   Terminal: `pytest test_todo.py`"
+Page 23,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Section: Running the Tests
+
+**[Visual Direction]**
+Panel 1: Alex watches Composer generate `test_todo.py`.
+Panel 2: He types `pytest` in the terminal. The screen shows green progress bars.
+Panel 3: Alex pumps his fist. ""All green!""
+
+**[Target Text]**
+Alex: Composer wrote the tests in seconds. Now... `pytest`.
+Terminal: . . . . [100%] PASSED
+Alex: Green! All tests passed. This feels amazing.
+David: Now you can refactor confidently. If you break something, the tests will turn red."
+Page 24,practical_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Section: Usage Manual
+
+**[Visual Direction]**
+A user manual page for the completed ToDo App. Shows terminal commands and example outputs.
+
+**[Target Text]**
+APP USAGE GUIDE
+
+# Add a Task
+$ python todo.py add ""Buy Milk""
+> Task added: Buy Milk
+
+# List Tasks
+$ python todo.py list
+> [ ] [1] Buy Milk
+
+# Complete Task
+$ python todo.py complete 1
+> Task completed: ID 1
+
+# Delete Task
+$ python todo.py delete 1
+> Task deleted: ID 1"
+Page 25,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+**[Heading]**
+- Section: Chapter Summary
+
+**[Visual Direction]**
+Panel 1: Alex leans back in his chair, satisfied. The laptop screen shows the completed project.
+Panel 2: David smiles. ""You integrated everything: Tab, Chat, Composer.""
+Panel 3: Alex looks determined. ""What's next?""
+
+**[Target Text]**
+Alex: I built a real app. And I used every feature of Cursor to do it.
+David: You learned how to solve problems and test your code too. That's the real skill.
+Alex: But sometimes I didn't know which feature to use.
+David: That comes with practice. Next, we'll try something harder: API Integration."
+Page 26,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Section: Review Points
+
+**[Visual Direction]**
+A checklist summary of the chapter's learning points. Checkmarks next to each item.
+
+**[Target Text]**
+CHAPTER CHECKLIST
+
+[x] Planned a project using Chat
+[x] Created files using Composer
+[x] Wrote code using Tab auto-complete
+[x] Debugged errors by pasting them into Chat
+[x] Generated automated tests
+
+NEXT MISSION:
+Chapter 15: Project 2 — API Integration App"

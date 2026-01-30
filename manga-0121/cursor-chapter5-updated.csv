@@ -1,0 +1,632 @@
+Page,Template,Prompt
+Page 1,Cover,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1], [Ref: REF_IMG_2], [Ref: REF_IMG_3]
+
+**[Heading]**
+- Section: Chapter 5: Composer — Advanced Techniques and Practical Usage
+
+**[Visual Direction]**
+A high-quality, magazine-style cover illustration. [Ref: REF_IMG_1] (Alex) is sitting at a modern desk with a focused but excited expression, typing on a keyboard. Holographic code screens surround him. [Ref: REF_IMG_3] (David) stands behind him with a supportive smile, pointing at a floating window labeled 'Composer'. [Ref: REF_IMG_2] (Cursor mascot) is flying near the screen, holding a wrench or tool, symbolizing 'building features'. The background is a blurred modern office in Silicon Valley.
+
+**[Target Text]**
+Chapter 5
+Composer — Advanced Techniques and Practical Usage
+
+Build features just by describing them.
+Master the art of AI-powered development."
+Page 2,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1]
+
+**[Heading]**
+- Section: Opening Scene: What to Add?
+
+**[Visual Direction]**
+Panel 1: [Ref: REF_IMG_1] (Alex) is in his apartment, looking tired. He is staring at his monitor which shows a text file `daily_log.txt` full of messy lines.
+Panel 2: Close up on the screen showing dates mixed together. Alex thinks, looking annoyed.
+Panel 3: Alex leans back in his chair, sighing. He looks at a sticky note on his monitor that says 'Chapter 3 Goal: Filter by Date'.
+
+**[Target Text]**
+Alex: ""Man... `daily_log.txt` is getting huge. Searching for what I did today with my eyes is a pain.""
+Alex (thinking): ""I remember Chapter 3's 'Next Steps' mentioned extracting only that day's lines...""
+Alex: ""But writing the logic to filter dates in Python myself? I'm worried I'll break the existing code..."""
+Page 3,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1], [Ref: REF_IMG_3]
+
+**[Heading]**
+- Section: Enter Composer
+
+**[Visual Direction]**
+Panel 1: A video call window pops up. [Ref: REF_IMG_3] (David) appears on screen, smiling confidently.
+Panel 2: David speaks with a teaching gesture. Alex looks surprised but interested.
+Panel 3: Alex sits up straight, ready to type. David is explaining the plan.
+
+**[Target Text]**
+Panel 1 David: ""Don't worry, Alex! Let **Composer** handle that.""
+Panel 1 David: ""Just **describe** 'add a feature to display only that day's lines with `python log.py --day 2025-01-21`' and it will suggest the necessary changes.""
+Panel 1 David: ""It's a practical version of 'building features just by describing' from Chapter 1.""
+Panel 1 Alex: ""I don't have to write everything myself. I want to try it.""
+
+Panel 2 Alex: ""I want to review how to open Composer first.""
+Panel 2 David: ""Let's start with a **review**. Then we'll add **display only that day's lines** to `daily_log`."""
+Page 4,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2]
+
+**[Heading]**
+- Section: Chapter Roadmap
+
+**[Visual Direction]**
+A clean, step-by-step roadmap infographic. [Ref: REF_IMG_2] (Cursor) is guiding the reader through the path. Icons represent each step.
+1. Review Composer Basics (5.1)
+2. Add ""Display Day"" Feature (5.2)
+3. Understand Project Structure (5.3)
+4. Advanced Customization (5.4)
+5. Agent Mode Experience (5.5)
+
+**[Target Text]**
+What we will do in Chapter 5:
+
+GOAL: Add `python log.py --day YYYY-MM-DD` functionality.
+
+1. Review Basics: How to open and instruct Composer.
+2. Build Feature: Describe ""filter by date"" and let AI write the code.
+3. Context: Teach Composer about your project structure.
+4. Fine-tuning: Customize the result with additional prompts.
+5. Agent Mode: Let the AI run the code for you."
+Page 5,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1], [Ref: REF_IMG_3]
+
+**[Heading]**
+- Section: 5.1 Review of Chapter 1 — Composer Basic Operations
+
+**[Visual Direction]**
+Panel 1: David is explaining on the screen. Alex nods.
+Panel 2: Close up of Alex's hands on the keyboard pressing `Cmd + I` (or Ctrl + I). A ""Click"" sound effect.
+Panel 3: The Composer panel slides up from the bottom of the screen. Alex looks at the large input field.
+
+**[Target Text]**
+David: ""Remember, Composer is the panel that **generates and changes code** based on your description.""
+David: ""Open it with **Cmd+I** (Mac) or **Ctrl+I** (Windows).""
+Alex: ""Got it. It opened at the bottom. This is where I write what I want, right?""
+David: ""Correct. Since we are **modifying existing files**, being specific is key."""
+Page 6,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2]
+
+**[Heading]**
+- Section: Composer Basics Checklist
+
+**[Visual Direction]**
+A UI diagram of the Composer window. Arrows point to key elements.
+1. **Open**: Shortcut keys displayed prominently.
+2. **Input Field**: ""Write specific instructions here.""
+3. **Generate Button**: Located at the right/bottom.
+
+**[Target Text]**
+Composer Basic Operations
+
+1. OPEN
+Mac: Cmd + I
+Win: Ctrl + I
+(Or select 'Composer' from the menu)
+
+2. INSTRUCT
+Write your request in the input field.
+Tip: Be specific! ""Add a feature to..."" or ""Don't change X...""
+
+3. GENERATE
+Press the Generate button (or Enter) to create code proposals."
+Page 7,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1], [Ref: REF_IMG_3]
+
+**[Heading]**
+- Section: 5.2 Building More Complex Features
+
+**[Visual Direction]**
+Panel 1: Alex is typing a long, detailed prompt into Composer. He looks focused.
+Panel 2: Close up of the screen showing the prompt text.
+Panel 3: Alex hits 'Generate'. He waits with anticipation.
+
+**[Target Text]**
+Alex (typing): ""Add a feature to `log.py` that displays only that day's lines from `daily_log.txt` using `python log.py --day YYYY-MM-DD`.""
+Alex (typing): ""Keep the existing append feature as is. Date format is YYYY-MM-DD.""
+David: ""Excellent. You clearly stated **what to add** and **what to keep**. This prevents the AI from deleting your old code.""
+Alex: ""Here goes... Generate!"""
+Page 8,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2]
+
+**[Heading]**
+- Section: Understanding the Diff View
+
+**[Visual Direction]**
+A visual explanation of the ""Diff"" (Difference) view in Composer. 
+- A code block with Green lines marked (+) representing ""Added Code"".
+- A code block with Red lines marked (-) representing ""Removed Code"".
+- A code block with Yellow lines representing ""Changed Code"".
+[Ref: REF_IMG_2] is holding a magnifying glass examining the green lines.
+
+**[Target Text]**
+Check the Proposals (Diffs)
+
+After generating, Composer shows you what will change.
+
+[GREEN / +] Added Lines
+New code that implements your requested feature.
+
+[RED / -] Removed Lines
+Old code that is being replaced or deleted.
+
+[YELLOW] Modified Lines
+Small changes to existing lines.
+
+ALWAYS check the diff before Accepting!"
+Page 9,practical_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2]
+
+**[Heading]**
+- Section: The Code to be Added
+
+**[Visual Direction]**
+A clear code snippet window showing the Python code that Composer generated. Key parts are highlighted.
+
+**[Target Text]**
+Generated Code for log.py
+
+```python
+import sys
+
+# ... imports ...
+
+# When --day is used, display only that day's lines
+if len(sys.argv) >= 2 and sys.argv[1] == ""--day"":
+    if len(sys.argv) < 3:
+        print(""Usage: python log.py --day YYYY-MM-DD"")
+        return
+    
+    day = sys.argv[2]
+    log_file = ""daily_log.txt""
+    
+    try:
+        with open(log_file, ""r"", encoding=""utf-8"") as f:
+            for line in f:
+                if line.startswith(day):
+                    print(line.rstrip())
+    except FileNotFoundError:
+        print(f""No log file found: {log_file}"")
+    return
+
+# Existing append processing continues below...
+```"
+Page 10,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1], [Ref: REF_IMG_3]
+
+**[Heading]**
+- Section: Verification
+
+**[Visual Direction]**
+Panel 1: Alex reviews the diff. He sees the new `if` block for `--day` and sees the old code is safe. He clicks the ""Accept"" button.
+Panel 2: Alex opens the terminal and types the command. `python log.py --day 2025-01-21`.
+Panel 3: The terminal outputs the lines for that date. Alex smiles.
+
+**[Target Text]**
+Alex: ""It looks good. It didn't touch the append part. I'll click **Accept**.""
+David: ""Now, the most important part: **Run it**.""
+Alex: ""Running `python log.py --day 2025-01-21`...""
+Terminal: 
+> [2025-01-21] Started Chapter 5
+> [2025-01-21] Learned Composer basics
+Alex: ""It works! Only today's lines appeared!"""
+Page 11,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2]
+
+**[Heading]**
+- Section: The Composer Workflow
+
+**[Visual Direction]**
+A flowchart showing the cycle of using Composer.
+1. Describe -> 2. Generate -> 3. Check Diff -> 4. Accept/Reject -> 5. Run & Verify.
+
+**[Target Text]**
+The Composer Workflow
+
+1. DESCRIBE
+""Add feature X...""
+
+2. GENERATE
+AI proposes code changes.
+
+3. CHECK DIFF
+Does it look right? Is existing code safe?
+
+4. ACCEPT
+Apply the changes to your file.
+
+5. VERIFY
+Run the code in the terminal to confirm it works.
+
+Don't skip step 5!"
+Page 12,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1], [Ref: REF_IMG_3]
+
+**[Heading]**
+- Section: 5.3 Helping Composer Understand
+
+**[Visual Direction]**
+Panel 1: Alex looks thoughtful. ""How did it know to look at `daily_log.txt`?""
+Panel 2: David explains with a finger raised. He points to the ""Project Folder"" icon in the sidebar.
+Panel 3: David explains the usage of `@` symbol in the chat box.
+
+**[Target Text]**
+Alex: ""Does Composer always know which files to modify?""
+David: ""Since you have the **project folder open**, it knows `log.py` and `daily_log.txt` exist. Plus, you named them in your prompt.""
+David: ""For larger projects, you should use **@** to specify context.""
+David: ""Type **@Codebase** to search the whole project, or **@filename** to focus on a specific file."""
+Page 13,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2]
+
+**[Heading]**
+- Section: Context Management with @
+
+**[Visual Direction]**
+Visual guide on using the `@` symbol in Composer input.
+- `@Codebase`: Reads entire project (good for broad questions).
+- `@Folder`: Limits context to a specific folder.
+- `@File`: Limits context to a specific file (e.g., `@log.py`).
+- Comparison: Small project (Folder open is enough) vs Large project (Use @).
+
+**[Target Text]**
+Teaching Composer the Context
+
+How to tell Composer where to look:
+
+1. Open Project Folder
+For small projects, just opening the folder is often enough.
+
+2. Mention File Names
+""Add to log.py..."" guides the AI.
+
+3. Use @ Symbols (Best Practice)
+@Codebase: Scans all files.
+@daily_log: Scans specific folder.
+@log.py: Focuses on one file.
+
+Use @ to help Composer focus on relevant files!"
+Page 14,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1], [Ref: REF_IMG_3]
+
+**[Heading]**
+- Section: 5.4 Advanced Customization
+
+**[Visual Direction]**
+Panel 1: Alex notices a small issue. ""When there are no logs for a date, it just shows nothing. I want a message.""
+Panel 2: David advises. ""Don't start over. Just **add instructions** to the current thread.""
+Panel 3: Alex types: ""If no lines match, print 'No log for that day'."" and hits Generate again.
+
+**[Target Text]**
+Alex: ""It works, but if the date has no logs, it's just blank. I want it to say 'No log for that day'.""
+David: ""You can refine it! In the **same Composer thread**, just type your additional request.""
+Alex (typing): ""When --day finds 0 matching lines, display 'No log for that day'.""
+Cursor (System): Generating new diff..."
+Page 15,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2]
+
+**[Heading]**
+- Section: Refining Code
+
+**[Visual Direction]**
+Diagram showing three ways to handle Composer's proposals.
+1. **Additional Prompt**: Chat again to fix logic.
+2. **Partial Accept**: A visual of a UI allowing you to accept one block but reject another.
+3. **Manual Fix**: Editing the code directly after accepting.
+
+**[Target Text]**
+3 Ways to Customize Results
+
+1. Additional Prompt
+""Change X to Y"" in the chat. The AI updates the diff.
+
+2. Partial Accept
+If the AI proposes 3 changes but you only like 1, you can Accept specific blocks and Reject others.
+
+3. Manual Fix
+Accept the code, then edit it yourself in the editor. 
+
+Remember: You are the pilot. The AI is the co-pilot."
+Page 16,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1], [Ref: REF_IMG_3]
+
+**[Heading]**
+- Section: 5.5 Practical Use of Agent Mode
+
+**[Visual Direction]**
+Panel 1: David introduces a new concept. ""Now, let's try **Agent Mode**.""
+Panel 2: Alex toggles a switch in the Composer UI from 'Normal' to 'Agent'. The UI glows slightly or changes color.
+Panel 3: Alex types: ""Verify the feature by running `python log.py --day 2025-01-21`.""
+
+**[Target Text]**
+David: ""Composer has a 'Normal' mode and an 'Agent' mode.""
+David: ""**Agent** can think step-by-step and even **execute terminal commands** for you.""
+Alex: ""It can run the code?""
+David: ""Yes. Try asking it to verify the feature we just made.""
+Alex (typing): ""Run `python log.py --day 2025-01-21` to verify it works."""
+Page 17,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2]
+
+**[Heading]**
+- Section: Normal vs Agent
+
+**[Visual Direction]**
+Comparison infographic.
+Left side: **Normal Mode**. Icon: Pen/Code. Process: Describe -> Code Diff -> User Verifies.
+Right side: **Agent Mode**. Icon: Robot/Brain. Process: Describe -> Think -> Execute Command -> Code Diff -> Verify.
+
+**[Target Text]**
+Composer Modes
+
+NORMAL MODE
+- Generates code.
+- Shows Diffs.
+- YOU run the terminal to check.
+- Best for: Coding logic, refactoring.
+
+AGENT MODE
+- Generates code AND runs commands.
+- Can execute `python file.py` or `npm test`.
+- Checks results for you.
+- Best for: Tasks that require verification or file operations."
+Page 18,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1], [Ref: REF_IMG_3]
+
+**[Heading]**
+- Section: Agent Execution
+
+**[Visual Direction]**
+Panel 1: Close up of the Composer window showing ""Thinking..."" steps. ""Step 1: Run command...""
+Panel 2: The terminal panel opens automatically, and the command runs. The result appears.
+Panel 3: Alex looks impressed. David smiles but gives a warning.
+
+**[Target Text]**
+Composer (Agent): 
+> Running command: python log.py --day 2025-01-21
+> Output: [2025-01-21] ...
+
+Alex: ""Whoa! It ran the command and showed me the output inside the chat!""
+David: ""Convenient, right? But always **watch what commands it runs**.""
+David: ""For complex design, use Normal mode. For tasks + verification, Agent is great. We'll master Agent in Chapter 8."""
+Page 19,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1], [Ref: REF_IMG_3]
+
+**[Heading]**
+- Section: Chapter Summary
+
+**[Visual Direction]**
+Panel 1: Alex leans back, satisfied. The `log.py` file is complete.
+Panel 2: David summarizes the lesson. He counts on his fingers.
+Panel 3: Alex looks determined. ""I feel like I can build anything now.""
+
+**[Target Text]**
+Alex: ""I added a real feature just by describing it. It was much easier than writing it from scratch.""
+David: ""You learned the core loop: **Describe, Generate, Check, Verify**.""
+David: ""You also learned to control context with **@** and refine with **additional prompts**.""
+Alex: ""Both using AI and checking it myself are important. I get it now."""
+Page 20,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2]
+
+**[Heading]**
+- Section: Chapter 5 Summary
+
+**[Visual Direction]**
+A visual summary checklist of the chapter's key takeaways. [Ref: REF_IMG_2] holds a flag labeled ""Mission Complete"".
+
+**[Target Text]**
+CHAPTER 5 SUMMARY
+
+✅ Composer Basics
+Open (Cmd+I) -> Specific Instruction -> Generate -> Accept.
+
+✅ Feature Implementation
+Added `--day` filter to `log.py` without breaking existing code.
+
+✅ Context Control
+Used `@Codebase` and file names to guide the AI.
+
+✅ Customization
+Used Additional Prompts and Partial Accept to refine results.
+
+✅ Agent Mode
+Experienced AI that can execute terminal commands."
+Page 21,practical_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2]
+
+**[Heading]**
+- Section: Practice Checklist
+
+**[Visual Direction]**
+A ""Try it Yourself"" checklist card. Designed to be a screenshot-able challenge for the reader.
+
+**[Target Text]**
+PRACTICE CHECKLIST
+
+Try this right now with your `daily_log` project:
+
+[ ] 1. Open `daily_log` project in Cursor.
+[ ] 2. Open Composer (Cmd+I / Ctrl+I).
+[ ] 3. Type: ""Add --day feature to log.py to filter by date.""
+[ ] 4. Click GENERATE and inspect the Diff (Green/Red lines).
+[ ] 5. Click ACCEPT.
+[ ] 6. Run `python log.py --day 2025-01-21` in terminal.
+
+Did it work? If yes, you are ready for the next step!"
+Page 22,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1], [Ref: REF_IMG_3]
+
+**[Heading]**
+- Section: Next Chapter Teaser
+
+**[Visual Direction]**
+Panel 1: Alex asks David about the next step.
+Panel 2: David points to the editor where code is being typed ghost-like (Tab suggestion).
+Panel 3: Close up on the ""Tab"" key on the keyboard.
+
+**[Target Text]**
+Alex: ""What's next? I want to write code faster.""
+David: ""In **Chapter 6**, we will master **Tab**.""
+David: ""It's not just simple autocomplete. We'll learn how to get **better suggestions** and edit code on the fly.""
+Alex: ""I'm ready!"""
+Page 23,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2]
+
+**[Heading]**
+- Section: Next Chapter Preview
+
+**[Visual Direction]**
+A movie-poster style teaser for Chapter 6. Title: ""Chapter 6: Tab — Mastering Code Suggestions"".
+Visual: A glowing ""Tab"" key and code completing itself intelligently. [Ref: REF_IMG_2] is predicting the future.
+
+**[Target Text]**
+COMING NEXT
+
+Chapter 6: Tab
+Mastering Code Suggestions
+
+- How to trigger smart suggestions.
+- Best practices for Accepting/Rejecting.
+- Using Tab in real projects.
+
+Turn the page to continue your journey!"

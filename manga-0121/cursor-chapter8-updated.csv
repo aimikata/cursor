@@ -1,0 +1,571 @@
+Page,Template,Prompt
+Cover,Cover,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1], [Ref: REF_IMG_2], [Ref: REF_IMG_3]
+
+**[Heading]**
+- Chapter Title: Agent — Your Thinking Assistant
+
+**[Visual Direction]**
+A high-quality, comic-style cover art. In the center, [Ref: REF_IMG_1] (Alex) and [Ref: REF_IMG_3] (David) are looking at a holographic projection coming from a laptop screen. The projection shows a stylized 'Brain' icon or a flowchart node connecting to a terminal window, representing the 'Agent' thinking process. [Ref: REF_IMG_2] (Cursor) is wearing a detective hat or a headset, looking like a helpful assistant orchestrating the flow. The background is a modern tech workspace with a blue digital overlay.
+
+**[Target Text]**
+Chapter 8: Agent — Your Thinking Assistant
+Learn Cursor IDE: The Visual Guide to AI-Powered Development"
+Page 1,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1]
+
+**[Heading]**
+- Section: Opening Scene
+
+**[Visual Direction]**
+Panel 1: [Ref: REF_IMG_1] (Alex) is sitting at his desk, typing into his laptop. A close-up of the screen shows a terminal command `python log.py --day 2025-12-31`. The output is empty.
+Panel 2: Alex looks annoyed. He leans back in his chair, thinking. A thought bubble shows a checklist: ""1. Fix code, 2. Run terminal, 3. Check output...""
+Panel 3: Alex looks at the code on screen. He sighs, realizing the tedium of manual updates.
+
+**[Target Text]**
+Panel 1 Caption: Alex's Apartment. Working on the `daily_log` project.
+Alex (Thinking): I ran the command for a future date, but nothing showed up.
+Panel 2 Alex (Thinking): I want it to say 'No log for that day'. But fixing, testing, and confirming requires so many steps...
+Panel 3 Alex (Thinking): I have to handle the logic for 0 lines... Fixing, running, and confirming manually is such a pain."
+Page 2,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1], [Ref: REF_IMG_3]
+
+**[Heading]**
+- Section: Opening Scene (Continued)
+
+**[Visual Direction]**
+Panel 1: [Ref: REF_IMG_1] (Alex) recalls a memory of Chapter 5. A small flashback bubble shows the word ""Agent"".
+Panel 2: [Ref: REF_IMG_3] (David) appears on a video call window on Alex's screen. He looks calm and helpful.
+Panel 3: Split screen. Alex looks excited while David explains. David gestures with a finger raised.
+
+**[Target Text]**
+Panel 1 Alex (Thinking): ""I used Agent briefly in Chapter 5, and it was mentioned that it can handle **multi-step tasks**. Can I let Agent handle this?""
+
+Panel 2 David: ""Let **Agent** handle that. If you instruct it to 'fix the `--day` feature to display "No log for that day" when there are 0 matching lines, and test and verify it'.""
+Panel 2 David: ""Agent will **think step by step and do fix → run → verify** for you.""
+Panel 2 Alex: ""I can let it handle multiple steps together. I want to try it.""
+Page 3,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2]
+
+**[Heading]**
+- Section: Chapter Overview
+
+**[Visual Direction]**
+An infographic comparing ""The Problem"" vs ""The Solution"".
+Top half (Problem): A stick figure (representing a tired dev) running back and forth between ""Code Editor"", ""Terminal"", and ""Browser"". Arrows are tangled. Label: ""Manual Multi-Step Tasks"".
+Bottom half (Solution): [Ref: REF_IMG_2] (Cursor) sitting at a control panel. It has a thought bubble: ""Step 1... Step 2... Step 3..."". A straight, clean arrow points to ""Done"". Label: ""Agent Mode"".
+
+**[Target Text]**
+**The Problem:**
+Manually doing multi-step tasks (Fix → Run → Verify) is tedious and prone to errors.
+
+**The Solution:**
+Instruct Agent to ""fix, test, and verify"".
+Agent thinks step-by-step and executes commands automatically.
+
+**What you'll learn:**
+- How Agent thinks and acts
+- Automating bug fixes & testing
+- Checking the thinking process"
+Page 4,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1], [Ref: REF_IMG_3]
+
+**[Heading]**
+- Section: 8.1 The Problem—""Manually Doing Multi-Step Tasks is Tedious""
+
+**[Visual Direction]**
+Panel 1: [Ref: REF_IMG_3] (David) is explaining via the screen. He holds up one hand.
+Panel 2: [Ref: REF_IMG_1] (Alex) nods in agreement, looking at his messy terminal history.
+Panel 3: David leans in closer to the camera. He emphasizes the ""Thinking Process"".
+
+**[Target Text]**
+Panel 1 David: If you're just writing code, Normal mode is fine. But for **fix → run → check → fix again**, doing it manually takes time.
+Panel 2 Alex: Exactly. I hate switching context constantly. Does Agent really do all that automatically?
+Panel 3 David: Yes. Agent **thinks step by step**. It lists its plan: 'Step 1: fix code', 'Step 2: run terminal'. You can see exactly **what it's doing**."
+Page 5,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2]
+
+**[Heading]**
+- Section: 8.1 Summary
+
+**[Visual Direction]**
+A checklist style infographic titled ""When to use Agent?"".
+Left column has Green Checks for ""Agent Tasks"". Right column has Red Crosses/Warning for ""Normal Mode Tasks"".
+[Ref: REF_IMG_2] (Cursor) is giving a thumbs up next to the Agent list.
+
+**[Target Text]**
+**Tasks Agent is Suited For:**
+✅ Bug fixes + Test execution
+✅ Code generation + Verification
+✅ Changes across multiple files + Tests
+
+**Tasks for Normal Mode:**
+❌ Large design changes (Better to review proposals carefully)
+❌ Simple one-line edits
+
+**Why Agent?**
+It saves you from the tedious loop of ""Edit code"" → ""Type command"" → ""Check output""."
+Page 6,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1], [Ref: REF_IMG_3]
+
+**[Heading]**
+- Section: 8.2 How Agent Thinks and Acts
+
+**[Visual Direction]**
+Panel 1: [Ref: REF_IMG_3] (David) pointing to the top of the Composer window.
+Panel 2: Close-up of [Ref: REF_IMG_1] (Alex)'s hand on the mouse, clicking the ""Agent"" button in the UI.
+Panel 3: Alex looks at the input field, which now looks slightly different (perhaps a different border color or icon).
+
+**[Target Text]**
+Panel 1 David: Open Composer (`Cmd+I` / `Ctrl+I`). See the mode selector at the top?
+Panel 2 David: Click **Agent**. This adds a section to display its thinking process.
+Panel 3 Alex: Got it. It says 'Agent' now.
+David: The instructions are the same as Normal mode. Just be specific: 'Fix this, test it, and verify'."
+Page 7,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2]
+
+**[Heading]**
+- Section: 8.2 UI Guide
+
+**[Visual Direction]**
+A clean UI diagram of the Composer window.
+1. Highlight the **Mode Selector** at the top (Normal / Agent).
+2. Highlight the **Input Field** where prompt is typed.
+3. Show a placeholder for **Thinking Process** (which appears after running).
+[Ref: REF_IMG_2] (Cursor) is pointing at the ""Agent"" toggle.
+
+**[Target Text]**
+**How to Activate Agent Mode**
+
+1. **Open Composer**: Press `Cmd+I` (Mac) or `Ctrl+I` (Win).
+2. **Select Mode**: Click the **Agent** button at the top.
+3. **Input**: Write your request. Be specific about **what to fix** and **how to test**.
+
+**Pro Tip:**
+The more specific your instructions, the better Agent performs!"
+Page 8,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1], [Ref: REF_IMG_3]
+
+**[Heading]**
+- Section: 8.2 Execution
+
+**[Visual Direction]**
+Panel 1: [Ref: REF_IMG_1] (Alex) is typing a long prompt. The text is visible on screen.
+Panel 2: Alex hits ""Generate"". He watches the screen intently.
+Panel 3: The screen shows text appearing line by line: ""Step 1... Step 2..."". Alex looks impressed.
+
+**[Target Text]**
+Panel 1 Alex (Typing): ""In `log.py`, fix the `--day` feature to show 'No log for that day' if 0 lines match. Test with `python log.py --day 2025-12-31` and verify.""
+Panel 2 David: Perfect. You told it **what to fix** and **how to test**.
+Panel 3 Agent (On Screen): > Step 1: Check `log.py`... > Step 2: Add logic for 0 lines...
+Alex: It's listing its plan!"
+Page 9,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1], [Ref: REF_IMG_2]
+
+**[Heading]**
+- Section: 8.2 Execution (Continued)
+
+**[Visual Direction]**
+Panel 1: A close-up of the screen. The terminal panel slides open automatically.
+Panel 2: The command `python log.py --day 2025-12-31` executes in the terminal. The output ""No log for that day"" appears.
+Panel 3: [Ref: REF_IMG_1] (Alex) turns to the camera, smiling. [Ref: REF_IMG_2] (Cursor) is floating nearby with a checkmark.
+
+**[Target Text]**
+Panel 1 Agent (On Screen): > Step 4: Run test command in terminal...
+Alex: Whoa! The terminal opened by itself!
+Panel 2 Terminal: $ python log.py --day 2025-12-31
+> No log for that day
+Panel 3 Alex: It ran the code and checked the result automatically.
+David (Voice): That's the power of Agent. You don't have to lift a finger for the verification."
+Page 10,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2]
+
+**[Heading]**
+- Section: 8.2 Agent's Workflow
+
+**[Visual Direction]**
+A flowchart showing the Agent's internal loop.
+Step 1: **Receive Instruction** (Input).
+Step 2: **Plan** (Display Thinking Process).
+Step 3: **Execute** (Edit Code / Run Terminal).
+Step 4: **Verify** (Read Output).
+Step 5: **Complete** or **Retry**.
+Arrows connect these steps in a cycle.
+
+**[Target Text]**
+**Agent's Action Flow**
+
+1. **Instruction**: You define the goal.
+2. **Thinking**: Agent breaks it down into steps (Step 1, Step 2...).
+3. **Execution**: Agent modifies files or runs terminal commands.
+4. **Check Results**: Agent reads the terminal output to confirm success.
+
+**Key Point:**
+Always watch the **Thinking Process**. It tells you exactly what Agent is planning to do."
+Page 11,practical_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2]
+
+**[Heading]**
+- Section: 8.2 Summary Checklist
+
+**[Visual Direction]**
+A clean, step-by-step text guide on a clipboard background. [Ref: REF_IMG_2] (Cursor) is holding a pen.
+
+**[Target Text]**
+**How to Let Agent Handle Multi-Step Tasks**
+
+1. **Open Composer**
+   - `Cmd+I` (Mac) / `Ctrl+I` (Win)
+
+2. **Switch to Agent Mode**
+   - Click **""Agent""** in the top mode selector.
+
+3. **Enter Specific Instruction**
+   - Include **Goal**, **Test Method**, and **Expected Result**.
+   - Example: ""Fix bug X, run command Y, and verify output Z.""
+
+4. **Click Generate**
+   - Watch the thinking process start.
+
+5. **Monitor Execution**
+   - Watch the terminal open and commands run.
+   - **Verify with your eyes** that the result is correct."
+Page 12,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1], [Ref: REF_IMG_3]
+
+**[Heading]**
+- Section: 8.3 Multi-Step Tasks — From Request to Completion
+
+**[Visual Direction]**
+Panel 1: [Ref: REF_IMG_3] (David) is speaking seriously. Background shows a maze being solved by a line automatically.
+Panel 2: [Ref: REF_IMG_1] (Alex) asks a question, looking slightly concerned.
+Panel 3: David responds with a reassuring smile.
+
+**[Target Text]**
+Panel 1 David: Agent handles tasks from **request to completion**. It judges whether to proceed based on results.
+Panel 2 Alex: What if it makes a mistake midway? Does it keep going?
+Panel 3 David: You can see the thinking process. If it looks wrong, you can **stop it**. You are the final judge. Agent is the helper."
+Page 13,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1]
+
+**[Heading]**
+- Section: 8.3 Real Example
+
+**[Visual Direction]**
+Panel 1: [Ref: REF_IMG_1] (Alex) is ready to try the full workflow on `daily_log`. He cracks his knuckles.
+Panel 2: Close up of the prompt he types. It uses `@log.py` reference.
+Panel 3: Alex hits enter. The ""Thinking"" animation begins.
+
+**[Target Text]**
+Panel 1 Alex: Okay, let's do this for real. The full workflow.
+Panel 2 Input: ""In the `--day` feature in `@log.py`, fix it to display 'No log for that day' when there are 0 matching lines. Test with `python log.py --day 2025-12-31` and verify the output.""
+Panel 3 Alex: I've given it the file context and the test case. Go, Agent!"
+Page 14,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1], [Ref: REF_IMG_2]
+
+**[Heading]**
+- Section: 8.3 Execution Result
+
+**[Visual Direction]**
+Panel 1: The screen shows a rapid sequence of steps completing. Green checks appearing next to ""Step 1"", ""Step 2"".
+Panel 2: The terminal shows the success message. Agent displays: ""Task complete.""
+Panel 3: [Ref: REF_IMG_1] (Alex) leans back, amazed. [Ref: REF_IMG_2] (Cursor) is high-fiving him (metaphorically).
+
+**[Target Text]**
+Panel 1 Agent (Screen): > Step 3: Save file... > Step 4: Run test... > Step 5: Verify output...
+Panel 2 Agent (Screen): Execution checked. Output matches expectation. Task complete.
+Panel 3 Alex: It did everything from start to finish! That was so much easier than manual switching.
+David: Just remember to always check the process."
+Page 15,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2]
+
+**[Heading]**
+- Section: 8.3 Step Breakdown
+
+**[Visual Direction]**
+A detailed table visualizing the steps Agent just took.
+Rows: Step 1 to Step 5.
+Columns: Action, Tool Used (Editor/Terminal), Result.
+[Ref: REF_IMG_2] (Cursor) is presenting the data.
+
+**[Target Text]**
+**What Agent Just Did:**
+
+| Step | Action | Tool | Result |
+|---|---|---|---|
+| 1 | Check `--day` block | Editor | Found logic gap |
+| 2 | Add 0-line handling | Editor | Code updated |
+| 3 | Save file | System | Saved |
+| 4 | Run test command | Terminal | Output generated |
+| 5 | Verify output | AI Logic | ""No log for that day"" confirmed |
+
+**Result:** Task completed automatically."
+Page 16,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1], [Ref: REF_IMG_3]
+
+**[Heading]**
+- Section: 8.4 Real Examples — Bug Fixing and Testing
+
+**[Visual Direction]**
+Panel 1: [Ref: REF_IMG_3] (David) proposes a harder challenge.
+Panel 2: [Ref: REF_IMG_1] (Alex) nods. He types a new prompt about ""Date Format Error"".
+Panel 3: Alex emphasizes the specific wrong format `2025/01/21` in the prompt.
+
+**[Target Text]**
+Panel 1 David: Let's try a bug fix. What if the user enters the wrong date format, like using slashes?
+Panel 2 Alex: Good point. I'll ask Agent to add error handling for that.
+Panel 3 Input: ""In `@log.py`, fix `--day` to show an error if format isn't YYYY-MM-DD. Test with `python log.py --day 2025/01/21` and verify error message."""
+Page 17,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1]
+
+**[Heading]**
+- Section: 8.4 Execution
+
+**[Visual Direction]**
+Panel 1: Agent thinking process shows it checking validation logic.
+Panel 2: Terminal opens. It runs the command with the wrong format.
+Panel 3: The screen displays a clear error message. Agent marks the task as success.
+
+**[Target Text]**
+Panel 1 Agent (Screen): > Step 1: Check date validation... > Step 2: Add try-except block for date parsing...
+Panel 2 Terminal: $ python log.py --day 2025/01/21
+> Error: Invalid date format. Use YYYY-MM-DD.
+Panel 3 Alex: It caught the error and displayed the message I wanted. 
+Alex: Bug fix + Test + Verify... all done in one go."
+Page 18,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1], [Ref: REF_IMG_3]
+
+**[Heading]**
+- Section: 8.4 Safety & Judgment
+
+**[Visual Direction]**
+Panel 1: [Ref: REF_IMG_1] (Alex) asks about stopping the process.
+Panel 2: [Ref: REF_IMG_3] (David) points to the ""Stop"" square button in the UI.
+Panel 3: David gives advice on when to use Agent vs Manual.
+
+**[Target Text]**
+Panel 1 Alex: What if it starts deleting files or doing something crazy?
+Panel 2 David: Hit the **Stop** button (or `Ctrl+C`). You are in control. Always watch the steps.
+Panel 3 David: Use Agent for **Multi-step tasks** (Fix/Test). Use Normal mode for **Design changes** where you need to think carefully."
+Page 19,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2]
+
+**[Heading]**
+- Section: 8.4 Comparison Table
+
+**[Visual Direction]**
+A comparison table: ""Agent Mode"" vs ""Normal Mode"".
+[Ref: REF_IMG_2] (Cursor) stands in the middle, balancing a scale.
+
+**[Target Text]**
+**Choosing the Right Mode**
+
+| **Agent Mode** 🤖 | **Normal Mode** 📝 |
+|---|---|
+| **Best for:** Bug fixes, Testing, Verification | **Best for:** Design changes, Architecture |
+| **Workflow:** Multi-step (Fix → Run → Check) | **Workflow:** Single step (Write code) |
+| **Verification:** Auto-runs commands | **Verification:** Manual |
+| **Speed:** Fast for repetitive tasks | **Speed:** Good for thoughtful design |
+
+**Rule of Thumb:**
+If it involves ""Running and Checking"", use **Agent**."
+Page 20,practical_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2]
+
+**[Heading]**
+- Section: 8.4 Workflow Summary
+
+**[Visual Direction]**
+A reproducible recipe card titled ""The Agent Bug-Fix Protocol"".
+
+**[Target Text]**
+**The Agent Bug-Fix Protocol**
+
+1. **Switch to Agent Mode**: `Cmd+I` / `Ctrl+I` → Click ""Agent"".
+2. **Draft the Prompt**:
+   - **Context**: ""In `@filename`...""
+   - **Task**: ""Fix [Bug Description]...""
+   - **Test**: ""Test with command `[Command]`...""
+   - **Verify**: ""Verify that `[Expected Output]` appears.""
+3. **Execute**:
+   - Click Generate.
+4. **Monitor**:
+   - Watch the Thinking Process.
+   - Watch the Terminal execution.
+5. **Review**:
+   - Confirm the final output matches your expectation."
+Page 21,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1], [Ref: REF_IMG_3]
+
+**[Heading]**
+- Section: Chapter Summary
+
+**[Visual Direction]**
+Panel 1: [Ref: REF_IMG_1] (Alex) looks satisfied, closing his laptop (or leaning back).
+Panel 2: [Ref: REF_IMG_3] (David) summarizes the lesson.
+Panel 3: They look forward to the next challenge.
+
+**[Target Text]**
+Panel 1 Alex: I feel like I have a real assistant now. It understands what I want and checks its own work.
+Panel 2 David: Exactly. You learned that **manual multi-step tasks are tedious**, and Agent is the solution. Always check its **thinking process**.
+Panel 3 Alex: What's next?
+David: Next is **Debugging**. We'll learn how to handle errors when things go wrong."
+Page 22,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2]
+
+**[Heading]**
+- Section: Review & Next Step
+
+**[Visual Direction]**
+Top half: A checklist of ""Skills Unlocked"".
+Bottom half: A teaser for Chapter 9. A ""Bug"" icon being squashed by a ""Debug"" hammer.
+
+**[Target Text]**
+**Chapter 8 Complete! ✅**
+- [x] Understood the pain of manual multi-step tasks
+- [x] Learned how Agent thinks and acts
+- [x] Executed Bug Fix + Test + Verify automatically
+- [x] Developed habit of checking Thinking Process
+
+**Next Chapter: Debugging Made Simple**
+- How to read error messages
+- Fixing errors with Cursor
+- The step-by-step debugging flow"

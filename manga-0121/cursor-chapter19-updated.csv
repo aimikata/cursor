@@ -1,0 +1,153 @@
+Page,Template,Prompt
+Page 1,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Character Reference]
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+[Heading]
+- Section: Opening Scene
+
+[Visual Direction]
+Panel 1: Alex [Ref: REF_IMG_1] looks at the `daily_log` project with satisfaction.
+Panel 2: Alex thinks: ""I want to challenge new projects, but what should I do?""
+Panel 3: David [Ref: REF_IMG_3] appears via video call.
+
+[Target Text]
+Panel 1 Alex (thinking): ""I learned how to use Cursor and created the `daily_log` project. But I **want to learn more**. How should I use official documentation and the community?""
+
+Panel 2 Alex (thinking): ""I learned Cursor basics with `daily_log`, but I don't know **next steps**. I want to challenge larger projects.""
+
+Panel 3 David: ""Congratulations! You've mastered Cursor basics. But **learning doesn't end here**.""
+Panel 3 David: ""Read official documentation, engage with the community, challenge new projects, and **continue the learning journey**.""
+Panel 3 Alex: ""Please teach me how to continue the learning journey."""
+Page 2,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Heading] Section: Opening Scene. [Visual Direction] A clean, modern infographic showing the 'Learning Roadmap'. On the left, a 'Problem' box showing a confused Alex icon. In the center, a 'Solution' flow leading to three pillars: Official Docs, Community, and New Projects. At the bottom, a list of tools including Cursor Docs, Discord, and GitHub. [Target Text] What we will learn: How to continue the journey. Problem: Wanting to learn more but unsure of the next steps. Solution: Read Docs -> Engage with Community -> Build New Projects."
+Page 3,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Character Reference] [Ref: REF_IMG_3] David. [Heading] Section 19.1: How to Read Official Documentation. [Visual Direction] David is shown in a medium shot, gesturing toward a floating browser window showing the Cursor documentation site. He looks professional and knowledgeable. [Target Text] David: Official documentation is your best friend. It has the latest features and best practices. Alex: Is it just a list of commands? David: No, it is a guide for your purpose, from tutorials to deep API references."
+Page 4,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Heading] Section 19.1: How to Read Official Documentation. [Visual Direction] A professional table layout. Columns: Purpose, Where to Read, Content. Rows for 'Features', 'How to use', 'Details', and 'Solving Problems'. [Target Text] Purpose: Want to know features. Where: Feature List. Content: What exists. Purpose: Want to know how to use. Where: Tutorials. Content: Step-by-step. Purpose: Want details. Where: API Reference. Content: Parameters and values. Purpose: Solve problems. Where: Troubleshooting. Content: Common solutions."
+Page 5,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Character Reference] [Ref: REF_IMG_1] Alex. [Heading] Section 19.1: How to Read Official Documentation. [Visual Direction] Alex is focused, scrolling through 'cursor.sh/docs' on his browser. He clicks on the 'Chat' and 'Composer' sections. The screen reflects in his glasses. [Target Text] Alex: There is so much here! I see advanced techniques for @ mentions I never knew about. David (voice-over): Exactly. Checking regularly keeps you ahead of the updates."
+Page 6,practical_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Heading] Section 19.1: How to Read Official Documentation. [Visual Direction] A clean, numbered checklist with a 'Documentation' icon. The style is like a professional cheat sheet. [Target Text] Complete Steps to Read Docs: 1. Open cursor.sh/docs in your browser. 2. Select sections based on your current goal. 3. Use 'Feature List' to discover new tools. 4. Follow 'Tutorials' for hands-on learning. 5. Consult 'API Reference' for technical depth. 6. Use 'Troubleshooting' to fix errors. 7. Check back after every Cursor update."
+Page 7,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Character Reference] [Ref: REF_IMG_1] Alex. [Heading] Section 19.1: How to Read Official Documentation. [Visual Direction] Alex is back in Cursor IDE, trying out a new feature he just read about in the docs. He looks excited as the code works perfectly. [Target Text] Alex: Reading while practicing really makes it stick! David: That is the best way to learn. Never just read; always apply it to your code."
+Page 8,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Heading] Section 19.1: How to Read Official Documentation. [Visual Direction] Four circular icons representing 'Best Practices'. 1. Purpose (Target icon), 2. Practice (Keyboard icon), 3. Regularity (Calendar icon), 4. Bookmark (Star icon). [Target Text] Best Practices: Read according to purpose. Practice as you read. Check for updates regularly. Bookmark frequently used pages."
+Page 9,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Character Reference] [Ref: REF_IMG_3] David. [Heading] Section 19.2: How to Engage with the Community. [Visual Direction] David explains the concept of community. Behind him are icons for Discord, GitHub, and Forum bubbles. [Target Text] David: You are not alone. The community lets you learn from others, ask questions, and eventually help others. Alex: I am a bit nervous to post. David: Don't be! Everyone starts somewhere. Let's look at Discord."
+Page 10,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Character Reference] [Ref: REF_IMG_1] Alex. [Heading] Section 19.2: How to Engage with the Community. [Visual Direction] A split screen showing Alex typing on his keyboard and the Discord UI. He is in the 'questions' channel, typing a specific query about his project. [Target Text] Alex (typing): I want to improve the performance of my --day feature. I have tried line-by-line reading but it is slow. Any tips? David: Great job. Being specific makes it much easier for people to help you."
+Page 11,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Heading] Section 19.2: How to Engage with the Community. [Visual Direction] A comparison chart of platforms. Discord (Real-time), GitHub (Issues/PRs), Forums (Threads). [Target Text] Platform: Discord. Feature: Real-time. Use: Quick questions. Platform: GitHub. Feature: Code-centric. Use: Reporting bugs or contributing. Platform: Forums. Feature: Searchable. Use: Long-term discussions."
+Page 12,practical_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Heading] Section 19.2: How to Engage with the Community. [Visual Direction] A 'How-To' guide for asking questions. It includes a sample 'Good Question' template. [Target Text] Steps to Ask Questions: 1. Join the Cursor Discord. 2. Select the correct channel. 3. Be specific: State what you want to do, the problem, and what you have already tried. 4. Wait for a response. 5. Test the suggestions. 6. Always say thank you!"
+Page 13,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Character Reference] [Ref: REF_IMG_1] Alex. [Heading] Section 19.2: How to Engage with the Community. [Visual Direction] Alex sees a question from another beginner. He smiles and starts typing an answer based on what he learned in Chapter 5. [Target Text] Alex: I actually know the answer to this! Answering helps me organize my own thoughts. David: That is the secret. Teaching is the highest form of learning."
+Page 14,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Heading] Section 19.2: How to Engage with the Community. [Visual Direction] A 'Best Practices for Answering' graphic. Highlights: Specificity, Code Examples, and Gratitude. [Target Text] Why Answer? It organizes your knowledge. You learn from the feedback. You build your reputation. Tips: Use code blocks. Be polite. Be clear."
+Page 15,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Character Reference] [Ref: REF_IMG_3] David. [Heading] Section 19.3: Next Steps. [Visual Direction] David presents three paths: New Projects, Skill Development, and Collaboration. Alex looks determined. [Target Text] David: Now that you have the tools, pick a path that interests you. Alex: I want to build something from scratch. David: Then let's try a ToDo app using everything we have learned."
+Page 16,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Character Reference] [Ref: REF_IMG_1] Alex, [Ref: REF_IMG_2] Cursor. [Heading] Section 19.3: Next Steps. [Visual Direction] Alex opens the Composer panel in Cursor. The Cursor mascot icon [Ref: REF_IMG_2] looks ready to assist. Alex types a prompt for a ToDo app. [Target Text] Alex (input): Create a ToDo app with add, delete, and complete features. Alex: Cursor is generating the whole structure! David: Use this as a base, then customize it to make it yours."
+Page 17,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Heading] Section 19.3: Next Steps. [Visual Direction] A roadmap table. Step 1: New Projects (ToDo, Weather, Blog). Step 2: Develop Skills (Frameworks). Step 3: Collaborate (Open Source). [Target Text] Next Steps Roadmap: Challenge new projects to keep motivation high. Develop skills by learning new languages. Collaborate on GitHub to grow as a professional."
+Page 18,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Character Reference] [Ref: REF_IMG_1] Alex, [Ref: REF_IMG_3] David. [Heading] Chapter Summary. [Visual Direction] Alex and David are shown in a final, warm conversation. Alex looks like a confident developer now. They both wave toward the reader. [Target Text] Alex: I have mastered the basics and I am ready for the journey. David: You have done great. Remember: learning never ends. Alex: Thank you, David. I will keep coding! David: I am rooting for you!"
+Page 19,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Heading] Chapter Summary. [Visual Direction] A final checklist with 'Done' stamps. At the bottom, a large banner saying 'CONTINUE THE JOURNEY'. [Target Text] Chapter 19 Summary: Read Docs for purpose. Engage with the community. Challenge new projects. Practice Checklist: Join Discord. Bookmark the Docs. Start a new project today. The journey continues!"

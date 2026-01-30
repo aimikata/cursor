@@ -1,0 +1,377 @@
+Page,Template,Prompt
+Cover,Cover,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Character Reference]
+- [Ref: REF_IMG_1] :: Alex
+- [Ref: REF_IMG_2] :: Cursor
+- [Ref: REF_IMG_3] :: David
+
+[Visual Direction]
+A professional book cover for 'Learn Cursor IDE: The Visual Guide to AI-Powered Development'. The title is prominent in the center. [Ref: REF_IMG_1] Alex is looking at a laptop with a focused expression. [Ref: REF_IMG_3] David is in the background as a supportive mentor. [Ref: REF_IMG_2] Cursor mascot is floating near the screen, glowing softly. The background is a modern, clean tech office. Subtitle: 'Chapter 18: Solutions to Common Problems'.
+
+[Target Text]
+Learn Cursor IDE: The Visual Guide to AI-Powered Development
+Chapter 18: Solutions to Common Problems"
+Page 1,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Character Reference]
+- [Ref: REF_IMG_1] :: Alex
+- [Ref: REF_IMG_2] :: Cursor
+- [Ref: REF_IMG_3] :: David
+
+[Heading]
+- Section: Opening Scene
+
+[Visual Direction]
+Alex's apartment at night. [Ref: REF_IMG_1] Alex is staring intensely at his monitor. The terminal shows a red error message. Panel 2: A close-up of the screen showing 'python log.py ""test""' followed by a Traceback. Panel 3: [Ref: REF_IMG_3] David appears on a video call in a small window on the corner of the screen.
+
+[Target Text]
+Panel 1 Alex runs `python log.py ""test""` in the terminal. An error message appears.
+Panel 1 Alex (thinking): ""An error appeared... I learned how to handle errors in Chapter 9, but I want to know more about **common errors** and their solutions.""
+
+Panel 2 Alex runs `log.py`, but processing is slow.
+Panel 2 Alex (thinking): ""The code works, but **processing is slow**. It might be a performance problem. What should I do?""
+
+Panel 3 David: ""Common problems have **patterns**. Let's learn how to handle errors, performance issues, and security best practices by creating and solving problems in `daily_log`.""
+Panel 3 Alex: ""Please teach me solutions to common problems."""
+Page 2,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Character Reference]
+- [Ref: REF_IMG_2] :: Cursor
+
+[Visual Direction]
+A clean overview diagram titled 'Chapter 18 Learning Roadmap'. Three main pillars are shown: 1. Error Handling, 2. Performance Tuning, 3. Security Best Practices. Below them, icons for Cursor's Chat (Cmd+L) and Composer (Cmd+I) are highlighted as the primary tools.
+
+[Target Text]
+What we'll learn in this chapter:
+1. How to Handle Errors: Reading Tracebacks and fixing with AI.
+2. Performance Problems: Optimizing slow code and memory usage.
+3. Security Best Practices: Managing API keys and input validation.
+Tools: Cursor Chat (Cmd+L), Composer (Cmd+I)."
+Page 3,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Character Reference]
+- [Ref: REF_IMG_1] :: Alex
+- [Ref: REF_IMG_3] :: David
+
+[Heading]
+- Section: 18.1: How to Handle Errors
+
+[Visual Direction]
+[Ref: REF_IMG_3] David is explaining with a calm gesture. Panel 2: A split screen showing a code editor on one side and a terminal on the other. David points to the terminal's Traceback area.
+
+[Target Text]
+David: When errors occur, the Traceback is your best friend. It tells you WHERE, WHAT, and WHY.
+Alex: I usually just see the red text and panic. 
+David: Don't panic. Common errors like NameError or TypeError have fixed solutions."
+Page 4,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Visual Direction]
+A table titled 'Common Python Errors & Solutions'. Columns: Error Type, Cause, and Solution. Rows for NameError, TypeError, SyntaxError, FileNotFoundError, and IndentationError. Each row has a small icon representing the error type.
+
+[Target Text]
+Common Errors and Solutions:
+- NameError: Variable not defined -> Define the variable or add import.
+- TypeError: Wrong data type -> Convert types correctly.
+- SyntaxError: Typo in code -> Fix colons or parentheses.
+- FileNotFoundError: Path is wrong -> Check file location.
+- IndentationError: Misaligned code -> Align spaces/tabs."
+Page 5,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Character Reference]
+- [Ref: REF_IMG_1] :: Alex
+- [Ref: REF_IMG_3] :: David
+
+[Visual Direction]
+[Ref: REF_IMG_1] Alex is editing 'log.py'. He deletes the 'import sys' line at the top. Panel 2: He runs the script. A large 'NameError: name sys is not defined' appears in the terminal. Panel 3: Alex looks at David.
+
+[Target Text]
+David: Let's create a NameError intentionally. Remove 'import sys'.
+Alex: Okay, running it now...
+Terminal: NameError: name 'sys' is not defined on line 6."
+Page 6,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Character Reference]
+- [Ref: REF_IMG_1] :: Alex
+- [Ref: REF_IMG_2] :: Cursor
+
+[Visual Direction]
+[Ref: REF_IMG_1] Alex selects the error message in the terminal and presses Cmd+L. The Cursor Chat window opens. [Ref: REF_IMG_2] Cursor mascot appears inside the chat interface, ready to answer.
+
+[Target Text]
+Alex: (typing) What is the cause of this error? How should I fix it?
+Cursor: This error occurs because the 'sys' module is not imported. You need to add 'import sys' at the top of log.py."
+Page 7,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Character Reference]
+- [Ref: REF_IMG_1] :: Alex
+
+[Visual Direction]
+Alex switches to Composer (Cmd+I). He types the instruction. Panel 2: The screen shows the 'Apply' diff, where 'import sys' is being added in green text. Panel 3: Alex clicks the blue 'Accept' button.
+
+[Target Text]
+Alex: (typing) Add import sys and fix the NameError.
+Alex: Cursor automatically found the right spot! Clicking Accept."
+Page 8,practical_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Visual Direction]
+A vertical checklist titled 'Mastering Error Handling with Cursor'. Each step has a checkbox and a brief description. Icons for Chat and Composer are used next to their respective steps.
+
+[Target Text]
+Step-by-Step Error Resolution:
+1. [ ] Read the Error: Identify the Traceback, Type, and Line Number.
+2. [ ] Ask Chat (Cmd+L): Paste the error and ask 'What is the cause?'.
+3. [ ] Analyze: Understand WHY the fix works.
+4. [ ] Fix with Composer (Cmd+I): Instruct Cursor to apply the fix.
+5. [ ] Verify: Run the script again in the terminal."
+Page 9,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Character Reference]
+- [Ref: REF_IMG_1] :: Alex
+- [Ref: REF_IMG_3] :: David
+
+[Heading]
+- Section: 18.2: Performance Problems and Solutions
+
+[Visual Direction]
+[Ref: REF_IMG_1] Alex looks frustrated as a progress bar on his screen moves very slowly. [Ref: REF_IMG_3] David points to the code on the monitor.
+
+[Target Text]
+Alex: My log search is taking forever as the file grows.
+David: That's a performance bottleneck. You're likely reading the entire file into memory every time."
+Page 10,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Character Reference]
+- [Ref: REF_IMG_1] :: Alex
+- [Ref: REF_IMG_2] :: Cursor
+
+[Visual Direction]
+Alex opens Chat (Cmd+L) and pastes his search function. [Ref: REF_IMG_2] Cursor mascot is holding a magnifying glass, inspecting the code. Panel 2: Cursor provides a list of suggestions.
+
+[Target Text]
+Alex: (typing) How can I improve this code's performance? It's slow with large files.
+Cursor: You are using .read() which loads everything at once. Try reading line-by-line or implementing caching."
+Page 11,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Visual Direction]
+A visual comparison diagram. Left side: 'Bad Practice' showing a giant file being forced into a small memory box (labeled Slow/High RAM). Right side: 'Good Practice' showing the file being processed as a stream of single lines (labeled Fast/Low RAM).
+
+[Target Text]
+Performance Optimization Patterns:
+- Problem: Loading large data at once. -> Solution: Load in chunks or line-by-line.
+- Problem: Repeating heavy processing. -> Solution: Use caching (save results).
+- Problem: High CPU usage. -> Solution: Optimize loops or use parallel processing."
+Page 12,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Character Reference]
+- [Ref: REF_IMG_1] :: Alex
+
+[Visual Direction]
+Alex is using Composer (Cmd+I). Panel 2: The code diff shows the old `data = f.read()` being replaced by `for line in f:`. Alex looks impressed.
+
+[Target Text]
+Alex: (typing) Refactor the --day feature to read line-by-line for better performance.
+Alex: It's much cleaner now. The memory usage should drop significantly."
+Page 13,practical_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Visual Direction]
+A summary box titled 'Performance Tuning Checklist'. Below it, a code snippet box shows a 'Before' and 'After' comparison of a file-reading loop.
+
+[Target Text]
+Performance Checklist:
+- [ ] Identify the lag: Is it CPU, Memory, or Disk I/O?
+- [ ] Ask Cursor: 'How can I optimize this function?'
+- [ ] Stream Data: Use generators or line-by-line reading for files.
+- [ ] Cache Results: Avoid repeating the same calculation.
+- [ ] Profile: Use a timer to verify the speed increase."
+Page 14,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Character Reference]
+- [Ref: REF_IMG_1] :: Alex
+- [Ref: REF_IMG_3] :: David
+
+[Heading]
+- Section: 18.3: Security Best Practices
+
+[Visual Direction]
+[Ref: REF_IMG_3] David is looking serious. He points to a hardcoded string in Alex's code that looks like an API key. [Ref: REF_IMG_1] Alex looks startled.
+
+[Target Text]
+David: Performance is good, but security is vital. Never hardcode secrets.
+Alex: Oops... I just put my API key right there in the script.
+David: We need to fix that and validate your user inputs to prevent attacks."
+Page 15,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Character Reference]
+- [Ref: REF_IMG_1] :: Alex
+- [Ref: REF_IMG_2] :: Cursor
+
+[Visual Direction]
+Alex asks Cursor Chat about security. [Ref: REF_IMG_2] Cursor mascot is wearing a security guard hat. Panel 2: Cursor explains 'Path Traversal' with a small diagram of a folder structure.
+
+[Target Text]
+Alex: (typing) How can I improve this code's security? I'm worried about user input.
+Cursor: If a user enters '../../etc/passwd', they might access sensitive files. You must normalize and validate all file paths."
+Page 16,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Visual Direction]
+An infographic titled 'Security Best Practices for Developers'. Four icons: 1. A key inside a safe (Secrets), 2. A shield (Input Validation), 3. A lock (Hashing), 4. A magnifying glass (Path Normalization).
+
+[Target Text]
+Security Pillars:
+- API Keys: Use .env files and environment variables.
+- Input Validation: Check if input is the expected format/type.
+- Path Security: Use os.path.abspath to prevent directory jumping.
+- Passwords: Never store in plain text; use hashing libraries."
+Page 17,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Character Reference]
+- [Ref: REF_IMG_1] :: Alex
+
+[Visual Direction]
+Alex is in Composer (Cmd+I). He is directing Cursor to add validation. Panel 2: The code diff shows new lines using `os.path.basename` and checks for valid characters. Alex clicks 'Accept'.
+
+[Target Text]
+Alex: (typing) Update log.py to validate user input and prevent path traversal.
+Alex: Now the script only looks in the designated logs folder. Much safer!"
+Page 18,practical_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Visual Direction]
+A 'Security Hardening Guide'. A code snippet shows how to load an API key from an environment variable using `os.getenv`. Below it, a list of 'Do's and Don'ts'.
+
+[Target Text]
+Security Checklist:
+1. [ ] Remove hardcoded keys.
+2. [ ] Add .env to .gitignore.
+3. [ ] Sanitize all user-provided strings.
+4. [ ] Use absolute paths for file access.
+5. [ ] Run a security audit by asking Cursor: 'Find security flaws in this file'."
+Page 19,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Character Reference]
+- [Ref: REF_IMG_1] :: Alex
+- [Ref: REF_IMG_3] :: David
+
+[Heading]
+- Section: Chapter Summary
+
+[Visual Direction]
+Alex and David are standing in a modern office space. [Ref: REF_IMG_1] Alex looks confident, leaning back in his chair. [Ref: REF_IMG_3] David is smiling and giving a thumbs up.
+
+[Target Text]
+Alex: I feel much more prepared now. Errors don't scare me as much.
+David: Great! Remember, AI is your partner in solving these patterns. You've handled the most common hurdles."
+Page 20,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Character Reference]
+- [Ref: REF_IMG_2] :: Cursor
+
+[Visual Direction]
+A summary infographic with three checkboxes, all checked. 1. Error Handling, 2. Performance, 3. Security. [Ref: REF_IMG_2] Cursor is waving goodbye. At the bottom, a 'Coming Next' banner.
+
+[Target Text]
+Chapter 18 Summary:
+- ✅ Mastered reading and fixing common Python errors.
+- ✅ Optimized code performance by streaming data.
+- ✅ Secured the application against common vulnerabilities.
+Next Chapter: Continuing the Learning Journey!"
+Page 21,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Visual Direction]
+A preview page for Chapter 19. It shows a library of books and a community icon (people talking). A large 'Next: Chapter 19' text is at the bottom.
+
+[Target Text]
+Preview: Chapter 19
+Continuing the Learning Journey
+- Reading Official Documentation
+- Engaging with the Developer Community
+- Setting Your Next Learning Goals
+See you in the final chapter!"

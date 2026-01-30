@@ -1,0 +1,736 @@
+Page,Template,Prompt
+Page 1,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+**[Heading]**
+- Section: Opening Scene
+
+**[Visual Direction]**
+Panel 1: Alex is sitting at his desk in his apartment, looking thoughtful. His laptop screen shows a completed ToDo app. He looks unsatisfied.
+Panel 2: A video call window opens on his screen. David appears, smiling and waving. Alex looks surprised but happy.
+Panel 3: Close up on David's face on the screen, looking encouraging. He holds up a finger as if making a point.
+
+**[Target Text]**
+Panel 1 Alex: ""The ToDo app is complete, but I want to build a **more practical app**. However, I don't know **what to build**...""
+Panel 1 Alex (thinking): ""An app that gets weather information, or an app that **integrates with external APIs**... But **what is an API? How do I use it?**""
+
+Panel 2 David: ""Let's build an **API integration app**. An API is a mechanism to **integrate with external services**.""
+Panel 2 David: ""For example, APIs to get weather information, APIs to get news, etc. You can build an API integration app using Cursor's **Chat** and **Composer**.""
+Panel 2 Alex: ""How do I build an API integration app? **What is an API? How do I use it?**""
+
+Panel 3 David: ""Let's build it **step by step** together.""
+Panel 3 David: ""First, understand **what an API is**, then use Cursor's **Chat** and **Composer** to build an API integration app **step by step**. We'll learn **error handling** and **tests** together too."""
+Page 2,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Section: Chapter Overview
+
+**[Visual Direction]**
+A clean, modern roadmap infographic. At the top, a title ""Project 2: Weather API App"". 
+Below, icons representing the learning path: 
+1. Icon of a cloud/weather -> ""Understand APIs""
+2. Icon of a shield/warning -> ""Error Handling""
+3. Icon of a checklist -> ""Writing Tests""
+4. Icon of a star/badge -> ""Best Practices""
+Cursor character is pointing at the path.
+
+**[Target Text]**
+Panel 1 Alex: ""The ToDo app is complete, but I want to build a **more practical app**. However, I don't know **what to build**...""
+Panel 1 Alex (thinking): ""An app that gets weather information, or an app that **integrates with external APIs**... But **what is an API? How do I use it?**""
+
+Panel 2 David: ""Let's build an **API integration app**. An API is a mechanism to **integrate with external services**.""
+Panel 2 David: ""For example, APIs to get weather information, APIs to get news, etc. You can build an API integration app using Cursor's **Chat** and **Composer**.""
+Panel 2 Alex: ""How do I build an API integration app? **What is an API? How do I use it?**""
+
+Panel 3 David: ""Let's build it **step by step** together.""
+Panel 3 David: ""First, understand **what an API is**, then use Cursor's **Chat** and **Composer** to build an API integration app **step by step**. We'll learn **error handling** and **tests** together too."""
+Page 3,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+**[Heading]**
+- Section: 15.1 Integrating with External APIs
+
+**[Visual Direction]**
+Panel 1: David is explaining with hand gestures via the video call. Alex is taking notes.
+Panel 2: Alex looks confused, tilting his head, visualizing a black box labeled ""API"".
+Panel 3: David smiles and gestures to the screen where Cursor is open. Alex leans in with interest.
+
+**[Target Text]**
+David: ""An API is a mechanism to integrate with external services. Using APIs lets you get data from external services without preparing data yourself.""
+Alex: ""What is an API? How do I use it?""
+David: ""An API sends HTTP requests and receives JSON data. Ask Cursor's Chat or Composer to 'create an API integration app' and it will help you."""
+Page 4,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Section: What is an API?
+
+**[Visual Direction]**
+A schematic diagram showing the flow of data. 
+Left side: ""Your App (Client)"". Arrow pointing right labeled ""HTTP Request (GET)"".
+Right side: ""External Service (Server)"". Arrow pointing left labeled ""JSON Response"".
+Cursor character is sitting on the arrow explaining the exchange.
+
+**[Target Text]**
+1. API (Application Programming Interface): Mechanism to integrate with external services
+2. HTTP Request: Send requests to API (e.g., GET https://api.example.com/data)
+3. JSON Data: Receive data (e.g., {""temperature"": 25})
+
+Benefits:
+- Get data without preparing it yourself
+- Always get the latest data
+- Delegate complex processing"
+Page 5,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Section: Planning with Chat
+
+**[Visual Direction]**
+Panel 1: Alex typing on his keyboard, focused. The screen shows the Cursor Chat window.
+Panel 2: The Chat window displays a file tree structure. Alex looks at it, slightly overwhelmed.
+Panel 3: Cursor character pops up next to the code block on the screen (in Alex's imagination) to reassure him.
+
+**[Target Text]**
+Alex (typing): ""I want to build an API integration app that gets weather information. Use OpenWeatherMap API. Please suggest a project structure""
+Cursor (Response): ""I'll suggest a project structure... weather.py, config.py, test_weather.py""
+Alex: ""A project structure was suggested, but I don't understand it yet...""
+David (Voice): ""It's okay. Next, instruct Composer to create the actual files."""
+Page 6,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Section: Steps to Consult in Chat
+
+**[Visual Direction]**
+A step-by-step UI guide for the Chat panel.
+Step 1: Screenshot of opening Chat (Cmd+L).
+Step 2: Screenshot of typing the prompt about OpenWeatherMap.
+Step 3: Screenshot of the output project structure.
+Cursor character highlights the ""Send"" button.
+
+**[Target Text]**
+1. Open Chat: Cmd+L / Ctrl+L
+2. Enter Question: ""I want to build an API integration app...""
+3. Click Send
+4. Check Suggestion: Always read and understand the proposed structure."
+Page 7,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+**[Heading]**
+- Section: Creating with Composer
+
+**[Visual Direction]**
+Panel 1: Alex presses keys to open Composer (Cmd+I). The Composer bar appears.
+Panel 2: Code starts generating rapidly on the screen. Alex watches in awe.
+Panel 3: David warns Alex from the video call window not to just accept blindly.
+
+**[Target Text]**
+Alex (Input): ""Create a weather_app folder and create a weather.py file. Use OpenWeatherMap API...""
+Composer: *Generating code for weather.py...*
+Alex: ""I want to check the generated code.""
+David: ""Always check with your eyes the code displayed in the Composer panel. Understand what features are implemented before clicking Accept."""
+Page 8,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Section: Steps to Create with Composer
+
+**[Visual Direction]**
+A workflow diagram for Composer.
+1. Icon of Keyboard Shortcut (Cmd+I).
+2. Text box showing the instruction prompt.
+3. A ""Generate"" button icon.
+4. A ""Review"" eye icon looking at code.
+5. An ""Accept"" button icon.
+Cursor character is holding a magnifying glass at step 4.
+
+**[Target Text]**
+1. Open Composer (Cmd+I / Ctrl+I)
+2. Enter Instruction: ""Create weather_app folder...""
+3. Click Generate
+4. Check Generated Code: Understand the features.
+5. Click Accept: Create the files."
+Page 9,practical_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Section: The Generated Code (weather.py)
+
+**[Visual Direction]**
+A clean code snippet presentation on a dark IDE background. Syntax highlighting for Python.
+Key parts of the code are annotated with small callout boxes explaining them.
+
+**[Target Text]**
+```python
+# weather.py
+import requests
+import os
+
+API_KEY = os.getenv(""OPENWEATHER_API_KEY"", ""your_api_key"")
+BASE_URL = ""https://api.openweathermap.org/data/2.5/weather""
+
+def get_weather(city):
+    params = {
+        ""q"": city,
+        ""appid"": API_KEY,
+        ""units"": ""metric""
+    }
+    response = requests.get(BASE_URL, params=params)
+    if response.status_code == 200:
+        return response.json()
+    else:
+        return None
+```
+Key Points:
+- Uses `requests` library
+- Fetches API Key from environment
+- Returns JSON data if status is 200"
+Page 10,practical_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Section: How to Run the App
+
+**[Visual Direction]**
+A terminal window simulation. 
+Top half shows how to export the API key.
+Bottom half shows the command to run the script and the output.
+Cursor character stands by the terminal pointing to the output.
+
+**[Target Text]**
+1. Set API Key:
+```bash
+export OPENWEATHER_API_KEY=""your_api_key_here""
+```
+
+2. Run the App:
+```bash
+python weather.py ""Tokyo""
+```
+
+Output:
+```
+City: Tokyo
+Temperature: 25.0°C
+Weather: clear sky
+Humidity: 60%
+```"
+Page 11,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+**[Heading]**
+- Section: 15.2 Error Handling and Edge Cases
+
+**[Visual Direction]**
+Panel 1: Alex looks panicked. His screen shows a red error traceback message.
+Panel 2: Close up of the error message: `requests.exceptions.JSONDecodeError`.
+Panel 3: David is calm, explaining that errors are normal and need to be handled.
+
+**[Target Text]**
+Alex: ""An error appeared... I don't know what to do...""
+David: ""In API calls, error handling is important. Network errors, API errors, missing data...""
+David: ""Ask Cursor's Chat or Composer to 'Add error handling' to handle these safely."""
+Page 12,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Section: Common API Errors
+
+**[Visual Direction]**
+A table listing error types with icons.
+Row 1: Icon of a broken cable -> ""Network Error"" -> ""Catch with try-except""
+Row 2: Icon of a stop sign -> ""API Error (4xx/5xx)"" -> ""Check status_code""
+Row 3: Icon of a magnifying glass over empty space -> ""Data Missing"" -> ""Check JSON content""
+Cursor character is wearing a hard hat, ready to fix errors.
+
+**[Target Text]**
+| Error Type | Cause | Solution |
+|---|---|---|
+| Network Error | No internet | try-except block |
+| API Error | Invalid Key/Request | Check response.status_code |
+| Data Missing | City not found | Check response.json() |"
+Page 13,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Section: Consulting Chat on Errors
+
+**[Visual Direction]**
+Panel 1: Alex typing into Chat, asking for help with error handling.
+Panel 2: Chat window shows a code block with `try...except` and `if status_code == 404`.
+Panel 3: Alex looks relieved but still wants to understand the details. Cursor character points to the explanation.
+
+**[Target Text]**
+Alex (Input): ""Add error handling for API calls. Handle network errors, API errors, and when data doesn't exist.""
+Cursor (Response): ""I'll add the following error handling...""
+Alex: ""Error handling was added, but I don't understand what errors are being handled...""
+David: ""Ask Chat 'What errors is this handling?' to clarify."""
+Page 14,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Section: Steps to Add Error Handling (Chat)
+
+**[Visual Direction]**
+A flowchart.
+1. Identify the need (Error occurred).
+2. Open Chat (Cmd+L).
+3. Prompt: ""Add error handling for network, API, and missing data.""
+4. Review Explanation: Read through the `try-except` logic provided by Chat.
+
+**[Target Text]**
+1. Open Chat
+2. Enter Question: Be specific about the types of errors (Network, API, Data).
+3. Click Send
+4. Check Suggestion: Understand which `except` block handles which error."
+Page 15,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+**[Heading]**
+- Section: Implementing with Composer
+
+**[Visual Direction]**
+Panel 1: Alex opens Composer again to apply the changes to the file.
+Panel 2: The code in Composer transforms, wrapping the previous code in `try` blocks.
+Panel 3: Alex nods, understanding the structure now. David gives a thumbs up.
+
+**[Target Text]**
+Alex (Input): ""Add error handling for API calls to weather.py...""
+Composer: *Rewrites get_weather function with try/except blocks*
+Alex: ""I want to check the generated code.""
+David: ""Check that network errors and 404s are handled separately. Then click Accept."""
+Page 16,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Section: Steps to Apply Fixes (Composer)
+
+**[Visual Direction]**
+A visual guide focusing on the Composer ""Diff"" view.
+Show lines being removed (red) and lines being added (green).
+Highlight the `try`, `except`, and `if/else` blocks.
+Cursor character points to the Green ""Accept"" button.
+
+**[Target Text]**
+1. Open Composer
+2. Instruct: ""Add error handling...""
+3. Generate
+4. Review Diff: Red lines are old code, Green lines are new robust code.
+5. Accept: Apply the safety features."
+Page 17,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+**[Heading]**
+- Section: 15.3 Writing Tests for API Calls
+
+**[Visual Direction]**
+Panel 1: David introduces the concept of ""Tests"". Alex looks skeptical/tired.
+Panel 2: David explains ""Mocks"" using a metaphor of a stunt double or a dummy.
+Panel 3: Alex gets it. ""So we don't call the real API?""
+
+**[Target Text]**
+David: ""Let's write tests. This verifies code isn't broken when APIs change.""
+Alex: ""How do I test an external API?""
+David: ""Use Mocks. Mocks return test data without calling actual APIs. Cursor can generate them for you."""
+Page 18,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Section: Workflow for Testing APIs
+
+**[Visual Direction]**
+A circular workflow diagram.
+1. ""Ask Chat"" -> Prompt for test strategy.
+2. ""Generate with Composer"" -> Create `test_weather.py`.
+3. ""Run Tests"" -> `pytest` command.
+4. ""Verify"" -> Check green checkmarks.
+Center image: A shield icon representing code safety.
+
+**[Target Text]**
+1. Ask in Chat: ""How do I test weather.py using mocks?""
+2. Generate: ""Create test_weather.py using pytest and unittest.mock""
+3. Run: `pytest test_weather.py`
+4. Verify: Ensure all tests pass."
+Page 19,practical_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Section: Test Code with Mocks
+
+**[Visual Direction]**
+A code snippet of `test_weather.py`.
+Highlight the `@patch` decorator and the `mock_response` setup.
+
+**[Target Text]**
+```python
+import pytest
+from unittest.mock import patch, Mock
+from weather import get_weather
+
+@patch('weather.requests.get')
+def test_get_weather_success(mock_get):
+    # Setup Mock
+    mock_response = Mock()
+    mock_response.status_code = 200
+    mock_response.json.return_value = {
+        ""name"": ""Tokyo"",
+        ""main"": {""temp"": 25, ""humidity"": 60},
+        ""weather"": [{""description"": ""Clear""}]
+    }
+    mock_get.return_value = mock_response
+    
+    # Run Function
+    result = get_weather(""Tokyo"")
+    
+    # Assertions
+    assert result[""city""] == ""Tokyo""
+    assert result[""temperature""] == 25
+```"
+Page 20,practical_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Section: Running the Tests
+
+**[Visual Direction]**
+A terminal window showing the execution of pytest.
+Show the command line and the successful output in green text.
+Cursor character is holding a green flag.
+
+**[Target Text]**
+Command:
+```bash
+pytest test_weather.py
+```
+
+Output:
+```
+================ test session starts ================
+platform darwin -- Python 3.9.6, pytest-7.4.0
+collected 1 item
+
+test_weather.py .                             [100%]
+
+================= 1 passed in 0.05s =================
+```"
+Page 21,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+**[Heading]**
+- Section: 15.4 Best Practices
+
+**[Visual Direction]**
+Panel 1: Alex leans back, thinking he is done. David stops him.
+Panel 2: David lists the ""Best Practices"" on his fingers.
+Panel 3: Alex looks determined to polish his app to professional standards.
+
+**[Target Text]**
+David: ""Wait! Let's learn best practices. Security and stability are key.""
+David: ""1. Save API keys in env vars. 2. Set timeouts. 3. Add error handling. 4. Write tests.""
+Alex: ""I want to apply these to weather_app right now.""
+David: ""Ask Cursor to 'Apply best practices' to refactor your code."""
+Page 22,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Section: API Integration Best Practices
+
+**[Visual Direction]**
+A checklist infographic with 4 distinct sections.
+1. Key Icon: Environment Variables (Security)
+2. Clock Icon: Timeouts (Prevent hanging)
+3. Band-aid Icon: Error Handling (Safety)
+4. Checkmark Icon: Tests (Reliability)
+
+**[Target Text]**
+1. Environment Variables: Never hardcode API keys.
+2. Timeouts: Always set `timeout=10` in requests.
+3. Error Handling: Handle network and API errors gracefully.
+4. Tests: Verify code with mocks."
+Page 23,practical_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Section: Code - Env Vars & Timeouts
+
+**[Visual Direction]**
+Code snippets showing the ""Before"" and ""After"" or just the ""Best Practice"" version.
+Focus on `os.getenv` and `timeout` parameter.
+
+**[Target Text]**
+Security (Environment Variables):
+```python
+import os
+# Don't do this: API_KEY = ""123456""
+
+# Do this:
+API_KEY = os.getenv(""OPENWEATHER_API_KEY"")
+if not API_KEY:
+    raise ValueError(""No API Key found"")
+```
+
+Stability (Timeouts):
+```python
+# Prevent hanging forever
+response = requests.get(
+    BASE_URL, 
+    params=params, 
+    timeout=10  # Seconds
+)
+```"
+Page 24,practical_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Section: Code - Robust Structure
+
+**[Visual Direction]**
+A final look at the robust function structure.
+Showing how all practices come together in one function.
+
+**[Target Text]**
+```python
+def get_weather_robust(city):
+    try:
+        # ... setup params ...
+        response = requests.get(BASE_URL, params=params, timeout=10)
+        
+        response.raise_for_status() # Check for HTTP errors
+        
+        return response.json()
+        
+    except requests.exceptions.Timeout:
+        return {""error"": ""Request timed out""}
+    except requests.exceptions.RequestException as e:
+        return {""error"": f""API Error: {e}""}
+```"
+Page 25,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+**[Heading]**
+- Section: Chapter Summary
+
+**[Visual Direction]**
+Panel 1: Alex stretches his arms, looking at his completed, robust app code. He looks proud.
+Panel 2: David smiles. ""You've learned APIs, error handling, and tests. You're building real apps now.""
+Panel 3: Alex asks ""What's next?"" David points forward.
+
+**[Target Text]**
+Alex: ""The API app is complete! It handles errors and has tests.""
+David: ""At first you didn't know what an API was. But step by step, you mastered it.""
+Alex: ""What do we learn next?""
+David: ""Next, we build a Database App. Saving data permanently."""
+Page 26,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Section: Review Points
+
+**[Visual Direction]**
+A final summary checklist for the chapter. 
+Background is a notebook page style.
+Large checkmarks next to each item.
+
+**[Target Text]**
+What we learned:
+- [x] Integrated with External APIs (requests)
+- [x] Handled Errors (try-except, status codes)
+- [x] Wrote Tests (pytest, mocks)
+- [x] Applied Best Practices (Env vars, Timeouts)
+
+Next Mission:
+Chapter 16: Project 3 — Building a Database App"
+Page 27,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+**[Heading]**
+- Section: Next Chapter Preview
+
+**[Visual Direction]**
+A teaser page.
+Panel 1: Alex is closing his laptop, but David says ""One more thing...""
+Panel 2: David shows a diagram of a database cylinder. ""APIs get data, but Databases KEEP data.""
+Panel 3: Large text ""To Be Continued in Chapter 16"". Alex looks excited.
+
+**[Target Text]**
+David: ""APIs are great for fetching data, but where do we store it?""
+Alex: ""In a database?""
+David: ""Exactly. Next time, we'll build a persistent app with a database.""
+
+**[Double Asterisks]**
+**End of Chapter 15**"

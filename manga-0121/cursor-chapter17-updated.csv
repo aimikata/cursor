@@ -1,0 +1,387 @@
+Page,Template,Prompt
+Page 1,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Character Reference]
+[Ref: REF_IMG_1] :: Alex
+
+[Heading]
+- Section: Opening Scene
+
+[Visual Direction]
+Alex [Ref: REF_IMG_1] is sitting at his modern desk in his San Francisco apartment, looking stressed at his MacBook. A speech bubble from a Slack-like app on screen says, 'Code styles are inconsistent.' Alex looks at his project files with a worried expression. 
+
+[Target Text]
+Panel 1 Alex is told by a team member: ""Code styles are inconsistent. Let's unify them.""
+Panel 1 Alex (thinking): ""I created `.cursorrules`, but how can I make **all team members use the same rules**?""
+
+Panel 2 Alex is asked in a code review: ""What does this change do?""
+Panel 2 Alex (thinking): ""Explaining changes in code reviews is hard. Can I use Cursor to **automatically explain changes**?""
+
+Panel 3 David: ""In team development, it's recommended to **share `.cursorrules`** and **use Cursor in code reviews**.""
+Panel 3 David: ""Since we created `.cursorrules` in Chapter 12, let's learn how to **share it with the team** and **use it in code reviews**.""
+Panel 3 Alex: ""Please teach me how to use Cursor in team development."""
+Page 2,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Character Reference]
+[Ref: REF_IMG_2] :: Cursor
+[Ref: REF_IMG_3] :: David
+
+[Heading]
+- Section: Opening Scene
+
+[Visual Direction]
+A clean, modern roadmap graphic. David [Ref: REF_IMG_3] appears in a small circular inset, smiling. To the side, the Cursor mascot [Ref: REF_IMG_2] holds a sign that says 'Team Success'. Icons represent .cursorrules, Git, and the Chat interface.
+
+[Target Text]
+What we'll learn in this chapter: Using Cursor for Teams
+Problem: Inconsistent styles and slow code reviews.
+Solution: Share .cursorrules via Git and use Cursor AI to assist in reviews.
+Key Tools: .cursorrules file, Git Repository, Cursor Chat (⌘L), and Composer (⌘I)."
+Page 3,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Character Reference]
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+[Heading]
+- Section: 17.1 Sharing .cursorrules with the Team
+
+[Visual Direction]
+Split screen video call. David [Ref: REF_IMG_3] is in his home office, looking professional. Alex [Ref: REF_IMG_1] is listening intently. David is gesturing toward a file tree showing a .cursorrules file at the top level.
+
+[Target Text]
+Panel 1 David: ""In team development, the secret is sharing your .cursorrules file through Git.""
+Panel 1 David: ""If you commit it to the root directory, every team member who clones the repo gets the rules automatically!""
+Panel 1 Alex: ""That's so simple! I'll add it to the daily_log project right now."""
+Page 4,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Visual Direction]
+A 4-step diagram showing a file moving from a local folder to a cloud icon (Git) and then to several other laptops. Each step is numbered with a clear icon.
+
+[Target Text]
+How to Share .cursorrules:
+1. Place .cursorrules in the project root.
+2. Commit to Git (git add .cursorrules).
+3. Team members pull/clone the repository.
+4. Everyone automatically inherits the same AI instructions and code styles."
+Page 5,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Character Reference]
+[Ref: REF_IMG_1] :: Alex
+
+[Heading]
+- Section: 17.1 Sharing .cursorrules with the Team
+
+[Visual Direction]
+Close-up of the Cursor IDE Explorer. Alex's hand is on the mouse, right-clicking the 'daily_log' folder. A menu pops up with 'New File' highlighted. He is typing '.cursorrules'.
+
+[Target Text]
+[Double Asterisks: Action: Right-click daily_log -> New File -> type .cursorrules]
+Alex: Okay, creating the file in the root directory. Now to define the team standards."
+Page 6,practical_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Heading]
+- Section: 17.1 Sharing .cursorrules with the Team
+
+[Visual Direction]
+A code editor window showing the contents of a .cursorrules file. Below it, a terminal window shows the Git commands being executed.
+
+[Target Text]
+# .cursorrules Content Example
+# Code Style
+- Use snake_case for function names
+- Use 4 spaces for indentation
+
+# Project Rules
+- log.py appends to daily_log.txt
+- --day option filters logs by date
+
+[Terminal Commands]
+$ git add .cursorrules
+$ git commit -m ""Add .cursorrules for team consistency"""
+Page 7,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Character Reference]
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+[Heading]
+- Section: 17.1 Sharing .cursorrules with the Team
+
+[Visual Direction]
+David [Ref: REF_IMG_3] is explaining with a 'Pro Tip' icon floating next to him. Alex [Ref: REF_IMG_1] is nodding. The background shows a Git Pull arrow icon.
+
+[Target Text]
+David: Remember, when rules change, update the file and commit it. 
+David: When your teammates run 'git pull', they get the updates. Just restart Cursor to apply the new rules instantly!
+Alex: So the AI's 'brain' stays synced with the team's evolution. Got it!"
+Page 8,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Visual Direction]
+A clean table comparing best practices for sharing rules. Icons for 'Write Clearly', 'Update Regularly', and 'Review' are used as headers.
+
+[Target Text]
+Best Practices for .cursorrules:
+- Write Clearly: Use specific instructions so the AI (and humans) understand the goal.
+- Update Regularly: Match the file to the current project state.
+- Team Review: Treat .cursorrules changes like code changes—review them together!
+- Commit Messages: Explicitly state what rules were added or changed."
+Page 9,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Character Reference]
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+[Heading]
+- Section: 17.2 Using Cursor in Code Reviews
+
+[Visual Direction]
+Alex [Ref: REF_IMG_1] is looking at a complex diff (red and green lines) on his screen. David [Ref: REF_IMG_3] appears in the background, pointing at the Cursor Chat icon.
+
+[Target Text]
+Alex: Explaining this logic change to my teammates is going to take an hour of writing notes.
+David: Why not let Cursor do the heavy lifting? Paste the diff into Chat and ask it to explain the changes for you!"
+Page 10,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Character Reference]
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_2] :: Cursor
+
+[Heading]
+- Section: 17.2 Using Cursor in Code Reviews
+
+[Visual Direction]
+Alex [Ref: REF_IMG_1] has the Chat panel open (⌘L). He has pasted a block of code. The Cursor mascot [Ref: REF_IMG_2] is typing back a structured list of bullet points.
+
+[Target Text]
+Alex (input): What does this change do? Are there potential issues?
+Cursor [Ref: REF_IMG_2] (output): This change adds error handling to the --day feature. 
+Cursor: Potential issue: It doesn't handle invalid date formats like '2024/13/45'. I recommend adding validation."
+Page 11,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Visual Direction]
+A graphic showing three 'Review Cards'. Each card has a specific purpose and a suggested prompt to use with Cursor AI.
+
+[Target Text]
+Review Prompt Patterns:
+1. Explain: ""Summarize what these changes do for a pull request description.""
+2. Audit: ""Identify potential bugs or security risks in this specific diff.""
+3. Optimize: ""How can I make this logic cleaner or more performant?"""
+Page 12,practical_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Heading]
+- Section: 17.2 Using Cursor in Code Reviews
+
+[Visual Direction]
+A numbered checklist with UI icons for each step (Copy icon, ⌘L icon, Enter icon).
+
+[Target Text]
+Step-by-Step Code Review with AI:
+1. Select and Copy (⌘C) the code you want to review.
+2. Open Chat (⌘L).
+3. Paste (⌘V) and ask: ""Review this code for edge cases.""
+4. Analyze the AI's response. Do not blindly accept—verify the logic!
+5. Use the suggestions to improve your Pull Request."
+Page 13,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Character Reference]
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_2] :: Cursor
+
+[Heading]
+- Section: 17.2 Using Cursor in Code Reviews
+
+[Visual Direction]
+Alex [Ref: REF_IMG_1] switches to the Composer (⌘I). He looks determined. The screen shows him typing a command to fix the date validation issue Cursor pointed out earlier.
+
+[Target Text]
+Alex: Cursor was right about the date format. Let's fix it instantly.
+Alex (input to Composer): Add date validation to the --day feature. If it's not YYYY-MM-DD, show a clear error message.
+Cursor [Ref: REF_IMG_2]: Applying changes to log.py..."
+Page 14,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Visual Direction]
+A circular flow diagram showing the iterative process of an AI-assisted review. Review -> Identify -> Improve -> Verify.
+
+[Target Text]
+The AI Review Loop:
+- Chat (⌘L): Use for understanding and finding issues.
+- Composer (⌘I): Use for implementing the suggested fixes.
+- Human Eye: The final check to ensure the team's standards are met.
+Result: Faster, higher-quality code reviews."
+Page 15,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Character Reference]
+[Ref: REF_IMG_3] :: David
+
+[Heading]
+- Section: 17.3 Best Practices for Team Development
+
+[Visual Direction]
+David [Ref: REF_IMG_3] is standing in a modern office hallway, looking like a senior leader. He is counting points on his fingers. Icons for 'Sync', 'Style', and 'Talk' float near him.
+
+[Target Text]
+David: To truly master team development with Cursor, follow these three pillars.
+David: 1. Keep .cursorrules synced. 2. Use AI to enforce code style. 3. Communicate when you change the AI's instructions."
+Page 16,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Visual Direction]
+A high-contrast table summarizing team best practices. Each row has a 'Why' and a 'How' column.
+
+[Target Text]
+Team Best Practices:
+- Pillar 1: Unified Rules. Why? Avoid 'it works on my machine' AI behavior. How? Commit .cursorrules to Git.
+- Pillar 2: Style Consistency. Why? Clean code is easier to maintain. How? Define linting rules in .cursorrules.
+- Pillar 3: AI-Assisted PRs. Why? Reduce reviewer fatigue. How? Use Chat to generate PR summaries."
+Page 17,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Character Reference]
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+[Heading]
+- Section: 17.3 Best Practices for Team Development
+
+[Visual Direction]
+Alex [Ref: REF_IMG_1] is looking a bit confused, scratching his head. David [Ref: REF_IMG_3] is explaining a 'Bad Example' scenario where everyone has different local rules.
+
+[Target Text]
+Alex: What happens if I keep my own private rules and don't share them?
+David: Then the AI will suggest code that might break your teammates' builds! Consistency is the key to team trust."
+Page 18,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Visual Direction]
+A 'Good vs. Bad' comparison chart. The 'Good' side is bright and organized; the 'Bad' side is messy and chaotic.
+
+[Target Text]
+Good vs. Bad Team Habits:
+- GOOD: Updating .cursorrules via Pull Requests. / BAD: Everyone using different local rules.
+- GOOD: Using AI to find bugs before the human review. / BAD: Skipping AI checks and missing obvious errors.
+- GOOD: Clear commit messages for rule changes. / BAD: Changing rules silently without telling the team."
+Page 19,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Character Reference]
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+[Heading]
+- Section: Chapter Summary
+
+[Visual Direction]
+Alex [Ref: REF_IMG_1] and David [Ref: REF_IMG_3] are high-fiving in a co-working space. Alex looks much more confident. The 'daily_log' project is shown on a monitor with a 'Build Passing' green checkmark.
+
+[Target Text]
+Alex: I feel like a pro now. My team is actually happy with my code reviews!
+David: You've mastered the human-AI collaboration. You're not just coding alone; you're leading with AI."
+Page 20,practical_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Heading]
+- Section: Chapter Summary
+
+[Visual Direction]
+A 'Final Checklist' design with checkboxes. Large, clear text.
+
+[Target Text]
+Chapter 17 Practice Checklist:
+[ ] Create .cursorrules in the root directory.
+[ ] Commit it to Git and push to your team repo.
+[ ] Use Chat (⌘L) to explain a recent code change.
+[ ] Use Composer (⌘I) to fix a bug found by the AI.
+[ ] Summarize a Pull Request using Cursor's help."
+Page 21,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Character Reference]
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+[Visual Direction]
+Alex [Ref: REF_IMG_1] is looking forward to the next challenge. David [Ref: REF_IMG_3] points to a sign that says 'Chapter 18: Common Problems'.
+
+[Target Text]
+Alex: What's next on the journey?
+David: Next, we tackle the real world: Chapter 18. We'll learn how to handle errors, performance bottlenecks, and security like a senior dev.
+Alex: Let's do it!"

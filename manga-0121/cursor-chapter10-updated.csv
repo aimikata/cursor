@@ -1,0 +1,643 @@
+Page,Template,Prompt
+Cover,Cover,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_2] :: Cursor
+[Ref: REF_IMG_3] :: David
+
+**[Heading]**
+- Chapter 10: Refactoring — Making Code Beautiful
+
+**[Visual Direction]**
+A high-quality, magazine-style cover illustration. Alex is sitting at a desk with a focused but enlightened expression, looking at a holographic code structure that is transforming from a tangled mess into organized, glowing geometric blocks. David stands behind him with a reassuring smile, pointing at the organized blocks. The Cursor mascot is floating nearby, holding a wrench or polishing tool, symbolizing code improvement. The background is a modern, clean workspace with soft lighting.
+
+**[Target Text]**
+Chapter 10
+Refactoring — Making Code Beautiful
+""The code works, but can it be improved?"""
+Page 1,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+
+**[Heading]**
+- Opening Scene: What's the Problem?
+
+**[Visual Direction]**
+Panel 1: Alex is staring at his computer screen in his apartment, looking confused and slightly frustrated. He is scratching his head.
+Panel 2: Close-up of the monitor showing `log.py`. The code is one long, dense block of text inside a single `main()` function.
+Panel 3: Alex leans back in his chair, sighing. He looks worried about touching the code.
+
+**[Target Text]**
+Alex (thinking): ""I wrote this code a week ago... but I can't remember what it does.""
+Alex (thinking): ""Everything is mixed into one `main()` function. Where does it get the message? Where does it write to the file?""
+Alex: ""I want to add a new feature, but I don't even know where to start. It works, but reviewing it is a nightmare..."""
+Page 2,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+**[Heading]**
+- Opening Scene
+
+**[Visual Direction]**
+Panel 1: David appears on a video call window on Alex's screen. He looks calm and professional.
+Panel 2: David is explaining, using hand gestures to signify breaking things apart.
+Panel 3: Alex looks intrigued, realizing there is a solution.
+
+**[Target Text]**
+Panel 1 David: ""It's great that the code works, Alex. But having everything in `main()` makes it hard to maintain.""
+Panel 1 David: ""When you want to add features or fix bugs, you won't know where to look. We need to organize it.""
+Panel 1 Alex: ""Organize it? You mean splitting it up?""
+
+Panel 2 David: ""It's great that the code works. However, having everything in the `main()` function makes **reviewing it later difficult**.""
+Panel 2 David: ""When you want to **add features** or **fix bugs**, you don't know **where to fix**.""
+Panel 2 David: ""Using Cursor's **Chat** or **Composer** to **organize code into functions** makes it **more readable and usable**.""
+Panel 2 Alex: ""What are the benefits of splitting into functions?"""
+Page 3,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- The Problem vs. The Solution
+
+**[Visual Direction]**
+A clear comparison infographic. Top half shows ""The Problem"": A single large box labeled ""main()"" containing tangled wires (representing mixed logic for input, processing, and output). Bottom half shows ""The Solution"": Three clean, separate boxes labeled ""get_log_message()"", ""write_log()"", and ""main()"", connected by neat arrows. The Cursor mascot is shown cutting the tangled wires and arranging them into the neat boxes.
+
+**[Target Text]**
+**The Problem**
+- Everything in one function.
+- Hard to remember what it does.
+- Difficult to add features or fix bugs.
+
+**The Solution**
+- Organize `main()` into specific functions.
+- Use Cursor to automate the split.
+
+**Benefits**
+1. Clear roles for each part.
+2. Easier to find bugs.
+3. Easier for others to understand."
+Page 4,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+**[Heading]**
+- Section 10.1: The Problem—""The Code Works, but Can It Be Improved?""
+
+**[Visual Direction]**
+Panel 1: Alex looks skeptical. He gestures to the screen where the code is running successfully.
+Panel 2: David smiles and counters the argument gently.
+Panel 3: Alex leans forward, ready to try.
+
+**[Target Text]**
+Alex: ""But David, the code works perfectly. Is there really a need to fix it?""
+Panel 1 David: ""Even if it works, 'Technical Debt' accumulates. Splitting it now makes future work easier.""
+Panel 1 David: ""Think about it: If you split it into `get_log_message()` and `write_log()`, you instantly know where to look if the file writing fails.""
+Alex: ""I see... reducing the scope of bugs. Okay, I want to try refactoring `daily_log`."""
+Page 5,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Why Split into Functions?
+
+**[Visual Direction]**
+A visual breakdown of the benefits. 
+1. **Clarity**: An icon of a magnifying glass over clear code.
+2. **Modularity**: Lego blocks snapping together.
+3. **Bug Reduction**: A bug being isolated in a small jar (small function) vs hiding in a large forest (large function).
+4. **Teamwork**: Two people looking at a blueprint and understanding it immediately.
+
+**[Target Text]**
+**Benefits of Refactoring**
+
+**1. Clarity**
+Each function has a single purpose.
+
+**2. Modularity**
+Know exactly where to add new features.
+
+**3. Bug Reduction**
+Errors are easier to identify in short functions. Fixes are less likely to break other parts.
+
+**4. Teamwork**
+Future you (and others) can understand the code instantly."
+Page 6,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+**[Heading]**
+- Section 10.2: When to Refactor
+
+**[Visual Direction]**
+Panel 1: David holds up a finger, explaining the ""Signs"".
+Panel 2: Alex looks at his code again, realizing it matches the description.
+Panel 3: Alex looks overwhelmed.
+
+**[Target Text]**
+Panel 1 David: ""Refactoring isn't random. There are signs.""
+Panel 1 David: ""Is the code too long? Is the same logic repeated? Are function names unclear?""
+Panel 1 David: ""Do you need comments just to explain complex logic?""
+Alex: ""My `main()` function is huge... that's definitely a sign.""
+Alex: ""But where do I even start? It feels risky to move things around."""
+Page 7,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Signs It's Time to Refactor
+
+**[Visual Direction]**
+A checklist-style infographic with ""Sign"", ""Example"", and ""Action"".
+
+**[Target Text]**
+**When to Refactor?**
+
+| Sign | Example | Action |
+|---|---|---|
+| **Code is too long** | `main()` is 50+ lines | Split into smaller functions |
+| **Repetition** | Same logic appears 3+ times | Combine into one function |
+| **Unclear Names** | `do_stuff()`, `process()` | Rename to describe intent |
+| **Complex Logic** | Requires paragraphs of comments | Simplify the code structure |
+
+**Goal**: Make the code readable enough that it explains itself."
+Page 8,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Consulting Cursor Chat
+
+**[Visual Direction]**
+Panel 1: David points to the Cursor sidebar. 
+Panel 2: Alex types a command into the Chat window (`Cmd+L`).
+Panel 3: The Cursor Chat responds with a plan. Alex looks relieved.
+
+**[Target Text]**
+David: ""Don't worry. You don't have to plan it all yourself. Just ask Cursor.""
+Alex: ""Okay, I'll open Chat (`Cmd+L`) and ask...""
+Alex (Typing): ""Please refactor this code by splitting it into functions to make it more readable.""
+Cursor (Chat): ""I suggest splitting `main()` into `get_log_message()`, `write_log()`, and `main()`. Here is the plan...""
+Alex: ""Oh, that makes sense! It proposed the structure for me."""
+Page 9,practical_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Step 1: Judging When to Refactor
+
+**[Visual Direction]**
+A step-by-step guide with icons for looking, checking, and chatting.
+
+**[Target Text]**
+**How to Decide & Plan Refactoring**
+
+1. **Look at the Code**
+   - Open `log.py`.
+   - Is it hard to read? Is it too long?
+
+2. **Check the Signs**
+   - Everything in `main()`? 
+   - Repeated logic? 
+   - Vague names?
+
+3. **Consult Cursor Chat**
+   - Shortcut: `Cmd + L` (Mac) / `Ctrl + L` (Win)
+   - **Prompt**: ""Please refactor this code by splitting it into functions to make it more readable. Everything is in main(), so please split it logical parts.""
+   
+4. **Review the Plan**
+   - Read Cursor's suggestion.
+   - Understand *why* it suggests those changes."
+Page 10,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+**[Heading]**
+- Section 10.3: Asking Cursor to Refactor
+
+**[Visual Direction]**
+Panel 1: David explains the next tool. 
+Panel 2: Alex opens the Composer window (`Cmd+I`).
+Panel 3: Alex types a specific instruction based on the Chat's advice.
+
+**[Target Text]**
+David: ""Chat gave us the plan. Now, let's use **Composer** to actually rewrite the code automatically.""
+David: ""The recommended flow is: **Consult in Chat** → **Execute in Composer**.""
+Alex: ""Got it. Opening Composer (`Cmd+I`).""
+Alex (Typing): ""Refactor `log.py`. Split `main()` into `get_log_message()`, `write_log()`, and `main()`.""
+David: ""Good. Being specific helps Cursor avoid confusion."""
+Page 11,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Generating the Refactor
+
+**[Visual Direction]**
+Panel 1: Alex hits ""Generate"". Sparks or digital flow effects around the code editor.
+Panel 2: The screen shows a ""Diff View"" (Red lines for deletion, Green lines for addition).
+Panel 3: Alex looks closely at the screen, comparing the old and new code.
+
+**[Target Text]**
+Alex: ""It's rewriting the code right in front of me!""
+Cursor (System): *Generating refactored code...*
+Alex: ""It removed the huge `main()` block and created three separate functions.""
+Alex: ""I can see the Before and After side-by-side. It's much cleaner now."""
+Page 12,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Visualizing the Change
+
+**[Visual Direction]**
+A split-screen code comparison. 
+**Left (Before):** A grey, dense block labeled ""Monolithic main()"". 
+**Right (After):** Three colorful blocks labeled ""get_log_message()"", ""write_log()"", ""main()"". 
+Arrows show how data flows between them. 
+
+**[Target Text]**
+**Before Refactoring**
+```python
+def main():
+    # All logic mixed here
+    # Parsing args
+    # Writing to file
+    # Printing output
+```
+*Hard to understand what is happening where.*
+
+**After Refactoring**
+```python
+def get_log_message(args):
+    # Only handles input
+
+def write_log(message):
+    # Only handles file I/O
+
+def main():
+    # Orchestrates the flow
+```
+*Each function has a clear, single responsibility.*"
+Page 13,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+**[Heading]**
+- Verify Before You Accept
+
+**[Visual Direction]**
+Panel 1: Alex reaches for the ""Accept"" button immediately.
+Panel 2: David stops him with a cautioning gesture.
+Panel 3: Alex runs the code in the terminal to test it.
+
+**[Target Text]**
+Alex: ""This looks great! I'll accept it.""
+David: ""Wait! **Always check** the plan first. Cursor is a helper, but you are the pilot.""
+David: ""Make sure the behavior hasn't changed. Run the code.""
+Alex: ""Right... `python log.py 'test'`...""
+*Terminal: Logged: 2025-01-21 test*
+Alex: ""It works! The behavior is the same, but the code is better."""
+Page 14,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- The Cursor Refactoring Workflow
+
+**[Visual Direction]**
+A flowchart showing the cycle of refactoring.
+1. **Identify** (Eye icon)
+2. **Consult** (Chat icon)
+3. **Refactor** (Composer icon)
+4. **Verify** (Checkmark/Terminal icon)
+
+**[Target Text]**
+**Refactoring Workflow**
+
+1. **Identify Signs**
+   Code is messy, long, or unclear.
+
+2. **Consult Chat**
+   Ask for a plan: ""How should I split this?""
+
+3. **Refactor with Composer**
+   Execute the plan: ""Split main into X, Y, Z.""
+
+4. **Verify & Accept**
+   Check the diff. Run the code. Confirm behavior is unchanged."
+Page 15,practical_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Step 2: Executing the Refactor
+
+**[Visual Direction]**
+Reproducible steps for using Composer to refactor.
+
+**[Target Text]**
+**How to Refactor with Composer**
+
+1. **Open Composer**
+   - `Cmd + I` (Mac) / `Ctrl + I` (Win)
+
+2. **Enter Instruction**
+   - ""Please refactor `log.py` by splitting it into functions to make it more readable.""
+   - ""Split it into `get_log_message()`, `write_log()`, and `main()`.""
+
+3. **Generate & Review**
+   - Click **Generate**.
+   - Review the Diff View (Red = Removed, Green = Added).
+
+4. **Accept & Verify**
+   - Click **Accept** if it looks correct.
+   - Run the script in the terminal to ensure no bugs were introduced."
+Page 16,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+**[Heading]**
+- Continuous Improvement
+
+**[Visual Direction]**
+Panel 1: Alex looks at the code, satisfied, but then squints. ""Can we do more?""
+Panel 2: David nods but advises balance.
+Panel 3: Alex smiles, understanding the philosophy.
+
+**[Target Text]**
+Alex: ""It's readable now. But could we add error handling? Or constants?""
+David: ""We could. Refactoring has no end.""
+David: ""But don't seek perfection all at once. **Improve gradually**.""
+David: ""If the code is readable, usable, and maintainable, that's a win. You can always refactor more later with Cursor."""
+Page 17,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+**[Heading]**
+- Section 10.4: Understanding the Changes
+
+**[Visual Direction]**
+Panel 1: David leans in seriously. ""One last thing.""
+Panel 2: David points to Alex's head. ""Cursor did the work, but do YOU understand it?""
+Panel 3: Alex looks thoughtful.
+
+**[Target Text]**
+David: ""Cursor refactored it, but if you don't understand **why** it's better, you won't learn.""
+David: ""You need to understand the 'Refactoring Thinking' so you can handle the same problem next time.""
+Alex: ""You're right. I see the functions, but I should ask **why** this specific structure is better."""
+Page 18,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Asking ""Why?""
+
+**[Visual Direction]**
+Panel 1: Alex types into Chat again.
+Panel 2: Cursor responds with a detailed explanation list.
+Panel 3: Alex reads it, looking enlightened.
+
+**[Target Text]**
+Alex (Typing): ""Why does this refactoring make the code better?""
+Cursor (Chat): ""1. **Clarity**: Each function has one job.""
+Cursor (Chat): ""2. **Testability**: You can test `get_log_message` without writing to a file.""
+Cursor (Chat): ""3. **Reusability**: You can use `write_log` in other scripts.""
+Alex: ""I didn't think about testing or reuse! That makes so much sense."""
+Page 19,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Why This Change Matters
+
+**[Visual Direction]**
+A table explaining the specific improvements in `log.py`.
+
+**[Target Text]**
+**Understanding the Changes**
+
+| Change | Why it's better | Benefit |
+|---|---|---|
+| **Split into Functions** | Isolates logic | If file writing fails, you know exactly where to look. |
+| **Clear Naming** | `get_log_message` vs code block | The code explains itself without comments. |
+| **Separation of Concerns** | Input logic vs Output logic | You can change *how* you log (e.g., to database) without changing *how* you get the message. |"
+Page 20,practical_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Step 3: Learning from Refactoring
+
+**[Visual Direction]**
+A checklist for the ""Understanding"" phase.
+
+**[Target Text]**
+**How to Internalize Refactoring**
+
+1. **Check the Diff**
+   - Don't just click Accept. Look at what changed.
+
+2. **Ask ""Why?""**
+   - Use Chat: ""Why is this better?"" ""What are the benefits?""
+
+3. **Read the Explanation**
+   - Cursor will explain concepts like modularity and testability.
+
+4. **Think for Yourself**
+   - Can you explain the change to someone else?
+   - Apply this thinking when you write *new* code."
+Page 21,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+**[Heading]**
+- Chapter Summary
+
+**[Visual Direction]**
+Panel 1: Alex is looking at his clean code with satisfaction. The sun is setting outside the window (time has passed).
+Panel 2: David gives a thumbs up.
+Panel 3: Alex looks determined for the next step.
+
+**[Target Text]**
+Alex: ""Consult Chat → Refactor with Composer → Understand the Changes. I have a solid workflow now.""
+David: ""Exactly. You're not just a coder anymore; you're an engineer thinking about structure.""
+Alex: ""I feel like I can write better code from the start now.""
+David: ""That's the goal. Next, we'll tackle something tedious but essential... Tests."""
+Page 22,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Chapter 10 Review
+
+**[Visual Direction]**
+A summary card with checkmarks.
+
+**[Target Text]**
+**Chapter 10 Summary**
+
+✅ **Refactoring** is improving structure without changing behavior.
+✅ **Timing**: When code is long, repeated, or unclear.
+✅ **Workflow**: Consult Chat first, then execute with Composer.
+✅ **Verification**: Always run code after refactoring.
+✅ **Understanding**: Ask ""Why?"" to learn design patterns.
+
+**Practice Checklist**
+- [ ] Open `daily_log` project.
+- [ ] Ask Chat to critique `log.py`.
+- [ ] Use Composer to split functions.
+- [ ] Ask Chat to explain the benefits."
+Page 23,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Coming Up Next
+
+**[Visual Direction]**
+A teaser graphic for Chapter 11. It shows a robot (Cursor) automatically filling out a checklist (Tests) while the human (Alex) relaxes.
+
+**[Target Text]**
+**Next Chapter: Test Generation**
+
+**""No More Writing Tests Manually""**
+
+Writing tests is important but tedious.
+In Chapter 11, you will learn how to:
+- Automatically generate test cases with Cursor.
+- Ensure your refactored code is rock solid.
+- Catch bugs before they happen.
+
+**See you in Chapter 11!**"

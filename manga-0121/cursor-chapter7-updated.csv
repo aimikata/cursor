@@ -1,0 +1,514 @@
+Page,Template,Prompt
+Cover,Cover,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_2] :: Cursor
+[Ref: REF_IMG_3] :: David
+
+**[Heading]**
+- Chapter Title: Chapter 7: @Mentions — Directing AI's Attention
+
+**[Visual Direction]**
+High-quality manga cover art. Central focus on Alex holding a futuristic 'spotlight' or 'lens' tool, shining it on a specific file icon labeled 'log.py' floating in a sea of other files. The spotlight beam is blue and digital. In the background, David smiles approvingly. Cursor (the mascot) is sitting on the spotlight, pointing forward. The atmosphere is professional yet dynamic, symbolizing focus and precision.
+
+**[Target Text]**
+(Title) Learn Cursor IDE
+(Chapter) Chapter 7: @Mentions — Directing AI's Attention
+(Subtitle) The Visual Guide to AI-Powered Development"
+Page 1,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+
+**[Heading]**
+- Section: Opening Scene
+
+**[Visual Direction]**
+Panel 1: Alex is sitting at his desk in his apartment, looking frustrated at his monitor. The screen shows the Cursor Chat interface with a slightly off-target answer.
+Panel 2: Close up of the screen. Alex's query is ""How can I make the --day feature in log.py more user-friendly?"". The AI response references content from `daily_log.txt` instead of just the python file.
+Panel 3: Alex thinking bubble. He looks puzzled, hand on chin.
+
+**[Target Text]**
+Panel 1 Alex: ""Hmm... this answer isn't quite right.""
+Panel 2 (Screen): ""Based on daily_log.txt, here is a suggestion...""
+Panel 3 Alex (Thinking): ""I asked about `log.py`, but it's reading the text file too. It's getting confused between the two files."""
+Page 2,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+**[Heading]**
+- Section: The Solution Appears
+
+**[Visual Direction]**
+Panel 1: David appears on a video call window on Alex's secondary monitor. He looks calm and helpful.
+Panel 2: David holding up a finger, explaining a concept. Alex looks attentive.
+Panel 3: Alex looks excited, ready to type.
+
+**[Target Text]**
+Panel 1 David: ""You can solve that with **@Mentions**. We used `@Codebase` in Chapters 1 and 4, but when you want to show **only specific files**, use `@Files`.""
+Panel 1 David: ""If you write `@log.py`, Cursor will reference **only that file** to answer.""
+Panel 1 Alex: ""I can specify files. I want to try it.""
+
+Panel 2 Alex: ""How do I choose between `@Codebase` and `@Files`?""
+Panel 2 David: ""**When you know the specific file** → `@Files`. **When you want to search the entire project** → `@Codebase`.""
+Panel 2 David: ""There's also `@Recommended` where Cursor **recommends related files**. Let's try it in `daily_log`."""
+Page 3,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Section: Chapter Overview
+
+**[Visual Direction]**
+A clean, diagrammatic infographic explaining the ""Context Problem"".
+Top half: ""The Problem"" - A chaotic web where the AI is trying to look at every file in the folder, leading to confusion. Red 'X' marks.
+Bottom half: ""The Solution"" - A clean beam of light connecting the AI directly to one specific file using the `@` symbol. Green check marks.
+
+**[Target Text]**
+(Title) What You Will Learn in Chapter 7
+(Problem) Without guidance, Cursor doesn't know **which files** are relevant. It might read unrelated files and give wrong answers.
+(Solution) Use **@Mentions** to control the scope.
+(Key Tools)
+- **@Files**: Specify exact files.
+- **@Codebase**: Search the whole project.
+- **@Recommended**: Let Cursor guess relevant files."
+Page 4,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+**[Heading]**
+- Section: 7.1 The Problem—""AI Doesn't Know Which Files to Look At""
+
+**[Visual Direction]**
+Panel 1: David explaining with a serious expression. Background shows a metaphor of a library with too many books.
+Panel 2: Alex asking a question, leaning forward.
+Panel 3: David responding with a smile, gesturing to the keyboard.
+
+**[Target Text]**
+Panel 1 David: ""In a real project, you might have hundreds of files. If you ask a vague question, Cursor tries to guess the context, but it can get overwhelmed or distracted.""
+Panel 2 Alex: ""Is that why `@Codebase` sometimes feels slow for simple edits?""
+Panel 3 David: ""Exactly. `@Codebase` searches everything. If you **know** the file you want to edit, pointing directly to it with `@Files` is much faster and more accurate."""
+Page 5,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Section: Why Context Matters
+
+**[Visual Direction]**
+Comparison visualization between ""Broad Search"" and ""Pinpoint Focus"".
+Left side: An icon of a heavy weight labeled ""@Codebase"". Text: ""Scans entire project. Good for discovery, but heavy.""
+Right side: An icon of a laser pointer labeled ""@Files"". Text: ""Points to one file. Fast, precise, lightweight.""
+
+**[Target Text]**
+(Title) Choosing the Right Scope
+(Left: @Codebase)
+- **Scope:** Entire Project
+- **Speed:** Slower
+- **Use Case:** ""Where is the login logic?"" (Discovery)
+(Right: @Files)
+- **Scope:** Specific Files
+- **Speed:** Instant
+- **Use Case:** ""Refactor this function in log.py"" (Editing)"
+Page 6,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+**[Heading]**
+- Section: 7.2 Using @Files to Specify Files
+
+**[Visual Direction]**
+Panel 1: Close up of Alex's keyboard as he presses the `@` key.
+Panel 2: The screen shows the dropdown menu appearing in the Chat input box. Options like 'Files', 'Codebase', 'Docs' are visible.
+Panel 3: Alex clicking on `log.py` in the list.
+
+**[Target Text]**
+Panel 1 David (Voiceover): ""Go ahead. Type `@` in the chat input.""
+Panel 2 Alex: ""A menu popped up! I see 'Files', 'Codebase', and 'Docs'.""
+Panel 3 David: ""Select 'Files', or just start typing the filename. Choose `log.py`."""
+Page 7,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Section: How to Use @Files
+
+**[Visual Direction]**
+A step-by-step UI guide with numbered screenshots.
+1. User typing `@` in the input bar.
+2. The dropdown menu highlighting `Files`.
+3. The user selecting `log.py`.
+4. The result: A blue pill/tag labeled `@log.py` sitting in the text box.
+
+**[Target Text]**
+(Step 1) Type `@` in the Chat (Cmd+L) or Composer (Cmd+I) input field.
+(Step 2) A dropdown menu appears. Select **Files** (or type the filename directly).
+(Step 3) Click the file you want from the list.
+(Step 4) A **'Pill'** (tag) like `@log.py` appears. Now Cursor is focused ONLY on this file."
+Page 8,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Section: The Result of Focus
+
+**[Visual Direction]**
+Panel 1: Alex typing his prompt next to the `@log.py` pill.
+Panel 2: Cursor (the character) appearing on screen, holding a magnifying glass strictly over a document labeled 'log.py', ignoring a pile of other papers.
+Panel 3: The code output on screen. It is perfect and relevant.
+
+**[Target Text]**
+Panel 1 Alex (Typing): ""`@log.py` Improve the --day feature to handle 0 matching lines.""
+Panel 2 Cursor: ""Understood! I am looking ONLY at `log.py`. I won't get distracted by `daily_log.txt`.""
+Panel 3 Alex: ""It worked! The suggestion is exactly what I wanted, and it didn't mix up the file formats."""
+Page 9,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+**[Heading]**
+- Section: Multiple Files Strategy
+
+**[Visual Direction]**
+Panel 1: Alex asking a follow-up question. ""What if I need two files?""
+Panel 2: David explaining with hand gestures indicating 'combining'.
+Panel 3: Screen showing the input box with two pills: `@log.py` and `@daily_log.txt`.
+
+**[Target Text]**
+Panel 1 Alex: ""Sometimes I need to check consistency between the code and the data file. Can I tag both?""
+Panel 2 David: ""Absolutely. Just add another pill. Type `@log.py` and then `@daily_log.txt`.""
+Panel 3 Alex: ""Like this? `@log.py` `@daily_log.txt` Check for format consistency.""
+David: ""Perfect. Now it sees the relationship between them."""
+Page 10,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Section: Single vs Multiple Files
+
+**[Visual Direction]**
+Visual examples of input prompts.
+Top: ""Single File Focus"" -> Input box with `[@log.py]` pill. Arrow pointing to an icon of a single script.
+Bottom: ""Multi-File Context"" -> Input box with `[@log.py]` and `[@daily_log.txt]` pills. Arrow pointing to an icon showing a connection line between a script and a text file.
+
+**[Target Text]**
+(When to use Multiple Pills)
+- **Dependency Checks:** Checking if a function in File A correctly calls File B.
+- **Data Consistency:** Verifying code against a data sample (e.g., `.txt`, `.json`).
+- **Refactoring:** Renaming a variable across two related files.
+
+(Tip) Only include files that are **necessary**. Keeping the context small ensures higher accuracy."
+Page 11,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+**[Heading]**
+- Section: 7.3 Using @Codebase (Review & Advanced)
+
+**[Visual Direction]**
+Panel 1: David transitioning the topic. Background fades to a 'Map' visual.
+Panel 2: Alex looking thoughtful. ""We used this in Chapter 4...""
+Panel 3: David explaining the distinction.
+
+**[Target Text]**
+Panel 1 David: ""Now, let's revisit **@Codebase**. Remember when we searched for 'where the log logic is'?""
+Panel 2 Alex: ""Yeah, when I didn't know the file name.""
+Panel 3 David: ""Exactly. Use `@Codebase` when you need to search by **meaning** or ask architectural questions about the **entire project**."""
+Page 12,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Section: Advanced @Codebase Usage
+
+**[Visual Direction]**
+Panel 1: Alex typing a high-level question with the `@Codebase` tag.
+Panel 2: Cursor (character) flying over a 3D city model (representing the codebase), scanning everything.
+Panel 3: The chat output showing a comprehensive answer about error handling.
+
+**[Target Text]**
+Panel 1 Alex (Input): ""`@Codebase` Are there any missing error handling patterns in the daily_log project?""
+Panel 2 Cursor: ""Scanning project structure... I understand the relationship between `log.py` and the text files...""
+Panel 3 Cursor (Response): ""I found that `log.py` reads a file but lacks a `try-except` block for file not found errors.""
+Alex: ""Wow, it audited the whole project structure!"""
+Page 13,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Section: @Files vs @Codebase Cheat Sheet
+
+**[Visual Direction]**
+A comparison table with icons.
+Columns: ""Situation"", ""Tool"", ""Example"".
+Rows for ""Know the file"", ""Don't know the file"", ""Project Audit"".
+
+**[Target Text]**
+| Situation | Best Tool | Example |
+| :--- | :--- | :--- |
+| **You know the specific file** | **@Files** | `[@log.py] Fix the bug` |
+| **You don't know where code is** | **@Codebase** | `[@Codebase] Where is the log logic?` |
+| **Project-wide check** | **@Codebase** | `[@Codebase] Check for security issues` |
+| **Emphasize a file in global search** | **Both** | `[@Codebase] [@log.py] Check how this file fits in` |"
+Page 14,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+**[Heading]**
+- Section: 7.4 Using @Recommended
+
+**[Visual Direction]**
+Panel 1: David introducing a new feature. ""There is a middle ground.""
+Panel 2: Close up of the dropdown menu showing the 'Recommended' option.
+Panel 3: Alex selecting it.
+
+**[Target Text]**
+Panel 1 David: ""Sometimes you don't want to search everything, but you're too lazy to pick files manually. That's where **@Recommended** comes in.""
+Panel 2 David: ""Cursor analyzes your question and **automatically picks** the files it thinks are relevant.""
+Panel 3 Alex: ""Sounds convenient! Let's try it. `@Recommended` I want to improve the log feature."""
+Page 15,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Section: Auto-Detection in Action
+
+**[Visual Direction]**
+Panel 1: As soon as Alex selects `@Recommended`, two pills (`@log.py`, `@daily_log.txt`) magically appear in the input box.
+Panel 2: Cursor (character) juggling files and handing the right ones to Alex.
+Panel 3: Alex looking impressed.
+
+**[Target Text]**
+Panel 1 (Screen): *Pop!* `[@log.py]` and `[@daily_log.txt]` are automatically added to the input.
+Panel 2 Cursor: ""I think these are the files you need based on your cursor position and history!""
+Panel 3 Alex: ""It saved me the clicks! It knew exactly which files were related to 'log feature'."""
+Page 16,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+**[Heading]**
+- Section: Manual Adjustment
+
+**[Visual Direction]**
+Panel 1: Alex looks critical at the screen. ""Wait, this one file isn't needed.""
+Panel 2: Alex deleting a pill from the input box.
+Panel 3: David giving a thumbs up.
+
+**[Target Text]**
+Panel 1 Alex: ""It added `README.md` too, but I don't need that for this coding task.""
+Panel 2 David: ""Then just delete that pill. `@Recommended` is a helper, but **you are the pilot**.""
+Panel 3 David: ""Start with `@Recommended`, then add or remove files manually. That's a pro workflow."""
+Page 17,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Section: Workflow Decision Tree
+
+**[Visual Direction]**
+A flowchart diagram helping the user decide which @Mention to use.
+Start Node: ""Start Chat/Composer"".
+Decision 1: ""Do you know the exact file?""
+- Yes -> Use **@Files**.
+- No -> Decision 2: ""Do you trust AI to guess?""
+  - Yes -> Use **@Recommended**.
+  - No (or need global search) -> Use **@Codebase**.
+
+**[Target Text]**
+(Summary of Workflow)
+1. **Best Accuracy:** Manually select with **@Files**.
+2. **Quick Start:** Use **@Recommended** and adjust.
+3. **Broad Search:** Use **@Codebase** for discovery."
+Page 18,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+**[Heading]**
+- Section: Chapter Summary
+
+**[Visual Direction]**
+Panel 1: Alex leaning back in his chair, looking satisfied. The screen shows clean code.
+Panel 2: David summarizing the lesson via the video call.
+Panel 3: Alex clenching his fist in determination.
+
+**[Target Text]**
+Panel 1 Alex: ""Specifying the files made a huge difference. The answers are so much sharper now.""
+Panel 2 David: ""Context is everything for AI. By controlling the context with `@Mentions`, you stop being a passive user and become a **Director**.""
+Panel 3 Alex: ""I feel like I'm really controlling the tool now. What's next?"""
+Page 19,practical_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Section: Practice Checklist
+
+**[Visual Direction]**
+A clipboard graphic with a checklist. Cursor (mascot) is holding a pencil checking items off.
+
+**[Target Text]**
+**Try it yourself in the `daily_log` project:**
+
+[ ] **Open Chat:** Press `Cmd+L` (Mac) or `Ctrl+L` (Win).
+[ ] **Type @:** See the dropdown menu appear.
+[ ] **Select Files:** Choose `log.py` and ask a specific question.
+[ ] **Try Multi-File:** Select both `log.py` and `daily_log.txt` to check consistency.
+[ ] **Global Search:** Use `@Codebase` to ask ""What does this project do?"".
+[ ] **Auto-Select:** Use `@Recommended` and see what Cursor picks."
+Page 20,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+**[Heading]**
+- Section: Setting the Stage for Chapter 8
+
+**[Visual Direction]**
+Panel 1: Alex asks ""We can search and edit... but can it do complex tasks automatically?""
+Panel 2: David grins mysteriously.
+Panel 3: David's screen shows the word ""AGENT"".
+
+**[Target Text]**
+Panel 1 Alex: ""I can direct its attention... but I still have to type the prompts and apply the code.""
+Panel 2 David: ""Well, what if I told you Cursor can **think step-by-step** and execute commands for you?""
+Panel 3 David: ""Next up is **Cursor Agent**. It's time to let the AI do the heavy lifting."""
+Page 21,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Section: Next Chapter Preview
+
+**[Visual Direction]**
+A teaser poster for Chapter 8.
+Visual: Cursor (mascot) wearing a construction helmet, holding a wrench and a blueprint, fixing a bug on its own while Alex watches from a distance.
+Text: ""Chapter 8: Agent — Your Thinking Assistant"".
+
+**[Target Text]**
+**Coming Up Next:**
+
+**Chapter 8: Agent — Your Thinking Assistant**
+- How Agent differs from Chat
+- Auto-fixing bugs
+- Running terminal commands
+- Multi-step reasoning
+
+*Get ready to automate your workflow!*"

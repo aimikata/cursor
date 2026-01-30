@@ -1,0 +1,571 @@
+Page,Template,Prompt
+Cover,Cover,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Character Reference]
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_2] :: Cursor
+[Ref: REF_IMG_3] :: David
+
+[Heading]
+- Chapter Title: Learn Cursor IDE: The Visual Guide to AI-Powered Development
+
+[Visual Direction]
+A professional and modern book cover design. In the center, Alex [Ref: REF_IMG_1] is looking confidently at a holographic representation of the Cursor [Ref: REF_IMG_2] mascot. David [Ref: REF_IMG_3] stands in the background with a supportive smile. The background is a clean, high-tech San Francisco office. Bold, clean typography for the title.
+
+[Target Text]
+Learn Cursor IDE: The Visual Guide to AI-Powered Development
+Chapter 1: What is Cursor? Your AI Coding Assistant"
+Page 1,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Character Reference]
+[Ref: REF_IMG_1] :: Alex
+
+[Heading]
+- Section: Opening Scene
+
+[Visual Direction]
+Setting: Alex's apartment, nighttime. Panel 1: Close-up of Alex [Ref: REF_IMG_1] looking stressed, staring at a laptop screen showing a Python ZeroDivisionError. Panel 2: Alex is searching on a browser with dozens of tabs open, looking overwhelmed. Panel 3: Alex closes the laptop in frustration.
+
+[Target Text]
+Alex (thinking): I wrote this function, but it crashes when the list is empty. How do I fix this?
+Alex (thinking): There are too many search results... I don't know which one applies to my code. This takes too long!"
+Page 2,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Character Reference]
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+[Ref: REF_IMG_2] :: Cursor
+
+[Visual Direction]
+Panel 1: Alex [Ref: REF_IMG_1] receives a message from David [Ref: REF_IMG_3] on his phone. Panel 2: Alex is at his desk, downloading Cursor and opening it for the first time. Panel 3: The Cursor [Ref: REF_IMG_2] mascot appears on the screen in the Chat panel as Alex pastes his code and asks a question.
+
+[Target Text]
+David (text message): Hey Alex! Try Cursor IDE. You can ask about your specific code, and it'll explain exactly what's wrong and how to fix it.
+Alex (thinking): Looks like VS Code, but there's a Chat panel on the right...
+Alex: Why does this error happen?
+Cursor: The error occurs because len(numbers) returns 0 when the list is empty. Here's how to fix it: [code and explanation]
+
+[Text Part - Bottom of Page]
+What You'll Learn in This Chapter:
+This isn't just an introduction—you'll learn how to actually use Cursor's three main features:
+- Chat: Ask questions about code and get instant explanations
+- Tab: Get intelligent code suggestions as you type
+- Composer: Describe what you want and build entire features
+By the end of this chapter, you'll understand not only what Cursor is, but how to use it to solve real coding problems."
+Page 3,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Character Reference]
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+[Ref: REF_IMG_2] :: Cursor
+
+[Heading]
+- Section: 1.1 Chat - Your Coding Tutor
+
+[Visual Direction]
+Setting: Alex's apartment. Cursor open with Chat panel visible. Panel 1: David [Ref: REF_IMG_3] appears via video call on Alex's [Ref: REF_IMG_1] screen, showing Alex the Chat panel. Panel 2: Close-up of Chat interface showing the chat input box at bottom, previous conversation history, and code examples in responses. Panel 3: Alex [Ref: REF_IMG_1] types their first question, highlighting the calculate_average function.
+
+[Target Text]
+David: ""See this Chat panel? This is where you ask questions about your code.""
+David: ""It's like having a tutor who can see your entire project.""
+Alex (typing): What does this function do?
+Alex (selecting code): [Highlights calculate_average function]
+Cursor: This function calculates the average of a list of numbers. Here's how it works: [detailed explanation]"
+Page 4,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Character Reference]
+[Ref: REF_IMG_2] :: Cursor
+
+[Heading]
+- Section: Cursor Chat: How It Works
+
+[Visual Direction]
+A clean, structured infographic layout showing a flow diagram. Four main steps are illustrated: 1. Select Code (Visual of highlighting code) - Optional step. 2. Type Your Question (Visual of chat input box) - Use plain English, no technical jargon. 3. Cursor Analyzes (Cursor [Ref: REF_IMG_2] looking at files) - Reads selected code, understands project context, considers related files. 4. Get Detailed Answer (Visual of a code block with comments) - Explanation of what the code does, why it works (or doesn't), how to fix errors, code examples with comments. The style is modern and professional with clear visual flow.
+
+[Target Text]
+Cursor Chat: How It Works
+1. Select Code (Optional)
+   └─ Highlight the code you want to ask about
+2. Type Your Question
+   └─ Use plain English, no technical jargon
+3. Cursor Analyzes
+   ├─ Reads your selected code
+   ├─ Understands project context
+   └─ Considers related files
+4. Get Detailed Answer
+   ├─ Explanation of what the code does
+   ├─ Why it works (or doesn't)
+   ├─ How to fix errors
+   └─ Code examples with comments"
+Page 5,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Character Reference]
+[Ref: REF_IMG_2] :: Cursor
+
+[Visual Direction]
+A diagram showing the 'Cursor Chat Flow'. 1. Select Code (Visual of highlighting). 2. Type Question (Visual of chat input). 3. Cursor Analyzes (Cursor [Ref: REF_IMG_2] looking at files). 4. Detailed Answer (Visual of a code block with comments).
+
+[Target Text]
+Cursor Chat: How It Works
+1. Select Code: Highlight the problem area.
+2. Type: Use plain English.
+3. Analyze: Cursor reads selected code and project context.
+4. Answer: Get explanations, fixes, and examples."
+Page 6,practical_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Heading]
+- Topic: Real Example - Fixing an Error with Chat
+
+[Visual Direction]
+A split-screen view. Left side shows the 'Buggy Code'. Right side shows the 'Cursor Fix' with a detailed explanation box below it.
+
+[Target Text]
+Buggy Code:
+def calculate_average(numbers):
+    return sum(numbers) / len(numbers)
+
+Cursor's Fix:
+def calculate_average(numbers):
+    if not numbers: return 0
+    return sum(numbers) / len(numbers)
+
+Explanation: Added a check for empty lists to prevent ZeroDivisionError."
+Page 7,practical_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Heading]
+- Topic: Advanced Chat - Adding Context with @ Mentions
+
+[Visual Direction]
+A code editor view showing the chat input. The text '@auth.py @user.py' is highlighted as 'Context Pills'. Arrows point to how this connects multiple files.
+
+[Target Text]
+The Hidden Power of @ Mentions
+Don't just ask 'How does this work?'
+Use: '@auth.py @user.py How does authentication flow through these files?'
+Why: Cursor reads ALL mentioned files to understand relationships, not just the active one."
+Page 8,practical_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Heading]
+- Topic: Debugging & Prompt Engineering Secrets
+
+[Visual Direction]
+A 'Good vs Bad' comparison table. Bad prompts are marked with a red 'X', good prompts with a green checkmark. A small tip box at the bottom features the Cursor [Ref: REF_IMG_2] mascot.
+
+[Target Text]
+Prompt Engineering for Chat
+- Bad: 'Fix this'
+- Good: 'I'm trying to [goal]. This code [current behavior]. Why does [specific issue] happen?'
+Expert Tip: Ask 'What could I have done to prevent this?' to learn better habits."
+Page 9,practical_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Heading]
+- Topic: Chat History Management
+
+[Visual Direction]
+A UI screenshot showing the Chat History sidebar. A 'Delete' icon is highlighted. A 'Performance Warning' icon (yellow triangle) is shown next to a very long chat list.
+
+[Target Text]
+Performance Secret: Chat History
+- Problem: Long histories slow down Cursor and cause 'Context Too Long' errors.
+- Solution: Start fresh conversations for new topics. Delete old ones regularly.
+- Shortcut: Cmd+Alt+L to manage history."
+Page 10,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Character Reference]
+[Ref: REF_IMG_1] :: Alex
+
+[Heading]
+- Section: 1.2 Tab - Intelligent Code Suggestions
+
+[Visual Direction]
+Panel 1: Alex [Ref: REF_IMG_1] types a function header. Panel 2: A ghost-text suggestion (grayed out) appears below his cursor. Panel 3: Alex hits the 'Tab' key, and the code turns solid. He looks amazed.
+
+[Target Text]
+Alex: I just typed the name of the function...
+Alex (thinking): It's suggesting the whole logic! Even the error handling?!
+Alex: *Presses Tab* This is like it's reading my mind!"
+Page 11,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Visual Direction]
+A comparison infographic. Left side: 'Traditional Autocomplete' (suggests one word). Right side: 'Cursor Tab' (suggests full blocks, context-aware, matches style).
+
+[Target Text]
+Cursor Tab: Beyond Autocomplete
+- Context Awareness: Analyzes your whole project.
+- Prediction: Guesses your next move.
+- Style Matching: Learns your specific coding patterns.
+- Auto-Imports: Can even add the 'import' statement for you!"
+Page 12,practical_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Heading]
+- Topic: Tab Examples - Function & Test Generation
+
+[Visual Direction]
+Two code blocks. Block 1: Shows a partial function and the 'Tab' suggestion for a database query. Block 2: Shows a test function header and the 'Tab' suggestion for test data and assertions.
+
+[Target Text]
+Example 1: Function Completion
+You type: def get_user(id):
+Tab suggests: user = db.query(User).filter(User.id == id).first()
+
+Example 2: Test Generation
+You type: def test_calculate_total():
+Tab suggests: items = [Item(10), Item(20)]; assert calculate_total(items) == 30"
+Page 13,practical_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Heading]
+- Topic: Tab Advanced - The Acceptance Rate Secret
+
+[Visual Direction]
+A 'Pro Tip' box. A visual representation of a 'Comment Hint' above a function. A list of keyboard shortcuts for Tab (Accept, Dismiss, Partial).
+
+[Target Text]
+Tab Best Practices
+- The Acceptance Secret: Only accept GOOD code. If you accept bad code 'to try it', Tab learns bad habits.
+- Give Hints: Add a comment like '# Use list comprehension' to guide the suggestion.
+- Shortcuts: Tab (Accept), Esc (Dismiss), Alt + ] (Next Suggestion)."
+Page 14,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Character Reference]
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_2] :: Cursor
+
+[Heading]
+- Section: 1.3 Composer - Describe and Build Features
+
+[Visual Direction]
+Panel 1: Alex [Ref: REF_IMG_1] opens the Composer window (Cmd+I). Panel 2: He types a long request for a login system. Panel 3: The Cursor [Ref: REF_IMG_2] mascot is shown 'working' as multiple file icons pop up on the screen.
+
+[Target Text]
+Alex: I need a full login system with email validation and password hashing.
+Alex: This would normally take me hours to set up from scratch...
+Cursor: I'm creating auth.py, login.html, and test_auth.py for you!"
+Page 15,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Visual Direction]
+A flow chart for 'The Composer Workflow'. 1. Open (Cmd+I). 2. Describe (Be specific). 3. Analyze (Project context). 4. Review (Diff view - Green/Red). 5. Apply (Accept/Reject).
+
+[Target Text]
+Cursor Composer: From Idea to Files
+- Describe: Use plain English to define the feature.
+- Review Diffs: Look at the Green (added) and Red (removed) code carefully.
+- Control: You decide which files to accept or reject."
+Page 16,practical_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Heading]
+- Topic: Composer Example - Auth Logic
+
+[Visual Direction]
+A screenshot of a 'Diff View' in Cursor. New Python code for password hashing is shown in green. A 'Review' checklist is on the right side.
+
+[Target Text]
+Reviewing Composer Output
+- File: auth.py
+- Features added: SHA-256 hashing, Token generation, Email regex.
+Review Checklist:
+1. Is the logic secure?
+2. Does it follow project naming conventions?
+3. Are there tests included?"
+Page 17,practical_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Heading]
+- Topic: Composer Modes - Normal vs Agent
+
+[Visual Direction]
+A toggle switch visual showing 'Normal' vs 'Agent' mode. Descriptions for both are listed below. A small warning icon next to Agent mode.
+
+[Target Text]
+Composer Modes
+- Normal (Default): You review and apply changes manually. Best for learning.
+- Agent: Can create files and run terminal commands autonomously. Best for experts.
+Warning: Agent mode is powerful but can delete files if not monitored. Always have a Git backup!"
+Page 18,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Character Reference]
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+[Heading]
+- Section: 1.4 Hidden Pitfalls and Advanced Techniques
+
+[Visual Direction]
+Panel 1: Alex [Ref: REF_IMG_1] looks at a screen full of broken code, looking panicked. Panel 2: David [Ref: REF_IMG_3] stands behind him, pointing at the prompt Alex used. Panel 3: David shows Alex the 'Git Reset' command.
+
+[Target Text]
+Alex: I asked it to refactor everything and now nothing works!
+David: ""You asked it to change 20 files at once. That's a huge pitfall.""
+David: ""Always work in small chunks, and ALWAYS commit to Git first."""
+Page 19,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Visual Direction]
+A 'Danger Zone' infographic listing 3 common pitfalls: 1. Vague Prompts. 2. Massive Scopes (too many files). 3. Blind Trust (not reviewing code).
+
+[Target Text]
+Common Beginner Pitfalls
+- Vague Prompts: 'Make it better' -> Results in unpredictable code.
+- Scope Creep: Asking to refactor the whole project at once -> Causes hallucinations.
+- Blind Trust: Accepting code without checking for security or performance."
+Page 20,practical_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Heading]
+- Topic: The Git + Cursor Workflow
+
+[Visual Direction]
+A step-by-step terminal command list. A visual representation of a 'Safe Point' (Git Commit) before using Composer.
+
+[Target Text]
+Professional Workflow: Git is your Safety Net
+1. git commit -m 'Before feature X'
+2. Use Composer to build feature.
+3. Review and Accept.
+4. Test immediately.
+5. If broken: git reset --hard HEAD
+6. If working: git commit -m 'Added feature X'"
+Page 21,practical_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Heading]
+- Topic: The 70% Problem - Completing the Code
+
+[Visual Direction]
+A progress bar showing 70% (AI-Generated) and 30% (Human Review). A checklist for the final 30%.
+
+[Target Text]
+Understanding the 70% Problem
+Cursor is great at the first 70% (logic, patterns). You MUST do the final 30%:
+- Error Handling: try/except blocks.
+- Security: Input validation, hashing.
+- Edge Cases: Empty lists, null values.
+- Performance: Database query optimization."
+Page 22,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Character Reference]
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_2] :: Cursor
+
+[Heading]
+- Section: 1.5 Advanced Techniques Not in Documentation
+
+[Visual Direction]
+Panel 1: Alex [Ref: REF_IMG_1] is using 'Context Pills' in the chat. Panel 2: He toggles between 'Pane' and 'Editor' layout modes. Panel 3: The Cursor [Ref: REF_IMG_2] mascot gives a thumbs up from a 'Checkpoint' icon.
+
+[Target Text]
+Alex: David was right, these hidden tricks change everything.
+Alex: Managing my 'Context Pills' makes the AI so much more accurate.
+Alex: And these Checkpoints are like save points in a game!"
+Page 23,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Visual Direction]
+An infographic showing 'Layout Modes' (Pane vs Editor) and 'Context Management' (using # and @). A small diagram shows how to clear the cache to fix freezes.
+
+[Target Text]
+Advanced UI Techniques
+- Pane Mode: Best for quick questions.
+- Editor Mode: Best for complex, side-by-side refactoring.
+- Context Pills: Click them to include/exclude files dynamically.
+- Fix Freezes: Clear the cache (~/.config/Cursor) if the app gets sluggish."
+Page 24,practical_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Heading]
+- Topic: Multi-Step Refactoring Strategy
+
+[Visual Direction]
+A 3-step diagram. Step 1: Plan (Chat). Step 2: Execute (Composer - File 1). Step 3: Verify & Repeat (Test then move to File 2).
+
+[Target Text]
+Strategy: The Multi-Step Refactor
+1. Plan: Ask Chat 'I want to change X, what files are affected?'
+2. Execute: Use Composer on ONE component at a time.
+3. Verify: Test the component before moving to the next file.
+This prevents the AI from getting confused by too much context."
+Page 25,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Character Reference]
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+[Heading]
+- Section: 1.6 Real-World Workflow: Putting It All Together
+
+[Visual Direction]
+Panel 1: Alex [Ref: REF_IMG_1] is building a 'Profile Editing' feature. Panel 2: He uses Chat to plan, Composer to build, and Tab to polish a 'Cancel' button. Panel 3: David [Ref: REF_IMG_3] looks at the finished feature and nods.
+
+[Target Text]
+Alex: I used all three! Chat for the plan, Composer for the bulk code, and Tab for the UI polish.
+David: That's the pro workflow. You just built in 40 minutes what used to take 4 hours.
+Alex: I'm not just copying... I'm actually understanding it!"
+Page 26,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Visual Direction]
+A summary infographic of the 'Real-World Workflow'. A circular diagram showing Chat -> Composer -> Tab -> Chat (Review). Time estimates are shown for each step.
+
+[Target Text]
+The 43-Minute Feature Workflow
+1. Learn/Plan (Chat) - 8 mins
+2. Build (Composer) - 10 mins
+3. Review (Chat) - 5 mins
+4. Polish (Tab) - 5 mins
+5. Test/Debug (Chat) - 10 mins
+6. Final Security Review - 5 mins"
+Page 27,practical_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Heading]
+- Topic: The 10 Mistakes & 10 Secrets Summary
+
+[Visual Direction]
+A two-column list. Left column: '10 Mistakes to Avoid'. Right column: '10 Advanced Techniques'. The style is a clean summary table for quick reference.
+
+[Target Text]
+Chapter 1 Master List
+Mistakes: Vague Prompts, No Git, Blind Trust, Ignoring Performance...
+Secrets: Checkpoints, Context Pills, Layout Modes, Tab Auto-Imports...
+Pro Tip: Always ask Chat 'What are the security risks of this code?' before committing."
+Page 28,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Character Reference]
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_2] :: Cursor
+
+[Heading]
+- Section: Chapter Summary
+
+[Visual Direction]
+Panel 1: Alex [Ref: REF_IMG_1] is closing his laptop, looking satisfied. Panel 2: The Cursor [Ref: REF_IMG_2] mascot waves from the screen. Panel 3: Alex looks at a 'Chapter 2' icon on his screen.
+
+[Target Text]
+Alex (thinking): I'm not just using Cursor, I'm using it RIGHT. I'm ready for real projects.
+Cursor: Great job, Alex! See you in the next chapter.
+Alex: Next up: Installation and deep setup!"
+Page 29,practical_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Heading]
+- Topic: Final Recap & Next Steps
+
+[Visual Direction]
+A 'Chapter 1 Completed' badge visual. A preview of Chapter 2 (Installation & Setup) with a small screenshot of the Cursor settings menu.
+
+[Target Text]
+Chapter 1 Recap:
+- You mastered Chat, Tab, and Composer.
+- You learned to avoid the '70% Problem'.
+- You established a professional Git + AI workflow.
+Next Chapter: Installation and Setup Made Easy. Let's optimize your environment for peak performance!"

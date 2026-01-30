@@ -1,0 +1,579 @@
+Page,Template,Prompt
+Page 1,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+**[Heading]**
+- Section: Opening Scene — The Fear of Breaking Code
+
+**[Visual Direction]**
+Panel 1: Alex is sitting at his desk in a modern apartment, looking stressed. On his monitor, a code editor is open showing `log.py`. He is hesitating to type.
+Panel 2: Close up of Alex's finger hovering over the Enter key. He looks worried. A thought bubble shows a mental image of his code shattering like glass.
+Panel 3: David appears on a video call window on the screen, looking calm and reassuring.
+
+**[Target Text]**
+Alex (thinking): ""I want to improve the --day feature... But what if I break the normal log append function?""
+Alex (thinking): ""It works now when I test it manually... but checking every single time is so tedious. And risky.""
+David: ""You can solve that by writing **tests**, Alex. They automatically verify your features aren't broken whenever you change code."""
+Page 2,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Section: Chapter Overview
+
+**[Visual Direction]**
+A clean, modern infographic layout. Top half shows the ""Problem"" with an icon of a person sweating over broken code. Bottom half shows the ""Solution"" with the Cursor logo and a shield icon representing tests.
+
+**[Target Text]**
+Panel 1 Alex: ""When I specify a date with `--day`, I want it to display 'No log for that day' if the date doesn't exist.""
+Panel 1 Alex (thinking): ""But I'm worried existing features might break... What if changing `--day` makes the normal log append feature stop working?""
+
+Panel 2 Alex runs `python log.py "test"` in the terminal to verify the normal log append works.
+Panel 2 Alex (thinking): ""It works now, but **it might break when changed later**. However, **manually checking every time is tedious**...""
+
+Panel 3 David: ""You can solve that by writing **tests**. Writing tests lets you **automatically verify that existing features aren't broken when you change code**.""
+Panel 3 David: ""Ask Cursor's **Chat** or **Composer** to 'generate tests for `log.py`' and it will automatically generate test code.""
+Panel 3 Alex: ""How do I write tests? Also, **the code works, so do I need to write tests?**"""
+Page 3,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+**[Heading]**
+- Section 11.1: The Problem — ""I Don't Know How to Write Tests""
+
+**[Visual Direction]**
+Panel 1: David is explaining with a finger raised. Alex is listening intently.
+Panel 2: Alex looks skeptical, imagining a clock showing wasted time.
+Panel 3: David smiles and gestures to the Cursor interface. Alex looks relieved.
+
+**[Target Text]**
+Panel 1 David: ""First, understand **why**. Even if code works now, it might break later.""
+Panel 1 David: ""Tests verify everything is safe with one command.""
+Panel 1 Alex: ""But can't I just check manually every time?""
+
+Panel 2 David: ""Manual checking takes time and you might miss things. Tests are instant and precise.""
+Panel 2 Alex: ""But I don't know how to write test code...""
+
+Panel 3 David: ""That's okay! You don't need to learn the syntax from scratch.""
+Panel 3 David: ""**Cursor generates them for you**. You just need to understand the results."""
+Page 4,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Section: Manual vs. Automated Testing
+
+**[Visual Direction]**
+A comparison diagram. Left side: ""Without Tests"" (Chaos, delayed bugs, fear of change). Right side: ""With Tests"" (Stability, instant feedback, confidence).
+
+**[Target Text]**
+**What happens if you DON'T write tests?**
+- ⚠️ **Broken Features**: You don't notice when old features break.
+- 🐢 **Delayed Discovery**: Bugs are found by users in production.
+- 😨 **Fear**: You hesitate to improve code.
+
+**What happens if you DO write tests?**
+- ✅ **Automatic Safety**: Verify everything instantly.
+- 🚀 **Early Detection**: Fix bugs before they leave your machine.
+- 💪 **Confidence**: If tests pass, your changes are safe.
+- 📖 **Documentation**: Tests show others how your code works."
+Page 5,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+**[Heading]**
+- Section 11.2: Why Tests Are Needed
+
+**[Visual Direction]**
+Panel 1: David uses a visual metaphor of a Jenga tower. Pulling one block (changing code) might make the tower fall (breaking features).
+Panel 2: Alex looks at his code, realizing the fragility.
+Panel 3: Close up of David emphasizing the ""Early Detection"" aspect.
+
+**[Target Text]**
+David: ""Imagine improving the `--day` feature. Without tests, you might not notice the normal log function stopped working until next week.""
+Alex: ""It works now... but I see your point. It's about **future safety**.""
+David: ""Exactly. Catching a bug now takes 5 minutes. Catching it in production could take days."""
+Page 6,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+null
+
+**[Heading]**
+- Section: The Cost of Bugs
+
+**[Visual Direction]**
+A matrix or table showing the ""Situation"" vs ""Result"" for Non-Tested vs Tested code.
+
+**[Target Text]**
+**Why Tests Matter**
+
+| Situation | Without Tests ❌ | With Tests ✅ |
+|---|---|---|
+| **Changing Code** | ""Did I break something?"" (Uncertainty) | ""Tests Passed!"" (Confidence) |
+| **Finding Bugs** | Found by angry users later. | Found immediately by the system. |
+| **Teamwork** | Hard to trust others' changes. | Tests verify others' changes work. |"
+Page 7,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+**[Heading]**
+- Section: The Four Benefits
+
+**[Visual Direction]**
+Panel 1: Alex asks a question, counting on his fingers.
+Panel 2: David responds, listing the benefits clearly. Background shows icons for the 4 benefits.
+Panel 3: Alex nods, looking determined.
+
+**[Target Text]**
+Alex: ""So, what are the main benefits again?""
+David: ""1. **Automatic Verification**: Existing features stay safe.""
+David: ""2. **Catch Bugs Early**: Immediate feedback.""
+David: ""3. **Confidence**: Change code without fear.""
+David: ""4. **Documentation**: Helps others understand your code."""
+Page 8,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Section: Benefits Summary
+
+**[Visual Direction]**
+A visual list with large icons for each benefit. 1. Shield (Verification), 2. Stopwatch (Speed/Early), 3. Flexing Arm (Confidence), 4. Open Book (Understanding).
+
+**[Target Text]**
+**The 4 Pillars of Testing**
+
+1. **Automatic Verification**
+Ensure nothing breaks when you add new features.
+
+2. **Catch Bugs Early**
+Find errors instantly in the terminal, not in production.
+
+3. **Code with Confidence**
+Refactor and improve code knowing the safety net is there.
+
+4. **Better Understanding**
+Tests act as live examples of how to use your functions."
+Page 9,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+**[Heading]**
+- Section 11.3: Generating Tests with Cursor
+
+**[Visual Direction]**
+Panel 1: Split screen. Left side shows Cursor Chat, Right side shows Composer. David is explaining the tools.
+Panel 2: Alex looks at the screen, puzzled.
+Panel 3: David smiles. ""Let's try it.""
+
+**[Target Text]**
+David: ""Let's generate tests for `log.py`. We can use **Chat** to get code snippets or **Composer** to create the file directly.""
+Alex: ""Do I need to write the test logic myself?""
+David: ""No. Just ask Cursor: 'Generate tests for log.py using pytest'.""
+David: ""But remember: **Read the generated code**. Understanding *what* it tests is crucial."""
+Page 10,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Section: The Generation Workflow
+
+**[Visual Direction]**
+A step-by-step flowchart connecting Chat and Composer.
+
+**[Target Text]**
+**How to Generate Tests with Cursor**
+
+**Step 1: Ask in Chat (Cmd+L)**
+""Generate tests for `log.py`. Use `pytest` to test `get_log_message`, `write_log`, and `main`.""
+⬇️
+**Step 2: Check Suggestions**
+Review the code. Does it cover normal cases? Error cases?
+⬇️
+**Step 3: Create with Composer (Cmd+I)**
+""Create `test_log.py` and write the test code...""
+⬇️
+**Step 4: Final Review**
+Check with your eyes, then click **Accept**."
+Page 11,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Section: Practice - Using Chat
+
+**[Visual Direction]**
+Panel 1: Alex typing into the Chat window (Cmd+L). Close up of the prompt.
+Panel 2: The Chat window generates code blocks. Alex looks impressed.
+Panel 3: Alex squints at the code. ""I don't fully get this part...""
+
+**[Target Text]**
+Alex (typing): ""Generate tests for `log.py`. Use `pytest` to create test code that tests each function...""
+Cursor (Chat): ""Here is the test code using pytest...""
+Alex: ""It generated it! But... what exactly is this checking?""
+David (Voiceover): ""If you're unsure, just ask Chat: '**What does this test code test?**'"""
+Page 12,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Section: Chat Workflow Details
+
+**[Visual Direction]**
+A screenshot-style graphic of the Chat interface with annotations pointing to the Prompt, the Code Block, and the ""Copy"" button.
+
+**[Target Text]**
+**Consulting about Tests in Chat**
+
+1. **Open Chat**: `Cmd+L` (Mac) / `Ctrl+L` (Win)
+2. **The Prompt**:
+> ""Generate tests for `log.py`. Use `pytest` to test: `get_log_message()`, `write_log()`, `main()`""
+3. **Review**: Read the explanation Cursor provides.
+4. **Refine**: If the test looks complex, ask ""Explain this code""."
+Page 13,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Section: Practice - Using Composer
+
+**[Visual Direction]**
+Panel 1: Alex opens Composer (Cmd+I). The interface floats over his code.
+Panel 2: He types the instruction to create a file.
+Panel 3: Composer shows a ""Diff"" view, creating `test_log.py`. Alex's finger hovers over ""Accept"".
+
+**[Target Text]**
+Alex (typing): ""Create a file called `test_log.py` and write test code for `log.py`...""
+Composer: *Generating file...*
+Alex: ""It's actually creating the file for me!""
+David: ""Don't just click Accept yet! **Check the code** first."""
+Page 14,practical_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+null
+
+**[Heading]**
+- Section: The Generated Test Code
+
+**[Visual Direction]**
+A clear code snippet display of the `test_log.py` file content. Syntax highlighting for Python.
+
+**[Target Text]**
+**File: test_log.py**
+
+```python
+import pytest
+import sys
+from log import get_log_message, write_log, main
+
+def test_get_log_message():
+    """"""Test get_log_message()""""""
+    # Normal case
+    args = ['log.py', 'test message']
+    assert get_log_message(args) == 'test message'
+    
+    # No arguments case
+    args = ['log.py']
+    assert get_log_message(args) is None
+
+def test_write_log():
+    """"""Test write_log()""""""
+    write_log('test message')
+    # Verify file content
+    with open('daily_log.txt', 'r') as f:
+        assert 'test message' in f.readlines()[-1]
+```"
+Page 15,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+**[Heading]**
+- Section: Verification Mindset
+
+**[Visual Direction]**
+Panel 1: Alex is reading the code on screen carefully.
+Panel 2: Close up on Alex's eyes scanning the `assert` statements.
+Panel 3: Alex clicks ""Accept"" with confidence.
+
+**[Target Text]**
+Alex: ""Okay... it's testing `get_log_message` with arguments and without them. And checking if `write_log` actually writes to the file.""
+David: ""Good. You need to verify: **1. Functions tested**, **2. Cases covered**, **3. What is verified**.""
+Alex: ""Looks correct. I'll Accept it."""
+Page 16,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Section: Composer Checkpoints
+
+**[Visual Direction]**
+A checklist graphic overlaid on a Composer window mock-up.
+
+**[Target Text]**
+**Before You Click ""Accept""**
+
+**👀 Check with your eyes!**
+
+✅ **Scope**: Are all target functions included?
+✅ **Cases**: Does it handle success AND failure (e.g., empty input)?
+✅ **Logic**: Do the assertions (`assert`) make sense?
+
+*Cursor is powerful, but you are the pilot. Verify the course before engaging.*"
+Page 17,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+**[Heading]**
+- Section 11.4: Running Tests
+
+**[Visual Direction]**
+Panel 1: Alex types `pytest test_log.py` in the terminal.
+Panel 2: The terminal output flows rapidly. Green text appears.
+Panel 3: Alex pumps his fist. ""All Passed!""
+
+**[Target Text]**
+David: ""Now, run the tests. Type `pytest test_log.py`.""
+Terminal: `test_log.py::test_main PASSED [100%]`
+Alex: ""Green! They all passed. So my code works correctly.""
+David: ""Exactly. Now you have a baseline. If you change anything, you can run this again to ensure nothing broke."""
+Page 18,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+null
+
+**[Heading]**
+- Section: Understanding Test Results
+
+**[Visual Direction]**
+A visual guide to Terminal Output. Top: Green ""PASSED"" bar. Bottom: Red ""FAILED"" bar with error details highlighted.
+
+**[Target Text]**
+**Reading `pytest` Results**
+
+🟢 **PASSED**
+- Meaning: The code behaves exactly as the test expects.
+- Action: You can proceed or refactor with confidence.
+
+🔴 **FAILED**
+- Meaning: The output didn't match the expectation.
+- Action: Check the error message. It tells you **where** and **why** it failed."
+Page 19,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+**[Heading]**
+- Section: Handling Failures
+
+**[Visual Direction]**
+Panel 1: Alex modifies the code (adding the `--day` feature). He looks confident.
+Panel 2: He runs tests. The screen glows red. ""FAILED"". Alex looks shocked.
+Panel 3: David points to the chat. ""Don't panic. Ask Cursor.""
+
+**[Target Text]**
+Alex: ""I improved the `--day` feature... now let's test.""
+Terminal: `test_write_log FAILED`
+Alex: ""What?! I broke it? Where?""
+David: ""Read the error. Or better yet, **paste the error into Chat** and ask: 'How should I fix this?'"""
+Page 20,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Section: The Fix Workflow
+
+**[Visual Direction]**
+A circular workflow diagram: Run Test -> Fail -> Copy Error -> Ask Chat -> Apply Fix -> Run Test -> Pass.
+
+**[Target Text]**
+**When Tests Fail...**
+
+1. **Read Error**: Look at the terminal output.
+2. **Ask Cursor**: Copy the error message to Chat (`Cmd+L`).
+   > ""What is the cause of this failure? How should I fix it?""
+3. **Understand**: Read Cursor's explanation of the bug.
+4. **Fix**: Apply the suggested fix.
+5. **Re-run**: Verify with `pytest` again."
+Page 21,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+**[Heading]**
+- Section: Chapter Summary
+
+**[Visual Direction]**
+Panel 1: Alex leaning back in his chair, looking satisfied. The screen shows all green tests.
+Panel 2: David smiling. A summary list floats in the background.
+Panel 3: Alex looks excited for the next step.
+
+**[Target Text]**
+Alex: ""I can finally change my code without being scared of breaking it. This is huge.""
+David: ""You've learned to **generate**, **run**, and **fix** tests. You don't need to be a testing expert; you just need to understand the results.""
+Alex: ""What's next?""
+David: ""Next, we'll teach AI your project rules using `.cursorrules`. It will make Cursor even smarter."""
+Page 22,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Section: Chapter Review
+
+**[Visual Direction]**
+A final summary checklist page with checkboxes ticked off.
+
+**[Target Text]**
+**Chapter 11 Complete! ✅**
+
+**What We Learned:**
+- ✅ **Why Tests Need**: To prevent regression and catch bugs early.
+- ✅ **How to Generate**: Use **Chat** for snippets or **Composer** for files.
+- ✅ **Verification**: Always check generated code with your eyes.
+- ✅ **Workflow**: Run `pytest` → Check Results → Fix with Chat.
+
+**Next Chapter:**
+👉 **.cursorrules**: Teaching AI Project Rules"
+Page 23,practical_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+null
+
+**[Heading]**
+- Section: Cursor Test Generation Cheat Sheet
+
+**[Visual Direction]**
+A ""Cut-out"" style cheat sheet card. High contrast, easy to read font. Sections for Prompts and Commands.
+
+**[Target Text]**
+**Cursor Test Generation Cheat Sheet**
+
+**📝 Useful Prompts**
+- **Generate**: ""Generate tests for `[filename]`. Use `pytest` to test functions: `[func1]`, `[func2]`.""
+- **Explain**: ""What does this test code test?""
+- **Fix**: ""Here is the error message: `[paste error]`. How do I fix this?""
+
+**⌨️ Key Commands**
+- **Open Chat**: `Cmd + L` (Mac) / `Ctrl + L` (Win)
+- **Open Composer**: `Cmd + I` (Mac) / `Ctrl + I` (Win)
+- **Run Tests**: `pytest [filename]`"

@@ -1,0 +1,582 @@
+Page,Template,Prompt
+Cover,Cover,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Chapter 12: .cursorrules — Teaching AI Project Rules
+
+**[Visual Direction]**
+A high-quality manga-style book cover. In the center, [Ref: REF_IMG_1] (Alex) is holding a glowing digital document labeled "".cursorrules"" that radiates blue lines connecting to the [Ref: REF_IMG_2] (Cursor) mascot. Behind him, [Ref: REF_IMG_3] (David) nods approvingly. The background is a modern San Francisco tech office with digital code overlays. The title ""Chapter 12: .cursorrules"" is prominent at the top.
+
+**[Target Text]**
+Chapter 12: .cursorrules
+Teaching AI Project Rules
+Stop Explaining the Same Things Twice!"""
+Page 1,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+
+**[Heading]**
+- Section: Opening Scene
+
+**[Visual Direction]**
+Panel 1: [Ref: REF_IMG_1] (Alex) is sitting at his desk, typing furiously into the Cursor Chat panel. He looks annoyed and tired.
+Panel 2: Close up on Alex's screen (over shoulder). He is typing ""Use snake_case, comments in Japanese..."" into the Composer window this time. 
+Panel 3: Alex slumps back in his chair, looking exhausted. He thinks about how repetitive this is.
+
+**[Target Text]**
+Panel 1 Alex instructs in Cursor's **Chat**: ""Unify code style in `log.py`. Use `snake_case` for function names, write comments in Japanese.""
+Panel 1 Alex (thinking): ""Explaining the same things every time is tedious... Code style, how to write comments—**I feel like I'm saying the same things every time**.""
+
+Panel 2 Alex instructs in Cursor's **Composer**: ""Add a new feature to `log.py`. Use `snake_case` for function names, write comments in Japanese.""
+Panel 2 Alex (thinking): ""I explained the same thing again... **Explaining the same things every time wastes time**. Can't I be more efficient?""
+
+Panel 3 David: ""You can solve that by creating a **`.cursorrules`** file. Writing project rules (code style, how to write comments, etc.) in a `.cursorrules` file makes Cursor **understand automatically**.""
+Panel 3 David: ""You won't need to explain the same things every time.""
+Panel 3 Alex: ""How do I create `.cursorrules`? Also, **can't I just explain every time? Do I need to create .cursorrules?**"""""
+Page 2,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+**[Heading]**
+- Section: The Solution Appears
+
+**[Visual Direction]**
+Panel 1: [Ref: REF_IMG_3] (David) appears on a video call monitor on Alex's desk. He looks calm and professional.
+Panel 2: David holds up a finger, explaining a concept. [Ref: REF_IMG_1] (Alex) looks skeptical but interested.
+Panel 3: A visual metaphor bubble appears above David: A single file icon labeled "".cursorrules"" feeding information into the AI brain.
+
+**[Target Text]**
+Panel 1 David: ""You can solve that by creating a **`.cursorrules`** file, Alex.""
+Panel 1 David: ""If you write your project rules there, Cursor understands them automatically.""
+Panel 1 Alex: ""A .cursorrules file? Can't I just explain it every time? Do I really need to create a file?""
+
+Panel 2 David: ""Think about it. Writing it once means you never have to explain it again."""
+Page 3,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Section: Overview - The Repetition Trap
+
+**[Visual Direction]**
+A split-screen comparison infographic.
+Top Half (The Problem): Shows a user (stick figure) typing the same long prompt three times into three different chat boxes. A clock shows time wasting away. Labeled ""Without .cursorrules"".
+Bottom Half (The Solution): Shows the user typing a short prompt, and a file labeled "".cursorrules"" automatically injecting the context into the AI. Labeled ""With .cursorrules"".
+[Ref: REF_IMG_2] (Cursor) stands next to the bottom half, giving a thumbs up.
+
+**[Target Text]**
+THE PROBLEM: Manual Repetition
+- Wastes time explaining style guides.
+- Risk of forgetting a rule.
+- Inconsistent code across files.
+
+THE SOLUTION: .cursorrules
+- Create the file once.
+- Cursor reads it automatically.
+- Consistent style, Zero repetition."
+Page 4,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+**[Heading]**
+- Section: 12.1 The Problem
+
+**[Visual Direction]**
+Panel 1: [Ref: REF_IMG_3] (David) leans in closer to the camera. He looks serious about the risks.
+Panel 2: [Ref: REF_IMG_1] (Alex) imagines a scenario where he forgets to tell the AI to use Japanese comments, and the code comes back in English. He looks panicked.
+Panel 3: David smiles, gesturing to the simplicity of the solution.
+
+**[Target Text]**
+David: ""It's not just about time. It's about 'Risk of Oversight'. If you forget to mention a rule just once, your code consistency breaks.""
+Alex (imagining): ""Oh no! Half my comments are English, half are Japanese... It's a mess!""
+David: ""Exactly. But with .cursorrules, the AI never forgets. It's like a permanent sticky note for your project."""
+Page 5,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+None
+
+**[Heading]**
+- Section: Why .cursorrules is Needed
+
+**[Visual Direction]**
+A clean 2x2 matrix chart titled ""Impact of .cursorrules"".
+Columns: ""Without Rules"" (Red background headers) vs ""With Rules"" (Blue background headers).
+Rows: ""Efficiency"", ""Consistency"", ""Teamwork"", ""Onboarding"".
+Icons represent each row (Clock, Puzzle piece, Group of people, Door).
+
+**[Target Text]**
+IMPACT ANALYSIS
+
+Efficiency:
+(X) Type same prompt every time.
+(O) Automatic context injection.
+
+Consistency:
+(X) Style drifts over time.
+(O) 100% uniform code style.
+
+Teamwork:
+(X) Everyone uses different rules.
+(O) Shared rules via Git.
+
+Onboarding:
+(X) Explain rules to new members.
+(O) Read file -> Start coding."
+Page 6,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+**[Heading]**
+- Section: 12.2 Why .cursorrules Is Needed
+
+**[Visual Direction]**
+Panel 1: [Ref: REF_IMG_1] (Alex) asks a question, looking thoughtful.
+Panel 2: [Ref: REF_IMG_3] (David) explains the concept of ""Team Sharing"". Background shows a silhouette of multiple developers connected by lines.
+Panel 3: Alex has an ""Aha!"" moment, realizing the file isn't just for him.
+
+**[Target Text]**
+Alex: ""So it helps me... but does it help others?""
+David: ""Huge benefit. Since .cursorrules is just a file, you can commit it to Git. Your whole team gets the same AI behavior instantly.""
+Alex: ""I get it! If a new member joins, they don't need to memorize our style guide. The AI already knows it!"""
+Page 7,practical_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+None
+
+**[Heading]**
+- Section: Summary of Benefits
+
+**[Visual Direction]**
+A checklist style page styled like a clipboard. The background is a blurred tech office. The text is large and easy to read. 
+
+**[Target Text]**
+WHY CREATE .cursorrules?
+
+1. Save Time
+No need to type ""Use snake_case"" in every prompt.
+
+2. Prevent Mistakes
+Eliminates the risk of forgetting to state a requirement.
+
+3. Team Consistency
+Share the file via Git so everyone generates identical code structures.
+
+4. Documentation
+The file itself serves as a clear list of project rules for humans too."
+Page 8,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+**[Heading]**
+- Section: 12.3 Creating a .cursorrules File
+
+**[Visual Direction]**
+Panel 1: [Ref: REF_IMG_1] (Alex) is ready to type. ""Okay, let's make one for my `daily_log` project.""
+Panel 2: [Ref: REF_IMG_3] (David) guides him. ""You don't even need to write it manually. Just ask Cursor to do it.""
+Panel 3: Alex looks surprised. ""I can use AI to configure the AI?""
+
+**[Target Text]**
+Alex: ""What should I write? I'm not sure about the format.""
+David: ""Don't worry about the format. Just ask Chat or Composer: 'Create a .cursorrules file for this project'.""
+Alex: ""Wait, I can just ask it to write its own rules?""
+David: ""Exactly. Tell it your preferences in plain English, and it will generate the file."""
+Page 9,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Section: The Creation Flow
+
+**[Visual Direction]**
+A flowchart diagram showing the two methods to create the file.
+Method A (Chat): Icon of Chat Bubble -> ""Copy Code"" -> ""New File"".
+Method B (Composer): Icon of Composer (Sparkles) -> ""Generate"" -> ""Accept"".
+[Ref: REF_IMG_2] (Cursor) is pointing to Method B as the recommended/easier path.
+
+**[Target Text]**
+HOW TO CREATE .cursorrules
+
+Method 1: Chat (Cmd+L)
+Ask Chat to draft the content, then manually create the file and paste it.
+
+Method 2: Composer (Cmd+I) [Recommended]
+Ask Composer to ""Create the file"". It will generate the file and content in one step.
+
+Prompt Example:
+""Create a .cursorrules file. Use snake_case for functions and write comments in Japanese."""
+Page 10,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Section: Practice - Using Chat
+
+**[Visual Direction]**
+Panel 1: [Ref: REF_IMG_1] (Alex) types into the Chat window (Cmd+L).
+Panel 2: [Ref: REF_IMG_2] (Cursor) appears as a UI element, presenting a block of markdown text.
+Panel 3: Alex reads the text carefully. ""This looks right... snake_case, Japanese comments...""
+
+**[Target Text]**
+Alex (Typing): ""Create a .cursorrules file rules for daily_log project. Use snake_case, comments in Japanese.""
+Cursor: ""Here is a draft for your .cursorrules file:""
+Alex: ""It generated a markdown list of rules. I just need to verify it matches what I want."""
+Page 11,practical_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+None
+
+**[Heading]**
+- Section: Chat Interaction Example
+
+**[Visual Direction]**
+A full-page screenshot simulation of the Cursor Chat interface. 
+Top: The User Prompt.
+Bottom: The AI Response showing the code block.
+Highlights/Arrows point to the ""snake_case"" rule and ""Japanese comments"" rule in the output.
+
+**[Target Text]**
+USER PROMPT:
+Create a .cursorrules file and write rules for the daily_log project. Use snake_case for function names, write comments in Japanese.
+
+AI RESPONSE:
+Sure! Here is the content for your .cursorrules file:
+
+# daily_log project rules
+
+## Code Style
+- Use `snake_case` for function names
+- Use `snake_case` for variable names
+- Write comments in Japanese
+
+## File Structure
+- Test files start with `test_`
+- Main code is written in `log.py`"
+Page 12,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+**[Heading]**
+- Section: Practice - Using Composer
+
+**[Visual Direction]**
+Panel 1: [Ref: REF_IMG_1] (Alex) opens Composer (Cmd+I). ""Now let's try Composer. It should be faster.""
+Panel 2: The Composer window shows the file being created in real-time. Alex watches with wide eyes.
+Panel 3: [Ref: REF_IMG_3] (David) reminds him: ""Always check the content before you click Accept!""
+
+**[Target Text]**
+Alex: ""Composer, create the .cursorrules file with these rules...""
+System Sound: *Generating...*
+David: ""Wait! Don't just click Accept. Read it first. Does it actually say 'Japanese comments'?""
+Alex: ""Ah, good point. Let me check... Yes, it's there."""
+Page 13,practical_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+None
+
+**[Heading]**
+- Section: Composer Steps
+
+**[Visual Direction]**
+A step-by-step visual guide (1, 2, 3) using screenshots of the Composer UI.
+1. Open Composer (Cmd+I).
+2. Type Instruction.
+3. Review & Accept (Button focused).
+
+**[Target Text]**
+STEP-BY-STEP: COMPOSER
+
+1. Open Composer
+Press Cmd+I (Mac) or Ctrl+I (Windows).
+
+2. Enter Instruction
+""Create a .cursorrules file. Rules: snake_case, Japanese comments.""
+
+3. Review & Accept
+Composer will show a 'diff' view. Verify the rules are correct, then click [Accept] to save the file to your disk."
+Page 14,practical_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+None
+
+**[Heading]**
+- Section: The Resulting File
+
+**[Visual Direction]**
+A clean code editor view showing the final content of the `.cursorrules` file. The syntax highlighting emphasizes the headers and bullet points. A ""File Created"" notification is visible.
+
+**[Target Text]**
+File: .cursorrules
+
+# daily_log project rules
+
+## Code Style
+- Use `snake_case` for function names
+- Use `snake_case` for variable names
+- Write comments in Japanese
+
+## How to Write Functions
+- Write docstrings for functions (in Japanese)
+- Functions should do one thing
+
+## File Structure
+- Test files start with `test_`
+- Main code is written in `log.py`"
+Page 15,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+**[Heading]**
+- Section: 12.4 Sharing with a Team
+
+**[Visual Direction]**
+Panel 1: [Ref: REF_IMG_3] (David) gestures to a Git logo. ""Now, share it.""
+Panel 2: [Ref: REF_IMG_1] (Alex) looks confused. ""Do I need a special plugin to share it?""
+Panel 3: David laughs. ""No, it's just a file! Just git add, commit, and push.""
+
+**[Target Text]**
+David: ""Now that the file exists, commit it to Git.""
+Alex: ""Is there a special 'Share Rules' button in Cursor?""
+David: ""Haha, no. It's just a text file. Treat it like any other code file. `git add`, `git commit`, `git push`."""
+Page 16,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+None
+
+**[Heading]**
+- Section: The Sharing Workflow
+
+**[Visual Direction]**
+A diagram showing the flow of the .cursorrules file through Git.
+Left: Alex's Laptop (File Created) -> Arrow to Cloud (GitHub/GitLab) -> Arrow to Right: Teammate's Laptop (File Pulled).
+The ""Rules"" icon travels along the arrows.
+
+**[Target Text]**
+SHARING RULES VIA GIT
+
+1. You create .cursorrules
+2. Push to Remote Repo
+3. Teammate Pulls Repo
+
+RESULT:
+Teammate's Cursor instance reads the file immediately. They don't need to configure anything manually."
+Page 17,practical_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+None
+
+**[Heading]**
+- Section: Git Commands
+
+**[Visual Direction]**
+A terminal window graphic on a dark background. The text shows the standard git commands to commit the file. 
+
+**[Target Text]**
+TERMINAL COMMANDS
+
+# 1. Stage the file
+$ git add .cursorrules
+
+# 2. Commit the file
+$ git commit -m ""Add project rules for Cursor AI""
+
+# 3. Push to repository
+$ git push origin main
+
+# Team members only need to:
+$ git pull"
+Page 18,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_3] :: David
+
+**[Heading]**
+- Section: Team Benefits Recap
+
+**[Visual Direction]**
+[Ref: REF_IMG_3] (David) is presenting a slide. The slide lists the three main benefits of sharing the file.
+Icons: A scale (Consistency), A clock (Speed), A magnifying glass (Clarity).
+
+**[Target Text]**
+WHY SHARE?
+
+Consistency:
+All code committed by the team follows the exact same style.
+
+Onboarding Speed:
+New members don't need to read a 20-page PDF wiki. The AI guides them.
+
+Clarity:
+The rules are explicit and visible in the root directory."
+Page 19,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+**[Heading]**
+- Section: Chapter Summary
+
+**[Visual Direction]**
+Panel 1: [Ref: REF_IMG_1] (Alex) looks satisfied. He is closing his laptop.
+Panel 2: [Ref: REF_IMG_3] (David) gives a final piece of advice. ""Remember, rules are great, but AI isn't perfect.""
+Panel 3: Alex looks curious. ""What do you mean?""
+
+**[Target Text]**
+Alex: ""I feel much more efficient now. No more repeating myself!""
+David: ""Great work. You've mastered teaching the AI the rules.""
+David: ""But be careful. Even with rules, AI code is usually only 70% complete.""
+Alex: ""70%? What about the other 30%?"""
+Page 20,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+None
+
+**[Heading]**
+- Section: Review Points
+
+**[Visual Direction]**
+A summary checklist page. Green checkmarks next to learned items.
+
+**[Target Text]**
+CHAPTER 12 REVIEW
+
+✅ Understand the Problem
+Repetitive prompting wastes time and causes errors.
+
+✅ Why .cursorrules?
+Automates context, ensures consistency, enables team sharing.
+
+✅ How to Create
+Use Chat or Composer to generate the file automatically.
+
+✅ How to Share
+Commit to Git like any other source file."
+Page 21,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+**[Heading]**
+- Section: Next Chapter Teaser
+
+**[Visual Direction]**
+A dramatic splash page. [Ref: REF_IMG_1] (Alex) looks determined, staring at a screen that says ""70% Complete"". [Ref: REF_IMG_3] (David) stands behind him, pointing forward.
+Text overlay: ""Next Chapter: The 70% Problem"".
+
+**[Target Text]**
+David: ""Next, we tackle the reality of AI development.""
+David: ""It gets you most of the way there... but the last mile is up to you.""
+
+NEXT: Chapter 13
+The 70% Problem: Completing AI-Generated Code"

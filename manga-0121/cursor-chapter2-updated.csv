@@ -1,0 +1,618 @@
+Page,Template,Prompt
+Cover,Cover,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Section: Chapter 2: Installation and Setup Made Easy
+
+**[Visual Direction]**
+A high-quality manga cover illustration. Center: Alex [Ref: REF_IMG_1] sitting at a desk with a laptop, looking hopeful and ready to learn. Background: A stylish, semi-transparent overlay of David [Ref: REF_IMG_3] smiling encouragingly. The Cursor AI mascot [Ref: REF_IMG_2] is floating near the laptop screen. The setting is a modern, well-lit home workspace. Title text is large and clear.
+
+**[Target Text]**
+Chapter 2: Installation and Setup Made Easy
+
+Learn to install, configure, and troubleshoot Cursor IDE like a pro."
+Page 1,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+**[Heading]**
+- Section: Opening Scene: Anxiety About Installation
+
+**[Visual Direction]**
+Panel 1: Alex [Ref: REF_IMG_1] sitting at his desk, opening his laptop. He looks at his phone with a puzzled expression. A text message bubble is visible.
+Panel 2: A video call window pops up on the laptop screen. David [Ref: REF_IMG_3] appears, waving hello. Alex looks relieved.
+Panel 3: Close up on David's face in the screen, explaining with a finger raised.
+
+**[Target Text]**
+Panel 1 Text (Message): ""Let's install Cursor! The official website is cursor.sh.""
+Panel 1 Alex (Thinking): ""Is it a browser tool? Do I need to install it?""
+
+Panel 2 David: ""Actually, Cursor isn't a cloud app you use in a browser—it's a local application, just like VS Code.""
+Panel 2 Alex: ""Oh! So I install it directly on my PC.""
+
+Panel 3 David: ""Click the Download button on the official website (cursor.sh).""
+Panel 3 David: ""It will automatically download the version that matches your OS. It automatically detects whether you're on Mac or Windows, so you don't need to choose.""
+Panel 3 Alex: ""That sounds simple! Let me download it right away."""
+Page 2,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Section: Chapter Overview & What is Cursor?
+
+**[Visual Direction]**
+A clean, modern infographic page. Top half: A diagram showing ""Cursor IDE"" as a desktop icon connecting to ""Local PC"" (Mac/Windows/Linux logos). Bottom half: A checklist of learning objectives for this chapter. The Cursor mascot [Ref: REF_IMG_2] is pointing to the download URL.
+
+**[Target Text]**
+About Cursor IDE:
+- Type: Local Application (Install on PC)
+- Website: cursor.sh
+- OS: Mac, Windows, Linux (Auto-detected)
+
+Chapter Objectives:
+1. Download & Install
+2. Initial Setup (Accounts & API Keys)
+3. Troubleshooting Common Issues
+4. Customizing Settings
+
+Goal: By the end of this chapter, you will send your first ""Hello"" to the AI!"
+Page 3,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+**[Heading]**
+- Section: 2.1 Download and Installation
+
+**[Visual Direction]**
+Panel 1: Alex [Ref: REF_IMG_1] looking at his monitor. The screen shows the cursor.sh website with a big ""Download"" button.
+Panel 2: Split screen. Left side shows a Mac .dmg file icon. Right side shows a Windows .exe file icon. David [Ref: REF_IMG_3] is explaining in a bubble.
+Panel 3: Alex double-clicks an installer icon on his desktop.
+
+**[Target Text]**
+Panel 1 David (Voiceover): ""Click the Download button. It automatically grabs the right installer for you.""
+
+Panel 2 David: ""For Mac, you'll get a .dmg file. For Windows, an .exe file.""
+
+Panel 3 Alex: ""Download complete! Time to launch the installer.""
+Panel 3 David: ""Just install it like any other app. Drag to Applications (Mac) or follow the wizard (Windows)."""
+Page 4,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Section: Installation Flowchart
+
+**[Visual Direction]**
+A step-by-step vertical flow diagram illustrating the installation process. Icons representing each step: 1. Globe (cursor.sh), 2. Download Icon, 3. File Icon (.dmg/.exe), 4. Install Icon (Box/Wizard), 5. Checkmark (Done). The Cursor mascot [Ref: REF_IMG_2] is dancing at the bottom ""Success"" step.
+
+**[Target Text]**
+Installation Flow:
+
+Step 1: Access cursor.sh
+Step 2: Click Download
+Step 3: Open the Installer File
+Step 4: Install (Drag to Apps or Run Wizard)
+Step 5: Launch Cursor!
+
+Note: Cursor is a standalone local app. It replaces your current editor."
+Page 5,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+**[Heading]**
+- Section: Handling First Launch Warnings
+
+**[Visual Direction]**
+Panel 1: Alex [Ref: REF_IMG_1] looks startled as a warning pop-up appears on his screen (e.g., ""Unverified Developer"" or ""SmartScreen"").
+Panel 2: David [Ref: REF_IMG_3] smiles calmly, gesturing ""it's okay"".
+Panel 3: Alex clicks the appropriate button to proceed, and the Cursor Welcome Screen appears.
+
+**[Target Text]**
+Panel 1 Alex: ""Whoa! A warning popped up! 'Developer not verified'... is this safe?""
+
+Panel 2 David: ""Don't worry. That's standard for new apps. On Mac, go to System Settings > Security and click 'Open Anyway'. On Windows, click 'More info' then 'Run anyway'.""
+
+Panel 3 Alex: ""Okay, I allowed it... It's opening!""
+Panel 3 David: ""Perfect. Now we need to set up your account."""
+Page 6,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+**[Heading]**
+- Section: 2.2 First Launch and Initial Setup
+
+**[Visual Direction]**
+Panel 1: View of the Cursor ""Welcome"" screen. A big ""Sign Up / Log In"" button is visible.
+Panel 2: Alex [Ref: REF_IMG_1] is typing on his keyboard. A browser window shows the login options.
+Panel 3: Alex looks back at David [Ref: REF_IMG_3] on the call.
+
+**[Target Text]**
+Panel 1 David: ""First, you need to create an account or log in with an existing account. Cursor is free to use, so don't worry.""
+Panel 1 Alex: ""Should I create an account?""
+
+Panel 2 Alex clicks the ""Sign Up"" button.
+Panel 2 David: ""Enter your email address and password to create an account.""
+Panel 2 David: ""You can also log in with your GitHub or Google account.""
+
+Panel 3 Alex: ""Account creation complete! What's next?""
+Panel 3 David: ""Next is API key setup. Without this, you can't use the Chat feature."""
+Page 7,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+None
+
+**[Heading]**
+- Section: Account Creation Options
+
+**[Visual Direction]**
+A comparison chart showing the three ways to sign up. Three columns: Email, GitHub, Google. Icons for each. Highlight that GitHub is recommended for developers but Google is fine for beginners. Bottom note emphasizing that the account is required for AI features.
+
+**[Target Text]**
+Sign Up Options:
+
+1. Email & Password
+   - Good for separating work/personal.
+
+2. GitHub Account (Recommended)
+   - Best for developers.
+   - Syncs with your repositories easily.
+
+3. Google Account
+   - Quick and easy access.
+
+Why sign up? 
+- Sync settings across devices.
+- Access free AI usage tiers.
+- Manage subscriptions."
+Page 8,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+**[Heading]**
+- Section: Setting Up API Keys
+
+**[Visual Direction]**
+Panel 1: Close up of the Cursor Settings menu. Alex's hand pressing `Cmd + ,` (Mac) / `Ctrl + ,` (Win).
+Panel 2: The ""API Keys"" tab is selected on screen. Alex looks confused.
+Panel 3: David [Ref: REF_IMG_3] holds up two cards, one saying ""Anthropic (Claude)"" and one ""OpenAI (GPT)"".
+
+**[Target Text]**
+Panel 1 David: ""To open Settings, press `⌘+,` (Mac) or `Ctrl+,` (Windows), or select Settings from the menu bar.""
+
+Panel 2 Alex opens Settings → API Keys.
+Panel 2 David: ""The API Keys screen is open. Here, you set up your Claude API key or OpenAI API key.""
+Panel 2 David: ""Cursor supports both Claude and GPT.""
+Panel 2 Alex: ""What's an API key? Where do I get it?""
+
+Panel 3 David: ""An API key is an authentication key for using AI services.""
+Panel 3 David: ""You can get a Claude API key from Anthropic's website and an OpenAI API key from OpenAI's website.""
+Panel 3 David: ""There are free plans available, so don't worry."""
+Page 9,practical_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+None
+
+**[Heading]**
+- Section: How to Get Your API Key
+
+**[Visual Direction]**
+A split layout guide. Top half: ""Option A: Anthropic (Claude)"". Bottom half: ""Option B: OpenAI (GPT)"". Numbered steps for each with small UI screenshots of the respective websites (console.anthropic.com and platform.openai.com).
+
+**[Target Text]**
+**Option A: Anthropic (Claude) - Recommended**
+1. Go to console.anthropic.com
+2. Sign up/Log in.
+3. Click ""Get API Keys"".
+4. Click ""Create Key"", name it ""Cursor"", and COPY it immediately.
+
+**Option B: OpenAI (GPT)**
+1. Go to platform.openai.com
+2. Sign up/Log in.
+3. Go to ""API Keys"" in the menu.
+4. ""Create new secret key"", copy it.
+
+**Important:** You can only see the key ONCE. Copy it and paste it into Cursor immediately!"
+Page 10,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+**[Heading]**
+- Section: Finalizing Initial Settings
+
+**[Visual Direction]**
+Panel 1: Alex [Ref: REF_IMG_1] pastes the long key string into the Cursor input box and clicks ""Verify/Save"".
+Panel 2: David [Ref: REF_IMG_3] suggests changing the theme. Alex clicks ""Dark Mode"".
+Panel 3: Alex smiles, looking at the customized interface.
+
+**[Target Text]**
+Panel 1 Alex: ""Pasted and saved! It says 'Verified'.""
+
+Panel 2 David: ""Great! Now, let's make it comfortable. In Settings, change the Theme to Dark Mode and set Font Size to 14 or 16.""
+
+Panel 3 Alex: ""Oh, this is much easier on the eyes. I'm ready to code!""
+Panel 3 David: ""Hold on. Before we start, let's talk about what to do if things go wrong."""
+Page 11,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Section: Recommended Settings Checklist
+
+**[Visual Direction]**
+A clipboard-style checklist graphic. Items are checked off with a green marker. The Cursor mascot [Ref: REF_IMG_2] is holding a pencil. The background is a blueprint pattern.
+
+**[Target Text]**
+Setup Checklist:
+
+[x] API Key Entered & Verified
+[x] Theme Set (Dark Mode recommended)
+[x] Font Size Adjusted (14px - 16px)
+[x] Auto-Save Enabled (File > Auto Save)
+[x] Tab Size Set (2 or 4 spaces)
+
+Ready for launch!"
+Page 12,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+**[Heading]**
+- Section: 2.3 Troubleshooting Common Issues
+
+**[Visual Direction]**
+Panel 1: Alex [Ref: REF_IMG_1] looks panicked. A red error box is on his screen: ""API Key is not valid"".
+Panel 2: Close up of Alex sweating slightly. ""I just set it up!""
+Panel 3: David [Ref: REF_IMG_3] appears calm, holding up a finger to list items.
+
+**[Target Text]**
+Panel 1 Alex: ""Wait! I tried to send a message, but I got an error: 'API Key is not valid'!""
+
+Panel 2 Alex: ""Did I break it already?""
+
+Panel 3 David: ""Don't panic. It's common. Let's check three things:
+1. Did you copy the WHOLE key?
+2. Is it for the right provider?
+3. Do you have credits/balance?"""
+Page 13,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+None
+
+**[Heading]**
+- Section: Common Errors & Solutions
+
+**[Visual Direction]**
+A trouble-shooting matrix. Left column: Error Message (in red boxes). Right column: Solution (in green boxes). Arrows connecting them. Simple icons for ""Key"", ""Wifi"", ""Credit Card"".
+
+**[Target Text]**
+Troubleshooting Guide:
+
+**Error: ""API Key not valid""**
+- Check for extra spaces.
+- Check if you mixed up OpenAI and Anthropic keys.
+
+**Error: ""Insufficient Quota"" / ""429 Error""**
+- Your free trial might be over.
+- Check your billing at the provider's site.
+
+**Error: ""Connection Failed""**
+- Check your internet.
+- Check firewall/VPN settings."
+Page 14,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Section: Solving the API Key Issue
+
+**[Visual Direction]**
+Panel 1: Alex [Ref: REF_IMG_1] looking closely at the key field. He notices the cursor is at the end of the line.
+Panel 2: He deletes the key and re-pastes it carefully. A ""Verified"" checkmark appears.
+Panel 3: Alex types ""Hello"" into the Chat. The Cursor mascot [Ref: REF_IMG_2] appears in a bubble saying ""Hello! How can I help?""
+
+**[Target Text]**
+Panel 1 Alex: ""Ah! I missed the last character when I copied it. It was cut off.""
+
+Panel 2 Alex: ""Let me generate a new one and paste it... There!""
+
+Panel 3 Alex: ""Testing... 'Hello'.""
+Cursor (Chat): ""Hello! How can I help you today?""
+Alex: ""It works! Phew."""
+Page 15,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+**[Heading]**
+- Section: Dealing with Slowness
+
+**[Visual Direction]**
+Panel 1: Time skip. Alex looks annoyed. The laptop fan is whirring (visualize with sound effects/motion lines).
+Panel 2: David [Ref: REF_IMG_3] explains with a list of icons floating around him (File, Extension, RAM).
+Panel 3: Alex closes some background apps.
+
+**[Target Text]**
+Panel 1 Alex: ""It's working, but... it feels a bit slow. My fan is spinning like crazy.""
+
+Panel 2 David: ""Cursor is powerful, but it uses resources. 
+1. Close large files you aren't using.
+2. Disable unused extensions.
+3. Close other heavy apps (like browser tabs).""
+
+Panel 3 Alex: ""Okay, closing my 50 browser tabs... Oh, it's much smoother now!"""
+Page 16,practical_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+None
+
+**[Heading]**
+- Section: Performance & Startup Issues
+
+**[Visual Direction]**
+A technical checklist page. Top section: ""Performance Boosters"". Bottom section: ""If Cursor Won't Start (Windows/Mac)"". Uses bold headers and bullet points. Visual icons for ""Administrator Shield"" and ""Trash Can"" (Uninstall).
+
+**[Target Text]**
+**Performance Boosters:**
+- [ ] Close unnecessary tabs in Cursor.
+- [ ] Disable extensions you don't need (Extensions > Disable).
+- [ ] Enable ""Large File Optimization"" in settings.
+
+**If Cursor Won't Start:**
+**Windows:**
+1. Right-click icon -> ""Run as Administrator"".
+2. Check Antivirus (might be blocking it).
+
+**Mac:**
+1. Force Quit and Restart.
+2. Reinstall by dragging to Trash and downloading again."
+Page 17,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+**[Heading]**
+- Section: 2.4 Customizing Settings
+
+**[Visual Direction]**
+Panel 1: Alex [Ref: REF_IMG_1] is relaxed, leaning back.
+Panel 2: David [Ref: REF_IMG_3] suggests customization. Icons for Keyboard and Puzzle piece (Extensions) appear.
+Panel 3: Alex opens the Keyboard Shortcuts menu.
+
+**[Target Text]**
+Panel 1 Alex: ""It's running perfectly now. I feel like a real developer.""
+
+Panel 2 David: ""To be even more efficient, you should customize it. Set your own Shortcuts and install Extensions.""
+
+Panel 3 Alex: ""Shortcuts?""
+David: ""Yes. For example, change the Chat shortcut to something easy for you to press, like `Cmd+J`."""
+Page 18,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+**[Heading]**
+- Section: Installing Extensions
+
+**[Visual Direction]**
+Panel 1: View of the Extensions Marketplace in Cursor (looks like VS Code marketplace). Alex types ""Prettier"".
+Panel 2: David [Ref: REF_IMG_3] lists recommended extensions.
+Panel 3: Alex installs them and looks satisfied.
+
+**[Target Text]**
+Panel 1 Alex: ""It has a marketplace?""
+David: ""Yes! It supports VS Code extensions.""
+
+Panel 2 David: ""I recommend:
+- **Prettier**: Formats your code automatically.
+- **ESLint**: Catches errors.
+- **GitLens**: Supercharges Git.""
+
+Panel 3 Alex: ""Installing Prettier... Done! My environment is perfect now."""
+Page 19,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+None
+
+**[Heading]**
+- Section: Customization Cheat Sheet
+
+**[Visual Direction]**
+A visual cheat sheet divided into ""Shortcuts"" and ""Extensions"".
+Left side: Keyboard layout highlighting key combos (`Cmd+L`, `Cmd+K`, `Cmd+B`).
+Right side: Icons of popular extensions (Prettier, ESLint, Python, Docker).
+
+**[Target Text]**
+**Essential Shortcuts:**
+- `Cmd/Ctrl + L`: Open Chat
+- `Cmd/Ctrl + K`: Generate Code (in-editor)
+- `Cmd/Ctrl + B`: Toggle Sidebar
+
+**Must-Have Extensions:**
+- Prettier (Code Formatter)
+- Material Icon Theme (Better file icons)
+- GitLens (Version control info)
+- Your Language Pack (Python, JS, etc.)"
+Page 20,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+**[Heading]**
+- Section: Chapter Conclusion
+
+**[Visual Direction]**
+Panel 1: Alex [Ref: REF_IMG_1] stretches his arms up, looking accomplished.
+Panel 2: Alex looks at David [Ref: REF_IMG_3] on the screen with determination.
+Panel 3: David gives a thumbs up. Text overlay: ""Chapter 2 Complete!"".
+
+**[Target Text]**
+Panel 1 Alex: ""Installation, Account, API Key, Troubleshooting, Customization... I did it all!""
+
+Panel 2 Alex: ""I'm ready to write some actual code now, David.""
+
+Panel 3 David: ""That's the spirit. In Chapter 3, we'll start your first project: A one-line daily logger.""
+Alex: ""Can't wait!"""
+Page 21,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Section: Chapter 2 Summary
+
+**[Visual Direction]**
+A summary page. Top: ""Mission Accomplished"" stamp. Middle: Bullet points of what was learned. Bottom: ""Next Chapter Preview"" box with a teaser image of code.
+
+**[Target Text]**
+**Chapter 2 Summary:**
+✅ Installed Cursor on Local PC
+✅ Created Account & Set API Keys
+✅ Solved ""Invalid Key"" & Performance Issues
+✅ Customized Theme & Shortcuts
+
+**Coming Up in Chapter 3:**
+- Creating your first project folder
+- Writing your first AI-assisted code
+- Using the ""Tab"" feature to code at lightspeed!"
+Page 22,practical_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+None
+
+**[Heading]**
+- Section: Practice Checklist
+
+**[Visual Direction]**
+A final ""Homework"" style page. A simple list for the reader to physically check off before moving to the next chapter. Simple, clean design with plenty of whitespace.
+
+**[Target Text]**
+**Before you turn the page...**
+
+Try this right now:
+
+1. [ ] Close and Re-open Cursor to ensure it starts smoothly.
+2. [ ] Open the Chat (`Cmd/Ctrl + L`).
+3. [ ] Type ""What is the capital of France?"" and send.
+4. [ ] Confirm you get a response (""Paris"").
+
+If you got a response, your setup is perfect. See you in Chapter 3!"

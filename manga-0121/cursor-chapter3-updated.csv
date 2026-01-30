@@ -1,0 +1,533 @@
+Page,Template,Prompt
+Page 1,Cover,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Chapter 3: Your First Code: Logging What You Did Today in One Line
+
+**[Visual Direction]**
+A high-quality manga cover illustration. In the center, Alex [Ref: REF_IMG_1] is sitting at his desk, looking satisfied as he types on a holographic keyboard projecting from a laptop. Beside him, the Cursor mascot [Ref: REF_IMG_2] is giving a thumbs up. In the background, a stylized visualization of a log file (lines of text with timestamps) flows like a data stream. The atmosphere is productive and modern. Title text is bold and prominent.
+
+**[Target Text]**
+Chapter 3
+Your First Code: Logging What You Did Today in One Line"
+Page 2,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+
+**[Heading]**
+- Opening Scene: What to Build? Why Build It?
+
+**[Visual Direction]**
+Panel 1: Alex is sitting at his desk in his apartment. He is looking at a simple text file on his monitor, looking slightly bored or annoyed. He has paused while typing a date.
+Panel 2: Close up on Alex's thought bubble. He imagines a repetitive cycle: Opening a file -> Typing Date -> Writing content -> Saving. It looks tedious.
+Panel 3: Alex sighs, leaning back in his chair.
+
+**[Target Text]**
+Alex (thinking): ""I want to record what I did today every day... but opening the file, typing the date, writing the content, saving—it's simple but slightly tedious.""
+Alex (thinking): ""I can't keep it up. The date format also varies every time..."""
+Page 3,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+**[Heading]**
+- The Solution: Automation
+
+**[Visual Direction]**
+Panel 1: David appears on a video call screen on Alex's monitor. He looks encouraging.
+Panel 2: David explains with a finger raised, proposing a solution. Alex listens intently.
+Panel 3: Alex leans forward, looking motivated. The ""Purpose"" is clear to him now.
+
+**[Target Text]**
+Panel 1 David: ""You can make that easier with code. Let's build a script that appends a one-line entry with a date to a log.""
+Panel 1 David: ""Just pass what you did in one line. Since it's something you do daily, saving a little effort makes it easier to maintain.""
+Panel 1 Alex: ""Something simple but slightly tedious that I need to do daily—that's exactly it. The purpose is clear.""
+
+Panel 2 David: ""Let's clarify the **goal**. What we're building is 'a script that appends what you did today in one line to a log'.""
+Panel 2 David: ""Input is **what you did** (e.g., `"Wrote Chapter 3 draft"`), output is **date + time + that one line** appended to a log file.""
+Panel 2 David: ""Just type `python log.py "something"` in the terminal.""
+Panel 2 Alex: ""Knowing the purpose motivates me. Let's do it."""
+Page 4,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- What We Will Build
+
+**[Visual Direction]**
+A clean infographic illustrating the flow of the script.
+Top: ""Input"" box showing a terminal command: `python log.py ""Wrote Chapter 3 draft""`.
+Middle: An arrow pointing down labeled ""Process"". Inside the arrow, icons for ""Get Date/Time"" and ""Append to File"".
+Bottom: ""Output"" box showing a text file `daily_log.txt` with a new line added: `2025-01-21 14:30 Wrote Chapter 3 draft`.
+Cursor mascot [Ref: REF_IMG_2] is pointing to the output.
+
+**[Target Text]**
+Goal: A script that appends what you did today in one line to a log.
+
+Input: Command-line argument
+`python log.py ""Wrote Chapter 3 draft""`
+
+Output: Appended to daily_log.txt
+`2025-01-21 14:30 Wrote Chapter 3 draft`
+
+Why?: Automate the tedious parts (opening file, typing date) to make daily logging a breeze."
+Page 5,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+**[Heading]**
+- Section 3.1: Creating a Project
+
+**[Visual Direction]**
+Panel 1: Alex is creating a new folder on his desktop named `daily_log`.
+Panel 2: Alex opens Cursor. David guides him to the ""File"" menu.
+Panel 3: Alex sees the empty `daily_log` folder appear in the Cursor sidebar (Explorer).
+
+**[Target Text]**
+David: ""First, create a project folder and open it in Cursor. Name it `daily_log`. Location can be anywhere you like.""
+David: ""In Cursor, select 'Open Folder' → `daily_log`. Shortcut: ⌘+O (Mac) or Ctrl+K Ctrl+O (Windows).""
+Alex: ""Got it. The folder is open in the sidebar."""
+Page 6,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- How to Open a Project
+
+**[Visual Direction]**
+A step-by-step visual guide with screenshots or simplified UI mockups.
+Step 1: Icon of a folder named `daily_log` on a desktop.
+Step 2: Cursor Menu highlighting ""File"" > ""Open Folder"".
+Step 3: A file dialog box selecting `daily_log`.
+Step 4: The Cursor Explorer sidebar showing `DAILY_LOG` at the top.
+
+**[Target Text]**
+Step 1: Create a `daily_log` folder (Desktop or Documents).
+Step 2: In Cursor, click ""File"" → ""Open Folder"".
+Step 3: Select the `daily_log` folder and click ""Open"".
+Step 4: Verify `daily_log` appears in the left EXPLORER panel.
+
+Point: Folder = One Project. All your files will live here."
+Page 7,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+**[Heading]**
+- Creating the Script File
+
+**[Visual Direction]**
+Panel 1: Alex right-clicks on the `daily_log` folder in the sidebar.
+Panel 2: He selects ""New File"" and types `log.py`.
+Panel 3: David explains the plan for the script arguments.
+
+**[Target Text]**
+Alex: ""Right-click `daily_log`... New File... `log.py`.""
+David: ""Exactly. We'll create a Python script. When running it, we'll pass 'what you did' as an argument in the terminal.""
+David: ""Like this: `python log.py 'what you did'`."""
+Page 8,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+**[Heading]**
+- Section 3.2: Writing Code—Understanding Input
+
+**[Visual Direction]**
+Panel 1: Alex types `import sys` and `from datetime import datetime`. He looks focused.
+Panel 2: David explains the role of `sys` and `datetime` via a floating bubble next to the code.
+Panel 3: Alex nods, understanding the flow. ""Input is the argument, Output is the file.""
+
+**[Target Text]**
+Alex: ""`import sys`... `from datetime import datetime`...""
+David: ""`sys` receives the command-line arguments (your text). `datetime` gets the current timestamp.""
+Alex: ""Input is what I did, output is appending to a file with the date. Simple."""
+Page 9,practical_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Code Focus: Imports & Arguments
+
+**[Visual Direction]**
+A code snippet block focused on the setup. Annotations point to specific lines explaining what they do.
+
+**[Target Text]**
+```python
+import sys
+from datetime import datetime
+
+def main():
+    # Check if user provided an argument
+    if len(sys.argv) < 2:
+        print(""Usage: python log.py \""what you did\"""")
+        return
+    
+    # Combine arguments into one string
+    line = "" "".join(sys.argv[1:])
+```
+
+**Key Concepts:**
+- `sys.argv`: A list of command line arguments.
+- `sys.argv[0]`: The script name (`log.py`).
+- `sys.argv[1:]`: Everything you typed after the script name."
+Page 10,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+**[Heading]**
+- Writing to the File
+
+**[Visual Direction]**
+Panel 1: Alex types the `with open...` block. A Tab autocomplete suggestion ghost text appears for the date formatting.
+Panel 2: Alex accepts the suggestion. ""Tab suggested the format!""
+Panel 3: David explains the importance of ""append"" mode.
+
+**[Target Text]**
+Alex: ""`with open(log_file, 'a', encoding='utf-8')...`""
+Alex: ""Whoa, Tab suggested the date format `%Y-%m-%d`. I'll accept that.""
+David: ""Notice the `'a'`. That stands for 'Append'. It adds to the file without overwriting it. Crucial for a log!"""
+Page 11,practical_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- The Complete Code
+
+**[Visual Direction]**
+The full code listing for `log.py` is displayed clearly. It should be easy to read and copy.
+
+**[Target Text]**
+```python
+# log.py
+import sys
+from datetime import datetime
+
+def main():
+    if len(sys.argv) < 2:
+        print(""Usage: python log.py \""what you did\"""")
+        return
+
+    line = "" "".join(sys.argv[1:])
+    now = datetime.now()
+    log_file = ""daily_log.txt""
+
+    with open(log_file, ""a"", encoding=""utf-8"") as f:
+        f.write(f""{now:%Y-%m-%d %H:%M} {line}\n"")
+    
+    print(f""Logged: {now:%Y-%m-%d %H:%M} {line}"")
+
+if __name__ == ""__main__"":
+    main()
+```"
+Page 12,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+**[Heading]**
+- Understanding Append Mode
+
+**[Visual Direction]**
+Panel 1: David uses a diagrammatic speech bubble to show the difference between ""w"" (write/overwrite) and ""a"" (append).
+Panel 2: Alex looks relieved. ""So I won't lose my past logs?""
+Panel 3: David smiles. ""Exactly. It keeps growing. Now, let's run it!""
+
+**[Target Text]**
+David: ""`open(..., 'a')` creates the file if it doesn't exist, and adds to the end if it does.""
+David: ""If you used `'w'`, it would wipe everything out each time!""
+Alex: ""Since we're adding daily, append mode is super important.""
+David: ""Right. Now, try running it with your first entry!"""
+Page 13,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+**[Heading]**
+- Running the Script
+
+**[Visual Direction]**
+Panel 1: Alex opens the Terminal in Cursor. (Ctrl + `).
+Panel 2: He types `python log.py ""Read Cursor Chapter 3""` and presses Enter.
+Panel 3: The terminal responds with ""Logged: ..."". Alex smiles.
+
+**[Target Text]**
+David: ""Open the terminal with `Ctrl + ` `.""
+Alex: ""Okay... typing `python log.py \""Read Cursor Chapter 3\""`... Enter!""
+Terminal: `Logged: 2025-01-21 14:30 Read Cursor Chapter 3`
+Alex: ""It worked! It says Logged!"""
+Page 14,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Terminal Execution Steps
+
+**[Visual Direction]**
+A clear visual guide to running the code.
+Step 1: Menu ""Terminal"" > ""New Terminal"".
+Step 2: The command prompt appearing at the bottom.
+Step 3: Typing the command (highlighting the quotes around the text).
+Step 4: The success message.
+
+**[Target Text]**
+**How to Run & Verify:**
+
+1. **Open Terminal**: Menu ""Terminal"" → ""New Terminal"" (or `Ctrl+``).
+2. **Type Command**: `python log.py ""write what you did here""`
+   *Note: Don't forget the quotes around your text!*
+3. **Press Enter**: Watch for the ""Logged: ..."" message.
+4. **Check File**: Open `daily_log.txt` in the sidebar to see the result."
+Page 15,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+**[Heading]**
+- Verifying the Result
+
+**[Visual Direction]**
+Panel 1: Alex clicks on `daily_log.txt` in the Explorer sidebar.
+Panel 2: He sees the line of text with the timestamp. He looks impressed.
+Panel 3: Alex turns to David. ""This is actually useful. Much faster than opening the file manually.""
+
+**[Target Text]**
+Alex: ""Let's check the file...""
+Alex: ""There it is! Date and time added automatically, saved in one line.""
+Alex: ""If I do this daily, it's much easier than opening a file and typing the date manually.""
+David: ""Right. The goal is to make a 'simple but tedious' task easier with code."""
+Page 16,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+**[Heading]**
+- Section 3.3: Using Tab Autocomplete
+
+**[Visual Direction]**
+Panel 1: Alex mentions how the Tab key helped him write the code.
+Panel 2: David gives a warning gesture. ""Tab is a helper, not the pilot.""
+Panel 3: Alex nods seriously. ""I need to check before accepting.""
+
+**[Target Text]**
+Alex: ""That Tab autocomplete was really helpful. It practically wrote the file writing part.""
+David: ""It's useful, but remember: It's just a helper. Always check with your eyes.""
+David: ""If something looks wrong, press Esc to reject and fix it yourself. Don't just accept everything blindly."""
+Page 17,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Tab Autocomplete Guidelines
+
+**[Visual Direction]**
+A checklist style infographic with ""Do's"" and ""Don'ts"".
+Left side (Green Check): ""Check with your eyes"", ""Understand the code"", ""Press Tab to accept"".
+Right side (Red Cross): ""Accept blindly"", ""Ignore errors"", ""Press Esc to reject (Correct action)"".
+Cursor mascot [Ref: REF_IMG_2] is holding a magnifying glass inspecting code.
+
+**[Target Text]**
+**Mastering Tab Autocomplete**
+
+✅ **DO:**
+- Check suggestions with your own eyes.
+- Keep the ""goal"" of the code in mind.
+- Press **Tab** to accept good suggestions.
+
+❌ **DON'T:**
+- Accept everything without thinking.
+- Assume the AI is always 100% correct.
+
+*Tip: Press **Esc** to reject a suggestion.*"
+Page 18,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+**[Heading]**
+- Next Steps & Expansion
+
+**[Visual Direction]**
+Panel 1: Alex is brainstorming. ""I want to see what I did this week.""
+Panel 2: David suggests adding a ""read"" feature. ""You could pass a date to see only that day's logs.""
+Panel 3: Alex takes notes, looking excited about expanding the project.
+
+**[Target Text]**
+Alex: ""On weekends, I want to review what I did that week.""
+David: ""Then add an option to pass a date and display only that day's lines.""
+David: ""Like `python log.py --day 2025-01-21`.""
+Alex: ""So I add entries daily, and use the script to review them later. That motivates me!"""
+Page 19,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Ideas for Expansion
+
+**[Visual Direction]**
+A flowchart or list of features to add next.
+1. **Filter by Date**: Icon of a calendar. `python log.py --day YYYY-MM-DD`.
+2. **Quick Review**: Icon of an eye. Show last 5 lines when running without arguments.
+3. **Custom Location**: Icon of a folder path. Save to `Documents/logs/` instead of project folder.
+
+**[Target Text]**
+**Try Extending Your Script:**
+
+1. **Extract by Date**
+   `python log.py --day 2025-01-21`
+   *Displays only that day's entries.*
+
+2. **Quick Review**
+   If no arguments are passed, show the last 5 lines of the log.
+
+3. **Change Save Location**
+   Save to a central `logs` folder so you can access it from anywhere."
+Page 20,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+**[Heading]**
+- Chapter Summary
+
+**[Visual Direction]**
+Panel 1: Alex looks at his screen with satisfaction. The `log.py` and `daily_log.txt` files are visible.
+Panel 2: David summarizes the achievement. ""You built a tool you'll actually use.""
+Panel 3: Alex smiles confidently. ""It's not just 'Hello World'. It's useful.""
+
+**[Target Text]**
+Alex: ""I'm glad it's not just 'Hello World'. It's a tool that makes my daily life easier.""
+David: ""Putting 'what it's for' first is important. You created a project, wrote code, and ran it.""
+David: ""From now on, keep in mind 'what to build' and 'why'.""
+Alex: ""I can definitely keep this up!"""
+Page 21,practical_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Review & Next Chapter
+
+**[Visual Direction]**
+Top half: A checklist for Chapter 3.
+Bottom half: A teaser graphic for Chapter 4 featuring a ""Search"" icon (magnifying glass) and code snippets.
+
+**[Target Text]**
+**Chapter 3 Checklist:**
+[ ] Created `daily_log` folder and opened in Cursor.
+[ ] Created `log.py` and wrote the script.
+[ ] Ran `python log.py ""...""` in Terminal.
+[ ] Verified the appended line in `daily_log.txt`.
+
+**NEXT: Chapter 4**
+**Finding Code with Smart Search**
+As your files increase, how do you find code? Learn to search by ""meaning"", not just keywords!"

@@ -1,0 +1,627 @@
+Page,Template,Prompt
+Page 1,Cover,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1], [Ref: REF_IMG_3]
+
+**[Heading]**
+- Section: Chapter 9: Debugging Made Simple
+
+**[Visual Direction]**
+(Full-page cover illustration. High-quality manga style. The background is a split composition. On one side, a dark, intimidating computer screen filled with red error text (Tracebacks). On the other side, a bright, clean interface of Cursor IDE radiating a soft blue light. [Ref: REF_IMG_1] (Alex) stands in the middle, looking from the dark screen to the bright one with a look of realization. [Ref: REF_IMG_3] (David) stands behind him, pointing confidently toward the Cursor interface. Title text is prominent: ""Chapter 9: Debugging Made Simple"".)
+
+**[Target Text]**
+Chapter 9: Debugging Made Simple
+
+Turn Errors into Learning Opportunities."
+Page 2,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1]
+
+**[Heading]**
+- Section: Opening Scene
+
+**[Visual Direction]**
+(Panel 1: [Ref: REF_IMG_1] (Alex) is sitting at his desk in his apartment. It is evening. He looks tired but focused. He hits ""Enter"" on his keyboard to run a script.
+Panel 2: A close-up of the monitor screen showing a terminal window. A harsh red error message pops up: ""TypeError: unsupported format string passed to datetime object"".
+Panel 3: Alex slumps in his chair, holding his head. He looks overwhelmed. The error text floats around him visually like a chaotic cloud.)
+
+**[Target Text]**
+Panel 1 Alex runs `python log.py "test"` in the terminal. An error message appears.
+Panel 1 Alex (thinking): ""An error appeared... What's `TypeError`? What's `datetime object`? I don't know **where the problem is**.""
+
+Panel 2 Alex stares at the error message, unsure what to do.
+Panel 2 Alex (thinking): ""I heard I should read error messages, but I don't know **how to read them**. I also don't know where to fix it.""
+
+Panel 3 David: ""When an error appears, **reading the error message** is the first step.""
+Panel 3 David: ""Paste the error message into Cursor's **Chat** or **Composer** and ask **what the problem is and how to fix it**—you can solve it quickly.""
+Panel 3 Alex: ""Please teach me how to read error messages and how to fix them with Cursor."""
+Page 3,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1]
+
+**[Heading]**
+- Section: The Problem: ""I Got an Error!""
+
+**[Visual Direction]**
+(A split comparison infographic.
+Top Half: ""The Old Way"". Shows a silhouette of a programmer drowning in a sea of text logs, looking confused. Labels: ""Panic"", ""Unknown Cause"", ""Random Guessing"".
+Bottom Half: ""The Cursor Way"". Shows [Ref: REF_IMG_1] (Alex) calmly handing the error text to the [Ref: REF_IMG_2] (Cursor Mascot). Labels: ""Read Message"", ""Ask AI"", ""Instant Fix"".
+Arrows connect the problem to the solution clearly.)
+
+**[Target Text]**
+What you'll learn in this chapter:
+
+THE PROBLEM:
+- You don't know WHERE the error is.
+- Error messages look like gibberish.
+- You don't know HOW to fix it.
+
+THE SOLUTION:
+1. Read the Error Message.
+2. Paste it into Cursor's Chat or Composer.
+3. Let AI explain and fix it.
+
+Tools we will use: Chat (Cmd+L) & Composer (Cmd+I)"
+Page 4,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1], [Ref: REF_IMG_3]
+
+**[Heading]**
+- Section: 9.1 The Problem
+
+**[Visual Direction]**
+(Panel 1: [Ref: REF_IMG_3] (David) appears on a video call window on Alex's screen. He looks calm and reassuring.
+Panel 2: David raises a finger to explain. Alex listens intently, leaning forward.
+Panel 3: Visual metaphor: David is holding a map. The map is labeled ""Error Message"" and points to a location marked ""X"".)
+
+**[Target Text]**
+David: ""Don't panic, Alex. An error message isn't a failure. It's a map.""
+
+Alex: ""A map? It just looks like scary text to me.""
+
+David: ""It tells you exactly three things: WHERE it happened, WHAT kind of error it is, and WHY it happened.""
+David: ""If you can read the map, you can find the treasure—the fix."""
+Page 5,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+None
+
+**[Heading]**
+- Section: Anatomy of an Error Message
+
+**[Visual Direction]**
+(A clean diagram dissecting a Python error message. The message is broken into three colored zones.
+Zone 1 (Top): ""Traceback"". Label: ""The Location (File & Line Number)"".
+Zone 2 (Bottom Left): ""Error Type"". Label: ""The Category (e.g., TypeError)"".
+Zone 3 (Bottom Right): ""Error Content"". Label: ""The Reason (Why it failed)"".
+Visual icons accompany each: a map pin for Location, a category folder for Type, and a magnifying glass for Content.)
+
+**[Target Text]**
+Understanding the Map
+
+1. Traceback (Location)
+File ""log.py"", line 14, in main
+(Tells you exactly where to look!)
+
+2. Error Type (Category)
+TypeError
+(Tells you the nature of the problem)
+
+3. Error Content (Reason)
+unsupported format string passed to datetime object
+(The specific detail of what went wrong)"
+Page 6,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1], [Ref: REF_IMG_3]
+
+**[Heading]**
+- Section: 9.2 Reading Error Messages with Cursor
+
+**[Visual Direction]**
+(Panel 1: David is guiding Alex. Alex is typing code into `log.py`.
+Panel 2: Close up of the code editor. Alex types a deliberately incorrect line: `f.write(f""{now:%Y-%m-%d %H:%M} {line}\n"")`.
+Panel 3: Alex runs the terminal command `python log.py ""test""`. He looks expectant.)
+
+**[Target Text]**
+David: ""Let's try to read one together. First, we need to break the code intentionally.""
+
+Alex: ""Okay, I'm writing a bug on purpose? That feels wrong!""
+
+David: ""It's the best way to learn. In line 14, try using an f-string format directly on the datetime object without `.strftime`.""
+
+Alex: ""Done. Now running the script..."""
+Page 7,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1]
+
+**[Heading]**
+- Section: The Error Appears
+
+**[Visual Direction]**
+(Panel 1: The terminal screen fills with the error message again. `TypeError: unsupported format string...`.
+Panel 2: Alex squints at the screen, trying to apply what he learned. He points to the ""Traceback"" line.
+Panel 3: He looks confused at the ""Error Content"" part. Sweat drop on his temple.)
+
+**[Target Text]**
+Alex: ""Okay, it crashed as expected.""
+
+Alex: ""I see the location... 'line 14'. That's the Traceback.""
+
+Alex: ""But 'unsupported format string'? I thought f-strings supported everything. I'm stuck."""
+Page 8,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2]
+
+**[Heading]**
+- Section: Analyzing the Specific Error
+
+**[Visual Direction]**
+(A detailed breakdown of the specific error Alex just encountered.
+Top: The raw error text.
+Middle: [Ref: REF_IMG_2] (Cursor Mascot) holding a pointer, highlighting keywords.
+Bottom: A translation table. ""datetime object"" -> ""The variable 'now'"". ""unsupported format string"" -> ""You can't use :%Y-%m-%d directly inside {now}"".)
+
+**[Target Text]**
+Let's Decipher the Code
+
+Error:
+TypeError: unsupported format string passed to datetime object
+
+Translation:
+- Subject: The variable `now` (which is a datetime object).
+- Action: You tried to format it using f-string syntax (e.g., `:%Y`).
+- Result: Python doesn't know how to do that directly for this object type.
+
+Solution Hint:
+We probably need a method like `.strftime()`!"
+Page 9,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1], [Ref: REF_IMG_3]
+
+**[Heading]**
+- Section: Using Chat to Understand
+
+**[Visual Direction]**
+(Panel 1: David speaks from the screen. He gestures to the ""Chat"" icon.
+Panel 2: Alex highlights the error text in the terminal with his mouse and presses Cmd+C.
+Panel 3: Alex opens Cursor Chat (Cmd+L), pastes the text, and types a question. The interface is visible.)
+
+**[Target Text]**
+David: ""If you don't understand the 'Why', ask Cursor. Just copy and paste.""
+
+Alex: ""Copying the error... Opening Chat with Cmd+L...""
+
+Alex (Typing): ""What is the cause of this error? How should I fix it?""
+
+David: ""Exactly. Treat Cursor like a senior developer sitting next to you."""
+Page 10,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1], [Ref: REF_IMG_2]
+
+**[Heading]**
+- Section: Cursor's Explanation
+
+**[Visual Direction]**
+(Panel 1: The Chat window shows [Ref: REF_IMG_2] (Cursor's icon) generating a response. The text bubbles are clear.
+Panel 2: Close up on the explanation in the chat: ""You tried to use f-string formatting on a datetime object. Use .strftime() instead.""
+Panel 3: Alex nods, a lightbulb appearing over his head. He looks relieved.)
+
+**[Target Text]**
+Cursor AI: ""The error occurs because you are using f-string formatting directly on the object. You should use the `.strftime()` method.""
+
+Cursor AI: ""Fix: `f.write(f'{now.strftime(""%Y-%m-%d"")}')`""
+
+Alex: ""Aha! I need `.strftime`! I completely forgot that method.""
+Alex: ""Now I understand WHY it failed. It wasn't just magic."""
+Page 11,practical_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+None
+
+**[Heading]**
+- Section: Summary: Reading Errors with Cursor
+
+**[Visual Direction]**
+(A step-by-step guide layout with icons for keyboard shortcuts. The background is a clean notebook style.
+Step 1: Icon of a mouse selecting text. ""Copy Error"".
+Step 2: Icon of Keyboard Cmd+L. ""Open Chat"".
+Step 3: Icon of Chat Bubble. ""Paste & Ask"".
+Step 4: Icon of Eye. ""Read & Understand"".
+Bottom Note: ""Don't just copy the fix. Understand the cause!"")
+
+**[Target Text]**
+STEP-BY-STEP: UNDERSTANDING ERRORS
+
+1. Copy the Error Message
+Select the text in the terminal. Cmd+C (Mac) / Ctrl+C (Win).
+
+2. Open Chat
+Press Cmd+L / Ctrl+L to open the AI Chat sidebar.
+
+3. Paste & Ask
+Paste the error. Ask: ""What is the cause? How do I fix line 14?""
+
+4. Read the Explanation
+Don't skip this! Understanding the ""Why"" prevents future errors.
+
+5. Check the Suggestion
+Verify the code before applying it."
+Page 12,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1], [Ref: REF_IMG_3]
+
+**[Heading]**
+- Section: 9.3 Asking Cursor to Fix Errors
+
+**[Visual Direction]**
+(Panel 1: David smiles. He makes a gesture of ""taking it to the next level"".
+Panel 2: Alex looks at his keyboard, ready to type.
+Panel 3: David explains the difference between Chat (Asking) and Composer (Doing).)
+
+**[Target Text]**
+David: ""Now that you understand the error, let's fix it. You could type it manually...""
+
+Alex: ""But there's a faster way, right?""
+
+David: ""Yes. Use **Composer**. Chat is for 'Asking', Composer is for 'Doing'.""
+David: ""Tell Composer: 'Fix this error on line 14'."""
+Page 13,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+None
+
+**[Heading]**
+- Section: Composer Interface for Debugging
+
+**[Visual Direction]**
+(A UI diagram of the Composer window (Cmd+I).
+Central focus is the input box. Sample text: ""Fix the TypeError on line 14.""
+The ""Generate"" button is highlighted.
+The ""Accept"" and ""Reject"" buttons (which appear after generation) are shown in a secondary bubble.
+Labels indicate: ""Input Instruction"", ""Target File"", ""Review Changes"".)
+
+**[Target Text]**
+USING COMPOSER (Cmd+I / Ctrl+I)
+
+1. Open Composer
+Press Cmd+I to open the floating edit window.
+
+2. Give Specific Instructions
+""Fix the date format error on line 14 in log.py""
+
+3. Generate
+Cursor writes the code for you.
+
+4. Review & Accept
+Check the diff (red/green lines) and click Accept."
+Page 14,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1]
+
+**[Heading]**
+- Section: Prompting the Fix
+
+**[Visual Direction]**
+(Panel 1: Alex presses Cmd+I. The Composer bar floats over his code.
+Panel 2: Close up of Alex typing. He looks confident. Text on screen: ""Fix the date format specification error at line 14...""
+Panel 3: He hits the ""Generate"" button. Sparkles or flow lines represent the AI processing.)
+
+**[Target Text]**
+Alex: ""Okay, Composer. Do your magic.""
+
+Alex (Typing): ""Fix the date format specification error at line 14 in log.py. Use the correct strftime method.""
+
+Alex: ""I'm being specific about WHERE and WHAT, just like David said."""
+Page 15,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1], [Ref: REF_IMG_2]
+
+**[Heading]**
+- Section: The AI Fix
+
+**[Visual Direction]**
+(Panel 1: The code on the screen changes. The red line (error) is replaced by a green line (fix). [Ref: REF_IMG_2] (Cursor Mascot) gives a thumbs up in the corner.
+Panel 2: Alex leans in to inspect the code. He is reading it carefully, not just blindly accepting.
+Panel 3: The code snippet is visible: `now.strftime('%Y-%m-%d %H:%M')`.)
+
+**[Target Text]**
+Cursor: *Generating Fix...*
+
+Old: f.write(f""{now:%Y-%m-%d...}
+New: f.write(f""{now.strftime('%Y-%m-%d %H:%M')} {line}\n"")
+
+Alex: ""It changed it to use `.strftime`. That matches the explanation I got earlier.""
+Alex: ""Looks correct. I'll Accept it."""
+Page 16,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1], [Ref: REF_IMG_3]
+
+**[Heading]**
+- Section: Verification
+
+**[Visual Direction]**
+(Panel 1: Alex clicks ""Accept"". The code is updated.
+Panel 2: Alex types `python log.py ""test""` in the terminal again.
+Panel 3: Success! No red text. The terminal shows ""Logged: 2025-01-21...""
+Panel 4: Alex pumps his fist. David claps on the video call.)
+
+**[Target Text]**
+Alex: ""Moment of truth... Run!""
+
+Terminal: Logged: 2025-01-21 14:30 test
+
+Alex: ""It works! No errors!""
+
+David: ""Great job. You read, you asked, you fixed, and you verified. That is the perfect debugging loop."""
+Page 17,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+None
+
+**[Heading]**
+- Section: The Debugging Workflow
+
+**[Visual Direction]**
+(A vertical flowchart illustrating the ""Iron-clad Debugging Workflow"".
+Step 1: Eye Icon. ""Read Error Message"". (Identify Location & Type).
+Step 2: Chat Icon. ""Ask Chat"". (Understand the Cause).
+Step 3: Edit Icon. ""Fix with Composer"". (Apply Solution).
+Step 4: Checkmark Icon. ""Verify"". (Run Code).
+Arrows loop back if verification fails.)
+
+**[Target Text]**
+THE DEBUGGING WORKFLOW
+
+1. READ
+Don't ignore the error text. Find the file and line number.
+
+2. ASK (Chat)
+""Why did this happen?""
+
+3. FIX (Composer)
+""Fix the error on line X.""
+
+4. VERIFY
+Run the code again. Did it work?
+
+*Repeat until solved!*"
+Page 18,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1], [Ref: REF_IMG_3]
+
+**[Heading]**
+- Section: 9.4 Step-by-Step Debugging Process
+
+**[Visual Direction]**
+(Panel 1: David proposes a challenge. He looks serious but encouraging.
+Panel 2: Alex deletes a line of code: `import sys` at the top of the file.
+Panel 3: Alex runs the code. A new error appears: `NameError: name 'sys' is not defined`.)
+
+**[Target Text]**
+David: ""Let's solidify this. Create a different error. Delete `import sys` from the top.""
+
+Alex: ""Okay. Deleting the import... running the script...""
+
+Terminal: NameError: name 'sys' is not defined
+
+Alex: ""NameError. That means Python doesn't know what 'sys' is."""
+Page 19,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1]
+
+**[Heading]**
+- Section: Speed Run
+
+**[Visual Direction]**
+(Panel 1: Alex moves quickly now. No hesitation. He opens Chat.
+Panel 2: He reads the Chat response (""Import sys is missing"").
+Panel 3: He opens Composer and types ""Add import sys at the top"".
+Panel 4: He accepts the fix and runs the code. It works instantly.)
+
+**[Target Text]**
+Alex (Thinking): ""I know the flow.""
+
+1. Read: ""NameError: sys not defined""
+2. Ask: ""Cause?"" -> ""Missing import""
+3. Fix: Composer -> ""Add import sys""
+4. Verify: Success!
+
+Alex: ""Wow, that took like 30 seconds. I used to spend hours staring at code."""
+Page 20,practical_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+None
+
+**[Heading]**
+- Section: Case Study: NameError
+
+**[Visual Direction]**
+(A ""Before & After"" code comparison card.
+Left side: ""The Error"". Code snippet missing `import sys`. Red arrow pointing to `sys.argv`.
+Right side: ""The Fix"". Code snippet with `import sys` highlighted in green at the top.
+Bottom box: The Error Message explained. `NameError` = ""I don't know this name"".)
+
+**[Target Text]**
+CASE STUDY: NameError
+
+THE ERROR:
+NameError: name 'sys' is not defined
+
+THE CAUSE:
+You tried to use `sys.argv` but forgot to tell Python to `import sys` first.
+
+THE FIX:
+Add `import sys` at the very top of your file.
+
+*Common Mistake: Using a library without importing it!*"
+Page 21,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1], [Ref: REF_IMG_3]
+
+**[Heading]**
+- Section: Confidence Gained
+
+**[Visual Direction]**
+(Panel 1: Alex leans back in his chair, looking at the clean terminal output. He looks satisfied.
+Panel 2: David gives a closing remark on the screen.
+Panel 3: Alex smiles at David. The atmosphere is warm and accomplished.)
+
+**[Target Text]**
+Alex: ""I'm not afraid of red text anymore. It's just a puzzle to solve with Cursor.""
+
+David: ""That's the mindset of a pro. Errors are just feedback.""
+
+David: ""You've mastered the basics of debugging. But there's one more way to improve your code...""
+Alex: ""What's that?"""
+Page 22,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+None
+
+**[Heading]**
+- Section: Chapter Summary
+
+**[Visual Direction]**
+(A checklist graphic on a clipboard background.
+Checkmarks next to: ""Read Tracebacks"", ""Use Chat for Explanations"", ""Use Composer for Fixes"", ""Verify Results"".
+A large ""Level Up!"" stamp is visible.)
+
+**[Target Text]**
+CHAPTER 9 COMPLETE!
+
+Checklist:
+[x] Read the Error Message (Traceback, Type, Content)
+[x] Ask Chat ""Why?"" (Cmd+L)
+[x] Tell Composer ""Fix it"" (Cmd+I)
+[x] Always Verify the Fix
+
+Remember: The error message is your map. Cursor is your guide."
+Page 23,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1], [Ref: REF_IMG_3]
+
+**[Heading]**
+- Section: Preview: Chapter 10
+
+**[Visual Direction]**
+(Panel 1: David leans in closer.
+Panel 2: Visual teaser of ""Messy Code"" transforming into ""Clean, Beautiful Code"". Sparkling effects.
+Panel 3: Alex looks excited. Text overlay: ""Next Chapter: Refactoring"".)
+
+**[Target Text]**
+David: ""Even if code works, it can be messy. Next, we learn **Refactoring**.""
+
+David: ""We'll make your code beautiful, readable, and professional.""
+
+Alex: ""Refactoring... making it beautiful. I'm ready!""
+
+**See you in Chapter 10!**"

@@ -1,0 +1,603 @@
+Page,Template,Prompt
+Page 1,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Character Reference]
+- [Ref: REF_IMG_1] :: Alex
+- [Ref: REF_IMG_3] :: David
+
+[Heading]
+- Section: Opening Scene
+
+[Visual Direction]
+Alex's apartment at night. [Ref: REF_IMG_1] is sitting at his desk, looking at a screen filled with simple JSON files. He looks frustrated, scratching his head. A video call window pops up with [Ref: REF_IMG_3] smiling from a modern office.
+
+[Target Text]
+Panel 1 Alex: ""The ToDo app and API integration app are complete, but I want to **persistently save data**. With JSON files, managing data becomes difficult as it grows...""
+Panel 1 Alex (thinking): ""I heard that using a database lets you **persistently save data**. But **what is a database? How do I use it?**""
+
+Panel 2 David: ""Let's build a **database app**. A database is a mechanism to **persistently save data**.""
+Panel 2 David: ""Using SQLite, a lightweight database, makes it easy to build database apps. You can build database apps using Cursor's **Chat** and **Composer**.""
+Panel 2 Alex: ""How do I build a database app? **What is a database? How do I use it?**""
+
+Panel 3 David: ""Let's build it **step by step** together.""
+Panel 3 David: ""First, understand **what a database is**, then use Cursor's **Chat** and **Composer** to build a database app **step by step**. We'll learn **CRUD operations**, **security**, and **tests** together too."""
+Page 2,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Heading]
+- Section: Opening Scene
+
+[Visual Direction]
+A clean roadmap infographic. At the top, a title 'Project 3: User Management App'. Below it, four main icons representing: Database Design, CRUD Operations, Security, and Testing. A 'Tools Used' section shows the Cursor logo, Python, and SQLite icons.
+
+[Target Text]
+What we'll build: A Database App to manage user info.
+What we'll learn:
+- Database design basics
+- CRUD (Create, Read, Update, Delete)
+- Security (SQL Injection prevention)
+- Testing with pytest
+Tools: Cursor Chat (⌘L), Composer (⌘I), Python sqlite3 library."
+Page 3,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Character Reference]
+- [Ref: REF_IMG_1] :: Alex
+- [Ref: REF_IMG_3] :: David
+
+[Heading]
+- Section: 16.1 Database Design
+
+[Visual Direction]
+[Ref: REF_IMG_3] is using his hands to gesture a grid shape. [Ref: REF_IMG_1] is listening intently, leaning forward. On the screen between them, a simple spreadsheet-like grid appears with headers: ID, Name, Email.
+
+[Target Text]
+Panel 1 David: ""Think of a database as a structured way to save data. It uses 'tables' which are like spreadsheets.""
+Panel 1 Alex: ""So instead of a messy text file, I have columns like 'id', 'name', and 'email'?""
+
+Panel 2 David: ""Exactly! Using SQLite, we can manage these tables efficiently.""
+Panel 2 David: ""Let's ask Cursor to help us design the structure."""
+Page 4,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Heading]
+- Section: 16.1 Database Design
+
+[Visual Direction]
+A 3D diagram of a database table. Labels point to different parts: 'Table' (the whole container), 'Column' (the vertical ID/Name/Email headers), 'Record' (a single horizontal row of data), and 'Database' (the file containing multiple tables).
+
+[Target Text]
+Database Anatomy:
+1. Database: The mechanism to save data persistently.
+2. Table: The structure for data (e.g., 'users' table).
+3. Column: The categories (e.g., 'name', 'email').
+4. Record: An individual entry (e.g., Alex's info).
+Benefits: Persistence, Efficiency, Complex Searches, Data Integrity."
+Page 5,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Character Reference]
+- [Ref: REF_IMG_1] :: Alex
+- [Ref: REF_IMG_2] :: Cursor
+
+[Heading]
+- Section: 16.1 Database Design
+
+[Visual Direction]
+[Ref: REF_IMG_1] opens the Cursor Chat panel (⌘L). He types with focus. [Ref: REF_IMG_2] appears as a small helpful avatar next to the chat bubble, suggesting a folder structure.
+
+[Target Text]
+Alex: OK, let's try. 'I want to build a database app that manages user information. Use SQLite. Suggest a project structure.'
+Cursor: I'll suggest a structure: user_db_app/ folder with user_db.py, database.db, and test_user_db.py.
+Alex: It even planned the test file already!"
+Page 6,practical_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Heading]
+- Section: 16.1 Database Design
+
+[Visual Direction]
+A screenshot of a terminal-style file tree and a code block. Highlights on the file names.
+
+[Target Text]
+[Project Structure Suggestion]
+user_db_app/
+├── user_db.py      # Main application logic
+├── database.db     # SQLite database file (auto-generated)
+└── test_user_db.py # Unit tests
+
+Steps in Chat:
+1. Open Chat (⌘L / Ctrl+L)
+2. Enter the prompt for structure.
+3. Review the suggested files before generating."
+Page 7,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Character Reference]
+- [Ref: REF_IMG_1] :: Alex
+- [Ref: REF_IMG_2] :: Cursor
+
+[Heading]
+- Section: 16.1 Database Design
+
+[Visual Direction]
+[Ref: REF_IMG_1] switches to Composer (⌘I). A large generation window appears. [Ref: REF_IMG_2] is busy 'building' the code, represented by blue light beams hitting the screen. Alex looks impressed.
+
+[Target Text]
+Alex (input): Create a user_db_app folder and user_db.py. Use SQLite for user info with id, name, and email columns.
+Cursor: Generating the database initialization and main functions...
+Alex: Wow, it's writing the SQL commands inside the Python code automatically!"
+Page 8,practical_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Heading]
+- Section: 16.1 Database Design
+
+[Visual Direction]
+A code snippet of the `init_db` function from the generated `user_db.py`. Syntax highlighting is clear.
+
+[Target Text]
+[Initial user_db.py Code]
+```python
+import sqlite3
+DB_FILE = ""database.db""
+
+def init_db():
+    conn = sqlite3.connect(DB_FILE)
+    cursor = conn.cursor()
+    cursor.execute(""""""
+        CREATE TABLE IF NOT EXISTS users (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT NOT NULL,
+            email TEXT NOT NULL UNIQUE
+        )
+    """""")
+    conn.commit()
+    conn.close()
+```
+Action: Click 'Accept' in Composer to save this file."
+Page 9,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Character Reference]
+- [Ref: REF_IMG_1] :: Alex
+- [Ref: REF_IMG_3] :: David
+
+[Heading]
+- Section: 16.2 Implementing CRUD Operations
+
+[Visual Direction]
+[Ref: REF_IMG_3] points to four large letters appearing in the air: C, R, U, D. [Ref: REF_IMG_1] looks at them, repeating the words.
+
+[Target Text]
+David: Now for the heart of any database app: CRUD operations.
+Alex: CRUD? Sounds like a monster name.
+David: Haha, it stands for Create, Read, Update, and Delete. It's the four things you do with any data!"
+Page 10,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Heading]
+- Section: 16.2 Implementing CRUD Operations
+
+[Visual Direction]
+A colorful 4-quadrant diagram. 
+1. Create (Icon: Plus sign)
+2. Read (Icon: Eye/Magnifying glass)
+3. Update (Icon: Pencil)
+4. Delete (Icon: Trash can).
+Each quadrant has a brief description.
+
+[Target Text]
+CRUD Operations:
+- Create: Adding new users to the table.
+- Read: Fetching user details or listing all users.
+- Update: Changing existing user information.
+- Delete: Removing a user from the database."
+Page 11,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Character Reference]
+- [Ref: REF_IMG_1] :: Alex
+- [Ref: REF_IMG_2] :: Cursor
+
+[Heading]
+- Section: 16.2 Implementing CRUD Operations
+
+[Visual Direction]
+[Ref: REF_IMG_1] is back in Cursor Chat. He's asking for the implementation details. [Ref: REF_IMG_2] is displaying snippets of Python functions.
+
+[Target Text]
+Alex: 'Implement CRUD operations in user_db.py. Create functions for each.'
+Cursor: I'll implement create_user, get_user, update_user, delete_user, and list_users.
+Alex: I need to make sure I understand how these functions talk to the database file."
+Page 12,practical_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Heading]
+- Section: 16.2 Implementing CRUD Operations
+
+[Visual Direction]
+Two key code blocks showing the `create_user` and `get_user` logic.
+
+[Target Text]
+[CRUD Logic Snippets]
+```python
+def create_user(name, email):
+    conn = sqlite3.connect(DB_FILE)
+    cursor = conn.cursor()
+    cursor.execute(""INSERT INTO users (name, email) VALUES (?, ?)"", (name, email))
+    conn.commit()
+    conn.close()
+
+def get_user(user_id):
+    conn = sqlite3.connect(DB_FILE)
+    cursor = conn.cursor()
+    cursor.execute(""SELECT * FROM users WHERE id = ?"", (user_id,))
+    user = cursor.fetchone()
+    conn.close()
+    return user
+```"
+Page 13,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Character Reference]
+- [Ref: REF_IMG_1] :: Alex
+- [Ref: REF_IMG_2] :: Cursor
+
+[Heading]
+- Section: 16.2 Implementing CRUD Operations
+
+[Visual Direction]
+[Ref: REF_IMG_1] uses Composer (⌘I) to apply all CRUD functions at once. The screen shows a 'Diff' view where green lines (new code) are added to the file. [Ref: REF_IMG_2] gives a thumbs up.
+
+[Target Text]
+Alex: Composer is great for this. I can see exactly where the new functions are being inserted.
+Cursor: All CRUD functions are ready for review. Shall I apply them?
+Alex: Yes! Always check with your eyes, then click Accept."
+Page 14,practical_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Heading]
+- Section: 16.2 Implementing CRUD Operations
+
+[Visual Direction]
+A summary checklist for implementing CRUD with Cursor.
+
+[Target Text]
+Steps to Implement CRUD:
+1. Open Composer (⌘I).
+2. Prompt: 'Implement CRUD functions in user_db.py'.
+3. Review the generated SQL commands (INSERT, SELECT, UPDATE, DELETE).
+4. Check connection handling (connect and close).
+5. Click 'Accept' to finalize."
+Page 15,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Character Reference]
+- [Ref: REF_IMG_1] :: Alex
+- [Ref: REF_IMG_3] :: David
+
+[Heading]
+- Section: 16.3 Considering Security
+
+[Visual Direction]
+[Ref: REF_IMG_3] looks serious, wearing his glasses. He points to a 'malicious' looking code string on a holographic screen. [Ref: REF_IMG_1] looks slightly worried.
+
+[Target Text]
+David: Stop! Before we celebrate, we need to talk about security. Ever heard of SQL Injection?
+Alex: Is that like a virus for databases?
+David: It's when an attacker sends malicious SQL code through your input fields. We must use parameterized queries to block them."
+Page 16,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Heading]
+- Section: 16.3 Considering Security
+
+[Visual Direction]
+A 'Shield' icon in the center. Three branches come off it:
+1. Parameterized Queries (Prevention of SQL Injection)
+2. Input Validation (Checking email formats)
+3. Error Handling (Not leaking DB details).
+
+[Target Text]
+Database Security Checklist:
+- Parameterized Queries: Use '?' placeholders instead of f-strings in SQL.
+- Input Validation: Ensure names aren't empty and emails are valid using Regex.
+- Secure Errors: Don't show raw database errors to the user."
+Page 17,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Character Reference]
+- [Ref: REF_IMG_1] :: Alex
+- [Ref: REF_IMG_2] :: Cursor
+
+[Heading]
+- Section: 16.3 Considering Security
+
+[Visual Direction]
+[Ref: REF_IMG_1] typing into Cursor Chat. He is asking for security improvements. [Ref: REF_IMG_2] highlights the `?` symbols in the code to show they are safe.
+
+[Target Text]
+Alex: 'Add security measures to user_db.py. Use parameterized queries and validate input.'
+Cursor: Updating code. I'll add email validation and ensure all queries use the '?' placeholder.
+Alex: I see the '?' now. That's the shield David mentioned!"
+Page 18,practical_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Heading]
+- Section: 16.3 Considering Security
+
+[Visual Direction]
+Code snippet showing the `validate_email` function and a secure `create_user` with a try-except block.
+
+[Target Text]
+[Secure Code Snippet]
+```python
+import re
+
+def validate_email(email):
+    pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+    return re.match(pattern, email) is not None
+
+# Secure Create
+cursor.execute(""INSERT INTO users (name, email) VALUES (?, ?)"", (name, email))
+```"
+Page 19,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Character Reference]
+- [Ref: REF_IMG_1] :: Alex
+- [Ref: REF_IMG_3] :: David
+
+[Heading]
+- Section: 16.4 Writing Tests for Database Operations
+
+[Visual Direction]
+[Ref: REF_IMG_3] is holding a small 'Test Database' box. [Ref: REF_IMG_1] is holding a large 'Actual Database' box. David explains the difference.
+
+[Target Text]
+David: Final step: Testing. But never test on your actual data!
+Alex: So I need a fake database just for testing?
+David: Exactly. We use a 'Test Database' so we can create and delete data freely without breaking the real app."
+Page 20,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Heading]
+- Section: 16.4 Writing Tests for Database Operations
+
+[Visual Direction]
+A circular flow diagram for testing:
+1. Setup (Create Test DB)
+2. Execute (Run Create/Read/Update/Delete)
+3. Assert (Check if result matches expectation)
+4. Teardown (Delete Test DB).
+
+[Target Text]
+Database Test Lifecycle:
+- Setup: Initialize a temporary 'test_database.db'.
+- Execute: Call your Python functions.
+- Assert: Use 'assert' to verify the data was saved correctly.
+- Teardown: Clean up the test file so the next test starts fresh."
+Page 21,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Character Reference]
+- [Ref: REF_IMG_1] :: Alex
+- [Ref: REF_IMG_2] :: Cursor
+
+[Heading]
+- Section: 16.4 Writing Tests for Database Operations
+
+[Visual Direction]
+[Ref: REF_IMG_1] opens `test_user_db.py`. [Ref: REF_IMG_2] is writing a `pytest` fixture. Alex looks at the 'yield' keyword, looking confused but curious.
+
+[Target Text]
+Alex: 'Create test_user_db.py using pytest. Use a separate test database.'
+Cursor: I'll use a @pytest.fixture to handle the setup and teardown automatically.
+Alex: This 'fixture' thing is like a robot that cleans up after itself!"
+Page 22,practical_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Heading]
+- Section: 16.4 Writing Tests for Database Operations
+
+[Visual Direction]
+Code block showing the `setup_db` fixture and the first test case.
+
+[Target Text]
+[Test Setup Code]
+```python
+@pytest.fixture
+def setup_db():
+    # Setup logic here
+    yield
+    if os.path.exists(TEST_DB):
+        os.remove(TEST_DB)
+
+def test_create_user(setup_db):
+    user_id = create_user(""Test User"", ""test@example.com"")
+    assert user_id is not None
+```"
+Page 23,practical_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Heading]
+- Section: 16.4 Writing Tests for Database Operations
+
+[Visual Direction]
+More test cases for retrieval and validation checks.
+
+[Target Text]
+[Additional Test Cases]
+```python
+def test_get_user(setup_db):
+    uid = create_user(""Alice"", ""alice@example.com"")
+    user = get_user(uid)
+    assert user[""name""] == ""Alice""
+
+def test_invalid_email(setup_db):
+    with pytest.raises(ValueError):
+        create_user(""Bob"", ""not-an-email"")
+```"
+Page 24,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Character Reference]
+- [Ref: REF_IMG_1] :: Alex
+- [Ref: REF_IMG_3] :: David
+
+[Heading]
+- Section: 16.4 Writing Tests for Database Operations
+
+[Visual Direction]
+[Ref: REF_IMG_1] is typing in the terminal. The screen shows '5 passed' in bright green text. [Ref: REF_IMG_3] gives a high-five.
+
+[Target Text]
+Alex: Every test passed! The logic is solid.
+David: Great job. Now you have a professional-grade database app.
+Alex: Let's try running it for real now!"
+Page 25,practical_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Heading]
+- Section: 16.4 Writing Tests for Database Operations
+
+[Visual Direction]
+A list of terminal commands to interact with the completed app.
+
+[Target Text]
+Running your Database App:
+```bash
+# Add a user
+python user_db.py create ""Alex"" ""alex@example.com""
+
+# List all users
+python user_db.py list
+
+# Update user ID 1
+python user_db.py update 1 ""Alex Martin"" ""alex@new.com""
+
+# Run all tests
+pytest test_user_db.py
+```"
+Page 26,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Character Reference]
+- [Ref: REF_IMG_1] :: Alex
+- [Ref: REF_IMG_3] :: David
+
+[Heading]
+- Section: Chapter Summary
+
+[Visual Direction]
+[Ref: REF_IMG_1] is looking at his finished project folder with a sense of pride. [Ref: REF_IMG_3] is packing up his laptop, ready for the next lesson.
+
+[Target Text]
+Alex: I went from messy JSON files to a secure, tested database app. Cursor made the SQL part so much easier.
+David: You've mastered the fundamentals of data persistence. That's a huge milestone.
+Alex: What's next on the roadmap?
+David: Teamwork. Let's see how Cursor helps when you're not coding alone!"
+Page 27,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+[Heading]
+- Section: Chapter Summary
+
+[Visual Direction]
+A summary checklist with green checkmarks. 
+- Design Database ✅
+- Implement CRUD ✅
+- Secure Queries ✅
+- Write Unit Tests ✅
+At the bottom, a 'Coming Next' teaser for Chapter 17: Team Development.
+
+[Target Text]
+Chapter 16 Recap:
+- Databases use Tables, Columns, and Records.
+- CRUD: Create, Read, Update, Delete are the core functions.
+- Security: Always use parameterized queries (?) to prevent SQL Injection.
+- Testing: Use a separate test database and pytest fixtures.
+Next Chapter: Team Development with Cursor!"

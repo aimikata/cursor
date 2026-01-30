@@ -1,0 +1,466 @@
+Page,Template,Prompt
+Cover,Cover,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Chapter Title: Finding Code with Smart Search
+
+**[Visual Direction]**
+A high-quality manga cover illustration. Center composition. Alex [Ref: REF_IMG_1] is looking at a holographic code interface with a magnifying glass icon, looking enlightened. The Cursor mascot [Ref: REF_IMG_2] is flying next to him, pointing at a glowing line of code. Background features a stylized library or database visualization, symbolizing the 'Codebase'. Title text is prominent.
+
+**[Target Text]**
+Chapter 4: Finding Code with Smart Search
+""Where was that code?"" Solved in seconds."
+Page 1,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+
+**[Heading]**
+- Section: Opening Scene — The Problem
+
+**[Visual Direction]**
+Panel 1: Alex is sitting at his desk, looking frustrated at his monitor. The screen shows `log.py`.
+Panel 2: Close up on the monitor. A standard ""Find"" bar (Ctrl+F) is open with the word ""write"". Multiple matches are highlighted, cluttering the screen.
+Panel 3: Alex leans back, sighing, hand on his forehead. He looks overwhelmed by scrolling.
+
+**[Target Text]**
+Alex (thought): ""I want to change the date format... but where did I write that logic?""
+Alex (thought): ""Searching for 'write' gives me too many results. I can't find the exact spot.""
+Alex: ""Ugh, scrolling through files is such a pain. Where was that code?"""
+Page 2,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+**[Heading]**
+- Section: The Solution Appears
+
+**[Visual Direction]**
+Panel 1: A video call window pops up on the screen. David [Ref: REF_IMG_3] appears, smiling calmly.
+Panel 2: David is explaining, holding up a finger. Alex looks surprised and hopeful.
+Panel 3: Close up on David's face, emphasizing the key concept.
+
+**[Target Text]**
+David: ""Struggling to find code? You're using the old way.""
+David: ""Use Cursor's **Smart Search**. Search by **Meaning**, not just keywords.""
+David: ""Ask Chat 'where is the code that appends to the log?' and it will tell you the relevant code.""
+David: ""With `@Codebase`, it looks at the entire project, so you don't need to specify files yourself."""
+Page 3,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Section: Traditional Search vs. Smart Search
+
+**[Visual Direction]**
+An infographic comparing two search methods. 
+Left side (Gray/Dull): ""Traditional Search (Ctrl+F)"". Shows a user typing exact strings like ""f.write"" and getting lost in too many matches. 
+Right side (Blue/Bright): ""Smart Search (@Codebase)"". Shows a user typing a natural question ""Where do I save logs?"" and getting one direct answer. The Cursor mascot [Ref: REF_IMG_2] is on the right side, giving a thumbs up.
+
+**[Target Text]**
+**The Problem:**
+- Requires exact keywords.
+- ""write"" matches everywhere.
+- Hard for beginners who forget syntax.
+
+**The Solution (Smart Search):**
+- Search by **Meaning** (What you want to do).
+- ""Where is the date format?""
+- Scans the entire project context."
+Page 4,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+**[Heading]**
+- Section: 4.1 The Concept of Meaning
+
+**[Visual Direction]**
+Panel 1: David is explaining via the screen. Alex is nodding, understanding the logic.
+Panel 2: A thought bubble from Alex showing him visualizing ""What I want to do"" vs ""Code syntax"".
+Panel 3: Alex turns to his keyboard, ready to type. David is guiding him.
+
+**[Target Text]**
+David: ""As code grows, you forget file names and syntax. That's normal.""
+David: ""But you never forget **what the code does**. 'Receiving arguments', 'Setting dates', 'Appending logs'.""
+Alex: ""Exactly! I know what I want to do, I just don't know the terms.""
+David: ""Then ask exactly that. Let's try it with **@Codebase**."""
+Page 5,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+None
+
+**[Heading]**
+- Section: How to Ask Good Questions
+
+**[Visual Direction]**
+A comparison table infographic titled ""Asking the Right Questions"". 
+Visual icons for 'Bad' (Red X) and 'Good' (Green Check).
+The layout is clean and easy to read. 
+
+**[Target Text]**
+**HOW TO SEARCH BY MEANING**
+
+❌ **Bad (Vague Keywords)**
+- `@Codebase error`
+- `@Codebase file`
+- `@Codebase date`
+(Too broad, Cursor doesn't know what you want)
+
+✅ **Good (Specific Intent)**
+- `@Codebase Where is the code that appends to the log file?`
+- `@Codebase Where do I receive command arguments?`
+- `@Codebase Where is the date format (YYYY-MM-DD) set?`
+(Specific sentences help Cursor find the exact logic)"
+Page 6,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+**[Heading]**
+- Section: 4.2 Step-by-Step Search
+
+**[Visual Direction]**
+Panel 1: Alex presses `Cmd+L` (or Ctrl+L). The Chat panel slides in smoothly from the right side of the IDE.
+Panel 2: Alex types the `@` symbol in the input box. A dropdown menu instantly appears.
+Panel 3: Close up on the dropdown menu highlighting options: `Codebase`, `Files`, `Docs`.
+
+**[Target Text]**
+David: ""First, open Chat with `Cmd+L` (Mac) or `Ctrl+L` (Win).""
+Alex: ""Okay, it's open.""
+David: ""Now type **@**. This tells Cursor **where** to look.""
+Alex: ""Oh, a menu popped up! Codebase, Files..."""
+Page 7,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+**[Heading]**
+- Section: Selecting @Codebase
+
+**[Visual Direction]**
+Panel 1: Alex clicks on `Codebase` in the dropdown. A blue pill/tag saying `@Codebase` appears in the text field.
+Panel 2: David explains the significance of this action. Background shows a visual metaphor of Cursor scanning a stack of files.
+Panel 3: Alex continues typing his question after the tag.
+
+**[Target Text]**
+David: ""Select **Codebase**. This means 'Search the entire project'.""
+David: ""Without this, Chat only sees the file you have open. With `@Codebase`, it sees everything.""
+Alex: ""Got it. Now I just ask my question naturally?""
+Alex (typing): ""@Codebase Where is the code that appends to the log file?"""
+Page 8,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Section: Getting the Answer
+
+**[Visual Direction]**
+Panel 1: Alex hits Enter. The Cursor mascot [Ref: REF_IMG_2] appears briefly on screen with a ""Thinking..."" icon.
+Panel 2: The Chat window displays the answer. It shows a snippet of code quoted from `log.py`.
+Panel 3: Alex clicks the quoted code link. The main editor instantly jumps to that specific line.
+
+**[Target Text]**
+Cursor: ""The code that appends to the log is in `log.py` around line 12.""
+Cursor: `with open(log_file, ""a"", encoding=""utf-8"") as f:`
+Alex: ""Whoa! It found it. And I can click to jump right there!""
+Alex: ""No scrolling required."""
+Page 9,practical_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Section: Summary of Steps
+
+**[Visual Direction]**
+A clear, step-by-step numbered list or flowchart illustrating the Smart Search process. The Cursor mascot [Ref: REF_IMG_2] guides the eye down the list. Screenshots of the UI elements (Chat input, @ dropdown, Send button) are included for clarity.
+
+**[Target Text]**
+**Step-by-Step: Searching with @Codebase**
+
+1. **Open Chat**: Press `Cmd+L` (Mac) / `Ctrl+L` (Win).
+2. **Type @**: Click the input field and type `@`.
+3. **Select Codebase**: Choose `Codebase` from the dropdown menu.
+4. **Ask**: Type your question in plain English (e.g., ""Where is the date format?"").
+5. **Send**: Press Enter or click the Send button.
+6. **Navigate**: Click the file link in the answer to jump to the code."
+Page 10,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+None
+
+**[Heading]**
+- Section: How It Works
+
+**[Visual Direction]**
+A diagram showing the data flow. 
+Input: ""@Codebase"" + ""User Question"". 
+Process: Arrows going into a ""Project Brain"" where Cursor scans multiple files (`.py`, `.txt`, `.md`). 
+Output: The most relevant code snippet is extracted and presented to the user. 
+Text labels explain that it understands ""context"" not just ""text matches"".
+
+**[Target Text]**
+**Under the Hood: Semantic Search**
+
+**Input:** Natural Language Question
+(e.g., ""Where do I handle errors?"")
+⬇️
+**@Codebase Engine:**
+Reads all files in your project folder.
+Understands the *meaning* of code functions.
+⬇️
+**Output:**
+Pinpoints the exact location, even if you didn't use the exact variable names."
+Page 11,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+**[Heading]**
+- Section: 4.3 Practice Examples
+
+**[Visual Direction]**
+Panel 1: David proposes a challenge. Alex looks confident.
+Panel 2: Split screen showing Alex typing Example 2: ""Where does it receive command arguments?"".
+Panel 3: The screen shows Cursor finding `sys.argv` immediately.
+
+**[Target Text]**
+David: ""Let's try two more examples in `daily_log` to get used to it.""
+David: ""Ask: 'Where does it receive command arguments?'""
+Alex (typing): ""@Codebase Where does it receive command arguments?""
+Cursor: ""It uses `sys.argv` in `log.py`...""
+Alex: ""Found it! Even though I forgot the term `sys.argv`."""
+Page 12,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+
+**[Heading]**
+- Section: Example 3 - Date Format
+
+**[Visual Direction]**
+Panel 1: Alex tries the third example on his own. ""Where is the date format set?""
+Panel 2: Cursor points to the f-string line with `%Y-%m-%d`.
+Panel 3: Alex smiles, looking at his screen with satisfaction. He leans back in his chair.
+
+**[Target Text]**
+Alex: ""Next... 'Where is the date format set?'""
+Cursor: ""The date format is defined in the `now` variable formatting: `f'{now:%Y-%m-%d %H:%M}'`.""
+Alex: ""This is so much faster. I don't need to memorize every line of code anymore.""
+Alex: ""I can just focus on the logic."""
+Page 13,practical_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+None
+
+**[Heading]**
+- Section: Example Summary
+
+**[Visual Direction]**
+A summary table of the three examples used in the `daily_log` project. It connects the ""User Intent"" to the ""Code Found"". Simple, clean layout.
+
+**[Target Text]**
+**Practice Summary: daily_log Project**
+
+| What you wanted to find | What you asked (@Codebase) | What Cursor found |
+|---|---|---|
+| **Appending Logic** | ""Where is the code that appends to the log?"" | `open(..., ""a"")` |
+| **Input Arguments** | ""Where does it receive arguments?"" | `sys.argv` |
+| **Date Configuration** | ""Where is the date format set?"" | `%Y-%m-%d` |
+
+**Key Takeaway:** You don't need to know the code to find the code."
+Page 14,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+**[Heading]**
+- Section: Text Search vs Smart Search
+
+**[Visual Direction]**
+Panel 1: Alex raises a hand with a question. ""What about the old Ctrl+F? Is it useless?""
+Panel 2: David shakes his head. He explains the nuance.
+Panel 3: Visual metaphor: A sniper scope (Text Search) vs a radar scan (Smart Search).
+
+**[Target Text]**
+Alex: ""So... should I never use `Ctrl+F` (Find) again?""
+David: ""No, Text Search is still useful!""
+David: ""If you know the **exact** string, like a specific variable name `daily_log.txt`, Text Search is faster.""
+David: ""Use **Project Search** (`Cmd+Shift+F`) for exact strings, and **@Codebase** for concepts."""
+Page 15,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+None
+
+**[Heading]**
+- Section: When to Use Which?
+
+**[Visual Direction]**
+A decision tree or comparison chart helping the user decide which search tool to use. 
+Top Question: ""Do you know the exact word?""
+Yes -> path to ""Project Search (Cmd+Shift+F)"".
+No / Not Sure -> path to ""Smart Search (@Codebase)"".
+
+**[Target Text]**
+**Which Search Should You Use?**
+
+**Scenario A: ""I know the exact name!""**
+- You know the variable is `max_retries`.
+- You want to find every instance of `TODO`.
+👉 **Use Project Search** (`Cmd+Shift+F` / `Ctrl+Shift+F`)
+
+**Scenario B: ""I know what it does, but not the code.""**
+- ""Where do we save the file?""
+- ""How is the user authenticated?""
+👉 **Use Smart Search** (Chat + `@Codebase`)"
+Page 16,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1] :: Alex
+[Ref: REF_IMG_3] :: David
+
+**[Heading]**
+- Section: Chapter Conclusion
+
+**[Visual Direction]**
+Panel 1: Alex is stretching his arms, looking relaxed. The `daily_log` project is open on his screen.
+Panel 2: David gives a closing remark. He looks proud.
+Panel 3: Alex looks determined. ""I'm ready for bigger changes now.""
+
+**[Target Text]**
+Alex: ""I feel much more in control. The code doesn't feel like a maze anymore.""
+David: ""That's the power of AI. It bridges the gap between your **intent** and the **implementation**.""
+David: ""Now that you can navigate freely, you're ready to build more complex features."""
+Page 17,practical_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+None
+
+**[Heading]**
+- Section: Chapter Summary
+
+**[Visual Direction]**
+A clean summary page with checkmarks. The background has a subtle pattern of magnifying glasses and code brackets.
+
+**[Target Text]**
+**CHAPTER 4 SUMMARY**
+
+✅ **Problem Solved**: No more scrolling blindly to find code.
+✅ **Tool**: `@Codebase` in Chat acts as a semantic search engine.
+✅ **Method**: Ask natural questions about ""what the code does"".
+✅ **Best Practice**: Use `@Codebase` for concepts, `Cmd+Shift+F` for exact strings.
+
+**Next Up**: Now that we can find code, let's write code across multiple files using **Composer**."
+Page 18,practical_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2] :: Cursor
+
+**[Heading]**
+- Section: Practice Checklist
+
+**[Visual Direction]**
+A checklist for the reader to perform immediately. The Cursor mascot [Ref: REF_IMG_2] is pointing at the list. Bottom of the page has a teaser for Chapter 5.
+
+**[Target Text]**
+**YOUR MISSION: TRY IT NOW**
+
+[ ] Open your `daily_log` project.
+[ ] Open Chat (`Cmd+L` / `Ctrl+L`).
+[ ] Type `@` and select `Codebase`.
+[ ] Ask: ""Where is the code that appends to the log file?""
+[ ] Click the result to jump to the code.
+
+**NEXT CHAPTER:**
+**Chapter 5: Composer — Advanced Techniques**
+We will expand `daily_log` to filter entries by date!"

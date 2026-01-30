@@ -1,0 +1,562 @@
+Page,Template,Prompt
+Cover,Cover,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1], [Ref: REF_IMG_3], [Ref: REF_IMG_2]
+
+**[Heading]**
+- Chapter 6: Tab — Mastering Code Suggestions
+
+**[Visual Direction]**
+A high-quality manga cover illustration. Center stage: A stylized, glowing 'Tab' key on a keyboard, emitting a holographic projection of code lines. Alex [Ref: REF_IMG_1] is reaching towards it with a focused, enlightened expression. David [Ref: REF_IMG_3] stands in the background with a reassuring smile, holding a tablet displaying 'log.py'. The Cursor mascot [Ref: REF_IMG_2] is floating near the code, holding a pen. The background is a mix of a modern coding interface and a cozy San Francisco apartment workspace. Title text is large and modern.
+
+**[Target Text]**
+Chapter 6: Tab — Mastering Code Suggestions
+
+Learn Cursor IDE
+The Visual Guide to AI-Powered Development"
+Page 1,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1], [Ref: REF_IMG_3]
+
+**[Heading]**
+- Section: Opening Scene — What to Do?
+
+**[Visual Direction]**
+Panel 1: Alex [Ref: REF_IMG_1] sitting at his desk in his apartment, looking slightly stuck. On his monitor, the `daily_log` project is open to `log.py`. He is hesitating to type.
+Panel 2: A video call window pops up on the screen. David [Ref: REF_IMG_3] appears, waving.
+Panel 3: Close up of Alex explaining his thought process. He gestures to the screen where he wants to add small lines of code manually.
+
+**[Target Text]**
+Panel 1 Alex: ""How do I write the rest...?""
+Panel 1 Alex (thinking): ""I want to write **small lines** myself rather than having Composer add them. But the next line doesn't come to me right away.""
+
+Panel 2 David: ""That's where **Tab** comes in. The **code suggestions** from Chapter 1.""
+Panel 2 David: ""If you **write a bit of intent**, it suggests the next line or block.""
+Panel 2 David: ""The habit of **accepting only good suggestions** and **rejecting with Esc if wrong** is important.""
+Panel 2 Alex: ""I want to practice using Tab in `daily_log`.""
+
+Panel 3 Alex: ""I want to cover from review to tips for accepting/rejecting.""
+Panel 3 David: ""First, quickly review **Tab basics**, then **try it specifically in log.py**. Learn **how to get better suggestions** and **accepting/rejecting** while doing it.""
+Page 2,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2]
+
+**[Heading]**
+- Chapter Roadmap
+
+**[Visual Direction]**
+A clean, step-by-step roadmap graphic. 
+Step 1: Review Tab Basics (Icon of a keyboard Tab key).
+Step 2: Practice in log.py (Icon of a python file with comments).
+Step 3: Tips for Accepting/Rejecting (Icon of a checkmark and an X cross).
+The Cursor mascot [Ref: REF_IMG_2] points to Step 2 with excitement.
+Text layout explains the goal: Use Tab intentionally for ""small lines"".
+
+**[Target Text]**
+What we'll do in this chapter:
+1. Tab Basic Review
+2. Practice in log.py: Draw suggestions with comments/function names
+3. Tips for Accepting/Rejecting
+
+Goal: When writing ""small lines"", use Tab intentionally and develop a sense of accepting only good ones.
+Practice location: `log.py` in `daily_log`."
+Page 3,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1], [Ref: REF_IMG_3]
+
+**[Heading]**
+- Section 6.1: Review of Chapter 1 — Tab Basic Operations
+
+**[Visual Direction]**
+Panel 1: David explaining with a finger raised. Visual insert of ""Gray Text"" appearing on a screen.
+Panel 2: Alex typing in `log.py`. He places the cursor after `with open(...)`. He types `for`. A gray ghost text `line in f:` appears immediately.
+Panel 3: Alex looks critical at a different suggestion. He presses the Esc key firmly.
+
+**[Target Text]**
+David: Tab is a feature where Cursor suggests the continuation of the code you're writing as gray translucent text.
+David: Press Tab to accept. Esc to reject. Accepted ones become normal code.
+David: Suggestions tend to follow the flow of existing code. First, write one line or a comment and use Tab to get the continuation.
+Alex: The suggestion Tab gave doesn't match what I want this time.
+David: In that case, reject with Esc and write it yourself. Always check with your eyes before accepting."
+Page 4,practical_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2]
+
+**[Heading]**
+- How to Use Tab: The Workflow
+
+**[Visual Direction]**
+A clear instructional diagram showing the keyboard and screen.
+1. Place Cursor -> 2. Write Intent -> 3. Wait for Gray Text -> 4. Check -> 5. Tab or Esc.
+Highlight the ""Gray Translucent Text"" visual style clearly.
+
+**[Target Text]**
+Complete steps to receive code suggestions:
+
+1. **Place Cursor**: Where you want to continue code.
+2. **Write Intent**: Type a comment (`# Filter by date`) or start a function (`def`).
+3. **Wait**: Gray translucent text appears.
+4. **Check**: ALWAYS verify with your eyes.
+5. **Action**:
+   - [TAB] Accept (Gray becomes code)
+   - [ESC] Reject (Dismiss suggestion)
+
+*Tab is a helper; you make the final judgment.*"
+Page 5,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1], [Ref: REF_IMG_3]
+
+**[Heading]**
+- Section 6.2: Techniques for Getting Better Suggestions
+
+**[Visual Direction]**
+Panel 1: David explaining the power of comments. Background shows examples of comments turning into code.
+Panel 2: Alex types `# For each line in the file, display only those starting with day` in `log.py`. He hits Enter.
+Panel 3: The screen shows a perfect code suggestion appearing: `for line in f: if line.startswith(day):`.
+
+**[Target Text]**
+David: Writing ""what you want to do"" in comments or function names makes Tab suggestions more accurate.
+David: Examples: `# Display only that day's lines`. Writing that shows intent helps Cursor guess the continuation.
+Alex: When I wrote what I want to do in the comment, a suggestion close to that appeared!
+David: Even short comments like ""Filter by date"" work well."
+Page 6,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2]
+
+**[Heading]**
+- Techniques to Draw Suggestions
+
+**[Visual Direction]**
+Visual list of techniques with code examples.
+1. Comments: `# Read file` -> Code.
+2. Function Names: `def filter_by_day` -> Code.
+3. Variable Names: `log_file = ...` -> Context.
+Cursor mascot [Ref: REF_IMG_2] is holding a sign saying ""Intent is Key!"".
+
+**[Target Text]**
+**Techniques to get better suggestions:**
+
+1. **Write intent in comments**
+   `# Display only that day's lines`
+   (Press Enter -> Tab)
+
+2. **Write intent in function names**
+   `def format_log_line(now, line):`
+   (Press Enter -> Tab)
+
+3. **Write variable names clearly**
+   Defining `log_file` helps Cursor know you are working with logs.
+
+**Try it in log.py!**"
+Page 7,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1], [Ref: REF_IMG_3]
+
+**[Heading]**
+- Specific vs. Vague
+
+**[Visual Direction]**
+Panel 1: Alex asks a question, looking puzzled.
+Panel 2: Alex types a vague comment `# Do something`. The suggestion on screen is generic and unhelpful.
+Panel 3: David corrects him, showing a specific comment `# If file doesn't exist, display 'No log'`.
+
+**[Target Text]**
+Alex: What happens with vague comments?
+David: Something vague like `# Do something` tends to produce off-target suggestions.
+Alex: (Types `# Error handling`) The suggestion isn't quite what I needed...
+David: More specific is more accurate. Writing ""what to do"" specifically is safer. Like `# If file doesn't exist, display 'No log'`."
+Page 8,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2]
+
+**[Heading]**
+- Vague vs. Specific Inputs
+
+**[Visual Direction]**
+A comparison chart (Good vs Bad).
+Left side (Red X): Vague inputs like `# Do something`, `# Error`.
+Right side (Green Check): Specific inputs like `# Filter by date`, `# Format one line`.
+Cursor mascot [Ref: REF_IMG_2] gives a thumbs up to the specific side.
+
+**[Target Text]**
+**Communicating Intent:**
+
+❌ **Vague**
+`# Do something`
+`# Error handling`
+Result: Suggestions may be random or generic.
+
+✅ **Specific**
+`# Display only that day's lines`
+`# If file doesn't exist, display 'No log'`
+Result: Reproducible, accurate suggestions.
+
+**Point**: Tell Tab ""What"" you want to do."
+Page 9,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1], [Ref: REF_IMG_3]
+
+**[Heading]**
+- Section 6.3: Learning Coding Style
+
+**[Visual Direction]**
+Panel 1: David explains style learning. Background shows code snippets matching in style.
+Panel 2: Alex types `print(` in `log.py`. The suggestion uses an f-string `f"
+Page 10,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2]
+
+**[Heading]**
+- How Tab Learns Your Style
+
+**[Visual Direction]**
+A diagram showing the ""Context Window"".
+The current file is analyzed by AI. Arrows point from existing code (f-strings, indentation) to the current cursor position, influencing the suggestion.
+Text highlights: Indentation, Naming Conventions, Formatting.
+
+**[Target Text]**
+**Style Learning**
+
+- **References Surrounding Code**: Tab looks at the open file and project to understand *how* you write.
+- **Adapts To**: 
+  - Indentation (Spaces vs Tabs)
+  - Variable Naming (snake_case vs camelCase)
+  - Formatting (e.g., f-strings)
+
+**Point**: As you write more consistent code, Tab's suggestions become more compatible with your style."
+Page 11,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1], [Ref: REF_IMG_3]
+
+**[Heading]**
+- Section 6.4: Using Tab in Larger Projects
+
+**[Visual Direction]**
+Panel 1: Alex imagines a huge pile of files (Large Project). He looks concerned.
+Panel 2: David explains the distinction between Tab and Composer. He uses hand gestures to show ""Small/Local"" vs ""Large/Global"".
+Panel 3: Alex nods, understanding the tool separation.
+
+**[Target Text]**
+Alex: `daily_log` is still small, but what about when files increase?
+David: Tab mainly looks at the file you're editing. Even in large projects, it focuses on where you're working.
+David: For changes that span multiple files, **Composer** is better suited. Tab is for completing a few lines right now.
+Alex: So Tab = completion for the current spot, Composer = changes by feature. That's the distinction."
+Page 12,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2]
+
+**[Heading]**
+- Tab vs. Composer
+
+**[Visual Direction]**
+A split visual comparison.
+Left: Tab. Icon: Single file, pen writing a line. Label: ""Micro / Local Flow"".
+Right: Composer. Icon: Multiple files connected, gear icon. Label: ""Macro / Feature Implementation"".
+Cursor mascot [Ref: REF_IMG_2] stands in the middle balancing the two.
+
+**[Target Text]**
+**When to use which?**
+
+**Tab [Micro]**
+- Completing a few lines or blocks.
+- Focus: Flow within the current file.
+- Action: Write & Accept.
+
+**Composer [Macro]**
+- Adding features or fixing bugs across files.
+- Focus: Project-wide changes.
+- Action: Describe & Generate.
+
+**Rule**: Write details with Tab, build features with Composer."
+Page 13,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1], [Ref: REF_IMG_3]
+
+**[Heading]**
+- Section 6.5: Best Practices for Accepting and Rejecting
+
+**[Visual Direction]**
+Panel 1: David looks serious/cautionary. He emphasizes the ""Check with your eyes"" rule.
+Panel 2: Alex is reviewing a suggestion in `log.py`. The code logic is good, but the text string says ""No entries"" instead of ""No log for that day"".
+Panel 3: Alex hits Esc. He looks satisfied with his decision to reject.
+
+**[Target Text]**
+David: Always check with your eyes before accepting. Don't assume everything is correct.
+David: If variable names are wrong or text doesn't match, reject with Esc.
+Alex: (Looking at screen) The meaning matches, but the text I want to display is different... I'll reject this and fix it myself.
+David: When it's partially wrong, reject first. Not expecting perfect suggestions is key."
+Page 14,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2]
+
+**[Heading]**
+- Decision Flow: Tab or Esc?
+
+**[Visual Direction]**
+A flowchart diagram.
+Start: Suggestion Appears.
+Node 1: Check with Eyes.
+Branch A: Matches Intent? -> YES -> Press Tab -> Done.
+Branch B: Wrong/Different? -> NO -> Press Esc -> Write Manually.
+Branch C: Usable but minor error? -> Press Tab -> Edit Manually.
+
+**[Target Text]**
+**Tips for Accepting/Rejecting**
+
+1. **Check**: Never accept blindly.
+2. **Reject (Esc)**: If logic is wrong or text is different.
+3. **Accept (Tab)**: If it's usable as-is.
+
+**Practice**: Be conscious of this decision every time you see gray text."
+Page 15,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1], [Ref: REF_IMG_3]
+
+**[Heading]**
+- Editing After Accepting
+
+**[Visual Direction]**
+Panel 1: Alex asks about fixing things post-Tab.
+Panel 2: Alex accepts a suggestion, then immediately backspaces to change a variable name.
+Panel 3: David smiles, explaining that suggestions are just ""Drafts"".
+
+**[Target Text]**
+Alex: What if I want to fix something after accepting?
+David: After Accept, just edit normally. Tab is a suggestion at the moment you accept it.
+Alex: (Editing code) I'll just tweak this variable name...
+David: Think of suggestions as drafts. Fixing yourself is expected, so you can use Tab more casually."
+Page 16,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2]
+
+**[Heading]**
+- Suggestions are Drafts
+
+**[Visual Direction]**
+An artistic illustration of a ""Draft"" stamp on a piece of code. 
+Visual shows a workflow: [Tab Suggestion] -> [Accept] -> [User Edit].
+The user is the final editor.
+
+**[Target Text]**
+**Manual Fixes are OK**
+
+- Tab suggestions are not final code.
+- They are **Drafts** to speed you up.
+- **It's normal** to Accept -> Edit.
+- Don't worry about getting it perfect in one shot.
+
+**Mindset**: You are the Editor-in-Chief. Cursor is the drafter."
+Page 17,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1], [Ref: REF_IMG_3]
+
+**[Heading]**
+- Chapter Summary Scene
+
+**[Visual Direction]**
+Panel 1: Alex leans back in his chair, looking at his completed code in `log.py`.
+Panel 2: David summarizes the key points on the screen.
+Panel 3: Alex looks determined. He understands ""Intentional Tab"".
+
+**[Target Text]**
+Alex: Writing a bit of intent makes suggestions accurate, and checking before Tab/Esc is important.
+David: That's the right feeling. Use Tab for small lines, and Esc if something seems wrong.
+David: We covered: Basics, Intent (Comments), Style, Checking, and Manual Fixes.
+Alex: It's about using Tab intentionally."
+Page 18,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2]
+
+**[Heading]**
+- Chapter 6 Summary
+
+**[Visual Direction]**
+A summary checklist board.
+Four main points with icons.
+1. Basics: Gray text, Tab/Esc.
+2. Better Suggestions: Use Comments/Function names.
+3. Style: Cursor adapts to project style.
+4. Judgment: Check with eyes, Edit after accepting.
+
+**[Target Text]**
+**Chapter 6 Summary**
+
+✅ **Tab Basics**: Gray suggestions -> Check -> Tab (Accept) / Esc (Reject).
+✅ **Better Suggestions**: Communicate intent with **Comments** or **Function Names**.
+✅ **Style**: Tab adapts to your project's coding style.
+✅ **Judgment**: Always check. Manual fixes after accepting are OK."
+Page 19,practical_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2]
+
+**[Heading]**
+- Practice Checklist: Try it in log.py!
+
+**[Visual Direction]**
+A practical checklist for the reader to perform immediately.
+Visuals of the `log.py` interface with the specific lines to type highlighted.
+
+**[Target Text]**
+**Practice Checklist (Try right away)**
+
+1. **Open `log.py`** in your editor.
+2. **Write a Comment**:
+   `# Display only that day's lines`
+   (Press Enter -> Wait for Tab)
+3. **Check & Decide**:
+   - Does it match intent? -> **Tab**
+   - Is it wrong? -> **Esc**
+4. **Write a Function**:
+   `def format_log_line(now, line):`
+   (Press Enter -> Check suggestion)
+5. **Edit**: Manually tweak the code you accepted."
+Page 20,manga_storyboard,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_1], [Ref: REF_IMG_3]
+
+**[Heading]**
+- Next Chapter Preview
+
+**[Visual Direction]**
+Panel 1: Alex asks ""What's next?""
+Panel 2: David brings up a holographic display showing ""@Mentions"". Icons for @Files, @Docs, @Codebase float around.
+Panel 3: Alex looks intrigued by the new symbols.
+
+**[Target Text]**
+Alex: What's next?
+David: In Chapter 7, we'll dig deeper into **@Mentions**.
+David: We'll cover distinctions like using **@Files** to specify files or **@Docs** for documentation.
+David: It's about making clear ""where"" to show AI in Chat and Composer."
+Page 21,infographic_page,"◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: [Alex.png]
+[Ref: REF_IMG_2] :: [Cursor.png]
+[Ref: REF_IMG_3] :: [David.png]
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+
+**[Character Reference]**
+[Ref: REF_IMG_2]
+
+**[Heading]**
+- Coming Up: Chapter 7
+
+**[Visual Direction]**
+A teaser poster for Chapter 7.
+Title: ""@Mentions — Directing AI's Attention"".
+Visuals: @ symbol glowing. Connections to files and documents.
+Text highlights: @Codebase vs @Files vs @Docs.
+
+**[Target Text]**
+**Next Chapter: @Mentions**
+
+- **Directing AI's Attention**: Tell Cursor exactly what to look at.
+- **Key Tools**: 
+  - `@Files`: Focus on specific code.
+  - `@Docs`: Reference external libraries.
+  - `@Codebase`: Search everything.
+
+**Mastering Context is the next step!**"
