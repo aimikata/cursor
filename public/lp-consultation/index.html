@@ -1364,6 +1364,7 @@
         if (result.success) {
           form.style.display = 'none';
           successMsg.style.display = 'block';
+          window.open('thank-you.html', '_blank');
         } else {
           throw new Error(result.message || "予約に失敗しました");
         }
