@@ -862,37 +862,9 @@
           この動画がその一歩目です。その先の<strong style="color: #ffffff;">あなた専用のシミュレーションと相談</strong>が、現実を理想に近づける架け橋になります。<br><br>
           個別説明会（無料）では、<strong style="color: #d4af37;">あなた専用の印税資産シミュレーション</strong>と、<strong style="color: #d4af37;">あなたの状況に合わせたロードマップ</strong>をお渡しします。無料でご予約いただけます。
         </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- アンケート -->
-  <section class="survey" style="background: #0f0f1f;">
-    <div class="container">
-      <h2 class="section-title">動画を見た<span class="gold">感想をお聞かせください</span></h2>
-      <p style="text-align: center; margin-bottom: 30px; color: #a0a0b0;">
-        あなたの率直なご意見が、個別相談でより良いアドバイスをするために役立ちます
-      </p>
-      <div class="form-container" style="max-width: 600px;">
-        <form id="surveyForm">
-          <div class="form-group">
-            <label>動画を見て、良いと思った点（任意）</label>
-            <textarea id="surveyGood" placeholder="例：プロジェクト作成が簡単そう、世界観設計が分かりやすかった など" style="min-height: 100px;"></textarea>
-          </div>
-          <div class="form-group">
-            <label>動画を見て、不安に思った点・疑問点（任意）</label>
-            <textarea id="surveyConcern" placeholder="例：1冊作るのは大変そう、本当に90分でできるのか など" style="min-height: 100px;"></textarea>
-          </div>
-          <div class="form-group">
-            <label>個別相談で知りたいこと（任意）</label>
-            <textarea id="surveyWant" placeholder="例：自分でもできるか、投資回収期間、具体的な手順 など" style="min-height: 100px;"></textarea>
-          </div>
-
-          <p style="text-align: center; margin-bottom: 20px; font-size: 16px; color: #e0e0e8;">
-            申し込むと、<strong style="color: #d4af37;">あなた専用の印税シミュレーション</strong>と<strong style="color: #d4af37;">企画案3本</strong>を個別でお渡しします。<strong style="color: #d4af37;">個別説明会は無料</strong>です。
-          </p>
-          <button type="button" class="form-submit" onclick="goToConsultation()">あなた専用のシミュレーションを受け取る（無料）</button>
-        </form>
+        <p style="text-align: center; margin-top: 25px;">
+          <a href="#form" class="cta-button">日程を選んで予約する（無料）</a>
+        </p>
       </div>
     </div>
   </section>
@@ -987,7 +959,7 @@
           <div class="flow-number">1</div>
           <div class="flow-content">
             <h4>フォームから申し込み</h4>
-            <p>下記フォームに必要事項を入力してください</p>
+            <p>日程・お名前・メールアドレスを入力してください</p>
           </div>
         </div>
         <div class="flow-step">
@@ -1057,48 +1029,19 @@
             <select name="scheduleRow" id="timeSelect" required></select>
           </div>
 
-          <!-- ステップ3: お客様情報 -->
+          <!-- ステップ3: お名前とメールアドレス -->
           <div class="form-group">
-            <label class="step-label">③ お客様情報<span style="color: #f87171;">（必須）</span></label>
-            <input type="text" id="inputName" required placeholder="お名前">
-            <input type="email" id="inputEmail" required placeholder="メールアドレス">
+            <label class="step-label">③ お名前<span style="color: #f87171;">（必須）</span></label>
+            <input type="text" id="inputName" required placeholder="山田 太郎" style="margin-bottom: 15px;">
 
-            <label for="phone" style="display: block; margin-top: 15px; margin-bottom: 8px; font-size: 14px;">電話番号<span style="color: #f87171;">（必須）</span></label>
-            <input type="tel" id="inputPhone" required placeholder="090-1234-5678" pattern="[0-9\-]+">
-            <p style="font-size: 12px; color: #808090; margin-top: 5px;">
-              ※ 相談前日にSMSでリマインドをお送りします<br>
-              ※ 真剣に取り組む意思のある方のみお申し込みください
+            <label class="step-label" style="margin-top: 20px;">④ メールアドレス<span style="color: #f87171;">（必須）</span></label>
+            <input type="email" id="inputEmail" required placeholder="example@email.com">
+            <p style="font-size: 12px; color: #808090; margin-top: 8px;">
+              ※ 確認メールをお送りします。相談時にヒアリングさせていただきます。
             </p>
-
-            <label for="goal" style="display: block; margin-top: 15px; margin-bottom: 8px; font-size: 14px;">目標の月間印税収入<span style="color: #f87171;">（必須）</span></label>
-            <select id="inputGoal">
-              <option value="">選択してください</option>
-              <option value="1-3万円">月1〜3万円</option>
-              <option value="3-5万円">月3〜5万円</option>
-              <option value="5-10万円">月5〜10万円</option>
-              <option value="10-30万円">月10〜30万円</option>
-              <option value="30万円以上">月30万円以上</option>
-            </select>
-
-            <label for="time" style="display: block; margin-top: 15px; margin-bottom: 8px; font-size: 14px;">週に使える時間<span style="color: #f87171;">（必須）</span></label>
-            <select id="inputTime">
-              <option value="">選択してください</option>
-              <option value="週1-3時間">週1〜3時間</option>
-              <option value="週3-5時間">週3〜5時間</option>
-              <option value="週5-10時間">週5〜10時間</option>
-              <option value="週10時間以上">週10時間以上</option>
-            </select>
-
-            <label for="message" style="display: block; margin-top: 15px; margin-bottom: 8px; font-size: 14px;">ご質問・気になること（任意）</label>
-            <textarea id="inputMessage" placeholder="何でもお気軽にどうぞ" style="min-height: 80px;"></textarea>
           </div>
 
-          <!-- アンケート回答（非表示） -->
-          <input type="hidden" id="hiddenSurveyGood" name="surveyGood">
-          <input type="hidden" id="hiddenSurveyConcern" name="surveyConcern">
-          <input type="hidden" id="hiddenSurveyWant" name="surveyWant">
-
-          <button type="submit" class="form-submit" id="submitBtn">あなた専用のシミュレーションを受け取る（無料）</button>
+          <button type="submit" class="form-submit" id="submitBtn">予約する（無料）</button>
           <div id="loading" class="loading-text" style="display: none;">
             処理中...<br>（しばらくお待ちください）
           </div>
@@ -1131,17 +1074,6 @@
     // ★★★★★★★★★★★★★★★★★★★★★★★★★★★
 
     let allSchedules = [];
-
-    // アンケートから申込フォームへスクロール
-    function goToConsultation() {
-      // アンケートの内容をhiddenフィールドに保存
-      document.getElementById('hiddenSurveyGood').value = document.getElementById('surveyGood').value || '';
-      document.getElementById('hiddenSurveyConcern').value = document.getElementById('surveyConcern').value || '';
-      document.getElementById('hiddenSurveyWant').value = document.getElementById('surveyWant').value || '';
-
-      // フォームセクションへスクロール
-      document.getElementById('form').scrollIntoView({ behavior: 'smooth' });
-    }
 
     // ページ読み込み時にGASからデータを取得
     window.addEventListener('DOMContentLoaded', () => {
@@ -1222,24 +1154,31 @@
         return;
       }
 
-      const phone = document.getElementById('inputPhone').value.trim();
-      if(!phone) {
-        alert("電話番号を入力してください");
-        document.getElementById('inputPhone').focus();
+      const email = document.getElementById('inputEmail').value.trim();
+      if(!email) {
+        alert("メールアドレスを入力してください");
+        document.getElementById('inputEmail').focus();
+        return;
+      }
+
+      const name = document.getElementById('inputName').value.trim();
+      if(!name) {
+        alert("お名前を入力してください");
+        document.getElementById('inputName').focus();
         return;
       }
 
       const postData = {
         scheduleRow: selectedRow,
-        name: document.getElementById('inputName').value,
-        email: document.getElementById('inputEmail').value,
-        phone: phone,
-        goal: document.getElementById('inputGoal').value,
-        time: document.getElementById('inputTime').value,
-        message: document.getElementById('inputMessage').value,
-        surveyGood: document.getElementById('hiddenSurveyGood').value || '',
-        surveyConcern: document.getElementById('hiddenSurveyConcern').value || '',
-        surveyWant: document.getElementById('hiddenSurveyWant').value || ''
+        email: email,
+        name: name,
+        phone: '',
+        goal: '',
+        time: '',
+        message: '',
+        surveyGood: '',
+        surveyConcern: '',
+        surveyWant: ''
       };
 
       btn.disabled = true;
