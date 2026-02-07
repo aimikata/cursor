@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day4 無料実体験｜事前アンケート</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      background: linear-gradient(180deg, #0a0a1a 0%, #1a1a2e 50%, #0a0a1a 100%);
+      color: #ffffff;
+      line-height: 1.8;
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+    .container { max-width: 600px; margin: 0 auto; }
+    h1 { font-size: clamp(22px, 4vw, 28px); font-weight: 900; margin-bottom: 24px; text-align: center; }
+    .subtitle { font-size: 15px; color: #a0a0b0; margin-bottom: 40px; text-align: center; }
+    .form-box {
+      background: linear-gradient(135deg, #1a1a2e 0%, #2a2a3e 100%);
+      border: 1px solid #3a3a4a;
+      border-radius: 20px;
+      padding: 40px;
+    }
+    .form-group { margin-bottom: 24px; }
+    .form-group label { display: block; margin-bottom: 8px; font-size: 14px; font-weight: 500; }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%;
+      padding: 14px;
+      border: 1px solid #3a3a4a;
+      border-radius: 10px;
+      background: #0f0f1f;
+      color: #ffffff;
+      font-size: 16px;
+      font-family: inherit;
+    }
+    .form-group textarea { min-height: 100px; resize: vertical; }
+    .form-submit {
+      width: 100%;
+      background: linear-gradient(90deg, #d4af37, #f4cf67);
+      color: #0a0a1a;
+      padding: 18px;
+      border: none;
+      border-radius: 50px;
+      font-size: 18px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .form-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(212, 175, 55, 0.5);
+    }
+    .note { font-size: 12px; color: #606070; margin-top: 20px; text-align: center; }
+    .complete { text-align: center; padding: 60px 20px; display: none; }
+    .complete .icon { font-size: 64px; color: #d4af37; margin-bottom: 24px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Day4 無料実体験｜事前アンケート</h1>
+    <p class="subtitle">枠は1日2名まで。ご案内可能と判断した方にご連絡します。</p>
+
+    <div id="formArea">
+      <form class="form-box" id="anketoForm">
+        <!-- ★送信先を設定してください（GAS、メール配信ツール、Notion等）★ -->
+        <div class="form-group">
+          <label>お名前 <span style="color:#f87171">*</span></label>
+          <input type="text" name="name" required placeholder="山田 太郎">
+        </div>
+        <div class="form-group">
+          <label>メールアドレス <span style="color:#f87171">*</span></label>
+          <input type="email" name="email" required placeholder="example@email.com">
+        </div>
+        <div class="form-group">
+          <label>目標の月間印税収入</label>
+          <select name="goal">
+            <option value="">選択してください</option>
+            <option value="1-3万円">月1〜3万円</option>
+            <option value="3-5万円">月3〜5万円</option>
+            <option value="5-10万円">月5〜10万円</option>
+            <option value="10-30万円">月10〜30万円</option>
+            <option value="30万円以上">月30万円以上</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>週に使える時間</label>
+          <select name="time">
+            <option value="">選択してください</option>
+            <option value="週1-3時間">週1〜3時間</option>
+            <option value="週3-5時間">週3〜5時間</option>
+            <option value="週5-10時間">週5〜10時間</option>
+            <option value="週10時間以上">週10時間以上</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Day4の体験で知りたいこと・ご質問</label>
+          <textarea name="message" placeholder="例：90分で本当に1冊できるのか、自分にもできるか など"></textarea>
+        </div>
+        <button type="submit" class="form-submit">アンケートを送信する</button>
+      </form>
+    </div>
+
+    <div id="completeArea" class="complete">
+      <div class="icon">✓</div>
+      <h2 style="margin-bottom: 16px;">ご回答ありがとうございます</h2>
+      <p style="color: #a0a0b0;">
+        ご案内可能と判断した方に、メールにてご連絡いたします。<br>
+        しばらくお待ちください。
+      </p>
+    </div>
+
+    <p class="note">※ ご回答いただいた内容を確認し、ご案内可能な方のみご連絡します。</p>
+  </div>
+
+  <script>
+    document.getElementById('anketoForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      // ★送信処理を追加してください（fetch to GAS、Formspree等）★
+      // 例：Formspree を使う場合
+      // fetch('https://formspree.io/f/xxxxx', { method: 'POST', body: new FormData(this) })
+      //   .then(() => { ... });
+      document.getElementById('formArea').style.display = 'none';
+      document.getElementById('completeArea').style.display = 'block';
+    });
+  </script>
+</body>
+</html>

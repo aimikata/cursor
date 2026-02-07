@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>お申し込みありがとうございます｜無料個別説明会</title>
+  <title>ありがとうございます｜3日間チャレンジが始まります</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -15,53 +15,140 @@
       color: #ffffff;
       line-height: 1.8;
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
       padding: 40px 20px;
     }
-    .box {
-      max-width: 560px;
-      padding: 48px 40px;
-      background: linear-gradient(135deg, #1a1a2e 0%, #2a2a3e 100%);
-      border: 1px solid #3a3a4a;
-      border-radius: 20px;
+    .container { max-width: 800px; margin: 0 auto; }
+    .header {
+      text-align: center;
+      margin-bottom: 40px;
     }
-    .icon {
-      font-size: 64px;
-      margin-bottom: 24px;
-      color: #d4af37;
+    .icon { font-size: 64px; margin-bottom: 16px; color: #d4af37; }
+    h1 { font-size: clamp(24px, 4vw, 32px); font-weight: 900; margin-bottom: 16px; }
+    .subtitle { font-size: 16px; color: #a0a0b0; }
+    .video-wrap {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 16px;
+      background: #1a1a2e;
+      margin: 40px 0;
     }
-    h1 {
-      font-size: clamp(24px, 4vw, 32px);
-      font-weight: 900;
-      margin-bottom: 24px;
-      color: #ffffff;
+    .video-wrap iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
     }
-    .message {
-      font-size: 16px;
-      color: #a0a0b0;
-      margin-bottom: 32px;
-      line-height: 1.9;
-    }
-    .note {
+    .video-note {
+      text-align: center;
       font-size: 14px;
       color: #808090;
+      margin-bottom: 40px;
     }
+    .schedule-box {
+      background: linear-gradient(135deg, #1a1a2e 0%, #2a2a3e 100%);
+      border: 1px solid #3a3a4a;
+      border-radius: 16px;
+      padding: 30px;
+      margin: 30px 0;
+    }
+    .schedule-box h3 {
+      font-size: 18px;
+      margin-bottom: 20px;
+      color: #d4af37;
+    }
+    .schedule-box ul { list-style: none; }
+    .schedule-box li {
+      padding: 12px 0;
+      border-bottom: 1px solid #2a2a3a;
+      font-size: 15px;
+    }
+    .schedule-box li:last-child { border-bottom: none; }
+    .day4-cta {
+      text-align: center;
+      margin: 50px 0;
+      padding: 40px;
+      background: linear-gradient(135deg, #1a2a1a 0%, #1a3a2a 100%);
+      border: 2px solid #d4af37;
+      border-radius: 20px;
+    }
+    .day4-cta h3 { font-size: 22px; margin-bottom: 16px; color: #d4af37; }
+    .day4-cta p { color: #a0a0b0; margin-bottom: 24px; font-size: 15px; }
+    .cta-button {
+      display: inline-block;
+      background: linear-gradient(90deg, #d4af37, #f4cf67);
+      color: #0a0a1a;
+      padding: 18px 40px;
+      border-radius: 50px;
+      font-size: 18px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 4px 20px rgba(212, 175, 55, 0.3);
+    }
+    .cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(212, 175, 55, 0.5);
+      color: #0a0a1a;
+    }
+    .note { font-size: 14px; color: #606070; text-align: center; margin-top: 40px; }
   </style>
 </head>
 <body>
-  <div class="box">
-    <div class="icon">✓</div>
-    <h1>ありがとうございます</h1>
-    <p class="message">
-      お申し込みを受け付けました。<br>
-      確認メールをお送りしますので、ご確認ください。<br><br>
-      ご予約日時にZoomでお会いしましょう。
+  <div class="container">
+    <div class="header">
+      <div class="icon">✓</div>
+      <h1>ありがとうございます</h1>
+      <p class="subtitle">ebookプレゼント＆完全ガイド動画をお受け取りください</p>
+    </div>
+
+    <p style="text-align: center; margin-bottom: 20px; color: #c0c0d0;">
+      月20万円の不労所得を作る『仕組み』の秘密を、完全にマスターするための完全ガイドです。<br>
+      約12分の動画をご覧ください。
     </p>
-    <p class="note">このウィンドウは閉じてお戻りください。</p>
+
+    <div class="video-wrap">
+      <iframe 
+        src="https://www.youtube.com/embed/EUtlmzOYeFY" 
+        title="Kindle印税資産完全ガイド" 
+        frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+        allowfullscreen>
+      </iframe>
+    </div>
+    <p class="video-note">※ 動画の最後に、3日間チャレンジの案内があります。明日の朝9時に、Day1のメールをお送りします。</p>
+
+    <div class="schedule-box">
+      <h3>3日間チャレンジの流れ</h3>
+      <ul>
+        <li><strong>Day1 『発見』</strong>：売れるテーマを見つけるリサーチ方法を学びます</li>
+        <li><strong>Day2 『確信』</strong>：成功する人と失敗する人の決定的な違いが明確になります</li>
+        <li><strong>Day3 『感動』</strong>：90分で完成する体験をします</li>
+        <li><strong>Day4</strong>：希望者のみ、無料実体験＆ゴールデンルートシミュレーション相談（枠1日2名）</li>
+      </ul>
+    </div>
+
+    <div class="day4-cta">
+      <h3>Day4の無料実体験にご興味ある方へ</h3>
+      <p>
+        その日にマンガ1冊を持ち帰れる体験＆個別相談をご希望の方は、<br>
+        事前アンケートにご回答ください。枠は1日2名までです。
+      </p>
+      <!-- ★Day4アンケートのURLを設定してください★ -->
+      <a href="day4-anketo.html" class="cta-button">Day4アンケートに回答する</a>
+    </div>
+
+    <p class="note">
+      確認メールとebookのダウンロードリンクをお送りしました。<br>
+      迷惑メールフォルダもご確認ください。
+    </p>
+    <p style="text-align: center; margin-top: 20px;">
+      <a href="ebook.html" style="display: inline-block; text-align: center;">
+        <img src="ebook-cover.png" alt="ebook表紙" style="max-width: 160px; width: 100%; border-radius: 8px; border: 2px solid #d4af37; margin-bottom: 8px;">
+        <span style="color: #d4af37; text-decoration: underline;">ebookを今すぐ読む</span>
+      </a>
+    </p>
   </div>
 </body>
 </html>

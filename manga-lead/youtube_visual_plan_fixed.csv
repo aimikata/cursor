@@ -1,0 +1,553 @@
+﻿Slide,Shot Type,Visual Image Prompt (EN),Corresponding Script (JP)
+Slide 1,"Thumbnail Plans (A, B)","### PAGE 1
+◆【OUTPUT RULE】FULL COLOR only. NO speech bubbles, NO dialogue, NO text/captions in image. Visual-only panels.
+◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: tanaka_ref.jpg
+[Ref: REF_IMG_2] :: akari_ref.jpg
+◆【STYLE LOCK】Maintain exact same art style as [Ref] and previous slides: same line weight, cel-shading, coloring, and character likeness. No style drift. Consistent professional Japanese manga aesthetic throughout.
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+◆【BACKGROUND RULE】Background must supplement the explanation: show keywords, data, or icons that match what is being said in the script (e.g. numbers, labels, diagrams). Avoid decorative-only elements.
+◆【ABSOLUTE CHARACTER SPEC】:
+[Ref: REF_IMG_1] :: Tanaka: (35yo male, average build, sharp jawline, NO boyish face, clean short black hair with forehead visible, wears vibrant blue button-down shirt with top button open and sleeves rolled up, crisp white trousers. NO glasses, NO white coat or jacket.)
+[Ref: REF_IMG_2] :: Akari: (26yo female, slender build, long bright honey-brown hair, expressive amber eyes, wears warm yellow or orange knit sweater or elegant blouse.)
+◆【SCENE & ATMOSPHERE】: Theme: Keyence's ""Weakness Theory"" & High Income. High contrast, shocking truth atmosphere.
+◆【VISUALS & DIALOGUE】:
+Panel 1上段: [Thumbnail Plan A: Tanaka [REF_IMG_1] looks confidently at the viewer holding a holographic golden bar labeled ""$200,000"". Background has a futuristic scanner effect.]Panel 2下段: [Thumbnail Plan B: Akari [REF_IMG_2] looks shocked/scared at a holographic clock counting down. Background text: ""NO FREEDOM?"".]◆【DIALOGUE & SFX LIST】: (None - no dialogue or speech bubbles in image)
+◆【THE CHARACTER LOCKDOWN】:
+- [Ref: REF_IMG_1] Tanaka: (35yo male, blue shirt, white pants, NO GLASSES, NO WHITE COAT. ABSOLUTELY NO variance in appearance.)
+- [Ref: REF_IMG_2] Akari: (26yo female, long honey-brown hair, yellow/orange sweater/blouse. ABSOLUTELY NO variance in appearance.)
+◆【NEGATIVE PROMPT】(speech bubble, dialogue, text bubble, Japanese text, white coat, glasses, bad anatomy, blurry)
+
+◆【このページの出力形式】Aspect Ratio 8:9. Layout: 2 Panels Vertical. Style: Professional Japanese Manga. FULL COLOR only. NO speech bubbles, NO dialogue or text in image.",??????????????????1??????????????????
+Slide 2,"Thumbnail Plans (C, D)","### PAGE 2
+◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: tanaka_ref.jpg
+[Ref: REF_IMG_2] :: akari_ref.jpg
+◆【STYLE LOCK】Maintain exact same art style as [Ref] and previous slides: same line weight, cel-shading, coloring, and character likeness. No style drift. Consistent professional Japanese manga aesthetic throughout.
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+◆【BACKGROUND RULE】Background must supplement the explanation: show keywords, data, or icons that match what is being said in the script (e.g. numbers, labels, diagrams). Avoid decorative-only elements.
+◆【ABSOLUTE CHARACTER SPEC】:
+[Ref: REF_IMG_1] :: Tanaka: (35yo male, average build, sharp jawline, NO boyish face, clean short black hair with forehead visible, wears vibrant blue button-down shirt with top button open and sleeves rolled up, crisp white trousers. NO glasses, NO white coat or jacket.)
+[Ref: REF_IMG_2] :: Akari: (26yo female, slender build, long bright honey-brown hair, expressive amber eyes, wears warm yellow or orange knit sweater or elegant blouse.)
+◆【SCENE & ATMOSPHERE】: Theme: Management Logic vs Human Weakness.
+◆【VISUALS & DIALOGUE】:
+Panel 3上段: [Thumbnail Plan C: Tanaka [REF_IMG_1] pushes a holographic button labeled ""AUTO SUCCESS"". Background shows a complex flowchart.]Panel 4下段: [Thumbnail Plan D: Tanaka [REF_IMG_1] and Akari [REF_IMG_2] back-to-back. Tanaka is smirking confidently, Akari is crying comically with a ""SLACKER"" label above her head.]◆【DIALOGUE & SFX LIST】: (None - no dialogue or speech bubbles in image)
+◆【THE CHARACTER LOCKDOWN】:
+- [Ref: REF_IMG_1] Tanaka: (35yo male, blue shirt, white pants, NO GLASSES, NO WHITE COAT.)
+- [Ref: REF_IMG_2] Akari: (26yo female, long honey-brown hair, yellow/orange sweater/blouse.)
+◆【NEGATIVE PROMPT】(speech bubble, dialogue, text bubble, Japanese text, white coat, glasses, bad anatomy, blurry)
+
+◆【このページの出力形式】Aspect Ratio 8:9. Layout: 2 Panels Vertical. Style: Professional Japanese Manga. FULL COLOR only. NO speech bubbles, NO dialogue or text in image.",??????????????????2?????????????????
+Slide 3,8:9 Stacked (Vertical 16:9x2),"### PAGE 3
+◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: tanaka_ref.jpg
+[Ref: REF_IMG_2] :: akari_ref.jpg
+◆【STYLE LOCK】Maintain exact same art style as [Ref] and previous slides: same line weight, cel-shading, coloring, and character likeness. No style drift. Consistent professional Japanese manga aesthetic throughout.
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+◆【BACKGROUND RULE】Background must supplement the explanation: show keywords, data, or icons that match what is being said in the script (e.g. numbers, labels, diagrams). Avoid decorative-only elements.
+◆【ABSOLUTE CHARACTER SPEC】:
+[Ref: REF_IMG_1] :: Tanaka: (35yo male, blue shirt, white pants, NO GLASSES, NO WHITE COAT.)
+[Ref: REF_IMG_2] :: Akari: (26yo female, yellow/orange knit, long honey-brown hair.)
+◆【SCENE & ATMOSPHERE】: Urelabo Office. Akari's desk is cluttered with snacks and a smartphone showing a video player.
+◆【VISUALS & DIALOGUE】:
+Panel 5上段: [Akari [REF_IMG_2] is slumped over her desk, face buried in arms, looking defeated. Background: messy desk, phone showing video player, holographic checklist with ""Blog: 0/3"", ""Email: 0/10"" in red.]Panel 6下段: [Tanaka [REF_IMG_1] suddenly leans in from the side, looking at Akari's phone screen with a curious, slightly teasing smile. Akari is startled. Background: same desk with ""Blog: 0/3"" checklist visible.]◆【DIALOGUE & SFX LIST】: (None - no dialogue or speech bubbles in image)
+◆【THE CHARACTER LOCKDOWN】:
+- [Ref: REF_IMG_1] Tanaka: (Blue shirt, white pants, NO GLASSES.)
+- [Ref: REF_IMG_2] Akari: (Yellow/orange knit.)
+◆【NEGATIVE PROMPT】(speech bubble, dialogue, text bubble, Japanese text, white coat, glasses, bad anatomy)
+
+◆【このページの出力形式】Aspect Ratio 8:9. Layout: 2 Panels Vertical. Style: Professional Japanese Manga. FULL COLOR only. NO speech bubbles, NO dialogue or text in image.",1 ????????????????????????3?????...? 2 ????????????????????????????????????
+Slide 4,8:9 Stacked (Vertical 16:9x2),"### PAGE 4
+◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: tanaka_ref.jpg
+[Ref: REF_IMG_2] :: akari_ref.jpg
+◆【STYLE LOCK】Maintain exact same art style as [Ref] and previous slides: same line weight, cel-shading, coloring, and character likeness. No style drift. Consistent professional Japanese manga aesthetic throughout.
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+◆【BACKGROUND RULE】Background must supplement the explanation: show keywords, data, or icons that match what is being said in the script (e.g. numbers, labels, diagrams). Avoid decorative-only elements.
+◆【ABSOLUTE CHARACTER SPEC】:
+[Ref: REF_IMG_1] :: Tanaka: (35yo male, blue shirt, white pants, NO GLASSES, NO WHITE COAT.)
+[Ref: REF_IMG_2] :: Akari: (26yo female, yellow/orange knit, long honey-brown hair.)
+◆【SCENE & ATMOSPHERE】: Intellectual revelation. Intense lighting focusing on Tanaka.
+◆【VISUALS & DIALOGUE】:
+Panel 7上段: [Akari [REF_IMG_2] looks up with puppy eyes, looking sad and self-deprecating. Hand on chest. Background: faint icon or text suggesting ""WEAK WILLPOWER"" or ""SELF-BLAME"".]Panel 8下段: [Tanaka [REF_IMG_1] is shown in a close-up, intense and passionate expression. Eyes wide and shining. Background text: ""HUMANS ARE WEAK"".]◆【DIALOGUE & SFX LIST】: (None - no dialogue or speech bubbles in image)
+◆【THE CHARACTER LOCKDOWN】:
+- [Ref: REF_IMG_1] Tanaka: (Blue shirt, white pants, NO GLASSES.)
+- [Ref: REF_IMG_2] Akari: (Yellow/orange knit.)
+◆【NEGATIVE PROMPT】(speech bubble, dialogue, text bubble, Japanese text, white coat, glasses, bad anatomy)
+
+◆【このページの出力形式】Aspect Ratio 8:9. Layout: 2 Panels Vertical. Style: Professional Japanese Manga. FULL COLOR only. NO speech bubbles, NO dialogue or text in image.",3 ??????????????????????????????? 4 ??????????????? ???????????Humans are weak...?
+Slide 5,8:9 Stacked (Vertical 16:9x2),"### PAGE 5
+◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: tanaka_ref.jpg
+[Ref: REF_IMG_2] :: akari_ref.jpg
+◆【STYLE LOCK】Maintain exact same art style as [Ref] and previous slides: same line weight, cel-shading, coloring, and character likeness. No style drift. Consistent professional Japanese manga aesthetic throughout.
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+◆【BACKGROUND RULE】Background must supplement the explanation: show keywords, data, or icons that match what is being said in the script (e.g. numbers, labels, diagrams). Avoid decorative-only elements.
+◆【ABSOLUTE CHARACTER SPEC】:
+[Ref: REF_IMG_1] :: Tanaka: (35yo male, blue shirt, white pants, NO GLASSES, NO WHITE COAT.)
+[Ref: REF_IMG_2] :: Akari: (26yo female, yellow/orange knit, long honey-brown hair.)
+◆【SCENE & ATMOSPHERE】: Futuristic Business Data background. Holographic city or office building.
+◆【VISUALS & DIALOGUE】:
+Panel 9上段: [Akari [REF_IMG_2] has a question mark floating near her head, looking confused but intrigued.]Panel 10下段: [Tanaka [REF_IMG_1] gestures grandly towards a holographic projection of a modern high-tech building. Holographic text in air: ""AVG INCOME $200K"" and ""PROFIT 50%"".]◆【DIALOGUE & SFX LIST】: (None - no dialogue or speech bubbles in image)
+◆【THE CHARACTER LOCKDOWN】:
+- [Ref: REF_IMG_1] Tanaka: (Blue shirt, white pants, NO GLASSES.)
+- [Ref: REF_IMG_2] Akari: (Yellow/orange knit.)
+◆【NEGATIVE PROMPT】(speech bubble, dialogue, text bubble, Japanese text, white coat, glasses, bad anatomy)
+
+◆【このページの出力形式】Aspect Ratio 8:9. Layout: 2 Panels Vertical. Style: Professional Japanese Manga. FULL COLOR only. NO speech bubbles, NO dialogue or text in image.",5 ???????? ????????????? 6 ?????????????2000????...????????????
+Slide 6,8:9 Stacked (Vertical 16:9x2),"### PAGE 6
+◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: tanaka_ref.jpg
+[Ref: REF_IMG_2] :: akari_ref.jpg
+◆【STYLE LOCK】Maintain exact same art style as [Ref] and previous slides: same line weight, cel-shading, coloring, and character likeness. No style drift. Consistent professional Japanese manga aesthetic throughout.
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+◆【BACKGROUND RULE】Background must supplement the explanation: show keywords, data, or icons that match what is being said in the script (e.g. numbers, labels, diagrams). Avoid decorative-only elements.
+◆【ABSOLUTE CHARACTER SPEC】:
+[Ref: REF_IMG_1] :: Tanaka: (35yo male, blue shirt, white pants, NO GLASSES, NO WHITE COAT.)
+[Ref: REF_IMG_2] :: Akari: (26yo female, yellow/orange knit, long honey-brown hair.)
+◆【SCENE & ATMOSPHERE】: High contrast intellectual reveal.
+◆【VISUALS & DIALOGUE】:
+Panel 11上段: [Akari [REF_IMG_2] leans forward in shock, hands on cheeks. Background abstract shock lines.]Panel 12下段: [Tanaka [REF_IMG_1] snaps his fingers with a confident smile. Bold English text in background: ""WEAKNESS THEORY"".]◆【DIALOGUE & SFX LIST】: (None - no dialogue or speech bubbles in image)
+◆【THE CHARACTER LOCKDOWN】:
+- [Ref: REF_IMG_1] Tanaka: (Blue shirt, white pants, NO GLASSES.)
+- [Ref: REF_IMG_2] Akari: (Yellow/orange knit.)
+◆【NEGATIVE PROMPT】(speech bubble, dialogue, text bubble, Japanese text, white coat, glasses, bad anatomy)
+
+◆【このページの出力形式】Aspect Ratio 8:9. Layout: 2 Panels Vertical. Style: Professional Japanese Manga. FULL COLOR only. NO speech bubbles, NO dialogue or text in image.",7 ?????????? ????????????????????????????? 8 ?????????????????????????????
+Slide 7,8:9 Stacked (Vertical 16:9x2),"### PAGE 7
+◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: tanaka_ref.jpg
+[Ref: REF_IMG_2] :: akari_ref.jpg
+◆【STYLE LOCK】Maintain exact same art style as [Ref] and previous slides: same line weight, cel-shading, coloring, and character likeness. No style drift. Consistent professional Japanese manga aesthetic throughout.
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+◆【BACKGROUND RULE】Background must supplement the explanation: show keywords, data, or icons that match what is being said in the script (e.g. numbers, labels, diagrams). Avoid decorative-only elements.
+◆【ABSOLUTE CHARACTER SPEC】:
+[Ref: REF_IMG_1] :: Tanaka: (35yo male, blue shirt, white pants, NO GLASSES, NO WHITE COAT.)
+[Ref: REF_IMG_2] :: Akari: (26yo female, yellow/orange knit, long honey-brown hair.)
+◆【SCENE & ATMOSPHERE】: Bright, clean, futuristic Urelabo studio set. Urelabo logo visible on wall.
+◆【VISUALS & DIALOGUE】:
+Panel 13上段: [Tanaka [REF_IMG_1] stands tall with arms open in a welcoming gesture, smiling broadly. Background wall has ""URELABO"" logo.]Panel 14下段: [Akari [REF_IMG_2] smiles energetically at the camera, making a small fist pump gesture of determination. Background: ""SECRET TO SUCCESS"" or ""20M INCOME"" text/icons.]◆【DIALOGUE & SFX LIST】: (None - no dialogue or speech bubbles in image)
+◆【THE CHARACTER LOCKDOWN】:
+- [Ref: REF_IMG_1] Tanaka: (Blue shirt, white pants, NO GLASSES.)
+- [Ref: REF_IMG_2] Akari: (Yellow/orange knit.)
+◆【NEGATIVE PROMPT】(speech bubble, dialogue, text bubble, Japanese text, white coat, glasses, bad anatomy)
+
+◆【このページの出力形式】Aspect Ratio 8:9. Layout: 2 Panels Vertical. Style: Professional Japanese Manga. FULL COLOR only. NO speech bubbles, NO dialogue or text in image.",9 ?????????????? ????????????????????????? 10 ?????????????????? ?????????????...?
+Slide 8,8:9 Stacked (Vertical 16:9x2),"### PAGE 8
+◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: tanaka_ref.jpg
+[Ref: REF_IMG_2] :: akari_ref.jpg
+◆【STYLE LOCK】Maintain exact same art style as [Ref] and previous slides: same line weight, cel-shading, coloring, and character likeness. No style drift. Consistent professional Japanese manga aesthetic throughout.
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+◆【BACKGROUND RULE】Background must supplement the explanation: show keywords, data, or icons that match what is being said in the script (e.g. numbers, labels, diagrams). Avoid decorative-only elements.
+◆【ABSOLUTE CHARACTER SPEC】:
+[Ref: REF_IMG_1] :: Tanaka: (35yo male, blue shirt, white pants, NO GLASSES, NO WHITE COAT.)
+[Ref: REF_IMG_2] :: Akari: (26yo female, yellow/orange knit, long honey-brown hair.)
+◆【SCENE & ATMOSPHERE】: Historical context. Silhouette of a wise business man (Takizaki).
+◆【VISUALS & DIALOGUE】:
+Panel 15上段: [A silhouette or semi-realistic illustration of an older wise man (Takizaki) looking contemplative. Background text: ""2 BANKRUPTCIES"".]Panel 16下段: [Akari [REF_IMG_2] looks surprised, holding up two fingers. ""Twice!?"" expression.]◆【DIALOGUE & SFX LIST】: (None - no dialogue or speech bubbles in image)
+◆【THE CHARACTER LOCKDOWN】:
+- [Ref: REF_IMG_1] Tanaka: (Blue shirt, white pants, NO GLASSES.)
+- [Ref: REF_IMG_2] Akari: (Yellow/orange knit.)
+◆【NEGATIVE PROMPT】(speech bubble, dialogue, text bubble, Japanese text, white coat, glasses, bad anatomy)
+
+◆【このページの出力形式】Aspect Ratio 8:9. Layout: 2 Panels Vertical. Style: Professional Japanese Manga. FULL COLOR only. NO speech bubbles, NO dialogue or text in image.",11 ?????????????????????????? 12 ?????2?????? ?????????????????
+Slide 9,8:9 Stacked (Vertical 16:9x2),"### PAGE 9
+◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: tanaka_ref.jpg
+[Ref: REF_IMG_2] :: akari_ref.jpg
+◆【STYLE LOCK】Maintain exact same art style as [Ref] and previous slides: same line weight, cel-shading, coloring, and character likeness. No style drift. Consistent professional Japanese manga aesthetic throughout.
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+◆【BACKGROUND RULE】Background must supplement the explanation: show keywords, data, or icons that match what is being said in the script (e.g. numbers, labels, diagrams). Avoid decorative-only elements.
+◆【ABSOLUTE CHARACTER SPEC】:
+[Ref: REF_IMG_1] :: Tanaka: (35yo male, blue shirt, white pants, NO GLASSES, NO WHITE COAT.)
+[Ref: REF_IMG_2] :: Akari: (26yo female, yellow/orange knit, long honey-brown hair.)
+◆【SCENE & ATMOSPHERE】: Call To Action. Engaging.
+◆【VISUALS & DIALOGUE】:
+Panel 17上段: [Tanaka [REF_IMG_1] points directly at the ""camera"" (viewer), looking serious and inviting. Background text: ""STOP BLAMING WILLPOWER"" or ""WATCH TO LEARN"".]Panel 18下段: [Tanaka [REF_IMG_1] and Akari [REF_IMG_2] together. Akari points to a holographic ""SUBSCRIBE"" button floating in the air.]◆【DIALOGUE & SFX LIST】: (None - no dialogue or speech bubbles in image)
+◆【THE CHARACTER LOCKDOWN】:
+- [Ref: REF_IMG_1] Tanaka: (Blue shirt, white pants, NO GLASSES.)
+- [Ref: REF_IMG_2] Akari: (Yellow/orange knit.)
+◆【NEGATIVE PROMPT】(speech bubble, dialogue, text bubble, Japanese text, white coat, glasses, bad anatomy)
+
+◆【このページの出力形式】Aspect Ratio 8:9. Layout: 2 Panels Vertical. Style: Professional Japanese Manga. FULL COLOR only. NO speech bubbles, NO dialogue or text in image.",14 ???????????????????????????????????????...??????????????????????????
+Slide 10,8:9 Stacked (Vertical 16:9x2),"### PAGE 10
+◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: tanaka_ref.jpg
+[Ref: REF_IMG_2] :: akari_ref.jpg
+◆【STYLE LOCK】Maintain exact same art style as [Ref] and previous slides: same line weight, cel-shading, coloring, and character likeness. No style drift. Consistent professional Japanese manga aesthetic throughout.
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+◆【BACKGROUND RULE】Background must supplement the explanation: show keywords, data, or icons that match what is being said in the script (e.g. numbers, labels, diagrams). Avoid decorative-only elements.
+◆【ABSOLUTE CHARACTER SPEC】:
+[Ref: REF_IMG_1] :: Tanaka: (35yo male, blue shirt, white pants, NO GLASSES, NO WHITE COAT.)
+[Ref: REF_IMG_2] :: Akari: (26yo female, yellow/orange knit, long honey-brown hair.)
+◆【SCENE & ATMOSPHERE】: Philosophical debate. Visualizing Good vs Evil.
+◆【VISUALS & DIALOGUE】:
+Panel 19上段: [Tanaka [REF_IMG_1] holds his hands out like a scale. Above one hand is an angel icon, above the other a devil icon. English text: ""GOOD vs EVIL"".]Panel 20下段: [Akari [REF_IMG_2] looks thoughtful, finger on chin, looking upwards. Background: same scale motif with angel/devil icons or ""GOOD vs EVIL"" text so the philosophical choice is visible.]◆【DIALOGUE & SFX LIST】: (None - no dialogue or speech bubbles in image)
+◆【THE CHARACTER LOCKDOWN】:
+- [Ref: REF_IMG_1] Tanaka: (Blue shirt, white pants, NO GLASSES.)
+- [Ref: REF_IMG_2] Akari: (Yellow/orange knit.)
+◆【NEGATIVE PROMPT】(speech bubble, dialogue, text bubble, Japanese text, white coat, glasses, bad anatomy)
+
+◆【このページの出力形式】Aspect Ratio 8:9. Layout: 2 Panels Vertical. Style: Professional Japanese Manga. FULL COLOR only. NO speech bubbles, NO dialogue or text in image.",15 ????????????????????????????????????????????????? 16 ?????????????????????????
+Slide 11,8:9 Stacked (Vertical 16:9x2),"### PAGE 11
+◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: tanaka_ref.jpg
+[Ref: REF_IMG_2] :: akari_ref.jpg
+◆【STYLE LOCK】Maintain exact same art style as [Ref] and previous slides: same line weight, cel-shading, coloring, and character likeness. No style drift. Consistent professional Japanese manga aesthetic throughout.
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+◆【BACKGROUND RULE】Background must supplement the explanation: show keywords, data, or icons that match what is being said in the script (e.g. numbers, labels, diagrams). Avoid decorative-only elements.
+◆【ABSOLUTE CHARACTER SPEC】:
+[Ref: REF_IMG_1] :: Tanaka: (35yo male, blue shirt, white pants, NO GLASSES, NO WHITE COAT.)
+[Ref: REF_IMG_2] :: Akari: (26yo female, yellow/orange knit, long honey-brown hair.)
+◆【SCENE & ATMOSPHERE】: Definition of the core concept.
+◆【VISUALS & DIALOGUE】:
+Panel 21上段: [Tanaka [REF_IMG_1] makes an 'X' shape with his arms to reject Good/Evil. Text in background: ""WEAKNESS THEORY"".]Panel 22下段: [Akari [REF_IMG_2] looks sheepish and embarrassed, realizing it applies to her. Background shows a small icon of a person lounging on a sofa.]◆【DIALOGUE & SFX LIST】: (None - no dialogue or speech bubbles in image)
+◆【THE CHARACTER LOCKDOWN】:
+- [Ref: REF_IMG_1] Tanaka: (Blue shirt, white pants, NO GLASSES.)
+- [Ref: REF_IMG_2] Akari: (Yellow/orange knit.)
+◆【NEGATIVE PROMPT】(speech bubble, dialogue, text bubble, Japanese text, white coat, glasses, bad anatomy)
+
+◆【このページの出力形式】Aspect Ratio 8:9. Layout: 2 Panels Vertical. Style: Professional Japanese Manga. FULL COLOR only. NO speech bubbles, NO dialogue or text in image.",17 ???????????????????????????????????????? 18 ???????????????????????????
+Slide 12,8:9 Stacked (Vertical 16:9x2),"### PAGE 12
+◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: tanaka_ref.jpg
+[Ref: REF_IMG_2] :: akari_ref.jpg
+◆【STYLE LOCK】Maintain exact same art style as [Ref] and previous slides: same line weight, cel-shading, coloring, and character likeness. No style drift. Consistent professional Japanese manga aesthetic throughout.
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+◆【BACKGROUND RULE】Background must supplement the explanation: show keywords, data, or icons that match what is being said in the script (e.g. numbers, labels, diagrams). Avoid decorative-only elements.
+◆【ABSOLUTE CHARACTER SPEC】:
+[Ref: REF_IMG_1] :: Tanaka: (35yo male, blue shirt, white pants, NO GLASSES, NO WHITE COAT.)
+[Ref: REF_IMG_2] :: Akari: (26yo female, yellow/orange knit, long honey-brown hair.)
+◆【SCENE & ATMOSPHERE】: Visualization of a transparent, inescapable system.
+◆【VISUALS & DIALOGUE】:
+Panel 23上段: [Tanaka [REF_IMG_1] gestures to a holographic cube or glass maze. Inside the glass are silhouettes of workers working efficiently. Text: ""TRANSPARENT SYSTEM"".]Panel 24下段: [Close up of Tanaka [REF_IMG_1], serious face. Text: ""MOTIVATION IS UNRELIABLE"".]◆【DIALOGUE & SFX LIST】: (None - no dialogue or speech bubbles in image)
+◆【THE CHARACTER LOCKDOWN】:
+- [Ref: REF_IMG_1] Tanaka: (Blue shirt, white pants, NO GLASSES.)
+- [Ref: REF_IMG_2] Akari: (Yellow/orange knit.)
+◆【NEGATIVE PROMPT】(speech bubble, dialogue, text bubble, Japanese text, white coat, glasses, bad anatomy)
+
+◆【このページの出力形式】Aspect Ratio 8:9. Layout: 2 Panels Vertical. Style: Professional Japanese Manga. FULL COLOR only. NO speech bubbles, NO dialogue or text in image.",19 ??????????????????????????...?????????????????...??????????????????????
+Slide 13,8:9 Stacked (Vertical 16:9x2),"### PAGE 13
+◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: tanaka_ref.jpg
+[Ref: REF_IMG_2] :: akari_ref.jpg
+◆【STYLE LOCK】Maintain exact same art style as [Ref] and previous slides: same line weight, cel-shading, coloring, and character likeness. No style drift. Consistent professional Japanese manga aesthetic throughout.
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+◆【BACKGROUND RULE】Background must supplement the explanation: show keywords, data, or icons that match what is being said in the script (e.g. numbers, labels, diagrams). Avoid decorative-only elements.
+◆【ABSOLUTE CHARACTER SPEC】:
+[Ref: REF_IMG_1] :: Tanaka: (35yo male, blue shirt, white pants, NO GLASSES, NO WHITE COAT.)
+[Ref: REF_IMG_2] :: Akari: (26yo female, yellow/orange knit, long honey-brown hair.)
+◆【SCENE & ATMOSPHERE】: Gym analogy. Personal training.
+◆【VISUALS & DIALOGUE】:
+Panel 25上段: [Tanaka [REF_IMG_1] visualizing a gym scene. A trainer icon (like RIZAP) stands next to a person lifting weights. Text: ""MANAGED ENVIRONMENT"", ""TRAINER"".]Panel 26下段: [Akari [REF_IMG_2] nods enthusiastically, imagining herself working out under supervision. Text: ""ACCOUNTABILITY"", ""SOMEONE WATCHING"".]◆【DIALOGUE & SFX LIST】: (None - no dialogue or speech bubbles in image)
+◆【THE CHARACTER LOCKDOWN】:
+- [Ref: REF_IMG_1] Tanaka: (Blue shirt, white pants, NO GLASSES.)
+- [Ref: REF_IMG_2] Akari: (Yellow/orange knit.)
+◆【NEGATIVE PROMPT】(speech bubble, dialogue, text bubble, Japanese text, white coat, glasses, bad anatomy)
+
+◆【このページの出力形式】Aspect Ratio 8:9. Layout: 2 Panels Vertical. Style: Professional Japanese Manga. FULL COLOR only. NO speech bubbles, NO dialogue or text in image.",20 ??????????????????????...???????????????????????????????? 21 ????????? ??????????????????????...?
+Slide 14,8:9 Stacked (Vertical 16:9x2),"### PAGE 14
+◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: tanaka_ref.jpg
+[Ref: REF_IMG_2] :: akari_ref.jpg
+◆【STYLE LOCK】Maintain exact same art style as [Ref] and previous slides: same line weight, cel-shading, coloring, and character likeness. No style drift. Consistent professional Japanese manga aesthetic throughout.
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+◆【BACKGROUND RULE】Background must supplement the explanation: show keywords, data, or icons that match what is being said in the script (e.g. numbers, labels, diagrams). Avoid decorative-only elements.
+◆【ABSOLUTE CHARACTER SPEC】:
+[Ref: REF_IMG_1] :: Tanaka: (35yo male, blue shirt, white pants, NO GLASSES, NO WHITE COAT.)
+[Ref: REF_IMG_2] :: Akari: (26yo female, yellow/orange knit, long honey-brown hair.)
+◆【SCENE & ATMOSPHERE】: Transformation. Normal person to High Performer via System.
+◆【VISUALS & DIALOGUE】:
+Panel 27上段: [Tanaka [REF_IMG_1] explains with a diagram: A normal stick figure enters a box labeled ""SYSTEM"" and comes out as a glowing superhero figure. Text: ""AVERAGE ? SUPER"", ""RESULTS"".]Panel 28下段: [Tanaka [REF_IMG_1] close up, looking intellectual. Text: ""BEHAVIOR MANAGEMENT"".]◆【DIALOGUE & SFX LIST】: (None - no dialogue or speech bubbles in image)
+◆【THE CHARACTER LOCKDOWN】:
+- [Ref: REF_IMG_1] Tanaka: (Blue shirt, white pants, NO GLASSES.)
+- [Ref: REF_IMG_2] Akari: (Yellow/orange knit.)
+◆【NEGATIVE PROMPT】(speech bubble, dialogue, text bubble, Japanese text, white coat, glasses, bad anatomy)
+
+◆【このページの出力形式】Aspect Ratio 8:9. Layout: 2 Panels Vertical. Style: Professional Japanese Manga. FULL COLOR only. NO speech bubbles, NO dialogue or text in image.",22 ???????????????????????????????????????...???????????????????????????????????????????
+Slide 15,8:9 Stacked (Vertical 16:9x2),"### PAGE 15
+◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: tanaka_ref.jpg
+[Ref: REF_IMG_2] :: akari_ref.jpg
+◆【STYLE LOCK】Maintain exact same art style as [Ref] and previous slides: same line weight, cel-shading, coloring, and character likeness. No style drift. Consistent professional Japanese manga aesthetic throughout.
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+◆【BACKGROUND RULE】Background must supplement the explanation: show keywords, data, or icons that match what is being said in the script (e.g. numbers, labels, diagrams). Avoid decorative-only elements.
+◆【ABSOLUTE CHARACTER SPEC】:
+[Ref: REF_IMG_1] :: Tanaka: (35yo male, blue shirt, white pants, NO GLASSES, NO WHITE COAT.)
+[Ref: REF_IMG_2] :: Akari: (26yo female, yellow/orange knit, long honey-brown hair.)
+◆【SCENE & ATMOSPHERE】: Realization about Freedom vs Constraint.
+◆【VISUALS & DIALOGUE】:
+Panel 29上段: [Akari [REF_IMG_2] looks pensive, perhaps a bit sad, realizing ""freedom"" was her enemy. Background: Broken chains, text ""FREEDOM = TRAP"" or ""TOO MUCH FREEDOM"".]Panel 30下段: [Tanaka [REF_IMG_1] nods in agreement. Text: ""SELF-CONTROL IS HARD"".]◆【DIALOGUE & SFX LIST】: (None - no dialogue or speech bubbles in image)
+◆【THE CHARACTER LOCKDOWN】:
+- [Ref: REF_IMG_1] Tanaka: (Blue shirt, white pants, NO GLASSES.)
+- [Ref: REF_IMG_2] Akari: (Yellow/orange knit.)
+◆【NEGATIVE PROMPT】(speech bubble, dialogue, text bubble, Japanese text, white coat, glasses, bad anatomy)
+
+◆【このページの出力形式】Aspect Ratio 8:9. Layout: 2 Panels Vertical. Style: Professional Japanese Manga. FULL COLOR only. NO speech bubbles, NO dialogue or text in image.",23 ????????????????????????????????????????...? 24 ????????? ???????????????????
+Slide 16,8:9 Stacked (Vertical 16:9x2),"### PAGE 16
+◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: tanaka_ref.jpg
+[Ref: REF_IMG_2] :: akari_ref.jpg
+◆【STYLE LOCK】Maintain exact same art style as [Ref] and previous slides: same line weight, cel-shading, coloring, and character likeness. No style drift. Consistent professional Japanese manga aesthetic throughout.
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+◆【BACKGROUND RULE】Background must supplement the explanation: show keywords, data, or icons that match what is being said in the script (e.g. numbers, labels, diagrams). Avoid decorative-only elements.
+◆【ABSOLUTE CHARACTER SPEC】:
+[Ref: REF_IMG_1] :: Tanaka: (35yo male, blue shirt, white pants, NO GLASSES, NO WHITE COAT.)
+[Ref: REF_IMG_2] :: Akari: (26yo female, yellow/orange knit, long honey-brown hair.)
+◆【SCENE & ATMOSPHERE】: Shocking Data visualization. The detailed report.
+◆【VISUALS & DIALOGUE】:
+Panel 31上段: [Tanaka [REF_IMG_1] holds a tablet showing a complex holographic timeline. It looks like a barcode of activities. Text: ""MINUTE REPORT"".]Panel 32下段: [Detailed view of the holographic chart. Sections labeled ""TRAVEL"", ""MEETING"", ""OFFICE"". Text: ""EVERY MINUTE COUNTED"".]◆【DIALOGUE & SFX LIST】: (None - no dialogue or speech bubbles in image)
+◆【THE CHARACTER LOCKDOWN】:
+- [Ref: REF_IMG_1] Tanaka: (Blue shirt, white pants, NO GLASSES.)
+- [Ref: REF_IMG_2] Akari: (Yellow/orange knit.)
+◆【NEGATIVE PROMPT】(speech bubble, dialogue, text bubble, Japanese text, white coat, glasses, bad anatomy)
+
+◆【このページの出力形式】Aspect Ratio 8:9. Layout: 2 Panels Vertical. Style: Professional Japanese Manga. FULL COLOR only. NO speech bubbles, NO dialogue or text in image.",25 ????????????????????????????????????????????????????? 26 ???????????????????????...?
+Slide 17,8:9 Stacked (Vertical 16:9x2),"### PAGE 17
+◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: tanaka_ref.jpg
+[Ref: REF_IMG_2] :: akari_ref.jpg
+◆【STYLE LOCK】Maintain exact same art style as [Ref] and previous slides: same line weight, cel-shading, coloring, and character likeness. No style drift. Consistent professional Japanese manga aesthetic throughout.
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+◆【BACKGROUND RULE】Background must supplement the explanation: show keywords, data, or icons that match what is being said in the script (e.g. numbers, labels, diagrams). Avoid decorative-only elements.
+◆【ABSOLUTE CHARACTER SPEC】:
+[Ref: REF_IMG_1] :: Tanaka: (35yo male, blue shirt, white pants, NO GLASSES, NO WHITE COAT.)
+[Ref: REF_IMG_2] :: Akari: (26yo female, yellow/orange knit, long honey-brown hair.)
+◆【SCENE & ATMOSPHERE】: Surveillance/Monitoring concept. GPS map.
+◆【VISUALS & DIALOGUE】:
+Panel 33上段: [Akari [REF_IMG_2] looks overwhelmed, holding her head. Background shows overwhelming data lines.]Panel 34下段: [Tanaka [REF_IMG_1] points to a holographic map with a red pin moving on it. Text: ""GPS TRACKING"".]◆【DIALOGUE & SFX LIST】: (None - no dialogue or speech bubbles in image)
+◆【THE CHARACTER LOCKDOWN】:
+- [Ref: REF_IMG_1] Tanaka: (Blue shirt, white pants, NO GLASSES.)
+- [Ref: REF_IMG_2] Akari: (Yellow/orange knit.)
+◆【NEGATIVE PROMPT】(speech bubble, dialogue, text bubble, Japanese text, white coat, glasses, bad anatomy)
+
+◆【このページの出力形式】Aspect Ratio 8:9. Layout: 2 Panels Vertical. Style: Professional Japanese Manga. FULL COLOR only. NO speech bubbles, NO dialogue or text in image.",27 ?????????????? ??????????? 28 ????????????...???????????????GPS??????????????????????????
+Slide 18,8:9 Stacked (Vertical 16:9x2),"### PAGE 18
+◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: tanaka_ref.jpg
+[Ref: REF_IMG_2] :: akari_ref.jpg
+◆【STYLE LOCK】Maintain exact same art style as [Ref] and previous slides: same line weight, cel-shading, coloring, and character likeness. No style drift. Consistent professional Japanese manga aesthetic throughout.
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+◆【BACKGROUND RULE】Background must supplement the explanation: show keywords, data, or icons that match what is being said in the script (e.g. numbers, labels, diagrams). Avoid decorative-only elements.
+◆【ABSOLUTE CHARACTER SPEC】:
+[Ref: REF_IMG_1] :: Tanaka: (35yo male, blue shirt, white pants, NO GLASSES, NO WHITE COAT.)
+[Ref: REF_IMG_2] :: Akari: (26yo female, yellow/orange knit, long honey-brown hair.)
+◆【SCENE & ATMOSPHERE】: Confession of guilt. Cold logic.
+◆【VISUALS & DIALOGUE】:
+Panel 35上段: [Akari [REF_IMG_2] looks guilty, sweating, eyes averting. Text arrow pointing at her: ""2 HOURS YOUTUBE"".]Panel 36下段: [Tanaka [REF_IMG_1] smirks, pointing at her. Text: ""FAKE WORK"".]◆【DIALOGUE & SFX LIST】: (None - no dialogue or speech bubbles in image)
+◆【THE CHARACTER LOCKDOWN】:
+- [Ref: REF_IMG_1] Tanaka: (Blue shirt, white pants, NO GLASSES.)
+- [Ref: REF_IMG_2] Akari: (Yellow/orange knit.)
+◆【NEGATIVE PROMPT】(speech bubble, dialogue, text bubble, Japanese text, white coat, glasses, bad anatomy)
+
+◆【このページの出力形式】Aspect Ratio 8:9. Layout: 2 Panels Vertical. Style: Professional Japanese Manga. FULL COLOR only. NO speech bubbles, NO dialogue or text in image.",29 ??????????GPS???? ????????????????????YouTube??????2????????????? 30 ????????? ?????????????????????????????????????
+Slide 19,8:9 Stacked (Vertical 16:9x2),"### PAGE 19
+◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: tanaka_ref.jpg
+[Ref: REF_IMG_2] :: akari_ref.jpg
+◆【STYLE LOCK】Maintain exact same art style as [Ref] and previous slides: same line weight, cel-shading, coloring, and character likeness. No style drift. Consistent professional Japanese manga aesthetic throughout.
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+◆【BACKGROUND RULE】Background must supplement the explanation: show keywords, data, or icons that match what is being said in the script (e.g. numbers, labels, diagrams). Avoid decorative-only elements.
+◆【ABSOLUTE CHARACTER SPEC】:
+[Ref: REF_IMG_1] :: Tanaka: (35yo male, blue shirt, white pants, NO GLASSES, NO WHITE COAT.)
+[Ref: REF_IMG_2] :: Akari: (26yo female, yellow/orange knit, long honey-brown hair.)
+◆【SCENE & ATMOSPHERE】: Understanding the concept. Action Management.
+◆【VISUALS & DIALOGUE】:
+Panel 37上段: [Akari [REF_IMG_2] takes notes diligently. Text: ""ACTION > RESULT"".]Panel 38下段: [Tanaka [REF_IMG_1] clenches his fist in determination/emphasis. Text: ""INVEST TIME WISELY"".]◆【DIALOGUE & SFX LIST】: (None - no dialogue or speech bubbles in image)
+◆【THE CHARACTER LOCKDOWN】:
+- [Ref: REF_IMG_1] Tanaka: (Blue shirt, white pants, NO GLASSES.)
+- [Ref: REF_IMG_2] Akari: (Yellow/orange knit.)
+◆【NEGATIVE PROMPT】(speech bubble, dialogue, text bubble, Japanese text, white coat, glasses, bad anatomy)
+
+◆【このページの出力形式】Aspect Ratio 8:9. Layout: 2 Panels Vertical. Style: Professional Japanese Manga. FULL COLOR only. NO speech bubbles, NO dialogue or text in image.",31 ??????????????????????????????????????????????????? 32 ????????? ???????????????????????????????????
+Slide 20,8:9 Stacked (Vertical 16:9x2),"### PAGE 20
+◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: tanaka_ref.jpg
+[Ref: REF_IMG_2] :: akari_ref.jpg
+◆【STYLE LOCK】Maintain exact same art style as [Ref] and previous slides: same line weight, cel-shading, coloring, and character likeness. No style drift. Consistent professional Japanese manga aesthetic throughout.
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+◆【BACKGROUND RULE】Background must supplement the explanation: show keywords, data, or icons that match what is being said in the script (e.g. numbers, labels, diagrams). Avoid decorative-only elements.
+◆【ABSOLUTE CHARACTER SPEC】:
+[Ref: REF_IMG_1] :: Tanaka: (35yo male, blue shirt, white pants, NO GLASSES, NO WHITE COAT.)
+[Ref: REF_IMG_2] :: Akari: (26yo female, yellow/orange knit, long honey-brown hair.)
+◆【SCENE & ATMOSPHERE】: Roleplay Scenario. Selling a sensor.
+◆【VISUALS & DIALOGUE】:
+Panel 39上段: [Tanaka [REF_IMG_1] hands Akari a box of cookies and a small mechanical sensor device. Background: Factory icon.]Panel 40下段: [Akari [REF_IMG_2] poses as a salesperson, holding the sensor, looking desperate. Background text: ""SPEC SELLING"", ""PLEASE BUY! High Spec!"" (wrong approach).]◆【DIALOGUE & SFX LIST】: (None - no dialogue or speech bubbles in image)
+◆【THE CHARACTER LOCKDOWN】:
+- [Ref: REF_IMG_1] Tanaka: (Blue shirt, white pants, NO GLASSES.)
+- [Ref: REF_IMG_2] Akari: (Yellow/orange knit.)
+◆【NEGATIVE PROMPT】(speech bubble, dialogue, text bubble, Japanese text, white coat, glasses, bad anatomy)
+
+◆【このページの出力形式】Aspect Ratio 8:9. Layout: 2 Panels Vertical. Style: Professional Japanese Manga. FULL COLOR only. NO speech bubbles, NO dialogue or text in image.",33 ???????????????????????????????????????????????????? 34 ?????????????????? ???????????????...??
+Slide 21,8:9 Stacked (Vertical 16:9x2),"### PAGE 21
+◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: tanaka_ref.jpg
+[Ref: REF_IMG_2] :: akari_ref.jpg
+◆【STYLE LOCK】Maintain exact same art style as [Ref] and previous slides: same line weight, cel-shading, coloring, and character likeness. No style drift. Consistent professional Japanese manga aesthetic throughout.
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+◆【BACKGROUND RULE】Background must supplement the explanation: show keywords, data, or icons that match what is being said in the script (e.g. numbers, labels, diagrams). Avoid decorative-only elements.
+◆【ABSOLUTE CHARACTER SPEC】:
+[Ref: REF_IMG_1] :: Tanaka: (35yo male, blue shirt, white pants, NO GLASSES, NO WHITE COAT.)
+[Ref: REF_IMG_2] :: Akari: (26yo female, yellow/orange knit, long honey-brown hair.)
+◆【SCENE & ATMOSPHERE】: Factory Observation. Analytical view.
+◆【VISUALS & DIALOGUE】:
+Panel 41上段: [Tanaka [REF_IMG_1] makes a big ""X"" sign with his arms. ""WRONG!"".]Panel 42下段: [Tanaka [REF_IMG_1] (as Keyence salesman) staring intensely at a conveyor belt with broken cookies. Holographic eyes analyzing. Text: ""OBSERVATION"".]◆【DIALOGUE & SFX LIST】: (None - no dialogue or speech bubbles in image)
+◆【THE CHARACTER LOCKDOWN】:
+- [Ref: REF_IMG_1] Tanaka: (Blue shirt, white pants, NO GLASSES.)
+- [Ref: REF_IMG_2] Akari: (Yellow/orange knit.)
+◆【NEGATIVE PROMPT】(speech bubble, dialogue, text bubble, Japanese text, white coat, glasses, bad anatomy)
+
+◆【このページの出力形式】Aspect Ratio 8:9. Layout: 2 Panels Vertical. Style: Professional Japanese Manga. FULL COLOR only. NO speech bubbles, NO dialogue or text in image.",35 ??????? ????1???????...??????????????????????????????????????? 36 ???????????????????????1?????????????
+Slide 22,8:9 Stacked (Vertical 16:9x2),"### PAGE 22
+◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: tanaka_ref.jpg
+[Ref: REF_IMG_2] :: akari_ref.jpg
+◆【STYLE LOCK】Maintain exact same art style as [Ref] and previous slides: same line weight, cel-shading, coloring, and character likeness. No style drift. Consistent professional Japanese manga aesthetic throughout.
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+◆【BACKGROUND RULE】Background must supplement the explanation: show keywords, data, or icons that match what is being said in the script (e.g. numbers, labels, diagrams). Avoid decorative-only elements.
+◆【ABSOLUTE CHARACTER SPEC】:
+[Ref: REF_IMG_1] :: Tanaka: (35yo male, blue shirt, white pants, NO GLASSES, NO WHITE COAT.)
+[Ref: REF_IMG_2] :: Akari: (26yo female, yellow/orange knit, long honey-brown hair.)
+◆【SCENE & ATMOSPHERE】: The Calculation. ROI pitch.
+◆【VISUALS & DIALOGUE】:
+Panel 43上段: [Akari [REF_IMG_2] calculating on a holographic calculator, looking shocked at the number. Text: ""LOSS: 30 MILLION"".]Panel 44下段: [Tanaka [REF_IMG_1] holding a proposal document, looking confident. Holographic text: ""COST: 5M"", ""PROFIT: 25M"".]◆【DIALOGUE & SFX LIST】: (None - no dialogue or speech bubbles in image)
+◆【THE CHARACTER LOCKDOWN】:
+- [Ref: REF_IMG_1] Tanaka: (Blue shirt, white pants, NO GLASSES.)
+- [Ref: REF_IMG_2] Akari: (Yellow/orange knit.)
+◆【NEGATIVE PROMPT】(speech bubble, dialogue, text bubble, Japanese text, white coat, glasses, bad anatomy)
+
+◆【このページの出力形式】Aspect Ratio 8:9. Layout: 2 Panels Vertical. Style: Professional Japanese Manga. FULL COLOR only. NO speech bubbles, NO dialogue or text in image.",37 ??????????1?????1????????...??3000????????? 38 ??????????????????????500????????????2500???????????
+Slide 23,8:9 Stacked (Vertical 16:9x2),"### PAGE 23
+◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: tanaka_ref.jpg
+[Ref: REF_IMG_2] :: akari_ref.jpg
+◆【STYLE LOCK】Maintain exact same art style as [Ref] and previous slides: same line weight, cel-shading, coloring, and character likeness. No style drift. Consistent professional Japanese manga aesthetic throughout.
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+◆【BACKGROUND RULE】Background must supplement the explanation: show keywords, data, or icons that match what is being said in the script (e.g. numbers, labels, diagrams). Avoid decorative-only elements.
+◆【ABSOLUTE CHARACTER SPEC】:
+[Ref: REF_IMG_1] :: Tanaka: (35yo male, blue shirt, white pants, NO GLASSES, NO WHITE COAT.)
+[Ref: REF_IMG_2] :: Akari: (26yo female, yellow/orange knit, long honey-brown hair.)
+◆【SCENE & ATMOSPHERE】: Economic Added Value reveal. Coins piling up.
+◆【VISUALS & DIALOGUE】:
+Panel 45上段: [Akari [REF_IMG_2] leans forward, convinced. Text: ""NO BRAINER!"".]Panel 46下段: [Tanaka [REF_IMG_1] stands next to a stack of gold coins (holographic). Text: ""ECONOMIC ADDED VALUE"".]◆【DIALOGUE & SFX LIST】: (None - no dialogue or speech bubbles in image)
+◆【THE CHARACTER LOCKDOWN】:
+- [Ref: REF_IMG_1] Tanaka: (Blue shirt, white pants, NO GLASSES.)
+- [Ref: REF_IMG_2] Akari: (Yellow/orange knit.)
+◆【NEGATIVE PROMPT】(speech bubble, dialogue, text bubble, Japanese text, white coat, glasses, bad anatomy)
+
+◆【このページの出力形式】Aspect Ratio 8:9. Layout: 2 Panels Vertical. Style: Professional Japanese Manga. FULL COLOR only. NO speech bubbles, NO dialogue or text in image.",39 ??????????? ?????????????????????????? 40 ??????? ???????????????????????
+Slide 24,8:9 Stacked (Vertical 16:9x2),"### PAGE 24
+◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: tanaka_ref.jpg
+[Ref: REF_IMG_2] :: akari_ref.jpg
+◆【STYLE LOCK】Maintain exact same art style as [Ref] and previous slides: same line weight, cel-shading, coloring, and character likeness. No style drift. Consistent professional Japanese manga aesthetic throughout.
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+◆【BACKGROUND RULE】Background must supplement the explanation: show keywords, data, or icons that match what is being said in the script (e.g. numbers, labels, diagrams). Avoid decorative-only elements.
+◆【ABSOLUTE CHARACTER SPEC】:
+[Ref: REF_IMG_1] :: Tanaka: (35yo male, blue shirt, white pants, NO GLASSES, NO WHITE COAT.)
+[Ref: REF_IMG_2] :: Akari: (26yo female, yellow/orange knit, long honey-brown hair.)
+◆【SCENE & ATMOSPHERE】: No Discount Policy. Strong business stance.
+◆【VISUALS & DIALOGUE】:
+Panel 47上段: [Tanaka [REF_IMG_1] looks serious, finger raised. Text: ""SELL MONEY, NOT MACHINES"".]Panel 48下段: [Tanaka [REF_IMG_1] pushing away a ""DISCOUNT %"" tag. Text: ""NO DISCOUNT"".]◆【DIALOGUE & SFX LIST】: (None - no dialogue or speech bubbles in image)
+◆【THE CHARACTER LOCKDOWN】:
+- [Ref: REF_IMG_1] Tanaka: (Blue shirt, white pants, NO GLASSES.)
+- [Ref: REF_IMG_2] Akari: (Yellow/orange knit.)
+◆【NEGATIVE PROMPT】(speech bubble, dialogue, text bubble, Japanese text, white coat, glasses, bad anatomy)
+
+◆【このページの出力形式】Aspect Ratio 8:9. Layout: 2 Panels Vertical. Style: Professional Japanese Manga. FULL COLOR only. NO speech bubbles, NO dialogue or text in image.",41 ?????????????????????????????...?????????????????????
+Slide 25,8:9 Stacked (Vertical 16:9x2),"### PAGE 25
+◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: tanaka_ref.jpg
+[Ref: REF_IMG_2] :: akari_ref.jpg
+◆【STYLE LOCK】Maintain exact same art style as [Ref] and previous slides: same line weight, cel-shading, coloring, and character likeness. No style drift. Consistent professional Japanese manga aesthetic throughout.
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+◆【BACKGROUND RULE】Background must supplement the explanation: show keywords, data, or icons that match what is being said in the script (e.g. numbers, labels, diagrams). Avoid decorative-only elements.
+◆【ABSOLUTE CHARACTER SPEC】:
+[Ref: REF_IMG_1] :: Tanaka: (35yo male, blue shirt, white pants, NO GLASSES, NO WHITE COAT.)
+[Ref: REF_IMG_2] :: Akari: (26yo female, yellow/orange knit, long honey-brown hair.)
+◆【SCENE & ATMOSPHERE】: Application to self. Akari's realization.
+◆【VISUALS & DIALOGUE】:
+Panel 49上段: [Akari [REF_IMG_2] with a lightbulb above her head. She is holding a tablet showing a website design. Text: ""WEB DESIGN"".]Panel 50下段: [Akari [REF_IMG_2] smiling confidently, presenting a chart. Text: ""COST CUT: $1000/mo"".]◆【DIALOGUE & SFX LIST】: (None - no dialogue or speech bubbles in image)
+◆【THE CHARACTER LOCKDOWN】:
+- [Ref: REF_IMG_1] Tanaka: (Blue shirt, white pants, NO GLASSES.)
+- [Ref: REF_IMG_2] Akari: (Yellow/orange knit.)
+◆【NEGATIVE PROMPT】(speech bubble, dialogue, text bubble, Japanese text, white coat, glasses, bad anatomy)
+
+◆【このページの出力形式】Aspect Ratio 8:9. Layout: 2 Panels Vertical. Style: Professional Japanese Manga. FULL COLOR only. NO speech bubbles, NO dialogue or text in image.",42 ?????????????????Web????????????????...??????????????????10???????????????????
+Slide 26,8:9 Stacked (Vertical 16:9x2),"### PAGE 26
+◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: tanaka_ref.jpg
+[Ref: REF_IMG_2] :: akari_ref.jpg
+◆【STYLE LOCK】Maintain exact same art style as [Ref] and previous slides: same line weight, cel-shading, coloring, and character likeness. No style drift. Consistent professional Japanese manga aesthetic throughout.
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+◆【BACKGROUND RULE】Background must supplement the explanation: show keywords, data, or icons that match what is being said in the script (e.g. numbers, labels, diagrams). Avoid decorative-only elements.
+◆【ABSOLUTE CHARACTER SPEC】:
+[Ref: REF_IMG_1] :: Tanaka: (35yo male, blue shirt, white pants, NO GLASSES, NO WHITE COAT.)
+[Ref: REF_IMG_2] :: Akari: (26yo female, yellow/orange knit, long honey-brown hair.)
+◆【SCENE & ATMOSPHERE】: Final lesson. Golden question.
+◆【VISUALS & DIALOGUE】:
+Panel 51上段: [Tanaka [REF_IMG_1] points at Akari/Viewer. Text question: ""HOW MUCH PROFIT?"".]Panel 52下段: [Tanaka [REF_IMG_1] smiling proudly. Background: Upward trend graph.]◆【DIALOGUE & SFX LIST】: (None - no dialogue or speech bubbles in image)
+◆【THE CHARACTER LOCKDOWN】:
+- [Ref: REF_IMG_1] Tanaka: (Blue shirt, white pants, NO GLASSES.)
+- [Ref: REF_IMG_2] Akari: (Yellow/orange knit.)
+◆【NEGATIVE PROMPT】(speech bubble, dialogue, text bubble, Japanese text, white coat, glasses, bad anatomy)
+
+◆【このページの出力形式】Aspect Ratio 8:9. Layout: 2 Panels Vertical. Style: Professional Japanese Manga. FULL COLOR only. NO speech bubbles, NO dialogue or text in image.",43 ??????????? ?????????????????????????????????????...?
+Slide 27,8:9 Stacked (Vertical 16:9x2),"### PAGE 27
+◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: tanaka_ref.jpg
+[Ref: REF_IMG_2] :: akari_ref.jpg
+◆【STYLE LOCK】Maintain exact same art style as [Ref] and previous slides: same line weight, cel-shading, coloring, and character likeness. No style drift. Consistent professional Japanese manga aesthetic throughout.
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+◆【BACKGROUND RULE】Background must supplement the explanation: show keywords, data, or icons that match what is being said in the script (e.g. numbers, labels, diagrams). Avoid decorative-only elements.
+◆【ABSOLUTE CHARACTER SPEC】:
+[Ref: REF_IMG_1] :: Tanaka: (35yo male, blue shirt, white pants, NO GLASSES, NO WHITE COAT.)
+[Ref: REF_IMG_2] :: Akari: (26yo female, yellow/orange knit, long honey-brown hair.)
+◆【SCENE & ATMOSPHERE】: Summary. Epilogue.
+◆【VISUALS & DIALOGUE】:
+Panel 53上段: [Tanaka [REF_IMG_1] summarizing, counting on fingers. Text: ""1. PROCESS CONTROL"", ""2. ADDED VALUE"".]Panel 54下段: [Akari [REF_IMG_2] looking determined, holding her phone. Text: ""APP: YOUTUBE BLOCK"".]◆【DIALOGUE & SFX LIST】: (None - no dialogue or speech bubbles in image)
+◆【THE CHARACTER LOCKDOWN】:
+- [Ref: REF_IMG_1] Tanaka: (Blue shirt, white pants, NO GLASSES.)
+- [Ref: REF_IMG_2] Akari: (Yellow/orange knit.)
+◆【NEGATIVE PROMPT】(speech bubble, dialogue, text bubble, Japanese text, white coat, glasses, bad anatomy)
+
+◆【このページの出力形式】Aspect Ratio 8:9. Layout: 2 Panels Vertical. Style: Professional Japanese Manga. FULL COLOR only. NO speech bubbles, NO dialogue or text in image.",44 ????????????????????????1???????????????????...? 45 ???????? ?????????????????????????????
+Slide 28,8:9 Stacked (Vertical 16:9x2),"### PAGE 28
+◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: tanaka_ref.jpg
+[Ref: REF_IMG_2] :: akari_ref.jpg
+◆【STYLE LOCK】Maintain exact same art style as [Ref] and previous slides: same line weight, cel-shading, coloring, and character likeness. No style drift. Consistent professional Japanese manga aesthetic throughout.
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+◆【BACKGROUND RULE】Background must supplement the explanation: show keywords, data, or icons that match what is being said in the script (e.g. numbers, labels, diagrams). Avoid decorative-only elements.
+◆【ABSOLUTE CHARACTER SPEC】:
+[Ref: REF_IMG_1] :: Tanaka: (35yo male, blue shirt, white pants, NO GLASSES, NO WHITE COAT.)
+[Ref: REF_IMG_2] :: Akari: (26yo female, yellow/orange knit, long honey-brown hair.)
+◆【SCENE & ATMOSPHERE】: The Philosophy. Founder Quote.
+◆【VISUALS & DIALOGUE】:
+Panel 55上段: [Tanaka [REF_IMG_1] quoting with a serious, respectful expression. Background quote in English: ""MINIMAL CAPITAL, MAX VALUE"".]Panel 56下段: [Tanaka [REF_IMG_1] looking straight at viewer, encouragingly. Background: Rising arrow vector.]◆【DIALOGUE & SFX LIST】: (None - no dialogue or speech bubbles in image)
+◆【THE CHARACTER LOCKDOWN】:
+- [Ref: REF_IMG_1] Tanaka: (Blue shirt, white pants, NO GLASSES.)
+- [Ref: REF_IMG_2] Akari: (Yellow/orange knit.)
+◆【NEGATIVE PROMPT】(speech bubble, dialogue, text bubble, Japanese text, white coat, glasses, bad anatomy)
+
+◆【このページの出力形式】Aspect Ratio 8:9. Layout: 2 Panels Vertical. Style: Professional Japanese Manga. FULL COLOR only. NO speech bubbles, NO dialogue or text in image.",46 ???????????????????????????????????????????? 47 ??????2????????????????????????????
+Slide 29,8:9 Stacked (Vertical 16:9x2) - Ending,"### PAGE 29
+◆CRITICAL: Refer to [Ref: REF_IMG_N] and reproduce the character 100% accurately.
+[Ref: REF_IMG_1] :: tanaka_ref.jpg
+[Ref: REF_IMG_2] :: akari_ref.jpg
+◆【STYLE LOCK】Maintain exact same art style as [Ref] and previous slides: same line weight, cel-shading, coloring, and character likeness. No style drift. Consistent professional Japanese manga aesthetic throughout.
+◆【NOTE】Words enclosed in 【brackets】 denote emotions or situations
+◆【BACKGROUND RULE】Background must supplement the explanation: show keywords, data, or icons that match what is being said in the script (e.g. numbers, labels, diagrams). Avoid decorative-only elements.
+◆【ABSOLUTE CHARACTER SPEC】:
+[Ref: REF_IMG_1] :: Tanaka: (35yo male, blue shirt, white pants, NO GLASSES, NO WHITE COAT.)
+[Ref: REF_IMG_2] :: Akari: (26yo female, yellow/orange knit, long honey-brown hair.)
+◆【SCENE & ATMOSPHERE】: Ending. Urelabo Logo & Subscribe buttons.
+◆【VISUALS & DIALOGUE】:
+Panel 57上段: [Akari [REF_IMG_2] waving to the camera with a bright smile. Text: ""COMMENT BELOW!"".]Panel 58下段: [Tanaka [REF_IMG_1] smiling professionally. ""URELABO"" logo on the wall behind him. Floating holographic ""LIKE"" and ""SUBSCRIBE"" buttons in foreground.]◆【DIALOGUE & SFX LIST】: (None - no dialogue or speech bubbles in image)
+◆【THE CHARACTER LOCKDOWN】:
+- [Ref: REF_IMG_1] Tanaka: (Blue shirt, white pants, NO GLASSES.)
+- [Ref: REF_IMG_2] Akari: (Yellow/orange knit.)
+◆【NEGATIVE PROMPT】(speech bubble, dialogue, text bubble, Japanese text, white coat, glasses, bad anatomy)
+
+◆【このページの出力形式】Aspect Ratio 8:9. Layout: 2 Panels Vertical. Style: Professional Japanese Manga. FULL COLOR only. NO speech bubbles, NO dialogue or text in image.",48 ??????????????????????????????????????? ????????????????? 49 ?????????????????????????
