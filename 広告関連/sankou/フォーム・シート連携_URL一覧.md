@@ -17,34 +17,29 @@
 
 ---
 
-## 2. 前のLP（個別相談）の仕組み
+## 2. 個別相談LPの仕組み
 
 **ファイル**：`public/lp-consultation/index.html`
 
-### フロー
+### フロー（希望日程・後日調整方式・無料）
 
 ```
-[LP] 個別相談予約
+[LP] 個別相談申込（無料）
   ↓
-① GASから空日程を取得（GET）
-  → スプレッドシート「空日程」シートを参照
+① フォーム入力（名前・メール・電話・希望曜日・希望時間帯・具体的な希望・目標・時間・メッセージ・アンケート）
   ↓
-② カレンダーで日付選択 → 時間選択
+② GASにPOST（JSON）→ シートに書き出し
   ↓
-③ フォーム送信（名前・メール・電話・目標・時間・メッセージ・アンケート）
-  ↓
-④ GASにPOST → シートに書き出し（決済確認シート等）
-  ↓
-⑤ 決済リンク表示（Stripe 1,100円 or 3,300円）
-  ↓
-⑥ thank-you.html を別タブで開く
+③ 完了メッセージ表示 → thank-you.html を別タブで開く
 ```
+
+※ タイマー・決済（Stripe）は削除済み。空き日程のカレンダー選択は廃止。
 
 ### 前のLPが使っているGAS
 
 | 項目 | 値 |
 |------|------|
-| **GAS API URL** | `https://script.google.com/macros/s/AKfycbxZJcRGBKdwCh4PylNiYl8X8Ek6I7DWaXsVpDLD9QnoL2mHE5OA1AcZ2QPNgmn0bodD/exec` |
+| **GAS API URL（個別相談・ebook・Day4）** | `https://script.google.com/macros/s/AKfycbzvdzj7BwBHVy48cjHb7OjIw8px9_VOPqOTd7lPPWZn8EzxgC-5uVw705Na6TEwlORv/exec` |
 | **取得** | GETで空日程（JSON） |
 | **送信** | POSTで予約データ（scheduleRow, name, email, phone, goal, time, message, surveyGood, surveyConcern, surveyWant） |
 
@@ -69,13 +64,13 @@
 ③ サンキューページ（動画＋3日間チャレンジ案内）
 ```
 
-### 未設定の項目
+### 設定済み（GAS）
 
 | 項目 | 状態 |
 |------|------|
-| **フォーム送信先** | 未設定。GAS・メール配信ツール等の連携が必要 |
-| **シート書き出し** | なし |
-| **メール配信トリガー** | なし（登録→自動付与の仕組みなし） |
+| **フォーム送信先** | GAS（`GAS_ebook登録.gs` をデプロイ後、index-ebook.html の form action にURLを設定） |
+| **シート書き出し** | 決済確認シートの「ebook登録」シートに書き出し |
+| **セットアップ手順** | `public/lp-consultation/GAS_ebook登録_セットアップ手順.md` 参照 |
 
 ---
 
@@ -151,6 +146,11 @@
 | **サンキューページ動画** | https://youtu.be/fo90zVEWTNY |
 | **特商法** | https://kukuru-m.com/manga/law.html |
 | **プライバシーポリシー** | https://kukuru-m.com/manga/pra.html |
+| **Day4 2,980円 決済リンク** | https://buy.stripe.com/00wbJ03Vb2g4cBL2X8ffy0e |
+
+※ 決済完了時にスプレッドシートへ書き出すには、Stripe Webhook の設定が必要。`Stripe決済_スプレッドシート連携_セットアップ.md` 参照。
+
+※ 上記リンクは index-ebook.html、index.html、thank-you.html、day4-anketo.html、ebook.html の各ページに設置済み。
 
 ### 参照するファイル
 
@@ -169,3 +169,33 @@
 2. **同一シート管理**：GASを決済確認シートに紐づけ、ebook登録も同じスプレッドシートに書き出す
 3. **ステップメール**：メール配信ツールで登録→Day1〜Day3の自動配信を設定
 4. **day4-anketo.html** の送信先を設定（GAS or メール配信ツール）
+
+---
+
+## 8. Day4＝2,980円変更に伴う更新チェックリスト
+
+**登録元**：`index-ebook.html` → 送信先未設定のため、現状は**データはどこにも書き込まれていません**。
+
+### 現状の流れと更新が必要な箇所
+
+| 段階 | 現状 | Day4変更での更新要否 |
+|------|------|----------------------|
+| **① フォーム送信** | `index-ebook.html` → 送信先未設定。thank-you.htmlへリダイレクトのみ | 送信先の設定が必要（GAS or メール配信ツール） |
+| **② スプレッドシート** | 書き出しなし | GASで「ebook登録」シート等に書き出す設定が必要 |
+| **③ 歓迎メール（直後）** | 未設定 | 設定する場合、Day4が2,980円・マンガ1冊持ち帰りである旨を記載 |
+| **④ Day1〜Day3メール** | Day1本文は更新済み（2,980円・マンガ1冊） | Day2・Day3作成時も同様にDay4＝2,980円で統一 |
+| **⑤ 4日後：Day4案内** | day4-anketo.html へのリンク | アンケートページの文言は2,980円に更新済み |
+| **⑥ Day4アンケート送信** | 送信先未設定 | 同様にGAS等への送信設定が必要 |
+
+### スプレッドシート・自動返信で変更が必要なもの
+
+- **歓迎メール**（登録直後に送る場合）：Day4が「2,980円の実体験」「マンガ1冊持ち帰り」である旨を記載
+- **GASの自動返信**（設定している場合）：上記と同様
+- **メール配信ツールのテンプレート**：Day4関連の文言を「無料」→「2,980円」に統一
+
+### すでに更新済み
+
+- サンキューページ（thank-you.html）
+- Day4アンケート（day4-anketo.html）のタイトル・見出し
+- Day1メール本文
+- 各種ドキュメント（スケジュール、ナレーション全文等）

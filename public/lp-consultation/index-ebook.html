@@ -144,9 +144,9 @@
         </ul>
       </div>
 
-      <form class="form-box" id="ebookForm" action="#" method="POST">
-        <!-- ★送信先を設定してください（GAS、メール配信ツール等）★ -->
-        <!-- 送信後、thank-you.html へリダイレクトするように設定 -->
+      <!-- 個別相談と同じGASのURL（新フォーム.gs にebook分岐を統合済み） -->
+      <form class="form-box" id="ebookForm" action="https://script.google.com/macros/s/AKfycbzvdzj7BwBHVy48cjHb7OjIw8px9_VOPqOTd7lPPWZn8EzxgC-5uVw705Na6TEwlORv/exec" method="POST" target="_self">
+        <input type="hidden" name="action" value="ebook">
         <div class="form-group">
           <label>メールアドレス <span style="color:#f87171">*</span></label>
           <input type="email" name="email" required placeholder="example@email.com">
@@ -183,15 +183,7 @@
   </footer>
 
   <script>
-    // ★フォーム送信処理を設定してください★
-    // 例：GASにPOST → 成功時に window.location.href = 'thank-you.html';
-    document.getElementById('ebookForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const formData = new FormData(this);
-      // 仮：送信先未設定の場合は thank-you へ遷移（テスト用）
-      // 本番では fetch で GAS 等に送信し、成功後にリダイレクト
-      window.location.href = 'thank-you.html';
-    });
+    // フォームはGASに直接POST。GASがebook登録シートに書き出し後、thank-you.htmlへリダイレクト
   </script>
 </body>
 </html>
