@@ -27,6 +27,11 @@ const ADMIN_EMAIL = 'master.ai022@gmail.com';
 // サンキューページURL
 const THANK_YOU_URL = 'https://cursor0113.vercel.app/lp-consultation/thank-you.html';
 
+// 完全ガイド動画・ebook・Day4
+const VIDEO_URL = 'https://youtu.be/fo90zVEWTNY';
+const EBOOK_URL = 'https://cursor0113.vercel.app/lp-consultation/ebook.html';
+const DAY4_ANKETO_URL = 'https://cursor0113.vercel.app/lp-consultation/day4-anketo.html';
+
 // Day4 2,980円 Stripe決済リンク
 const STRIPE_DAY4_URL = 'https://buy.stripe.com/00wbJ03Vb2g4cBL2X8ffy0e';
 
@@ -275,12 +280,63 @@ function handleEbookRegistration(params) {
     const timestamp = Utilities.formatDate(now, 'Asia/Tokyo', 'yyyy/MM/dd HH:mm:ss');
     sheet.appendRow([timestamp, email, name]);
 
+    // 自動返信メール送信
+    sendEbookWelcomeEmail(email, name);
+
     console.log('ebook登録完了: ' + email);
     return createEbookRedirectResponse(THANK_YOU_URL);
 
   } catch (err) {
     console.log('ebook登録エラー: ' + err.message);
     return createEbookErrorResponse('登録中にエラーが発生しました。');
+  }
+}
+
+/**
+ * ebook登録後の自動返信メール
+ */
+function sendEbookWelcomeEmail(email, name) {
+  try {
+    const displayName = (name && name.trim()) ? name.trim() + ' 様' : 'お客様';
+    const subject = '【Kindle印税資産】ebook＆完全ガイド動画のご案内';
+    const body = displayName + '\n\n' +
+      'この度は、無料ebookへのご登録ありがとうございます。\n\n' +
+      '━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n' +
+      '【1】完全ガイド動画（約12分）\n' +
+      '━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n' +
+      '印税収入を仕組みで構築する「からくり」を解説しています。\n' +
+      'まずはこちらをご覧ください。\n\n' +
+      '▼ 動画はこちら\n' +
+      VIDEO_URL + '\n\n' +
+      '━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n' +
+      '【2】ebook（設計図）\n' +
+      '━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n' +
+      '▼ ebookはこちら\n' +
+      EBOOK_URL + '\n\n' +
+      '━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n' +
+      '【3】3日間チャレンジ\n' +
+      '━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n' +
+      '登録翌朝9時から、3日間にわたってメールでお届けします。\n\n' +
+      '・Day1：『発見』…売れるテーマの見つけ方\n' +
+      '・Day2：『確信』…成功の鍵\n' +
+      '・Day3：『感動』…90分で完成する体験\n\n' +
+      '楽しみにしていてください。\n\n' +
+      '━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n' +
+      '【4】Day4 2,980円実体験（任意）\n' +
+      '━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n' +
+      '90分で1冊のマンガを出版する実体験＆ゴールデンルートシミュレーション相談を、\n' +
+      '2,980円でご提供しています。枠は1日2名まで。\n\n' +
+      '▼ お申し込み（事前アンケート）\n' +
+      DAY4_ANKETO_URL + '\n\n' +
+      '━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n' +
+      'ご不明な点がございましたら、お気軽にご連絡ください。\n\n' +
+      'Kindle印税資産 事務局';
+
+    MailApp.sendEmail(email, subject, body);
+    console.log('ebook歓迎メール送信完了: ' + email);
+  } catch (err) {
+    console.log('ebook歓迎メール送信エラー: ' + err.message);
+    // メール送信失敗でも登録処理は成功とする
   }
 }
 
