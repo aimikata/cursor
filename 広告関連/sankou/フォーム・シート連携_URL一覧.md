@@ -39,7 +39,7 @@
 
 | 項目 | 値 |
 |------|------|
-| **GAS API URL（個別相談・ebook・Day4）** | `https://script.google.com/macros/s/AKfycbzvdzj7BwBHVy48cjHb7OjIw8px9_VOPqOTd7lPPWZn8EzxgC-5uVw705Na6TEwlORv/exec` |
+| **GAS API URL（個別相談・ebook・Day4）** | `https://script.google.com/macros/s/AKfycbxaUEocqoNigeNSDaRxoqgYkoFypeoeKNckIwWa2_zZKI48ZYnRRsHSqdV1M_yeV1Hw/exec` |
 | **取得** | GETで空日程（JSON） |
 | **送信** | POSTで予約データ（scheduleRow, name, email, phone, goal, time, message, surveyGood, surveyConcern, surveyWant） |
 

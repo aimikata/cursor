@@ -20,7 +20,7 @@
 
 1. ブラウザで以下を開く：
    ```
-   https://script.google.com/macros/s/AKfycbzvdzj7BwBHVy48cjHb7OjIw8px9_VOPqOTd7lPPWZn8EzxgC-5uVw705Na6TEwlORv/exec?action=schedule
+   https://script.google.com/macros/s/AKfycbxaUEocqoNigeNSDaRxoqgYkoFypeoeKNckIwWa2_zZKI48ZYnRRsHSqdV1M_yeV1Hw/exec?action=schedule
    ```
 2. 空き日程が JSON で返ってくる（`[]` や `[{date, timeDisplay, row}, ...]`）ことを確認
 

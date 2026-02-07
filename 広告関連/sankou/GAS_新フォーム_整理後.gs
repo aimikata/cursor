@@ -96,7 +96,7 @@ function doPost(e) {
   console.log('doPost 開始');
 
   // ----- 1. Stripe Webhook（Stripe-Signature ヘッダーで判定）-----
-  const signature = e.headers['Stripe-Signature'] || e.headers['stripe-signature'];
+  const signature = (e.headers && (e.headers['Stripe-Signature'] || e.headers['stripe-signature'])) || null;
   if (signature) {
     return handleStripeWebhook(e);
   }
