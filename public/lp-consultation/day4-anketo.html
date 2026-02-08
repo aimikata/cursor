@@ -65,6 +65,10 @@
     <h1>Day4 2,980円実体験｜事前アンケート</h1>
     <p class="subtitle">枠は1日2名まで。空き日程から選択し、決済完了で申込確定です。</p>
 
+    <p style="text-align: center; margin-bottom: 24px;">
+      <a href="thank-you.html" style="color: #a0a0b0; font-size: 14px; text-decoration: underline;">← サンキューページ（動画・3日間チャレンジ案内）に戻る</a>
+    </p>
+
     <div id="formArea">
       <form class="form-box" id="anketoForm">
         <div class="form-group">
@@ -123,7 +127,10 @@
     </div>
 
     <p class="note">※ 決済完了後、当日のご案内をメールでお送りします。</p>
-    <p style="text-align: center; margin-top: 40px; font-size: 14px;">
+    <p style="text-align: center; margin-top: 24px; font-size: 14px;">
+      <a href="thank-you.html" style="color: #a0a0b0;">動画を再度見る（サンキューページへ戻る）</a>
+    </p>
+    <p style="text-align: center; margin-top: 20px; font-size: 14px;">
       <a href="https://kukuru-m.com/manga/law.html" target="_blank" rel="noopener" style="color: #a0a0b0;">特定商取引法に基づく表記</a> | <a href="https://kukuru-m.com/manga/pra.html" target="_blank" rel="noopener" style="color: #a0a0b0;">プライバシーポリシー</a>
     </p>
   </div>
@@ -169,6 +176,13 @@
       const loading = document.getElementById('loading');
       const errorMsg = document.getElementById('errorMsg');
 
+      const scheduleRow = parseInt(document.getElementById('scheduleSelect').value, 10);
+      if (!scheduleRow || isNaN(scheduleRow)) {
+        errorMsg.textContent = '参加希望の日程を選択してください。';
+        errorMsg.style.display = 'block';
+        return;
+      }
+
       btn.disabled = true;
       loading.style.display = 'block';
       errorMsg.style.display = 'none';
@@ -176,9 +190,9 @@
       const f = this;
       const postData = {
         action: 'day4',
-        scheduleRow: parseInt(document.getElementById('scheduleSelect').value, 10),
-        name: f.querySelector('[name="name"]').value,
-        email: f.querySelector('[name="email"]').value,
+        scheduleRow: scheduleRow,
+        name: f.querySelector('[name="name"]').value.trim(),
+        email: f.querySelector('[name="email"]').value.trim(),
         goal: f.querySelector('[name="goal"]').value || '',
         time: f.querySelector('[name="time"]').value || '',
         message: f.querySelector('[name="message"]').value || ''
@@ -186,10 +200,16 @@
 
       fetch(GAS_URL, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
         body: JSON.stringify(postData)
       })
-      .then(r => r.json())
+      .then(r => {
+        const ct = r.headers.get('Content-Type') || '';
+        if (!ct.includes('application/json')) {
+          return r.text().then(t => { throw new Error('サーバーエラー。GASのデプロイURL・スプレッドシート連携を確認してください。'); });
+        }
+        return r.json();
+      })
       .then(result => {
         if (result.success && result.stripeUrl) {
           document.getElementById('formArea').style.display = 'none';
@@ -202,7 +222,7 @@
       .catch(err => {
         btn.disabled = false;
         loading.style.display = 'none';
-        errorMsg.textContent = err.message || 'エラーが発生しました';
+        errorMsg.textContent = err.message || 'エラーが発生しました。しばらくしてから再度お試しください。';
         errorMsg.style.display = 'block';
       });
     });
