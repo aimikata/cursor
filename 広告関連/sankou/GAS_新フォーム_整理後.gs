@@ -45,6 +45,17 @@ const STRIPE_DAY4_URL = 'https://buy.stripe.com/00wbJ03Vb2g4cBL2X8ffy0e';
 const STRIPE_WEBHOOK_SECRET = 'whsec_ob3RD8SgwEDjhY84x3QGTzdau1mrV7J7';
 
 /**
+ * スプレッドシートを取得（紐づきシート優先、なければID指定）
+ */
+function getSpreadsheet() {
+  try {
+    const ss = SpreadsheetApp.getActiveSpreadsheet();
+    if (ss) return ss;
+  } catch (e) {}
+  return SpreadsheetApp.openById(SPREADSHEET_ID);
+}
+
+/**
  * GET: 空き日程取得（Day4用。?action=schedule で呼び出し）
  */
 function doGet(e) {
@@ -86,7 +97,7 @@ function parseScheduleDateToJst(dateVal) {
  * トリガーで定期的に実行（例：毎時0分）することを推奨
  */
 function updateScheduleDeadlines() {
-  const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
+  const ss = getSpreadsheet();
   const scheduleSheet = ss.getSheetByName(SCHEDULE_SHEET_NAME);
   if (!scheduleSheet) return;
 
@@ -129,7 +140,7 @@ function updateScheduleDeadlines() {
  * 日付はシートに表示されている文字列（getDisplayValues）をそのまま返し、タイムゾーンずれを防ぐ
  */
 function getScheduleData() {
-  const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
+  const ss = getSpreadsheet();
   const scheduleSheet = ss.getSheetByName(SCHEDULE_SHEET_NAME);
   if (!scheduleSheet) return [];
 
@@ -233,7 +244,7 @@ function handleStripeWebhook(e) {
 }
 
 function handleStripeCheckoutCompleted(session) {
-  const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
+  const ss = getSpreadsheet();
   let sheet = ss.getSheetByName(SHEET_DAY4_PAYMENT);
 
   if (!sheet) {
@@ -256,7 +267,7 @@ function handleStripeCheckoutCompleted(session) {
 }
 
 function handleStripePaymentSucceeded(paymentIntent) {
-  const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
+  const ss = getSpreadsheet();
   let sheet = ss.getSheetByName(SHEET_DAY4_PAYMENT);
   if (!sheet) {
     sheet = ss.insertSheet(SHEET_DAY4_PAYMENT);
@@ -277,41 +288,51 @@ function handleStripePaymentSucceeded(paymentIntent) {
  * Day4 2,980円申込: 空き日程を予約済にし、決済リンクを返す
  */
 function handleDay4Application(postData) {
-  const { scheduleRow, name, email, goal, time, message } = postData;
+  try {
+    const scheduleRow = postData.scheduleRow;
+    const name = (postData.name || '').trim();
+    const email = (postData.email || '').trim();
+    const goal = postData.goal || '';
+    const time = postData.time || '';
+    const message = postData.message || '';
 
-  if (!scheduleRow || !name || !email) {
-    return createJsonResponse({ success: false, message: '名前・メール・日程が必須です。' });
+    if (!scheduleRow || !name || !email) {
+      return createJsonResponse({ success: false, message: '名前・メール・日程が必須です。' });
+    }
+
+    const ss = getSpreadsheet();
+    const scheduleSheet = ss.getSheetByName(SCHEDULE_SHEET_NAME);
+    let day4Sheet = ss.getSheetByName('Day4申込');
+
+    if (!scheduleSheet) {
+      return createJsonResponse({ success: false, message: '空き日程シートが見つかりません。スプレッドシートに「空き日程」シートを追加してください。' });
+    }
+
+    const status = String(scheduleSheet.getRange(scheduleRow, SCHEDULE_COL_STATUS + 1).getValue() || '').trim();
+    if (status !== 'available') {
+      return createJsonResponse({ success: false, message: '申し訳ありません。選択された枠は満席または締め切りです。' });
+    }
+
+    const scheduleData = scheduleSheet.getRange(scheduleRow, 1, scheduleRow, 4).getValues()[0];
+    const selectedDate = scheduleData[0];
+    const selectedTime = scheduleData[1];
+
+    scheduleSheet.getRange(scheduleRow, 3).setValue('済');
+
+    if (!day4Sheet) {
+      day4Sheet = ss.insertSheet('Day4申込');
+      day4Sheet.getRange(1, 1, 1, 8).setValues([['日時', '名前', 'メール', '選択日程', '目標', '週時間', 'メッセージ', '決済状態']]);
+      day4Sheet.getRange(1, 1, 1, 8).setFontWeight('bold');
+    }
+
+    const now = new Date();
+    day4Sheet.appendRow([now, name, email, selectedDate + ' ' + selectedTime, goal || '', time || '', message || '', '決済待ち']);
+
+    return createJsonResponse({ success: true, stripeUrl: STRIPE_DAY4_URL });
+  } catch (err) {
+    console.error('handleDay4Application エラー: ' + err.message);
+    return createJsonResponse({ success: false, message: '申込処理でエラーが発生しました。' + err.message });
   }
-
-  const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
-  const scheduleSheet = ss.getSheetByName(SCHEDULE_SHEET_NAME);
-  let day4Sheet = ss.getSheetByName('Day4申込');
-
-  if (!scheduleSheet) {
-    return createJsonResponse({ success: false, message: '空き日程シートが見つかりません。' });
-  }
-
-  const status = String(scheduleSheet.getRange(scheduleRow, SCHEDULE_COL_STATUS + 1).getValue() || '').trim();
-  if (status !== 'available') {
-    return createJsonResponse({ success: false, message: '申し訳ありません。選択された枠は満席または締め切りです。' });
-  }
-
-  const scheduleData = scheduleSheet.getRange(scheduleRow, 1, scheduleRow, 4).getValues()[0];
-  const selectedDate = scheduleData[0];
-  const selectedTime = scheduleData[1];
-
-  scheduleSheet.getRange(scheduleRow, 3).setValue('済');
-
-  if (!day4Sheet) {
-    day4Sheet = ss.insertSheet('Day4申込');
-    day4Sheet.getRange(1, 1, 1, 8).setValues([['日時', '名前', 'メール', '選択日程', '目標', '週時間', 'メッセージ', '決済状態']]);
-    day4Sheet.getRange(1, 1, 1, 8).setFontWeight('bold');
-  }
-
-  const now = new Date();
-  day4Sheet.appendRow([now, name, email, selectedDate + ' ' + selectedTime, goal || '', time || '', message || '', '決済待ち']);
-
-  return createJsonResponse({ success: true, stripeUrl: STRIPE_DAY4_URL });
 }
 
 /**
