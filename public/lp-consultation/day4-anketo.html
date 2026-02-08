@@ -131,6 +131,17 @@
   <script>
     const GAS_URL = 'https://script.google.com/macros/s/AKfycbwdL-anRVQF1isl30EapKp3Sr3CVPDKw8mRqev2TNiPvzbl21I9zKngAi7cKBd7iRro/exec';
 
+    // 日付に曜日を付加（例: 2025/2/10 → 2025/2/10(月)）
+    function addDayOfWeek(dateStr) {
+      if (!dateStr) return '';
+      const str = String(dateStr).trim();
+      const m = str.match(/(\d{4})[\/\-](\d{1,2})[\/\-](\d{1,2})/);
+      if (!m) return str.slice(0, 10);
+      const date = new Date(parseInt(m[1],10), parseInt(m[2],10)-1, parseInt(m[3],10));
+      const dow = ['日','月','火','水','木','金','土'][date.getDay()];
+      return m[1] + '/' + m[2] + '/' + m[3] + '(' + dow + ')';
+    }
+
     // 空き日程を取得
     fetch(GAS_URL + '?action=schedule')
       .then(r => r.json())
@@ -141,7 +152,7 @@
           schedules.forEach(s => {
             const opt = document.createElement('option');
             opt.value = s.row;
-            opt.textContent = (s.date ? String(s.date).slice(0, 10) : '') + ' ' + (s.timeDisplay || '');
+            opt.textContent = addDayOfWeek(s.date || s.dateDisplay) + ' ' + (s.timeDisplay || '');
             sel.appendChild(opt);
           });
         } else {
