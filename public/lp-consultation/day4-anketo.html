@@ -56,8 +56,6 @@
       box-shadow: 0 8px 30px rgba(212, 175, 55, 0.5);
     }
     .note { font-size: 12px; color: #606070; margin-top: 20px; text-align: center; }
-    .complete { text-align: center; padding: 60px 20px; display: none; }
-    .complete .icon { font-size: 64px; color: #d4af37; margin-bottom: 24px; }
   </style>
 </head>
 <body>
@@ -116,17 +114,7 @@
       </form>
     </div>
 
-    <div id="completeArea" class="complete">
-      <div class="icon">✓</div>
-      <h2 style="margin-bottom: 16px;">申込を受け付けました</h2>
-      <p style="color: #a0a0b0; margin-bottom: 24px;">
-        下記ボタンから決済（2,980円）をお願いします。<br>
-        決済ページは別ウィンドウで開くので、このページに戻って動画を確認できます。
-      </p>
-      <a id="stripeBtn" href="#" target="_blank" rel="noopener" class="form-submit" style="display:inline-block; text-align:center; text-decoration:none;">決済ページへ（2,980円）</a>
-    </div>
-
-    <p class="note">※ 決済完了後、当日のご案内をメールでお送りします。</p>
+    <p class="note">※ 申込後、Stripe決済ページへ自動で移動します。決済完了後、当日のご案内をメールでお送りします。</p>
     <p style="text-align: center; margin-top: 24px; font-size: 14px;">
       <a href="thank-you.html" style="color: #a0a0b0;">動画を再度見る（サンキューページへ戻る）</a>
     </p>
@@ -212,10 +200,8 @@
       })
       .then(result => {
         if (result.success && result.stripeUrl) {
-          document.getElementById('formArea').style.display = 'none';
-          document.getElementById('completeArea').style.display = 'block';
-          document.getElementById('stripeBtn').href = result.stripeUrl;
-          // target="_blank" で新規ウィンドウ。このページに戻って動画確認が可能
+          // 申込 → Stripe へ直接リダイレクト（中間ページをスキップ）
+          window.location.replace(result.stripeUrl);
         } else {
           throw new Error(result.message || '申込に失敗しました');
         }
