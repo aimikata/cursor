@@ -21,6 +21,12 @@ const SHEET_NAME_EBOOK = 'ebook登録';
 const SCHEDULE_SHEET_NAME = '空き日程';
 const SHEET_DAY4_PAYMENT = 'Day4決済';  // Stripe決済の書き出し先
 
+// 空き日程シートの列インデックス（0始まり）
+// シート構成が異なる場合はここを調整（例：A=日付,B=時間,C=ステータス → 0,1,2）
+const SCHEDULE_COL_DATE = 0;   // 日付列（A列）
+const SCHEDULE_COL_TIME = 1;   // 時間列（B列）
+const SCHEDULE_COL_STATUS = 2; // ステータス列（C列）
+
 // 管理者メールアドレス
 const ADMIN_EMAIL = 'master.ai022@gmail.com';
 
@@ -56,7 +62,71 @@ function doGet(e) {
 }
 
 /**
+ * 日付値（Date or 文字列）を日本時間の日付に変換（締め切り判定用）
+ */
+function parseScheduleDateToJst(dateVal) {
+  if (dateVal instanceof Date) {
+    const y = Utilities.formatDate(dateVal, 'Asia/Tokyo', 'yyyy');
+    const m = Utilities.formatDate(dateVal, 'Asia/Tokyo', 'MM');
+    const d = Utilities.formatDate(dateVal, 'Asia/Tokyo', 'dd');
+    return Utilities.parseDate(y + '/' + m + '/' + d, 'Asia/Tokyo', 'yyyy/MM/dd');
+  }
+  const str = String(dateVal || '').trim();
+  if (!str) return null;
+  const m = str.match(/(\d{4})[\/\-年](\d{1,2})[\/\-月](\d{1,2})/);
+  if (m) {
+    const ymd = m[1] + '/' + m[2].padStart(2, '0') + '/' + m[3].padStart(2, '0');
+    return Utilities.parseDate(ymd, 'Asia/Tokyo', 'yyyy/MM/dd');
+  }
+  return null;
+}
+
+/**
+ * 空き日程シートの締め切りを更新（前日12時を過ぎた枠を「締め切り」に設定）
+ * トリガーで定期的に実行（例：毎時0分）することを推奨
+ */
+function updateScheduleDeadlines() {
+  const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
+  const scheduleSheet = ss.getSheetByName(SCHEDULE_SHEET_NAME);
+  if (!scheduleSheet) return;
+
+  const data = scheduleSheet.getDataRange().getValues();
+  const displayData = scheduleSheet.getDataRange().getDisplayValues();
+  const now = new Date();
+  let updateCount = 0;
+
+  for (let i = 1; i < data.length; i++) {
+    const row = data[i];
+    const displayRow = displayData[i] || [];
+    const dateVal = row[SCHEDULE_COL_DATE];
+    const status = (row[SCHEDULE_COL_STATUS] || '').toString().trim();
+
+    // available のみ締め切りに更新。済・予約済・空き・その他は変更しない
+    if (status !== 'available') continue;
+
+    try {
+      const slotDate = parseScheduleDateToJst(dateVal);
+      if (!slotDate) continue;
+      const deadline = new Date(slotDate.getTime());
+      deadline.setDate(deadline.getDate() - 1);
+      deadline.setHours(12, 0, 0, 0);
+
+      if (now > deadline) {
+        scheduleSheet.getRange(i + 1, SCHEDULE_COL_STATUS + 1).setValue('締め切り');
+        updateCount++;
+      }
+    } catch (err) {
+      continue;
+    }
+  }
+  if (updateCount > 0) {
+    console.log('締め切り更新: ' + updateCount + '件');
+  }
+}
+
+/**
  * 空き日程シートから空き枠を取得
+ * 日付はシートに表示されている文字列（getDisplayValues）をそのまま返し、タイムゾーンずれを防ぐ
  */
 function getScheduleData() {
   const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
@@ -64,31 +134,37 @@ function getScheduleData() {
   if (!scheduleSheet) return [];
 
   const data = scheduleSheet.getDataRange().getValues();
+  const displayData = scheduleSheet.getDataRange().getDisplayValues();
   const schedules = [];
   const now = new Date();
 
   for (let i = 1; i < data.length; i++) {
     const row = data[i];
-    const dateVal = row[0];
-    const timeStr = row[1];
-    const status = (row[2] || '').toString().trim();
+    const displayRow = displayData[i] || [];
+    const dateVal = row[SCHEDULE_COL_DATE];
+    const timeStr = (displayRow[SCHEDULE_COL_TIME] || row[SCHEDULE_COL_TIME] || '').toString().trim();
+    const status = (row[SCHEDULE_COL_STATUS] || '').toString().trim();
 
-    if (status === 'available' || status === '空き' || status === '') {
-      try {
-        const slotDate = new Date(dateVal);
-        const deadline = new Date(slotDate.getTime());
-        deadline.setDate(deadline.getDate() - 1);
-        deadline.setHours(12, 0, 0, 0);
-        if (now > deadline) continue;
+    if (status !== 'available') continue;
 
-        schedules.push({
-          date: dateVal,
-          timeDisplay: timeStr || '',
-          row: i + 1
-        });
-      } catch (err) {
-        continue;
-      }
+    try {
+      const slotDate = parseScheduleDateToJst(dateVal);
+      if (!slotDate) continue;
+      const deadline = new Date(slotDate.getTime());
+      deadline.setDate(deadline.getDate() - 1);
+      deadline.setHours(12, 0, 0, 0);
+      if (now > deadline) continue;
+
+      // シートの表示値をそのまま返す（タイムゾーンずれ防止）
+      const dateDisplay = (displayRow[SCHEDULE_COL_DATE] || dateVal).toString().trim();
+      schedules.push({
+        date: dateDisplay,
+        dateDisplay: dateDisplay,
+        timeDisplay: timeStr || '',
+        row: i + 1
+      });
+    } catch (err) {
+      continue;
     }
   }
   return schedules;
@@ -215,9 +291,9 @@ function handleDay4Application(postData) {
     return createJsonResponse({ success: false, message: '空き日程シートが見つかりません。' });
   }
 
-  const status = scheduleSheet.getRange(scheduleRow, 3).getValue();
-  if (status === '済' || status === '予約済') {
-    return createJsonResponse({ success: false, message: '申し訳ありません。選択された枠は満席になりました。' });
+  const status = String(scheduleSheet.getRange(scheduleRow, SCHEDULE_COL_STATUS + 1).getValue() || '').trim();
+  if (status !== 'available') {
+    return createJsonResponse({ success: false, message: '申し訳ありません。選択された枠は満席または締め切りです。' });
   }
 
   const scheduleData = scheduleSheet.getRange(scheduleRow, 1, scheduleRow, 4).getValues()[0];
