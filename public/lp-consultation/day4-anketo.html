@@ -121,9 +121,9 @@
       <h2 style="margin-bottom: 16px;">申込を受け付けました</h2>
       <p style="color: #a0a0b0; margin-bottom: 24px;">
         下記ボタンから決済（2,980円）をお願いします。<br>
-        決済完了で申込が確定します。
+        決済ページは別ウィンドウで開くので、このページに戻って動画を確認できます。
       </p>
-      <a id="stripeBtn" href="#" class="form-submit" style="display:inline-block; text-align:center; text-decoration:none;">決済ページへ（2,980円）</a>
+      <a id="stripeBtn" href="#" target="_blank" rel="noopener" class="form-submit" style="display:inline-block; text-align:center; text-decoration:none;">決済ページへ（2,980円）</a>
     </div>
 
     <p class="note">※ 決済完了後、当日のご案内をメールでお送りします。</p>
@@ -215,6 +215,7 @@
           document.getElementById('formArea').style.display = 'none';
           document.getElementById('completeArea').style.display = 'block';
           document.getElementById('stripeBtn').href = result.stripeUrl;
+          // target="_blank" で新規ウィンドウ。このページに戻って動画確認が可能
         } else {
           throw new Error(result.message || '申込に失敗しました');
         }
