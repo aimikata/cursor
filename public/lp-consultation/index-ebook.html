@@ -13,17 +13,12 @@
       font-family: 'Noto Sans JP', sans-serif;
       background: linear-gradient(180deg, #0a0a1a 0%, #1a1a2e 50%, #0a0a1a 100%);
       color: #ffffff;
-      line-height: 1.8;
+      line-height: 1.9;
     }
-    .container { max-width: 700px; margin: 0 auto; padding: 0 20px; }
+    .container { max-width: 680px; margin: 0 auto; padding: 0 20px; }
     .hero {
-      min-height: 90vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+      padding: 60px 20px 80px;
       text-align: center;
-      padding: 60px 20px;
       background: radial-gradient(ellipse at center, #1a1a3e 0%, #0a0a1a 70%);
     }
     .hero-label {
@@ -37,29 +32,69 @@
       margin-bottom: 24px;
     }
     .hero-title {
-      font-size: clamp(24px, 4vw, 40px);
+      font-size: clamp(22px, 3.5vw, 32px);
       font-weight: 900;
       line-height: 1.5;
-      margin-bottom: 20px;
+      margin-bottom: 16px;
     }
     .hero-title .gold { color: #d4af37; }
     .hero-subtitle {
-      font-size: clamp(15px, 2.5vw, 18px);
+      font-size: clamp(14px, 2vw, 16px);
       color: #a0a0b0;
-      margin-bottom: 40px;
-      max-width: 540px;
+      max-width: 520px;
+      margin: 0 auto;
     }
-    .ebook-preview {
+    section {
+      padding: 50px 20px;
+      border-top: 1px solid #2a2a3a;
+    }
+    .section-title {
+      font-size: clamp(18px, 2.5vw, 22px);
+      font-weight: 700;
+      color: #d4af37;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+    .story p {
+      margin-bottom: 1.2em;
+      font-size: 15px;
+      color: #d0d0e0;
+    }
+    .story .lead { font-size: 16px; color: #e8e8f0; }
+    .story .strong { font-weight: 700; color: #ffffff; }
+    .story .dialogue {
+      background: linear-gradient(135deg, #1a1a2e 0%, #252535 100%);
+      border-left: 4px solid #d4af37;
+      padding: 16px 20px;
+      margin: 20px 0;
+      font-size: 15px;
+      color: #d0d0e0;
+    }
+    .story .dialogue strong { color: #ffffff; }
+    .honest-box {
       background: linear-gradient(135deg, #1a1a2e 0%, #2a2a3e 100%);
       border: 2px solid #d4af37;
       border-radius: 16px;
-      padding: 30px;
+      padding: 32px;
       margin: 30px 0;
-      text-align: center;
     }
-    .ebook-preview h3 { font-size: 18px; margin-bottom: 16px; color: #d4af37; }
-    .ebook-preview ul { list-style: none; text-align: left; max-width: 400px; margin: 0 auto; }
-    .ebook-preview li { padding: 8px 0; font-size: 15px; color: #c0c0d0; }
+    .honest-box ul {
+      list-style: none;
+      margin: 16px 0;
+    }
+    .honest-box li {
+      padding: 8px 0;
+      padding-left: 24px;
+      position: relative;
+      color: #c0c0d0;
+      font-size: 15px;
+    }
+    .honest-box li::before {
+      content: "・";
+      position: absolute;
+      left: 0;
+      color: #d4af37;
+    }
     .form-box {
       background: linear-gradient(135deg, #1a1a2e 0%, #2a2a3e 100%);
       border: 1px solid #3a3a4a;
@@ -100,90 +135,261 @@
       box-shadow: 0 8px 30px rgba(212, 175, 55, 0.5);
     }
     .form-note { font-size: 12px; color: #606070; margin-top: 16px; text-align: center; }
-    .results { padding: 60px 20px; text-align: center; }
-    .results-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 20px;
-      max-width: 500px;
-      margin: 30px auto;
+    .cta-title {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: #ffffff;
     }
-    .result-card {
-      background: linear-gradient(135deg, #1a1a2e 0%, #2a2a3e 100%);
+    .cta-subtitle {
+      font-size: 14px;
+      color: #a0a0b0;
+      margin-bottom: 24px;
+    }
+    .testimonial {
+      background: linear-gradient(135deg, #1a1a2e 0%, #252535 100%);
       border: 1px solid #3a3a4a;
       border-radius: 12px;
       padding: 24px;
+      margin-bottom: 20px;
     }
-    .result-card .number { font-size: 32px; font-weight: 900; color: #d4af37; }
-    .result-card .label { font-size: 13px; color: #a0a0b0; margin-top: 8px; }
+    .testimonial .meta {
+      font-size: 13px;
+      color: #d4af37;
+      margin-bottom: 12px;
+    }
+    .testimonial .text {
+      font-size: 14px;
+      color: #c0c0d0;
+      line-height: 1.8;
+    }
+    .benefit-list {
+      list-style: none;
+      margin: 24px 0;
+    }
+    .benefit-list li {
+      padding: 16px 20px;
+      margin-bottom: 12px;
+      background: linear-gradient(135deg, #1a1a2e 0%, #252535 100%);
+      border-radius: 12px;
+      border-left: 4px solid #d4af37;
+      font-size: 15px;
+      color: #d0d0e0;
+    }
+    .steps-box {
+      background: linear-gradient(135deg, #1a1a2e 0%, #2a2a3e 100%);
+      border-radius: 16px;
+      padding: 28px;
+      margin: 24px 0;
+    }
+    .steps-box ol {
+      margin-left: 20px;
+      padding: 0;
+    }
+    .steps-box li {
+      margin-bottom: 16px;
+      font-size: 15px;
+      color: #d0d0e0;
+    }
     footer { text-align: center; padding: 40px 20px; font-size: 14px; color: #606070; }
+    footer a { color: #a0a0b0; }
   </style>
 </head>
 <body>
+  <!-- ヒーロー：キャッチ -->
   <section class="hero">
     <div class="container">
-      <span class="hero-label">無料プレゼント</span>
+      <span class="hero-label">無料ebook プレゼント</span>
       <h1 class="hero-title">
         数千万円なくても<br>
         <span class="gold">不労所得を築く</span>——<br>
-        Kindle印税資産の仕組み
+        Kindle印税資産というゴールデンルートの仕組み
       </h1>
       <p class="hero-subtitle">
-        株でも不動産でもない、第3の選択肢。<br>
-        90分で1冊、積み上げた分だけ入り続ける設計図を無料でお渡しします。
+        無名な個人が、文章力・絵心なしで、印税収入を「仕組み」で構築する秘訣を無料公開
       </p>
-
-      <div class="ebook-preview">
-        <img src="ebook-cover.png" alt="ebook表紙" style="max-width: 200px; width: 100%; border-radius: 8px; margin-bottom: 24px; border: 2px solid #d4af37;">
-        <h3>ebookの内容</h3>
-        <ul>
-          <li>✓ 他資産との比較（不動産・株・副業 vs Kindle印税）</li>
-          <li>✓ 市場の具体的な数字（電子書籍・マンガ市場の成長率）</li>
-          <li>✓ 90分で1冊の仕組みと積み上げのイメージ</li>
-          <li>✓ 差をつけるには（テーマ・リサーチの考え方）</li>
-        </ul>
-      </div>
-
-      <!-- 個別相談と同じGASのURL（新フォーム.gs にebook分岐を統合済み） -->
-      <form class="form-box" id="ebookForm" action="https://script.google.com/macros/s/AKfycbwdL-anRVQF1isl30EapKp3Sr3CVPDKw8mRqev2TNiPvzbl21I9zKngAi7cKBd7iRro/exec" method="POST" target="_self">
-        <input type="hidden" name="action" value="ebook">
-        <div class="form-group">
-          <label>メールアドレス <span style="color:#f87171">*</span></label>
-          <input type="email" name="email" required placeholder="example@email.com">
-        </div>
-        <div class="form-group">
-          <label>お名前（任意）</label>
-          <input type="text" name="name" placeholder="山田 太郎">
-        </div>
-        <button type="submit" class="form-submit">今すぐ受け取る（無料）</button>
-        <p class="form-note">登録後、完全ガイド動画（約12分）＋3日間チャレンジの案内が届きます。</p>
-      </form>
     </div>
   </section>
 
-  <section class="results">
+  <!-- ① 物語：フック -->
+  <section class="story">
     <div class="container">
-      <h2 style="font-size: clamp(20px, 3vw, 28px); margin-bottom: 20px;">参考実績</h2>
-      <div class="results-grid">
-        <div class="result-card">
-          <div class="number">5,000円</div>
-          <div class="label">1冊あたりの平均月間印税</div>
-        </div>
-        <div class="result-card">
-          <div class="number">90分</div>
-          <div class="label">1冊出版の目安時間</div>
-        </div>
+      <p class="lead">この文章にたどり着いたあなたは、きっと不労所得を得る方法を模索なさっているのだと思います。</p>
+      <p class="lead">その想いを大切にされていること、その一歩を踏み出そうとされていること、心より嬉しく思います。</p>
+      <p class="lead">あなたと同じような日常を経験しながら、不労所得を手に入れた方々がいます。</p>
+      <p class="lead">その方々のお話を、ぜひお届けさせてください。</p>
+
+      <h3 class="section-title">ある40歳の営業マンのお話から、始めましょう</h3>
+      <p>彼は朝早くから夜遅くまで仕事に追われ、人生のゴールが見えない毎日を送っていました。子どもの進学のために副業も始めたのですが、共働きでも貯金はなかなかたまらない。そんな日々が続いていたのです。</p>
+      <p>つい先日、体調を崩し2週間ほど休んだところ、収入が大きく減ってしまいました。このまま、自分に何かあったら家族はどうなるのだろう。そう考えはじめると、不安で胸がつかえる日々でした。</p>
+      <p>そこで彼は、自分が働かなくても収入が得られる方法を探し始めました。株にも少し手を出してみましたが、すずめの涙ほどの額にしかならなかった。不動産には、とても手が届かない。若い頃からもっと意識しておけばよかった——そんな後悔ばかりが、頭をよぎっていたのです。</p>
+
+      <h3 class="section-title">もう一人の方のお話をさせてください</h3>
+      <p>60歳、バツイチ。母親と同居し、一人息子として暮らしている男性でした。ある日、母親が倒れ、介護のために仕事ができなくなってしまいました。介護と生計の両立——その狭間で、時間に追われる毎日が続いていました。</p>
+      <p>働きたくても働けない。働かずにいては、生活が成り立たない。その板挟みの中、彼もまた、自分がそこにいなくても収入が続く方法を探していたのです。</p>
+
+      <h3 class="section-title">出会いと転機</h3>
+      <p>二人に共通していたのは、その願いでした。「自分が働かなくても、家族のためにお金が回り続ける方法はないか」</p>
+      <p><span class="strong">40歳の営業マンは、それとなく同僚に相談してみました。</span></p>
+      <p>「副業で何かできないか、不労所得みたいなものがないか……」返ってきたのは、鼻で笑うような反応でした。「そんなの無理だって。たまたま上手くいった人がいるかも知れないけど、自分たちには無理だよ」</p>
+      <p>現実的でした。教えてくれる人がいるわけではない。そう思って、一度は諦めかけました。</p>
+      <p><span class="strong">そんな彼が、ある退職する先輩に声をかけました。</span></p>
+      <p>退職されると聞いていた。まだまだ働ける年齢なのに、なぜ——そう思うと、驚かずにはいられなかった。</p>
+      <div class="dialogue">
+        <p><strong>営業マン：</strong>「先輩、退職されると聞いたんですけど……まだまだ働ける年齢なのに、なぜなんですか？正直、驚きました」</p>
+        <p><strong>先輩：</strong>「出版、やってるよ。印税って知ってる？文章が得意じゃなくても、絵が描けなくても、『仕組み』さえ整えればできるんだ。興味あったら、詳しく書いてあるebookを送るよ。無料だし、まず読んでみて。」</p>
+        <p><strong>営業マン：</strong>「仕組み、ですか……？」</p>
+        <p><strong>先輩：</strong>「そう。才能じゃない。仕組みがあるんだ。」</p>
       </div>
-      <p style="font-size: 12px; color: #606070;">※ 100冊以上出版者の実績平均。個人差があります。</p>
+      <p><span class="strong">その先輩の言葉が、頭から離れませんでした。</span></p>
+      <p>同僚には「そんなの無理だ」と言われた。たまたま上手くいっただけかも知れない、と。でも、まだ働ける年齢で退職を選んだ先輩は、何かを手に入れている。半信半疑のまま、彼は取り組んでみる決意をしたのです。</p>
+      <p><span class="strong">60歳の男性は、介護の合間にスマホを開き、半信半疑でメールアドレスを登録しました。</span>「文章も絵も苦手。時間もない。でも……もし、本当にできるなら」</p>
+
+      <h3 class="section-title">そして、数週間後——</h3>
+      <p>40歳の営業マンは、隙間時間にひとつずつ「仕組み」を整えていきました。60歳の男性は、介護の合間に、少しずつ手を動かし始めました。</p>
+      <p>数ヶ月が経った頃、二人の元には、ある変化が訪れていました。働いていない時間にも、印税という形で収入が入り始めていたのです。すずめの涙ではなかった。時間に追われていても、仕組みが回り続けていた。</p>
+
+      <h3 class="section-title">では、二人は一体何をしたのでしょうか？</h3>
+      <p>特別な才能が開花したのでしょうか？文章が突然得意になったのでしょうか？イラストが描けるようになったのでしょうか？それとも、大金を投資したのでしょうか？</p>
+      <p><span class="strong">いいえ、違います。</span></p>
+      <p>その答えは、印税収入を「仕組み」で構築したことでした。才能ではありません。スキルでもありません。お金をたくさんかけたわけでもありません。<span class="strong">ある「仕組み」を知り、ひとつずつ整えていっただけなのです。</span></p>
+      <p>「文章力や絵心がなくても、本当にできるの？」そう思われるかもしれません。しかし、実際には——<span class="strong">仕組みを整えれば、文章が苦手でも、絵が描けなくても、印税収入を築くことは可能なのです。</span></p>
+      <p>大切なのは、才能ではなく「仕組み」です。その仕組みのすべてを、このebookにまとめました。</p>
+    </div>
+  </section>
+
+  <!-- ② 正直な説明 -->
+  <section>
+    <div class="container">
+      <h2 class="section-title">ebookと3日間チャレンジについて、正直にお伝えします</h2>
+      <p style="margin-bottom: 20px; color: #d0d0e0;">このebookをお読みいただいた方には、<strong>「仕組みを構築するための3日間チャレンジ」</strong>のメールをお送りさせていただきます。</p>
+      <p style="margin-bottom: 16px; color: #d0d0e0;">その前に、きっとこんな心配をされるのではないでしょうか。</p>
+      <div class="honest-box">
+        <ul>
+          <li>売り込みで断られそうでは？</li>
+          <li>しつこく勧誘されるのでは？</li>
+          <li>なぜ無料で配るの？何の目的？</li>
+        </ul>
+        <p style="margin-top: 20px; font-weight: 700; color: #ffffff;">正直にお伝えします。</p>
+        <p style="margin: 12px 0; color: #c0c0d0;">無料でただ配りたいという慈善事業ではありません。<strong style="color: #d4af37;">仕組みを最速化する（1冊を90分で作成完了する）ツールのご案内をさせていただくためです。</strong></p>
+        <p style="margin: 12px 0; color: #c0c0d0;">ただし——チャレンジでは「体験」を届けることに集中し、商品の押し売りはいたしません。<strong style="color: #d4af37;">3日間だけのプログラム。期間限定です。</strong></p>
+        <p style="margin-top: 20px; color: #c0c0d0;">だからこそ、3日間のチャレンジで、「自分にもできる」「これなら元が取れる」「未来が変わる」と、実際に感じていただいてから、判断していただきたい。その想いで、このプログラムをご用意しています。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ③ CTA -->
+  <section style="background: radial-gradient(ellipse at center, #1a1a3e 0%, transparent 70%);">
+    <div class="container">
+      <div class="form-box">
+        <p class="cta-title">【無料ebook プレゼント】</p>
+        <p class="cta-subtitle">数千万円なくても不労所得を築く——Kindle印税資産というゴールデンルートの仕組み</p>
+        <form id="ebookForm" action="https://script.google.com/macros/s/AKfycbwdL-anRVQF1isl30EapKp3Sr3CVPDKw8mRqev2TNiPvzbl21I9zKngAi7cKBd7iRro/exec" method="POST" target="_self">
+          <input type="hidden" name="action" value="ebook">
+          <div class="form-group">
+            <label>メールアドレス <span style="color:#f87171">*</span></label>
+            <input type="email" name="email" required placeholder="example@email.com">
+          </div>
+          <div class="form-group">
+            <label>お名前（任意）</label>
+            <input type="text" name="name" placeholder="山田 太郎">
+          </div>
+          <button type="submit" class="form-submit">無料ebookを今すぐ手に入れる</button>
+          <p class="form-note">登録後、完全ガイド動画（約12分）＋3日間チャレンジの案内が届きます。</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ④ 読者の声 -->
+  <section>
+    <div class="container">
+      <h2 class="section-title">印税を仕組みで構築した方の声</h2>
+      <div class="testimonial">
+        <p class="meta">【読者A】50代・会社員</p>
+        <p class="text">「文章が苦手で、本を書くなんて夢のまた夢だと思っていました。でも仕組みを知ってから、想像以上に早く1冊目が完成しました。最初に1冊作った時、私でも1冊2時間でできたのには驚きました。これなら100冊まで直ぐだと思いました。今では印税が家計の支えになっています。」</p>
+      </div>
+      <div class="testimonial">
+        <p class="meta">【読者B】40代・主婦</p>
+        <p class="text">「子どもが小さいので時間が取れず、副業も諦めていました。隙間時間でできる『仕組み』だったので、無理なく続けられています。」</p>
+      </div>
+      <div class="testimonial">
+        <p class="meta">【読者C】60代・自営業</p>
+        <p class="text">「介護と仕事の両立に追われていたのですが、仕組みが回り始めてから、働いていない時間にも収入が入るようになりました。本当に救われました。」</p>
+      </div>
+      <div class="testimonial">
+        <p class="meta">【読者D】60代・自営業</p>
+        <p class="text">「自分の商品を売りながら親の介護に追われていました。この仕組みに取り組んだきっかけは息子です。息子が自分がやってみたいと話を持ってきました。まだ未成年だし、学業もあるからどうかといったのですが、アルバイトのつもりで週末だけやりたい。もしかしたらお母さんも一緒にできるから、絶対無駄にはしないからと強く望んだので取り組むことにしました。まだ5冊しか出来ていないけど、夜の1時間、週末の3時間と、スキマ時間でも出来ていて日常生活に支障をきたしていません。」</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ⑤ メリット -->
+  <section>
+    <div class="container">
+      <h2 class="section-title">印税を仕組みで構築すると、何が起きるか？</h2>
+      <ul class="benefit-list">
+        <li><strong>信頼性が上がる</strong> — 自分の名前で本が出版されることで、専門家としての信頼が生まれます。</li>
+        <li><strong>不労所得が積み上がる</strong> — 一度仕組みを整えれば、働いていない時間にも収入が入り続けます。</li>
+        <li><strong>才能に依存しない</strong> — 文章力・絵心がなくても、仕組みさえ整えば再現可能です。</li>
+      </ul>
+      <p style="margin-top: 24px; color: #d0d0e0;">このebookを読んだだけでは、まだ「自分にもできる」と実感しにくいかもしれません。そこで、<strong>3日間のチャレンジ</strong>で、実際に手を動かして体験していただく機会を用意しました。<strong>体験 → 納得 → 行動</strong>。この流れを、ぜひ体感してください。</p>
+    </div>
+  </section>
+
+  <!-- ⑥ 仕組みとは -->
+  <section>
+    <div class="container">
+      <h2 class="section-title">印税を「仕組み」で構築するとは？</h2>
+      <p style="margin-bottom: 16px; color: #d0d0e0;">広告でお金をかけて宣伝するのではなく——<strong>再現可能な手順を整え、それを回し続けることで、印税収入を積み上げていくこと。</strong></p>
+      <ul style="list-style: none; margin: 20px 0;">
+        <li style="padding: 8px 0; color: #c0c0d0;">・才能に依存しない</li>
+        <li style="padding: 8px 0; color: #c0c0d0;">・時間に追われていても、仕組みが回り続ける</li>
+        <li style="padding: 8px 0; color: #c0c0d0;">・一度整えれば、継続して収入が入る</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ⑦ 具体的な方法 -->
+  <section>
+    <div class="container">
+      <h2 class="section-title">印税を構築するには？</h2>
+      <div class="steps-box">
+        <ol>
+          <li>このebookで「仕組み」を知る</li>
+          <li>3日間チャレンジで「体験」する</li>
+          <li>ご自身で判断して、次の一歩を踏み出す</li>
+        </ol>
+      </div>
+      <p style="color: #c0c0d0; font-size: 14px;">ツールの案内は目的の一つとして明示しますが、主役はあくまで「体験」です。押し売りはいたしません。</p>
+    </div>
+  </section>
+
+  <!-- ⑧ CTA（繰り返し） -->
+  <section style="background: radial-gradient(ellipse at center, #1a1a3e 0%, transparent 70%);">
+    <div class="container">
+      <div class="form-box">
+        <p class="cta-title">【無料ebook プレゼント】</p>
+        <p class="cta-subtitle">数千万円なくても不労所得を築く——Kindle印税資産というゴールデンルートの仕組み</p>
+        <p style="font-size: 14px; color: #c0c0d0; margin-bottom: 20px;">正直にお伝えします。このebookのあと、3日間チャレンジのメールをお送りします。その中で、仕組みを最速化するツールもご案内しますが、まずは「体験」を通じて、ご自身で判断してください。押し売りはいたしません。3日間限定です。</p>
+        <form id="ebookForm2" action="https://script.google.com/macros/s/AKfycbwdL-anRVQF1isl30EapKp3Sr3CVPDKw8mRqev2TNiPvzbl21I9zKngAi7cKBd7iRro/exec" method="POST" target="_self">
+          <input type="hidden" name="action" value="ebook">
+          <div class="form-group">
+            <label>メールアドレス <span style="color:#f87171">*</span></label>
+            <input type="email" name="email" required placeholder="example@email.com">
+          </div>
+          <div class="form-group">
+            <label>お名前（任意）</label>
+            <input type="text" name="name" placeholder="山田 太郎">
+          </div>
+          <button type="submit" class="form-submit">無料ebookを今すぐ手に入れる</button>
+        </form>
+      </div>
     </div>
   </section>
 
   <footer>
-    <p><a href="https://kukuru-m.com/manga/law.html" target="_blank" rel="noopener" style="color: #a0a0b0;">特定商取引法に基づく表記</a> | <a href="https://kukuru-m.com/manga/pra.html" target="_blank" rel="noopener" style="color: #a0a0b0;">プライバシーポリシー</a></p>
+    <p><a href="https://kukuru-m.com/manga/law.html" target="_blank" rel="noopener">特定商取引法に基づく表記</a> | <a href="https://kukuru-m.com/manga/pra.html" target="_blank" rel="noopener">プライバシーポリシー</a></p>
   </footer>
-
-  <script>
-    // フォームはGASに直接POST。GASがebook登録シートに書き出し後、thank-you.htmlへリダイレクト
-  </script>
 </body>
 </html>
