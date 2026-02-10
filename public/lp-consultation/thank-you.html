@@ -11,7 +11,8 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Noto Sans JP', sans-serif;
-      background: linear-gradient(180deg, #0d1f19 0%, #1E3A2F 50%, #0d1f19 100%);
+      /* ★ ebook LPと同じダークグリーン */
+      background: linear-gradient(180deg, #1E3A2F 0%, #234d3d 50%, #1E3A2F 100%);
       color: #ffffff;
       line-height: 1.8;
       min-height: 100vh;
@@ -22,16 +23,18 @@
       text-align: center;
       margin-bottom: 40px;
     }
+    /* ★ ゴールド統一 */
     .icon { font-size: 64px; margin-bottom: 16px; color: #d4af37; }
     h1 { font-size: clamp(24px, 4vw, 32px); font-weight: 900; margin-bottom: 16px; }
-    .subtitle { font-size: 16px; color: #a0a0b0; }
+    .subtitle { font-size: 16px; color: #cbd5e1; }
     .video-wrap {
       position: relative;
       padding-bottom: 56.25%;
       height: 0;
       overflow: hidden;
       border-radius: 16px;
-      background: #1E3A2F;
+      /* ★ ダークグリーン系の背景 */
+      background: #234d3d;
       margin: 40px 0;
     }
     .video-wrap iframe {
@@ -43,11 +46,12 @@
     .video-note {
       text-align: center;
       font-size: 14px;
-      color: #808090;
+      color: #94a3b8;
       margin-bottom: 40px;
     }
     .schedule-box {
-      background: linear-gradient(135deg, #1E3A2F 0%, #2d4a42 100%);
+      /* ★ ダークグリーン系のグラデーション */
+      background: linear-gradient(135deg, #234d3d 0%, #2d5a4a 100%);
       border: 1px solid #3a5248;
       border-radius: 16px;
       padding: 30px;
@@ -56,6 +60,7 @@
     .schedule-box h3 {
       font-size: 18px;
       margin-bottom: 20px;
+      /* ★ ゴールド統一 */
       color: #d4af37;
     }
     .schedule-box ul { list-style: none; }
@@ -69,15 +74,27 @@
       text-align: center;
       margin: 50px 0;
       padding: 40px;
-      background: linear-gradient(135deg, #1a2d24 0%, #234d3d 100%);
+      /* ★ ダークグリーン系の背景 */
+      background: linear-gradient(135deg, #1E3A2F 0%, #234d3d 100%);
+      /* ★ ゴールドの枠線 */
       border: 2px solid #d4af37;
       border-radius: 20px;
     }
-    .day4-cta h3 { font-size: 22px; margin-bottom: 16px; color: #d4af37; }
-    .day4-cta p { color: #a0a0b0; margin-bottom: 24px; font-size: 15px; }
+    .day4-cta h3 {
+      font-size: 22px;
+      margin-bottom: 16px;
+      /* ★ ゴールド統一 */
+      color: #d4af37;
+    }
+    .day4-cta p {
+      color: #cbd5e1;
+      margin-bottom: 24px;
+      font-size: 15px;
+    }
     .cta-button {
       display: inline-block;
-      background: linear-gradient(90deg, #d4af37, #f4cf67);
+      /* ★ ゴールドボタン（ebook LPと同じ） */
+      background: linear-gradient(90deg, #d4af37, #b8962e);
       color: #1E3A2F;
       padding: 18px 40px;
       border-radius: 50px;
@@ -92,22 +109,32 @@
       box-shadow: 0 8px 30px rgba(212, 175, 55, 0.5);
       color: #1E3A2F;
     }
-    .note { font-size: 14px; color: #606070; text-align: center; margin-top: 40px; }
+    .note {
+      font-size: 14px;
+      color: #94a3b8;
+      text-align: center;
+      margin-top: 40px;
+    }
     .transcript-toggle {
       display: inline-block;
       margin: 20px 0;
       padding: 12px 24px;
-      background: #2d4a42;
+      /* ★ ダークグリーン系の背景 */
+      background: #2d5a4a;
       border: 1px solid #3a5248;
       border-radius: 8px;
+      /* ★ ゴールド統一 */
       color: #d4af37;
       font-weight: 600;
       cursor: pointer;
       font-size: 15px;
     }
-    .transcript-toggle:hover { background: #345a50; }
+    .transcript-toggle:hover {
+      background: #345a50;
+    }
     .transcript-wrap {
-      background: linear-gradient(135deg, #1E3A2F 0%, #2d4a42 100%);
+      /* ★ ダークグリーン系の背景 */
+      background: linear-gradient(135deg, #234d3d 0%, #2d5a4a 100%);
       border: 1px solid #3a5248;
       border-radius: 16px;
       padding: 32px;
@@ -117,12 +144,31 @@
       transition: max-height 0.4s ease-out;
     }
     .transcript-wrap.open { max-height: none; }
-    .transcript-wrap h3 { font-size: 18px; margin: 28px 0 12px; color: #d4af37; }
+    .transcript-wrap h3 {
+      font-size: 18px;
+      margin: 28px 0 12px;
+      /* ★ ゴールド統一 */
+      color: #d4af37;
+    }
     .transcript-wrap h3:first-child { margin-top: 0; }
-    .transcript-wrap p { margin-bottom: 1em; color: #c0c0d0; font-size: 15px; line-height: 1.9; }
-    .transcript-wrap ul { margin: 12px 0; padding-left: 1.5em; color: #c0c0d0; }
+    .transcript-wrap p {
+      margin-bottom: 1em;
+      color: #e2e8f0;
+      font-size: 15px;
+      line-height: 1.9;
+    }
+    .transcript-wrap ul {
+      margin: 12px 0;
+      padding-left: 1.5em;
+      color: #e2e8f0;
+    }
     .transcript-wrap li { margin-bottom: 6px; }
-    .transcript-label { text-align: center; font-size: 14px; color: #808090; margin: 30px 0 12px; }
+    .transcript-label {
+      text-align: center;
+      font-size: 14px;
+      color: #94a3b8;
+      margin: 30px 0 12px;
+    }
   </style>
 </head>
 <body>
