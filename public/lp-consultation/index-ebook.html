@@ -13,28 +13,46 @@
     }
     
     .hero {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 50%, #2563eb 100%);
       color: white;
       padding: 40px 20px 60px;
       text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(251, 191, 36, 0.12) 0%, transparent 70%);
+      border-radius: 50%;
     }
     .hero h1 {
       font-size: 26px;
       line-height: 1.6;
       margin-bottom: 15px;
       font-weight: bold;
+      position: relative;
+      z-index: 1;
     }
     .hero .subtitle {
       font-size: 16px;
       margin-bottom: 10px;
-      opacity: 0.95;
       font-weight: 600;
+      color: #fbbf24;
+      position: relative;
+      z-index: 1;
     }
     .hero .tagline {
       font-size: 14px;
       margin-bottom: 40px;
-      opacity: 0.9;
+      opacity: 0.95;
       line-height: 1.8;
+      position: relative;
+      z-index: 1;
     }
     
     .offer-container {
@@ -45,6 +63,8 @@
       gap: 40px;
       max-width: 1000px;
       margin: 0 auto;
+      position: relative;
+      z-index: 1;
     }
     
     .ebook-image {
@@ -58,15 +78,14 @@
       max-width: 320px;
       height: auto;
       border-radius: 10px;
-      transform: perspective(1000px) rotateY(-15deg);
       box-shadow: 
-        0 20px 60px rgba(0,0,0,0.4),
-        -10px 0 20px rgba(0,0,0,0.2);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+        0 20px 60px rgba(0,0,0,0.5),
+        -10px 0 30px rgba(251, 191, 36, 0.2);
+      transform: perspective(1000px) rotateY(-12deg);
+      transition: transform 0.3s ease;
     }
     .ebook-image img:hover {
-      transform: perspective(1000px) rotateY(-8deg) scale(1.02);
-      box-shadow: 0 25px 70px rgba(0,0,0,0.45);
+      transform: perspective(1000px) rotateY(-5deg) scale(1.02);
     }
     
     .form-box {
@@ -77,9 +96,10 @@
       padding: 35px 30px;
       border-radius: 12px;
       box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+      border-top: 4px solid #f59e0b;
     }
     .form-box h2 {
-      color: #333;
+      color: #1e3a8a;
       font-size: 22px;
       margin-bottom: 15px;
       text-align: center;
@@ -92,54 +112,63 @@
       margin-bottom: 25px;
       line-height: 1.6;
     }
+    .form-box label {
+      display: block;
+      font-size: 14px;
+      color: #374151;
+      margin-bottom: 6px;
+      font-weight: 500;
+    }
     .form-box input[type="email"],
     .form-box input[type="text"] {
       width: 100%;
       padding: 16px;
       font-size: 16px;
-      border: 2px solid #ddd;
+      border: 2px solid #e5e7eb;
       border-radius: 6px;
       margin-bottom: 15px;
       transition: border-color 0.3s;
     }
     .form-box input:focus {
       outline: none;
-      border-color: #667eea;
+      border-color: #2563eb;
     }
     .form-box button {
       width: 100%;
       padding: 16px;
       font-size: 18px;
-      background: #FF6B6B;
+      background: linear-gradient(135deg, #ea580c 0%, #dc2626 100%);
       color: white;
       border: none;
       border-radius: 6px;
       cursor: pointer;
       font-weight: bold;
-      transition: background 0.3s, transform 0.1s;
+      transition: all 0.3s;
+      box-shadow: 0 4px 15px rgba(234, 88, 12, 0.3);
     }
     .form-box button:hover {
-      background: #ff5252;
+      background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
       transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(234, 88, 12, 0.4);
     }
     .form-box button:active { transform: translateY(0); }
     .form-box .note {
       font-size: 12px;
-      color: #999;
+      color: #6b7280;
       text-align: center;
       margin-top: 12px;
       line-height: 1.5;
     }
     
     .benefits {
-      background: #f8f9fa;
+      background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
       padding: 60px 20px;
     }
     .benefits h2 {
       font-size: 28px;
       text-align: center;
       margin-bottom: 40px;
-      color: #333;
+      color: #1e3a8a;
     }
     .benefits-grid {
       max-width: 900px;
@@ -153,20 +182,22 @@
       padding: 25px;
       border-radius: 10px;
       box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      border-left: 4px solid #f59e0b;
       transition: transform 0.3s, box-shadow 0.3s;
     }
     .benefit-item:hover {
       transform: translateY(-5px);
       box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+      border-left-color: #d97706;
     }
     .benefit-item h3 {
       font-size: 18px;
-      color: #667eea;
+      color: #1e3a8a;
       margin-bottom: 10px;
     }
     .benefit-item p {
       font-size: 15px;
-      color: #666;
+      color: #4b5563;
       line-height: 1.7;
     }
     
@@ -177,38 +208,28 @@
     }
     .cta-section h2 {
       font-size: 24px;
-      color: #333;
+      color: #1e3a8a;
       margin-bottom: 30px;
       line-height: 1.6;
     }
     
-    .story-toggle {
-      text-align: center;
-      margin: 60px 0 20px;
-    }
-    .story-toggle button {
-      padding: 15px 40px;
-      font-size: 16px;
-      background: #667eea;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-    .story-toggle button:hover { background: #5568d3; }
     .story-content {
-      display: none;
       max-width: 700px;
       margin: 0 auto;
-      padding: 40px 20px;
-      color: #555;
+      padding: 40px 20px 80px;
+      color: #4b5563;
       line-height: 1.8;
+      background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
     }
-    .story-content.show { display: block; }
+    .story-heading {
+      font-size: 24px;
+      color: #1e3a8a;
+      text-align: center;
+      margin-bottom: 30px;
+    }
     .story-content h3 {
       font-size: 22px;
-      color: #333;
+      color: #1e3a8a;
       margin: 30px 0 15px;
     }
     .story-content p { margin-bottom: 20px; }
@@ -218,7 +239,7 @@
       bottom: 0;
       left: 0;
       right: 0;
-      background: #FF6B6B;
+      background: linear-gradient(135deg, #ea580c 0%, #dc2626 100%);
       padding: 15px 20px;
       text-align: center;
       box-shadow: 0 -3px 15px rgba(0,0,0,0.2);
@@ -275,8 +296,14 @@
         </p>
         <form action="https://script.google.com/macros/s/AKfycbwdL-anRVQF1isl30EapKp3Sr3CVPDKw8mRqev2TNiPvzbl21I9zKngAi7cKBd7iRro/exec" method="POST" target="_self">
           <input type="hidden" name="action" value="ebook">
-          <input type="text" name="name" placeholder="お名前（任意）" autocomplete="name">
-          <input type="email" name="email" placeholder="メールアドレスを入力" required autocomplete="email">
+          <div class="form-group">
+            <label for="hero-email">メールアドレス <span style="color:#dc2626">*</span></label>
+            <input type="email" id="hero-email" name="email" placeholder="example@email.com" required autocomplete="email">
+          </div>
+          <div class="form-group">
+            <label for="hero-name">お名前（任意）</label>
+            <input type="text" id="hero-name" name="name" placeholder="山田 太郎" autocomplete="name">
+          </div>
           <button type="submit">無料でebookを受け取る</button>
         </form>
         <p class="note">
@@ -327,19 +354,22 @@
       <p class="form-subtitle">登録後すぐにメールでお届けします</p>
       <form action="https://script.google.com/macros/s/AKfycbwdL-anRVQF1isl30EapKp3Sr3CVPDKw8mRqev2TNiPvzbl21I9zKngAi7cKBd7iRro/exec" method="POST" target="_self">
         <input type="hidden" name="action" value="ebook">
-        <input type="text" name="name" placeholder="お名前（任意）">
-        <input type="email" name="email" placeholder="メールアドレスを入力" required autocomplete="email">
+        <div class="form-group">
+          <label for="cta2-email">メールアドレス <span style="color:#dc2626">*</span></label>
+          <input type="email" id="cta2-email" name="email" placeholder="example@email.com" required autocomplete="email">
+        </div>
+        <div class="form-group">
+          <label for="cta2-name">お名前（任意）</label>
+          <input type="text" id="cta2-name" name="name" placeholder="山田 太郎" autocomplete="name">
+        </div>
         <button type="submit">今すぐ無料で受け取る</button>
       </form>
       <p class="note">※登録無料・いつでも解除可能</p>
     </div>
   </div>
 
-  <div class="story-toggle">
-    <button type="button" onclick="toggleStory()">📖 成功者のストーリーを読む</button>
-  </div>
-
-  <div class="story-content" id="storyContent">
+  <div class="story-content">
+    <h2 class="story-heading">📖 成功者のストーリー</h2>
     <h3>ある40歳の営業マンのお話から、始めましょう</h3>
     <p>彼は朝早くから夜遅くまで仕事に追われ、人生のゴールが見えない毎日を送っていました。子どもの進学のために副業も始めたのですが、共働きでも貯金はなかなかたまらない。そんな日々が続いていたのです。</p>
     
@@ -374,14 +404,20 @@
     <p>「文章力や絵心がなくても、本当にできるの？」そう思われるかもしれません。しかし、実際には——仕組みを整えれば、文章が苦手でも、絵が描けなくても、印税収入を築くことは可能なのです。</p>
     <p><strong>大切なのは、才能ではなく「仕組み」です。その仕組みのすべてを、このebookにまとめました。</strong></p>
     
-    <div style="background: #f8f9fa; padding: 40px 20px; margin-top: 60px; border-radius: 10px;">
+    <div style="background: #e2e8f0; padding: 40px 20px; margin-top: 60px; border-radius: 10px;">
       <div class="form-box" style="margin: 0 auto;">
         <h2>📘 無料ebookを受け取る</h2>
         <p class="form-subtitle">登録後すぐにメールでお届けします</p>
         <form action="https://script.google.com/macros/s/AKfycbwdL-anRVQF1isl30EapKp3Sr3CVPDKw8mRqev2TNiPvzbl21I9zKngAi7cKBd7iRro/exec" method="POST" target="_self">
           <input type="hidden" name="action" value="ebook">
-          <input type="text" name="name" placeholder="お名前（任意）">
-          <input type="email" name="email" placeholder="メールアドレスを入力" required autocomplete="email">
+          <div class="form-group">
+            <label for="story-email">メールアドレス <span style="color:#dc2626">*</span></label>
+            <input type="email" id="story-email" name="email" placeholder="example@email.com" required autocomplete="email">
+          </div>
+          <div class="form-group">
+            <label for="story-name">お名前（任意）</label>
+            <input type="text" id="story-name" name="name" placeholder="山田 太郎" autocomplete="name">
+          </div>
           <button type="submit">今すぐ無料で受け取る</button>
         </form>
         <p class="note">※登録無料・いつでも解除可能</p>
@@ -394,12 +430,6 @@
   </div>
 
   <script>
-    function toggleStory() {
-      var content = document.getElementById('storyContent');
-      content.classList.toggle('show');
-      var btn = document.querySelector('.story-toggle button');
-      btn.textContent = content.classList.contains('show') ? '📖 ストーリーを閉じる' : '📖 成功者のストーリーを読む';
-    }
     window.addEventListener('scroll', function() {
       document.getElementById('stickyBtn').classList.toggle('show', window.scrollY > 500);
     });
