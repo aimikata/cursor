@@ -460,13 +460,13 @@
       margin-right: auto;
     }
 
-    /* フォーム */
+    /* フォーム（上下統一） */
     .form-container {
       background: linear-gradient(135deg, #1a1a2e 0%, #2a2a3e 100%);
       border: 1px solid #3a3a4a;
       border-radius: 20px;
       padding: 40px;
-      max-width: 500px;
+      max-width: 600px;
       margin: 0 auto;
     }
 
@@ -686,28 +686,24 @@
     </div>
   </section>
 
-  <!-- アンケート -->
-  <section class="survey" style="background: #0f0f1f;">
+  <!-- アンケート（申込フォームと同じ形で統一） -->
+  <section class="survey final-cta">
     <div class="container">
       <h2 class="section-title">動画を見た<span class="gold">感想をお聞かせください</span></h2>
-      <p style="text-align: center; margin-bottom: 30px; color: #a0a0b0;">
+      <p class="final-cta-text" style="margin-bottom: 30px;">
         あなたの率直なご意見が、個別相談でより良いアドバイスをするために役立ちます
       </p>
-      <div class="form-container" style="max-width: 600px;">
+      <div class="form-container">
         <form id="surveyForm">
           <div class="form-group">
-            <label>動画を見て、良いと思った点（任意）</label>
-            <textarea id="surveyGood" placeholder="例：プロジェクト作成が簡単そう、世界観設計が分かりやすかった など" style="min-height: 100px;"></textarea>
+            <label class="step-label">動画の感想（任意）</label>
+            <label for="surveyGood">良いと思った点</label>
+            <textarea id="surveyGood" name="surveyGood" placeholder="例：プロジェクト作成が簡単そう、世界観設計が分かりやすかった など"></textarea>
+            <label for="surveyConcern" style="display: block; margin-top: 15px; margin-bottom: 8px; font-size: 14px;">不安に思った点・疑問点</label>
+            <textarea id="surveyConcern" name="surveyConcern" placeholder="例：1冊作るのは大変そう、本当に90分でできるのか など"></textarea>
+            <label for="surveyWant" style="display: block; margin-top: 15px; margin-bottom: 8px; font-size: 14px;">個別相談で知りたいこと</label>
+            <textarea id="surveyWant" name="surveyWant" placeholder="例：自分でもできるか、投資回収期間、具体的な手順 など"></textarea>
           </div>
-          <div class="form-group">
-            <label>動画を見て、不安に思った点・疑問点（任意）</label>
-            <textarea id="surveyConcern" placeholder="例：1冊作るのは大変そう、本当に90分でできるのか など" style="min-height: 100px;"></textarea>
-          </div>
-          <div class="form-group">
-            <label>個別相談で知りたいこと（任意）</label>
-            <textarea id="surveyWant" placeholder="例：自分でもできるか、投資回収期間、具体的な手順 など" style="min-height: 100px;"></textarea>
-          </div>
-
           <button type="button" class="form-submit" onclick="goToConsultation()">個別相談に申し込む（無料）</button>
         </form>
       </div>
