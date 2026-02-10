@@ -25,7 +25,8 @@
 4. **エンドポイントを追加** をクリック
 
 5. 以下を入力：
-   - **エンドポイントURL**：
+   - **エンドポイントURL**：下記を**そのままコピー**して貼り付け
+     - ※「bl21**I**9z」の **I はアルファベットのアイ**（数字の1ではない）
      ```
      https://script.google.com/macros/s/AKfycbwdL-anRVQF1isl30EapKp3Sr3CVPDKw8mRqev2TNiPvzbl21I9zKngAi7cKBd7iRro/exec
      ```
@@ -78,7 +79,7 @@
 | 症状 | 確認すること |
 |------|--------------|
 | 書き出されない | Stripe Webhook にエンドポイントが登録されているか |
-| 書き出されない | エンドポイントURL が GAS のデプロイURLと完全一致しているか |
+| 書き出されない | エンドポイントURL が GAS のデプロイURLと**完全一致**しているか（bl21**I**9z の I はアルファベット） |
 | 書き出されない | リッスンするイベントに `checkout.session.completed` が含まれているか |
 | 書き出されない | Stripe → Webhook → 最近のイベント でエラーの有無を確認 |
 | 署名エラー | GAS の STRIPE_WEBHOOK_SECRET が Stripe の署名シークレットと一致しているか |

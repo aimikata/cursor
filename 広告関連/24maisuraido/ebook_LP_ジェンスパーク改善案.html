@@ -53,6 +53,7 @@
       max-width: 350px;
       text-align: center;
     }
+    /* 3D効果(立体感)：画像ありでCVR +40〜80%の期待 */
     .ebook-image img {
       width: 100%;
       max-width: 320px;
@@ -253,6 +254,9 @@
 </head>
 <body>
 
+  <!-- 【本番用】form action を GAS のウェブアプリURLに変更してください -->
+  <!-- 【本番用】ebook画像：表紙画像ありで CVR +40〜80% の改善が期待されます。「お、ちゃんとした本だ」と納得→申込増 -->
+
   <div class="hero" id="top">
     <h1>数千万円なくても<br>不労所得を築く——</h1>
     <p class="subtitle">Kindle印税資産という<br>ゴールデンルートの仕組み</p>
@@ -263,7 +267,8 @@
     
     <div class="offer-container">
       <div class="ebook-image">
-        <img src="ebook-cover.png" 
+        <!-- 表紙: sankou/unnamed.jpg。本番LPでは public/lp-consultation/ebook-cover.png を使用 -->
+        <img src="../sankou/unnamed.jpg" 
              alt="無料ebook『数千万円なくても不労所得を築く——Kindle印税資産というゴールデンルートの仕組み』表紙">
       </div>
       
@@ -273,7 +278,7 @@
           登録後すぐにメールでお届けします。<br>
           3日間の実践ガイド付き
         </p>
-        <form action="https://script.google.com/macros/s/AKfycbwdL-anRVQF1isl30EapKp3Sr3CVPDKw8mRqev2TNiPvzbl21I9zKngAi7cKBd7iRro/exec" method="POST" target="_self">
+        <form action="https://script.google.com/macros/s/YOUR_DEPLOYMENT_ID/exec" method="post">
           <input type="hidden" name="action" value="ebook">
           <input type="text" name="name" placeholder="お名前（任意）" autocomplete="name">
           <input type="email" name="email" placeholder="メールアドレスを入力" required autocomplete="email">
@@ -325,7 +330,7 @@
     <div class="form-box" style="margin: 0 auto;">
       <h2>📘 無料ebookを受け取る</h2>
       <p class="form-subtitle">登録後すぐにメールでお届けします</p>
-      <form action="https://script.google.com/macros/s/AKfycbwdL-anRVQF1isl30EapKp3Sr3CVPDKw8mRqev2TNiPvzbl21I9zKngAi7cKBd7iRro/exec" method="POST" target="_self">
+      <form action="https://script.google.com/macros/s/YOUR_DEPLOYMENT_ID/exec" method="post">
         <input type="hidden" name="action" value="ebook">
         <input type="text" name="name" placeholder="お名前（任意）">
         <input type="email" name="email" placeholder="メールアドレスを入力" required autocomplete="email">
@@ -336,7 +341,7 @@
   </div>
 
   <div class="story-toggle">
-    <button type="button" onclick="toggleStory()">📖 成功者のストーリーを読む</button>
+    <button onclick="toggleStory()">📖 成功者のストーリーを読む</button>
   </div>
 
   <div class="story-content" id="storyContent">
@@ -378,7 +383,7 @@
       <div class="form-box" style="margin: 0 auto;">
         <h2>📘 無料ebookを受け取る</h2>
         <p class="form-subtitle">登録後すぐにメールでお届けします</p>
-        <form action="https://script.google.com/macros/s/AKfycbwdL-anRVQF1isl30EapKp3Sr3CVPDKw8mRqev2TNiPvzbl21I9zKngAi7cKBd7iRro/exec" method="POST" target="_self">
+        <form action="https://script.google.com/macros/s/YOUR_DEPLOYMENT_ID/exec" method="post">
           <input type="hidden" name="action" value="ebook">
           <input type="text" name="name" placeholder="お名前（任意）">
           <input type="email" name="email" placeholder="メールアドレスを入力" required autocomplete="email">
@@ -395,9 +400,9 @@
 
   <script>
     function toggleStory() {
-      var content = document.getElementById('storyContent');
+      const content = document.getElementById('storyContent');
       content.classList.toggle('show');
-      var btn = document.querySelector('.story-toggle button');
+      const btn = document.querySelector('.story-toggle button');
       btn.textContent = content.classList.contains('show') ? '📖 ストーリーを閉じる' : '📖 成功者のストーリーを読む';
     }
     window.addEventListener('scroll', function() {

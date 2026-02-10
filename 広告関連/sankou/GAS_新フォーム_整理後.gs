@@ -39,7 +39,14 @@ const EBOOK_URL = 'https://cursor0113.vercel.app/lp-consultation/ebook.html';
 const DAY4_ANKETO_URL = 'https://cursor0113.vercel.app/lp-consultation/day4-anketo.html';
 
 // Day4 2,980円 Stripe決済リンク
-const STRIPE_DAY4_URL = 'https://buy.stripe.com/00wbJ03Vb2g4cBL2X8ffy0e';
+const STRIPE_DAY4_URL = 'https://buy.stripe.com/00wbJ03Vb2g4cBL2X8ffy0e';          // 本番
+const STRIPE_DAY4_URL_TEST = 'https://buy.stripe.com/test_fZu9ASezPf2Q7hr8hsffy00'; // テスト
+const USE_TEST_STRIPE = false;  // 本番運用（テスト時は true に戻す）
+
+// 実体験前準備用マニュアル
+const API_KEY_MANUAL_URL = 'https://gemini.google.com/share/3e4d49d18fcd';
+const KDP_ACCOUNT_MANUAL_URL = 'https://ktjwfldx.gensparkspace.com/';
+const KINDLE_CREATE_MANUAL_URL = 'https://cursor0113.vercel.app/lp-consultation/kindle-create-manual.html';
 
 // Stripe Webhook署名シークレット（whsec_で始まる。Stripeダッシュボードで取得）
 const STRIPE_WEBHOOK_SECRET = 'whsec_ob3RD8SgwEDjhY84x3QGTzdau1mrV7J7';
@@ -263,6 +270,21 @@ function handleStripeCheckoutCompleted(session) {
 
   sheet.appendRow([timestamp, 'Day4決済', amount, 'jpy', customerEmail, customerName, paymentId, 'Day4 2,980円', metadata, '']);
   console.log('Stripe決済記録完了: ' + customerEmail + ' / ' + amount + '円');
+
+  // Day4申込の「決済待ち」→「決済済」に更新（メールで照合）
+  if (amount === 2980 && customerEmail) {
+    try {
+      updateDay4PaymentStatusToComplete(customerEmail);
+    } catch (updateErr) {
+      console.log('Day4申込ステータス更新エラー: ' + updateErr.message);
+    }
+    try {
+      sendDay4PaymentCompletedEmail(customerEmail, customerName);
+    } catch (mailErr) {
+      console.log('Day4決済完了メール送信エラー: ' + mailErr.message);
+    }
+  }
+
   return ContentService.createTextOutput('OK').setMimeType(ContentService.MimeType.TEXT).setStatusCode(200);
 }
 
@@ -281,7 +303,99 @@ function handleStripePaymentSucceeded(paymentIntent) {
   const paymentId = paymentIntent.id || '';
   const metadata = paymentIntent.metadata ? JSON.stringify(paymentIntent.metadata) : '';
   sheet.appendRow([timestamp, 'Day4決済', amount, 'jpy', customerEmail, '', paymentId, 'Day4 2,980円', metadata, '']);
+
+  // payment_intent のみ届く場合のフォールバック（Day4申込の決済済更新のみ。メールはcheckout.session.completedで送信）
+  if (amount === 2980 && customerEmail) {
+    try {
+      updateDay4PaymentStatusToComplete(customerEmail);
+    } catch (err) {
+      console.log('Day4申込ステータス更新エラー: ' + err.message);
+    }
+  }
+
   return ContentService.createTextOutput('OK').setMimeType(ContentService.MimeType.TEXT).setStatusCode(200);
+}
+
+/**
+ * Day4申込シートの「決済待ち」を「決済済」に更新（メールアドレスで照合）
+ */
+function updateDay4PaymentStatusToComplete(customerEmail) {
+  if (!customerEmail) return;
+  const email = String(customerEmail).trim().toLowerCase();
+  const ss = getSpreadsheet();
+  const day4Sheet = ss.getSheetByName('Day4申込');
+  if (!day4Sheet) return;
+
+  const data = day4Sheet.getDataRange().getValues();
+  if (data.length < 2) return;
+
+  // 列: A=0日時, B=1名前, C=2メール, D=3選択日程, E=4目標, F=5週時間, G=6メッセージ, H=7決済状態
+  for (let i = 1; i < data.length; i++) {
+    const row = data[i];
+    const rowEmail = String(row[2] || '').trim().toLowerCase();
+    const status = String(row[7] || '').trim();
+    if (rowEmail === email && status === '決済待ち') {
+      day4Sheet.getRange(i + 1, 8).setValue('決済済');
+      console.log('Day4申込 決済済に更新: 行' + (i + 1) + ' / ' + email);
+      break; // 最初に一致した行のみ更新
+    }
+  }
+}
+
+/**
+ * 選択日程の文字列を「2026/02/25 20:00-21:00」形式に整形
+ * "Wed Feb 25 2026 00:00:00 GMT+0900 (日本標準時) 20:00 - 21:00" → "2026/02/25 20:00-21:00"
+ * スプレッドシートの D列 で =formatScheduleDisplay(J2) または ARRAYFORMULA で使用可能
+ */
+function formatScheduleDisplay(val) {
+  if (val && val.map) {
+    return val.map(function(row) { return [formatScheduleDisplayImpl(row[0] != null ? row[0] : row)]; });
+  }
+  return formatScheduleDisplayImpl(val);
+}
+function formatScheduleDisplayImpl(val) {
+  if (!val) return '';
+  const str = String(val).trim();
+  if (/^\d{4}\/\d{1,2}\/\d{1,2}/.test(str)) return str;
+  const timeMatch = str.match(/(\d{1,2}:\d{2})\s*-\s*(\d{1,2}:\d{2})\s*$/);
+  const timePart = timeMatch ? timeMatch[1] + '-' + timeMatch[2] : '';
+  const dateStr = timeMatch ? str.substring(0, timeMatch.index).replace(/\([^)]*\)/g, '').trim() : str.replace(/\([^)]*\)/g, '').trim();
+  try {
+    const d = new Date(dateStr);
+    if (isNaN(d.getTime())) return str;
+    const formatted = Utilities.formatDate(d, 'Asia/Tokyo', 'yyyy/MM/dd');
+    return timePart ? formatted + ' ' + timePart : formatted;
+  } catch (e) {
+    return str;
+  }
+}
+
+/**
+ * Day4申込の条件付き書式を設定
+ * 決済日（I列）が空 → 薄いピンク、決済日あり → 白（デフォルト）
+ */
+function setupDay4ConditionalFormat() {
+  const ss = getSpreadsheet();
+  const sheet = ss.getSheetByName('Day4申込');
+  if (!sheet) return;
+  const lastRow = Math.max(sheet.getLastRow(), 100);
+  const range = sheet.getRange(2, 1, lastRow, 10);
+  const rules = sheet.getConditionalFormatRules();
+  const newRule = SpreadsheetApp.newConditionalFormatRule()
+    .whenFormulaSatisfied('=ISBLANK($I2)')
+    .setBackground('#FFE4E1') // 薄いピンク
+    .setRanges([range])
+    .build();
+  rules.push(newRule);
+  sheet.setConditionalFormatRules(rules);
+  console.log('Day4申込 条件付き書式を設定しました（決済日なし=薄いピンク）');
+}
+
+/**
+ * Day4申込 条件付き書式を設定（決済日が無い行を薄いピンクに）
+ */
+function handleDay4ConditionalFormat() {
+  setupDay4ConditionalFormat();
 }
 
 /**
@@ -321,18 +435,130 @@ function handleDay4Application(postData) {
 
     if (!day4Sheet) {
       day4Sheet = ss.insertSheet('Day4申込');
-      day4Sheet.getRange(1, 1, 1, 8).setValues([['日時', '名前', 'メール', '選択日程', '目標', '週時間', 'メッセージ', '決済状態']]);
-      day4Sheet.getRange(1, 1, 1, 8).setFontWeight('bold');
+      day4Sheet.getRange(1, 1, 1, 10).setValues([['日時', '名前', 'メール', '選択日程', '目標', '週時間', 'メッセージ', '決済状態', '決済日', '選択日程(生)']]);
+      day4Sheet.getRange(1, 1, 1, 10).setFontWeight('bold');
     }
 
     const now = new Date();
-    day4Sheet.appendRow([now, name, email, selectedDate + ' ' + selectedTime, goal || '', time || '', message || '', '決済待ち']);
+    const scheduleRaw = (selectedDate instanceof Date)
+      ? selectedDate.toString() + ' ' + (String(selectedTime || '').trim())
+      : (String(selectedDate || '').trim() + ' ' + String(selectedTime || '').trim()).trim();
+    const scheduleDisplay = (selectedDate instanceof Date)
+      ? Utilities.formatDate(selectedDate, 'Asia/Tokyo', 'yyyy/MM/dd') + ' ' + (String(selectedTime || '').trim())
+      : (String(selectedDate || '').trim() + ' ' + String(selectedTime || '').trim()).trim();
+    day4Sheet.appendRow([now, name, email, '', goal || '', time || '', message || '', '決済待ち', '', scheduleRaw]);
 
-    return createJsonResponse({ success: true, stripeUrl: STRIPE_DAY4_URL });
+    // Stripe URL にメールを付与（prefilled_email）→ Webhook で顧客情報が取得できる
+    const baseUrl = USE_TEST_STRIPE ? STRIPE_DAY4_URL_TEST : STRIPE_DAY4_URL;
+    const stripeUrl = baseUrl + (email ? '?prefilled_email=' + encodeURIComponent(email) : '');
+
+    // Day4 決済前の自動返信メール送信
+    try {
+      sendDay4ConfirmationEmail(email, name, scheduleDisplay);
+    } catch (mailErr) {
+      console.log('Day4自動返信メール送信エラー: ' + mailErr.message);
+      // メール送信失敗でも申込処理は成功とする
+    }
+
+    return createJsonResponse({ success: true, stripeUrl: stripeUrl });
   } catch (err) {
     console.error('handleDay4Application エラー: ' + err.message);
     return createJsonResponse({ success: false, message: '申込処理でエラーが発生しました。' + err.message });
   }
+}
+
+/**
+ * Day4 決済完了メール送信（Stripe Webhook でトリガー）
+ * ワクワク・感謝・待ち遠しくなる内容
+ */
+function sendDay4PaymentCompletedEmail(email, name) {
+  const nameAddressed = (name || '').trim() ? name.trim() + '様' : 'お客様';
+  const subject = '【Kindle印税資産】決済完了＆当日が楽しみになりました！';
+
+  const body = nameAddressed + '\n\n' +
+    'こんにちは。\n' +
+    'Kindle資産形成 事務局です。\n\n' +
+    '決済が完了いたしました。\n' +
+    'この度は誠にありがとうございます。\n\n' +
+    '90分で、あなただけのマンガ1冊を\n' +
+    'そのままお持ち帰りいただけます。\n\n' +
+    '・印税で回り続ける「資産」の感覚\n' +
+    '・あなた専用のゴールデンルート\n' +
+    '・その日のうちに、仕組みがひとつ増える\n\n' +
+    'その全てを、体感していただける日です。\n' +
+    '私たちも、お会いできる日を\n' +
+    '心より楽しみにしております。\n\n' +
+    '当日のご案内は、別途メールでお送りします。\n' +
+    'どうぞよろしくお願いいたします。\n\n' +
+    '◆------------------------------------◆\n' +
+    '運営者：Kindle資産形成事務局\n' +
+    'お問い合わせ：' + ADMIN_EMAIL + '\n' +
+    '（営業時間：平日10時から18時）\n' +
+    '◆------------------------------------◆';
+
+  MailApp.sendEmail(email, subject, body);
+  console.log('Day4決済完了メール送信完了: ' + email);
+}
+
+/**
+ * Day4 決済前の自動返信メール送信
+ */
+function sendDay4ConfirmationEmail(email, name, scheduleDisplay) {
+  const nameAddressed = (name || '').trim() ? name.trim() + '様' : 'お客様';
+  const subject = '【Kindle印税資産】実体験＆ゴールデンルートシミュレーション相談 決済のご案内';
+
+  const body = nameAddressed + '\n\n' +
+    'こんにちは。\n' +
+    'Kindle資産形成 事務局です。\n\n' +
+    'この度は\n' +
+    '「実体験＆ゴールデンルートシミュレーション相談」\n' +
+    'にお申し込みいただきまして\n' +
+    '誠にありがとうございます。\n\n' +
+    '【お申込内容】\n' +
+    '参加希望日程：' + (scheduleDisplay || '（確認中）') + '\n\n' +
+    '━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n' +
+    '実体験前に準備していただくと良いもの\n' +
+    '━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n' +
+    '【1】APIキーの取得\n' +
+    'APIキーはこのツールを使う為に必修になります。\n' +
+    '特に日本語の使用の場合は必要です。\n' +
+    '▼ ' + API_KEY_MANUAL_URL + '\n\n' +
+    '【2】Kindle KDPアカウント\n' +
+    '順調なペースで進めば当日、体験時間内でもKindleに書籍を並べる事が出来ます。\n' +
+    '是非、Kindle KDPアカウントを取得しておいてください。\n' +
+    '▼ ' + KDP_ACCOUNT_MANUAL_URL + '\n\n' +
+    '【3】Kindle Create ダウンロード\n' +
+    'Kindle書籍としてアップする専用のファイル形式に変換するツールです。\n' +
+    '▼ ' + KINDLE_CREATE_MANUAL_URL + '\n\n' +
+    'もしご準備が間に合わなくても大丈夫です。当日全て一緒に行う事も可能です。\n\n' +
+    '━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n' +
+    '決済のお手続きのご案内をさせて頂きます。\n' +
+    'ご確認の上、ご対応をお願いいたします。\n\n' +
+    '===================\n' +
+    'クレジット決済を\n' +
+    'お選びの方\n' +
+    '===================\n\n' +
+    '決済がお済みでない場合、\n' +
+    '下記のリンクをご使用ください。\n\n' +
+    (USE_TEST_STRIPE ? STRIPE_DAY4_URL_TEST : STRIPE_DAY4_URL) + '\n\n' +
+    '※決済期日：本日から3日以内\n\n' +
+    '※ご入金時の名義とお申込時のお名前が異なる場合は、事前にご連絡をお願いします。\n\n' +
+    '以上です。\n\n' +
+    '何かご不明な点がございましたら、\n' +
+    '事務局までお問い合わせください。\n' +
+    '↓\n' +
+    ADMIN_EMAIL + '\n\n' +
+    'ご確認のほど、どうぞよろしくお願い致します。\n\n' +
+    '◆------------------------------------◆\n' +
+    '運営者：Kindle資産形成事務局\n' +
+    'お問い合わせは：' + ADMIN_EMAIL + '\n' +
+    '（営業時間：平日10時から18時）\n' +
+    '＊頂いたお問い合わせには3営業日以内に\n' +
+    'お答えさせて頂いております。\n\n' +
+    '◆------------------------------------◆';
+
+  MailApp.sendEmail(email, subject, body);
+  console.log('Day4決済前自動返信メール送信完了: ' + email);
 }
 
 /**
@@ -369,13 +595,13 @@ function handleEbookRegistration(params) {
 
     if (!sheet) {
       sheet = ss.insertSheet(SHEET_NAME_EBOOK);
-      sheet.getRange(1, 1, 1, 3).setValues([['日時', 'メール', '名前']]);
-      sheet.getRange(1, 1, 1, 3).setFontWeight('bold');
+      sheet.getRange(1, 1, 1, 6).setValues([['日時', 'メール', '名前', 'Day1送信済', 'Day2送信済', 'Day3送信済']]);
+      sheet.getRange(1, 1, 1, 6).setFontWeight('bold');
     }
 
     const now = new Date();
     const timestamp = Utilities.formatDate(now, 'Asia/Tokyo', 'yyyy/MM/dd HH:mm:ss');
-    sheet.appendRow([timestamp, email, name]);
+    sheet.appendRow([timestamp, email, name, '', '', '']);
 
     // 自動返信メール送信
     sendEbookWelcomeEmail(email, name);
@@ -435,6 +661,102 @@ function sendEbookWelcomeEmail(email, name) {
     console.log('ebook歓迎メール送信エラー: ' + err.message);
     // メール送信失敗でも登録処理は成功とする
   }
+}
+
+/**
+ * ステップメール（Day1〜Day3）を送信
+ * トリガーで毎日9時（日本時間）に実行することを推奨
+ */
+function sendStepEmails() {
+  const ss = getSpreadsheet();
+  const sheet = ss.getSheetByName(SHEET_NAME_EBOOK);
+  if (!sheet) return;
+  if (sheet.getLastColumn() < 6) {
+    sheet.getRange(1, 4, 1, 6).setValues([['Day1送信済', 'Day2送信済', 'Day3送信済']]);
+    sheet.getRange(1, 4, 1, 6).setFontWeight('bold');
+  }
+  const data = sheet.getDataRange().getValues();
+  if (data.length < 2) return;
+  const now = new Date();
+  const todayJst = Utilities.formatDate(now, 'Asia/Tokyo', 'yyyy/MM/dd');
+  const [ty, tm, td] = todayJst.split('/').map(Number);
+  const todayDate = new Date(ty, tm - 1, td);
+  let sentCount = 0;
+  for (let i = 1; i < data.length; i++) {
+    const row = data[i];
+    const dateStr = String(row[0] || '').trim();
+    const email = String(row[1] || '').trim();
+    const name = String(row[2] || '').trim();
+    const day1Sent = row[3] ? true : false;
+    const day2Sent = row[4] ? true : false;
+    const day3Sent = row[5] ? true : false;
+    if (!email) continue;
+    let regDate;
+    try {
+      const m = dateStr.match(/(\d{4})[\/\-](\d{1,2})[\/\-](\d{1,2})/);
+      if (m) regDate = new Date(parseInt(m[1]), parseInt(m[2]) - 1, parseInt(m[3]));
+      else regDate = new Date(dateStr);
+    } catch (e) { continue; }
+    const daysSince = Math.floor((todayDate - regDate) / (24 * 60 * 60 * 1000));
+    try {
+      if (daysSince >= 1 && !day1Sent) {
+        sendDay1Email(email, name);
+        sheet.getRange(i + 1, 4).setValue(Utilities.formatDate(now, 'Asia/Tokyo', 'yyyy/MM/dd HH:mm'));
+        sentCount++;
+      }
+      if (daysSince >= 2 && !day2Sent) {
+        sendDay2Email(email, name);
+        sheet.getRange(i + 1, 5).setValue(Utilities.formatDate(now, 'Asia/Tokyo', 'yyyy/MM/dd HH:mm'));
+        sentCount++;
+      }
+      if (daysSince >= 3 && !day3Sent) {
+        sendDay3Email(email, name);
+        sheet.getRange(i + 1, 6).setValue(Utilities.formatDate(now, 'Asia/Tokyo', 'yyyy/MM/dd HH:mm'));
+        sentCount++;
+      }
+    } catch (err) {
+      console.log('ステップメール送信エラー 行' + (i + 1) + ': ' + err.message);
+    }
+  }
+  if (sentCount > 0) console.log('ステップメール送信完了: ' + sentCount + '通');
+}
+
+/**
+ * ステップメール用トリガーを設定（初回1回のみ実行）
+ * プロジェクトのタイムゾーンを「日本標準時」にしておくこと
+ */
+function setupStepEmailTrigger() {
+  ScriptApp.getProjectTriggers().forEach(function(t) {
+    if (t.getHandlerFunction() === 'sendStepEmails') ScriptApp.deleteTrigger(t);
+  });
+  ScriptApp.newTrigger('sendStepEmails')
+    .timeBased()
+    .everyDays(1)
+    .atHour(9)
+    .create();
+  console.log('sendStepEmails トリガーを毎日9時（日本時間）に設定しました');
+}
+
+function sendDay1Email(email, name) {
+  const displayName = (name && name.trim()) ? name.trim() + 'さん' : '';
+  const subject = '【Kindle印税資産】Day1｜狙うべき市場は「マンガ」です——売れるテーマの見つけ方';
+  const prompt = 'あなたは、Kindleマンガで印税資産を積み上げるためのリサーチ専門家です。\n\n以下の5段階のフィルターを使って、売れるテーマ候補を絞り込んでください。\n\n【フィルター1：市場データの収集】\n- Amazonのベストセラーランキング（電子コミック）で売れているジャンルを確認\n- Googleキーワードプランナーで検索ボリュームを確認\n- Twitter、Yahoo知恵袋で悩み・検索されているキーワードを探す\n→ 市場に存在するニーズを発見する\n\n【フィルター2：動画化確認】\n- そのキーワードがYouTubeで既に動画化されているか確認\n- 動画が多い＝その分野に需要がある証拠\n\n【フィルター3：痛みの有無】\n- ターゲットが「どうしても解決したい」具体的で切実な痛みがあるか\n- 「〇〇したい」は浅い。「3ヶ月で〇〇したい」「〇〇までに〇〇したい」は深い\n- 痛みが深いほど、人はお金を出す\n\n【フィルター4：シリーズ化の可能性】\n- 1冊では埋もれる。複数冊を積み上げられるテーマか\n- 例：ダイエット→「30代女性向け」「産後」「男性向け」と細分化できるか\n\n【フィルター5：競合分析】\n- Amazon Kindleで同じジャンルを検索し、ベストセラーがあるか確認\n- 競合がいる＝市場が確実に存在する証拠。良い兆候\n\n---\n私の興味・経験・専門分野は〇〇です。\n上記5段階フィルターを使って、売れるテーマ候補を5つ以上提案してください。';
+  const body = (displayName ? displayName + '、' : '') + 'こんにちは。\n\n昨日の動画、ご覧いただきありがとうございました。\n\n今日から3日間、あなたのテーマ候補を絞っていく『発見』のステップを始めます。\n\n---\n\n【1】狙うべき市場は、マンガです\n\n電子書籍市場の約9割がマンガ（87.7%）です。文字の本はわずか1割。「1割の文字市場」にはAI作家が殺到して競争が激しくなっています。一方、9割のマンガ側は読者がいて市場が伸びています。結論：狙うべきはマンガ市場です。\n\n---\n\n【2】売れるテーマの見つけ方——5段階フィルター\n\n下記プロンプトをAI（ChatGPT、Claude、Geminiなど）に貼り付けて実行してください。\n\n' + prompt + '\n\n※「〇〇」をあなたの興味・経験・専門分野に置き換えてください。\n\n---\n\n【3】今夜の90分で、約束の一行を仕上げる\n\n上記プロンプトを実行し、出てきたテーマ候補のうちいちばん「これだ」と思うものを1つ選び、そのテーマを一行で書いてください（例：「30代女性が産後ダイエットで挫折する話」）。この「約束の一行」が、明日のDay2、Day3の体験につながります。\n\n---\n\n明日の朝9時に、Day2のメールをお送りします。\nDay2は『確信』——成功する人と失敗する人の決定的な違いが、ここで明確になります。\n\n楽しみにしていてください。\n\n※Day4の2,980円実体験（持ち帰り＝マンガ1冊）にご興味ある方は、事前アンケートにご回答ください。枠は1日2名まで。\n' + DAY4_ANKETO_URL;
+  MailApp.sendEmail(email, subject, body);
+}
+
+function sendDay2Email(email, name) {
+  const displayName = (name && name.trim()) ? name.trim() + 'さん' : '';
+  const subject = '【Kindle印税資産】Day2｜成功する人と失敗する人の決定的な違い——リサーチが成功の鍵';
+  const body = (displayName ? displayName + '、' : '') + 'こんにちは。\n\nDay1の5段階フィルター、【約束の一行】は決まりましたか？\n\n今日は『確信』——成功する人と失敗する人の決定的な違いをお伝えします。\n\n---\n\n【1】決定的な違いは「リサーチをやるか、やらないか」\n\n結果を出す人と出さない人。その違いは才能でも資金でもありません。「売れるテーマを、きちんとリサーチしたかどうか」です。Day1の5段階フィルターはそのための設計図。「なんとなくこれでいいか」と飛ばす人と、「市場・YouTube・痛み・シリーズ化・競合」をちゃんと見る人。後者のほうが、圧倒的に売れる本を出します。\n\n---\n\n【2】リサーチが成功の鍵である理由\n\n読者が「お金を出す理由」は、痛みの解決だからです。あなたの【約束の一行】は、読者の痛みに刺さる設計になっていますか？もしまだ決まっていないなら、今日のうちに5段階フィルターをもう一度実行してみてください。\n\n---\n\n【3】今日のアクション\n\nあなたの【約束の一行】を、「誰の・どんな痛みを解決するか」で書き直してください。痛みが明確になるほど、読者は「自分のことだ」と感じ、お金を出します。\n\n---\n\n明日の朝9時に、Day3のメールをお送りします。\nDay3は『感動』——ツール導入で、手動10時間かかる工程が90分で完結する体験をお伝えします。\n\n楽しみにしていてください。\n\n※Day4の2,980円実体験（持ち帰り＝マンガ1冊）にご興味ある方は、事前アンケートにご回答ください。\n' + DAY4_ANKETO_URL;
+  MailApp.sendEmail(email, subject, body);
+}
+
+function sendDay3Email(email, name) {
+  const displayName = (name && name.trim()) ? name.trim() + 'さん' : '';
+  const subject = '【Kindle印税資産】Day3｜手動10時間→90分。あなたのマンガ1冊が、その日に資産になる';
+  const body = (displayName ? displayName + '、' : '') + 'こんにちは。\n\n3日間チャレンジ、いよいよ最終日です。\n\n今日は『感動』——ツール導入で、手動10時間かかる工程が90分で完結する体験をお伝えします。\n\n---\n\n【1】90分で1冊——その仕組みの実態\n\n昔は手動だと10時間以上かかることも。いまはAIとテンプレとノウハウを使えば、90分で1冊の流れまで作れる時代です。絵が描けなくても、文章が苦手でも、可能です。この「90分で1冊」の体験——その驚きが、あなたの確信を決定づけます。\n\n---\n\n【2】あなたの【約束の一行】が、その日に資産になる\n\nDay1で決めた【約束の一行】が、その日のうちにマンガ1冊の形になり、Amazonに並ぶ。それが、Day4の2,980円実体験＆ゴールデンルートシミュレーション相談です。枠は1日2名まで。持ち帰り＝マンガ1冊。その日に出版可能です。\n\n---\n\n【3】今日のアクション\n\n・ebookをもう一度読み返す\n・Day4アンケートにご興味があればご回答\n▼ ' + DAY4_ANKETO_URL + '\n\n---\n\n3日間、おつかれさまでした。あなたは『月20万円の確信』を得るための土台を整えました。次は、実際に90分で1冊を作る体験で、確信を形にしてください。一緒に『仕組み資産』を構築しましょう。応援しています。';
+  MailApp.sendEmail(email, subject, body);
 }
 
 function createEbookRedirectResponse(url) {
