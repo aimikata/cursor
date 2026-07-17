@@ -30,3 +30,7 @@
 このリポジトリ内の対応パス：
 
 `youtube/production/channel/Time Streets`
+
+親フォルダ（4チャンネル一覧）:
+
+[`../`](../)
