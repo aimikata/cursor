@@ -1,0 +1,94 @@
+# 診断タイプ別の具体的改善テンプレート
+# 「〇〇を改善」ではなく「〇〇を〇〇に」まで書く
+
+diagnosis_types:
+  weak_hook:
+    id: weak_hook
+    label: 冒頭1秒で負けている
+    priority: 1
+    condition: chose_to_watch_pct < target
+    focus: 入口（視聴を選んだ割合）を優先。維持率改善は後回し。
+    article_evidence: |
+      冒頭のテロップ・最初の映像・音の入りを変えることで、
+      視聴を選ぶ割合が約10ポイント改善した事例がある
+      （アドネス株式会社「YouTubeショートアルゴリズム完全解説」）。
+    official_note: |
+      YouTube公式も、視聴を選んだ割合と冒頭後の視聴継続を
+      重要な性能信号として説明している。
+    change_checklist:
+      - 自己紹介から始めるのをやめる
+      - 1枚目から事件の核心を見せる
+      - テロップを「説明」から「危機・疑問」に変える
+      - 最初の無音やフェードインを削除する
+    preferred_action: repost_ab  # 数値が極端に弱い場合は同一動画で冒頭だけ変えて再投稿
+    fallback_action: next_video
+
+  mid_drop:
+    id: mid_drop
+    label: 入口は成功、途中で退屈された
+    priority: 2
+    condition: chose_to_watch_ok AND avg_view_pct < target
+    focus: 中盤の情報密度と離脱地点。
+    article_evidence: |
+      離脱が起こりやすいのは 3〜5秒（前置き）、中盤（情報密度低下）、
+      末尾（結論後の余白）。維持率グラフが中盤で落ちる場合、
+      説明の継続より“次の情報の予告”を置いた方が離脱が減った事例がある。
+    structure_before:
+      - "0〜5秒　事件の紹介"
+      - "6〜18秒　時代背景"
+      - "19〜35秒　人物説明"
+      - "36秒〜　事件が動く"
+    structure_after:
+      - "0〜3秒　事件の決定的瞬間"
+      - "4〜10秒　最低限の背景"
+      - "11〜18秒　主人公の目的"
+      - "19秒　新しい危機"
+      - "20秒以降　事件の展開"
+    preferred_action: next_video
+    fallback_action: repost_ab  # 特に改善価値が高い動画のみ再編集
+
+  weak_demand:
+    id: weak_demand
+    label: 内容は悪くないが入口または需要が弱い
+    priority: 3
+    condition: avg_view_pct_ok AND views_not_growing
+    focus: 編集よりテーマ入口（タイトル・約束）を変える。
+    check_order:
+      - 視聴を選んだ割合
+      - Shortsフィードに表示された回数
+      - テーマの検索・需要
+      - タイトルと動画内容の一致
+      - 国別配信のズレ
+    article_evidence: |
+      YouTube公式も、再生数は動画指標だけではなく、
+      テーマ需要・競合・季節性の影響を受けると説明している。
+    preferred_action: next_video
+
+  weak_engagement:
+    id: weak_engagement
+    label: 見て終わりになっている
+    priority: 4
+    condition: views_ok AND engagement_rate < target
+    focus: 末尾に答えやすい二択・問いを置く。
+    article_evidence: |
+      末尾に答えやすい二択や問いを置くことで、
+      コメント数や保存数が変化した事例がある。
+      ただし公式が特に確認している満足度信号にはいいねや
+      視聴後アンケートも含まれる。シェアやコメントだけを絶対視せず、
+      維持率と合わせて判断する。
+    preferred_action: next_video
+
+duration_context_note: |
+  同じ平均視聴率70%でも尺で意味が違う。
+  - 20秒動画で70% → 平均14秒視聴
+  - 60秒動画で70% → 平均42秒視聴
+  - 3分動画で70% → 平均2分6秒視聴
+  そのため平均視聴率だけではなく、動画尺と平均視聴時間をセットで判断する。
+
+drop_hotspots:
+  - range: "3-5秒"
+    cause: 前置きが長い
+  - range: "中盤"
+    cause: 情報密度が下がる
+  - range: "末尾"
+    cause: 結論後に余白がある

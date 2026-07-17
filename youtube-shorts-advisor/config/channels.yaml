@@ -1,0 +1,79 @@
+# 対象チャンネルの判断基準
+# genre: hybrid_story = 教育・解説 / Vlog・日常 / エンタメの中間
+
+channels:
+  insight_manga:
+    display_name: INSIGHT MANGA
+    genre: hybrid_story
+    description: ストーリー・教育・感情ドラマ
+    targets:
+      chose_to_watch_pct: 60
+      avg_view_pct: 75
+      engagement_rate_pct: 3
+    structure_rules:
+      - 冒頭3秒：家族・お金・葛藤が分かる
+      - 15秒以内：最初の選択または失敗が起きる
+    hook_patterns:
+      bad_examples:
+        - text: "My family had unhealthy money habits."
+          ja: "私の家族には良くないお金の習慣があった。"
+        - text: "Today I talk about money mindset."
+          ja: "今日はお金のマインドセットについて話します。"
+      good_examples:
+        - text: "My Family Lost a House Trying to Look Rich."
+          ja: "お金持ちに見せようとして、家族は家を失った。"
+          why:
+            - 「悪い習慣」は抽象的
+            - 「家を失った」は損失が具体的
+            - 「お金持ちに見せようとした」は原因が明確
+            - 視聴者が結末と原因を知りたくなる
+    cta_patterns:
+      money_family:
+        text: "Was this saving money—or living in fear?"
+        ja: "これは節約？それとも恐怖に支配されているだけ？"
+      parenting_status:
+        text: "Was it really for the baby?"
+        ja: "それは本当に赤ちゃんのためだった？"
+
+  i_entered_the_story:
+    display_name: I Entered the Story
+    genre: hybrid_story
+    description: 歴史没入・Vlog・ストーリー
+    targets:
+      chose_to_watch_pct: 60
+      avg_view_pct: 70  # 65〜75の中央寄り。最低ライン65、合格目安70
+      avg_view_pct_min: 65
+      engagement_rate_pct: 2.5  # 2〜3%
+    structure_rules:
+      - 1秒目：時代・人物・事件のどれかが明確
+      - 5秒以内：現代人がその場にいる意味が分かる
+      - 20秒以内：最初の危機または発見が起きる
+    hook_patterns:
+      bad_examples:
+        - text: "I entered Troy today."
+          ja: "今日はトロイに入りました。"
+        - text: "Today, I entered an Edo kitchen."
+          ja: "今日は江戸の台所に入りました。"
+        - text: "Today, I visited a samurai dojo."
+          ja: "今日は侍の道場に来ました。"
+      good_examples:
+        - text: "They’re Pulling the Horse Inside the Gates."
+          ja: "彼らは今、木馬を門の中へ引き入れている。"
+          why:
+            - 場所紹介ではなく決定的瞬間から始まる
+            - 視聴者が結果を知っていても「止められるのか」が気になる
+            - 画面とテロップを一致させやすい
+            - タイトル・映像・音声の約束が揃う
+        - text: "They’re Cooking a Samurai’s Last Meal."
+          ja: "彼らは侍の最後の食事を作っている。"
+        - text: "One Wrong Move Here Could Break My Arm."
+          ja: "ここでは、一つ間違えれば腕を折るかもしれない。"
+    cta_patterns:
+      history:
+        text: "Would you have opened the gate?"
+        ja: "あなたなら、その門を開けましたか？"
+    title_patterns:
+      weak: "An Edo Kitchen Before Battle"
+      strong: "The Samurai’s Last Meal Before Battle"
+      strong_ja: "出陣前、侍が食べた最後の食事"
+      why: "Edo Kitchenは場所説明だが、Samurai・Last Meal・Battleは人物・危機・結末を一度に伝えられる"

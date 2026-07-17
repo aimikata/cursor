@@ -1,0 +1,53 @@
+# 運用事例ベースの参考値（YouTube公式の合格基準ではない）
+# 出典: https://addness.co.jp/media/youtube-short-algorithms/
+# 公式が重視するのは主に「見ようと選ばれたか」「どれだけ見続けられたか」「視聴後に満足したか」
+
+disclaimer: |
+  記事内の数値はYouTube公式の合格基準ではなく、運用事例から作られた参考値です。
+  YouTube公式が明確に認めている重要指標は、主に「見ようと選ばれたか」
+  「どれだけ見続けられたか」「視聴後に満足したか」です。
+  Shortsでは「視聴を選んだ割合」「平均視聴時間」「平均視聴率」などが
+  ランキング判断に使われます。
+
+shared_bands:
+  chose_to_watch_pct:
+    danger: { max: 49.999 }
+    improving: { min: 50, max: 59.999 }
+    pass: { min: 60, max: 69.999 }
+    strong: { min: 70 }
+  avg_view_pct:
+    danger: { max: 49.999 }
+    improving: { min: 50, max: 69.999 }
+    pass: { min: 70, max: 89.999 }
+    strong: { min: 90 }
+  engagement_rate_pct:
+    danger: { max: 0.999 }
+    improving: { min: 1, max: 2.999 }
+    pass: { min: 3, max: 4.999 }
+    strong: { min: 5 }
+
+# ジャンル別参考値（記事）
+genre_targets:
+  education:
+    chose_to_watch_pct: 55
+    avg_view_pct: 75
+    engagement_rate_pct: 3
+  entertainment:
+    chose_to_watch_pct: 70
+    avg_view_pct: 85
+    engagement_rate_pct: 5
+  vlog:
+    chose_to_watch_pct: 50
+    avg_view_pct: 65
+    engagement_rate_pct: 2
+  # 本チャンネル群は教育・解説 / Vlog・日常 / エンタメの中間
+  hybrid_story:
+    chose_to_watch_pct: 60
+    avg_view_pct: 70
+    engagement_rate_pct: 3
+
+# A/B検証の成功判定（同一内容・1点変更の再投稿）
+ab_test_success:
+  min_chose_to_watch_gain_points: 10
+  require_avg_view_pct_not_worse: true
+  require_shorts_feed_impressions_up: true

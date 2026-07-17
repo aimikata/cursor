@@ -1,0 +1,8 @@
+secrets/
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+venv/
+data/your_metrics.csv
+data/api_metrics.csv
