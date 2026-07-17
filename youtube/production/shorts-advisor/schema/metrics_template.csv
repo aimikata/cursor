@@ -1,0 +1,3 @@
+channel_id,video_id,title,duration_sec,chose_to_watch_pct,swiped_away_pct,avg_view_duration_sec,avg_view_pct,likes,comments,shares,views,shorts_feed_impressions,subscribers_net,retention_max_drop_sec,current_hook_text,current_hook_ja,published_at,notes
+insight_manga,VIDEO_ID_HERE,Title here,45,,,,,,,,,,,,,,,,
+i_entered_the_story,VIDEO_ID_HERE,Title here,60,,,,,,,,,,,,,,,,

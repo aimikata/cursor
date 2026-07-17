@@ -1,0 +1,5 @@
+channel_id,video_id,title,duration_sec,chose_to_watch_pct,swiped_away_pct,avg_view_duration_sec,avg_view_pct,likes,comments,shares,views,shorts_feed_impressions,subscribers_net,retention_max_drop_sec,current_hook_text,current_hook_ja,published_at,notes
+i_entered_the_story,demo_edo_kitchen,An Edo Kitchen Before Battle,58,48,52,47.6,82,12,1,0,320,4100,1,,"Today, I entered an Edo kitchen.",今日は江戸の台所に入りました。,2026-07-10,入口弱・維持は強い
+i_entered_the_story,demo_troy_gate,I Entered Troy,72,63,37,36.0,50,20,2,1,1800,22000,3,24,I entered Troy today.,今日はトロイに入りました。,2026-07-12,入口OK・中盤離脱
+insight_manga,demo_money_habits,My Family Money Habits,40,54,46,22.0,55,8,0,0,450,6000,0,12,My family had unhealthy money habits.,私の家族には良くないお金の習慣があった。,2026-07-11,漫画ドラマ入口弱
+insight_manga,demo_rich_look,Looking Rich Cost Us Everything,38,71,29,30.4,80,95,18,7,12000,85000,14,,My Family Lost a House Trying to Look Rich.,お金持ちに見せようとして、家族は家を失った。,2026-07-13,再生あるがCTA弱い想定
