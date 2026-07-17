@@ -18,10 +18,11 @@
 
 ## まず読むもの
 
-1. [SHEET_MULTI_CHANNEL.md](./SHEET_MULTI_CHANNEL.md) … **シートにTime Streets等を追加する手順**
-2. [EXECUTION_PLAN.md](./EXECUTION_PLAN.md) … 意図の実行方法
-3. [DATA_ACQUISITION.md](./DATA_ACQUISITION.md) … データ取得の埋め方
-4. [schema/metrics_columns.md](./schema/metrics_columns.md) … シート必須列
+1. [gas/GAS取得項目チェック.md](./gas/GAS取得項目チェック.md) … **今のGASで足りるか / V2.1差分**
+2. [SHEET_MULTI_CHANNEL.md](./SHEET_MULTI_CHANNEL.md) … シートにTime Streets等を追加する手順
+3. [EXECUTION_PLAN.md](./EXECUTION_PLAN.md) … 意図の実行方法
+4. [DATA_ACQUISITION.md](./DATA_ACQUISITION.md) … データ取得の埋め方
+5. [schema/metrics_columns.md](./schema/metrics_columns.md) … シート必須列
 
 ## 使い方
 

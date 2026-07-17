@@ -58,21 +58,30 @@ def import_daily_analysis_csv(path: Path | str) -> list[VideoMetrics]:
         if avg_pct == 0:
             avg_pct = None
 
+        chose = _f(row.get("視聴を選んだ割合_%"))
+        swipe = _f(row.get("スワイプされた割合_%"))
+        hook = (row.get("現在の冒頭文") or "").strip() or None
+
         metrics_list.append(
             VideoMetrics(
                 channel_id=channel_id,
                 video_id=video_id,
                 title=(row.get("動画タイトル") or "").strip(),
-                duration_sec=None,
-                chose_to_watch_pct=None,  # シートに無い。Studio追記が必要
+                duration_sec=_f(row.get("動画尺_秒")),
+                chose_to_watch_pct=chose,
+                swiped_away_pct=swipe,
                 avg_view_duration_sec=avg_dur,
                 avg_view_pct=avg_pct,
                 likes=_f(row.get("累計高評価数")),
                 comments=_f(row.get("累計コメント数")),
+                shares=_f(row.get("期間内シェア数")),
                 views=_f(row.get("累計再生数")),
+                shorts_feed_impressions=_f(row.get("Shortsフィード経由再生数")),
+                subscribers_net=_f(row.get("登録者増減")),
+                retention_max_drop_sec=_f(row.get("維持率の最大下落秒数")),
                 published_at=(row.get("投稿日") or None),
                 notes=(row.get("自動判定") or None),
-                current_hook_text=(row.get("動画タイトル") or None),
+                current_hook_text=hook or (row.get("動画タイトル") or None),
             )
         )
     return metrics_list
