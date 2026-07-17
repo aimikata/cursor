@@ -165,7 +165,8 @@ function onOpen() {
     .createMenu('YouTube分析')
     .addItem('1. 初期セットアップ', 'setupSheets')
     .addItem('2. 今日の分析を取得', 'runDailyYouTubeDashboard')
-    .addItem('3. 毎朝トリガーを作成', 'createDailyTrigger')
+    .addItem('3. 手動追記を日次分析へ反映', 'applyManualStudioToDaily')
+    .addItem('4. 毎朝トリガーを作成', 'createDailyTrigger')
     .addSeparator()
     .addItem('対象チャンネル確認', 'checkTargetChannels')
     .addToUi();
@@ -243,9 +244,9 @@ function runDailyYouTubeDashboard() {
           video.likeCount, video.commentCount, analytics.shares,
           analytics.subscribersGained, analytics.subscribersLost, analytics.subscribersNet,
           shortsFeedViews,
-          manual.choseToWatchPct || '',
-          manual.swipedAwayPct || '',
-          manual.retentionDropSec || '',
+          manual.choseToWatchPct === '' || manual.choseToWatchPct === undefined ? '' : manual.choseToWatchPct,
+          manual.swipedAwayPct === '' || manual.swipedAwayPct === undefined ? '' : manual.swipedAwayPct,
+          manual.retentionDropSec === '' || manual.retentionDropSec === undefined ? '' : manual.retentionDropSec,
           manual.hookText || '',
           status
         ]);
@@ -518,20 +519,85 @@ function loadManualStudioMap() {
   const lastRow = sheet.getLastRow();
   const map = {};
   if (lastRow <= 1) return map;
-  const values = sheet.getRange(2, 1, lastRow - 1, 5).getValues();
+  // 最終行まで含める（lastRow - 1 だと最終動画が落ちる）
+  const values = sheet.getRange(2, 1, lastRow, 5).getValues();
   values.forEach(function(row) {
     const videoId = String(row[0] || '').trim();
     if (!videoId) return;
-    const chose = row[1] === '' ? '' : Number(row[1]);
-    const swipe = row[2] === '' ? '' : Number(row[2]);
+    const chose = row[1] === '' || row[1] === null ? '' : Number(row[1]);
+    let swipe = row[2] === '' || row[2] === null ? '' : Number(row[2]);
+    if (swipe === '' && chose !== '' && !isNaN(chose)) {
+      swipe = round(100 - chose, 1);
+    }
     map[videoId] = {
-      choseToWatchPct: chose,
-      swipedAwayPct: swipe !== '' ? swipe : (chose !== '' ? round(100 - chose, 1) : ''),
-      retentionDropSec: row[3] === '' ? '' : Number(row[3]),
+      choseToWatchPct: chose === '' || isNaN(chose) ? '' : chose,
+      swipedAwayPct: swipe === '' || isNaN(swipe) ? '' : swipe,
+      retentionDropSec: row[3] === '' || row[3] === null ? '' : Number(row[3]),
       hookText: row[4] || ''
     };
   });
   return map;
+}
+
+/**
+ * Studio手動追記 → 日次分析の該当列だけ更新（再取得なし）
+ * 日次分析ヘッダー位置:
+ * 視聴を選んだ割合_% / スワイプされた割合_% / 維持率の最大下落秒数 / 現在の冒頭文
+ */
+function applyManualStudioToDaily() {
+  const manualMap = loadManualStudioMap();
+  const sheet = getOrCreateSheet(SHEET_NAMES.daily);
+  const lastRow = sheet.getLastRow();
+  if (lastRow <= 1) {
+    SpreadsheetApp.getUi().alert('日次分析にデータがありません。先に「今日の分析を取得」を実行してください。');
+    return;
+  }
+
+  const headers = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0];
+  const colVideoId = headers.indexOf('動画ID') + 1;
+  const colChose = headers.indexOf('視聴を選んだ割合_%') + 1;
+  const colSwipe = headers.indexOf('スワイプされた割合_%') + 1;
+  const colDrop = headers.indexOf('維持率の最大下落秒数') + 1;
+  const colHook = headers.indexOf('現在の冒頭文') + 1;
+
+  if (!colVideoId || !colChose || !colSwipe) {
+    SpreadsheetApp.getUi().alert('日次分析のヘッダーが見つかりません。V2.1の列構成か確認してください。');
+    return;
+  }
+
+  const videoIds = sheet.getRange(2, colVideoId, lastRow, colVideoId).getValues();
+  let updated = 0;
+  for (let i = 0; i < videoIds.length; i++) {
+    const videoId = String(videoIds[i][0] || '').trim();
+    const manual = manualMap[videoId];
+    if (!manual) continue;
+    const rowNum = i + 2;
+    if (colChose) sheet.getRange(rowNum, colChose).setValue(manual.choseToWatchPct);
+    if (colSwipe) sheet.getRange(rowNum, colSwipe).setValue(manual.swipedAwayPct);
+    if (colDrop) sheet.getRange(rowNum, colDrop).setValue(manual.retentionDropSec);
+    if (colHook) sheet.getRange(rowNum, colHook).setValue(manual.hookText);
+    updated++;
+  }
+
+  // 手動タブのスワイプ空欄も埋める
+  fillMissingSwipeInManualSheet();
+
+  logAction('SUCCESS', 'applyManualStudioToDaily', updated + '件の手動追記を日次分析へ反映しました。');
+  SpreadsheetApp.getUi().alert(updated + '件を日次分析へ反映しました。\nスワイプ空欄は「100−視聴選択率」で自動補完しています。');
+}
+
+function fillMissingSwipeInManualSheet() {
+  const sheet = getOrCreateSheet(SHEET_NAMES.manual);
+  const lastRow = sheet.getLastRow();
+  if (lastRow <= 1) return;
+  const values = sheet.getRange(2, 1, lastRow, 3).getValues();
+  for (let i = 0; i < values.length; i++) {
+    const chose = values[i][1];
+    const swipe = values[i][2];
+    if ((swipe === '' || swipe === null) && chose !== '' && chose !== null && !isNaN(Number(chose))) {
+      sheet.getRange(i + 2, 3).setValue(round(100 - Number(chose), 1));
+    }
+  }
 }
 
 function reportToObjects(report) {
