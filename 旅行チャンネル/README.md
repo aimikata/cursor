@@ -1,5 +1,8 @@
 # 旅行チャンネル制作ドキュメント
 
+> **チャンネル正本フォルダ:** [`youtube/production/channel/Time Streets/`](../youtube/production/channel/Time%20Streets/)  
+> 今後の方針は [`今後の方針.md`](../youtube/production/channel/Time%20Streets/今後の方針.md) を優先する。
+
 都市の変化を見るチャンネルから、旅を選べるチャンネルへ。
 
 ## コンセプト（一言）
