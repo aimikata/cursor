@@ -1,11 +1,62 @@
 # 対象チャンネルの判断基準
 # genre: hybrid_story = 教育・解説 / Vlog・日常 / エンタメの中間
+# genre: travel_plan = 旅行プラン / 都市変化 / 聖地巡礼（Vlog寄り維持 + 保存CTA）
+# YouTube ID 対応は channel_registry.yaml を正とする
 
 channels:
+  time_streets:
+    display_name: Time Streets
+    genre: travel_plan
+    description: 都市の昔・今・歩き方／旅行プラン型ショート
+    youtube_channel_id: UCkD8_KvuA5egxWtW2vDmuKQ
+    targets:
+      chose_to_watch_pct: 60
+      avg_view_pct: 65  # Vlog寄り。旅程型は65、変化比較エンタメ寄りなら70を目指す
+      avg_view_pct_min: 65
+      engagement_rate_pct: 3  # 保存・シェアを重視
+    structure_rules:
+      - 0〜3秒：都市名＋条件（または作品名）＋「この順番／この変化」を一文で出す
+      - 3〜7秒：条件カード（City / Duration / Who）を見せる
+      - 中盤：スポット＋移動時間を交互に置き、情報密度を落とさない
+      - 末尾：Local Tip と旅程一覧を残し、Save this itinerary で締める
+    hook_patterns:
+      bad_examples:
+        - text: "Okinawa, 1950s → 2026 — Through Time"
+          ja: "沖縄、1950年代→2026。時代を超えて。"
+        - text: "Today we explore old Osaka."
+          ja: "今日は昔の大阪を探検します。"
+      good_examples:
+        - text: "This Osaka Route Still Works in 2026."
+          ja: "この大阪ルートは、2026年でもそのまま使える。"
+          why:
+            - 都市名だけより「使えるルート」の約束が強い
+            - Through Timeは眺め系、Routeは保存理由になる
+            - 英語圏の旅行意図（plan/save）に直結する
+        - text: "You Can Walk the Real World of Your Name in One Day."
+          ja: "君の名は。の世界を、1日で歩ける。"
+          why:
+            - 作品名を前に出すと海外検索需要に刺さる
+            - 「実在する」「1日で」が続きを見る理由になる
+        - text: "Osaka in 1 Day: This Exact Order Saves 2 Hours."
+          ja: "大阪1日。この順番なら2時間節約できる。"
+    cta_patterns:
+      save_itinerary:
+        text: "Save this itinerary for your trip."
+        ja: "旅行前に、この旅程を保存しておいてください。"
+      anime_pilgrimage:
+        text: "Save this anime pilgrimage route."
+        ja: "このアニメ聖地ルートを保存して。"
+    title_patterns:
+      weak: "Tokyo, 1926 → 2026 — Through Time"
+      strong: "Tokyo in One Day: The Route Locals Still Use"
+      strong_ja: "東京1日。今も使える地元ルート"
+      why: "Through Timeは雰囲気、Route/One Dayは保存・検索意図が明確"
+
   insight_manga:
     display_name: INSIGHT MANGA
     genre: hybrid_story
     description: ストーリー・教育・感情ドラマ
+    youtube_channel_id: UCWJqUpEo71A5yYS5PathY5g
     targets:
       chose_to_watch_pct: 60
       avg_view_pct: 75
@@ -39,6 +90,7 @@ channels:
     display_name: I Entered the Story
     genre: hybrid_story
     description: 歴史没入・Vlog・ストーリー
+    youtube_channel_id: UC6eXFB1x8324KleWR7B5RcQ
     targets:
       chose_to_watch_pct: 60
       avg_view_pct: 70  # 65〜75の中央寄り。最低ライン65、合格目安70
@@ -77,3 +129,63 @@ channels:
       strong: "The Samurai’s Last Meal Before Battle"
       strong_ja: "出陣前、侍が食べた最後の食事"
       why: "Edo Kitchenは場所説明だが、Samurai・Last Meal・Battleは人物・危機・結末を一度に伝えられる"
+
+  five_boys_and_me:
+    display_name: Five Boys and Me
+    genre: hybrid_story
+    description: 家族・感情ドラマ（INSIGHT MANGA系の公開チャンネル候補）
+    youtube_channel_id: UCWJqUpEo71A5yYS5PathY5g
+    inherits_advice_from: insight_manga
+    targets:
+      chose_to_watch_pct: 60
+      avg_view_pct: 75
+      engagement_rate_pct: 3
+    structure_rules:
+      - 冒頭3秒：家族・お金・葛藤が分かる
+      - 15秒以内：最初の選択または失敗が起きる
+    hook_patterns:
+      bad_examples:
+        - text: "The Last Words He'll Ever Say to His Father. He Was 5."
+          ja: "父親に言う、最後の言葉。彼は5歳だった。"
+        - text: "Today I talk about family regret."
+          ja: "今日は家族の後悔について話します。"
+      good_examples:
+        - text: "He Was 5 When He Said His Last Words to His Father."
+          ja: "父親に最後の言葉を言ったとき、彼は5歳だった。"
+          why:
+            - 年齢と「最後」を1秒で重ねると続きを見る理由が立つ
+            - 説明より損失の瞬間を先に出す
+    cta_patterns:
+      parenting_status:
+        text: "Was it really for the baby?"
+        ja: "それは本当に赤ちゃんのためだった？"
+      money_family:
+        text: "Was this saving money—or living in fear?"
+        ja: "これは節約？それとも恐怖に支配されているだけ？"
+
+  i_love_ninja:
+    display_name: I Love Ninja
+    genre: hybrid_story
+    description: 忍者・没入系（チャンネルID未確定）
+    youtube_channel_id: null
+    targets:
+      chose_to_watch_pct: 60
+      avg_view_pct: 70
+      avg_view_pct_min: 65
+      engagement_rate_pct: 2.5
+    structure_rules:
+      - 1秒目：危機・誤解・修行の異常事態を出す
+      - 5秒以内：視聴者が「自分もその場にいる」と感じる
+    hook_patterns:
+      bad_examples:
+        - text: "Today I visited a ninja village."
+          ja: "今日は忍者の里を訪れました。"
+      good_examples:
+        - text: "Everyone Here Thinks I’m a Master Ninja."
+          ja: "ここにいる全員が、私を忍者の達人だと思っている。"
+          why:
+            - 場所説明より“誤解されている異常事態”が入口になる
+    cta_patterns:
+      history:
+        text: "Would you have opened the gate?"
+        ja: "あなたなら、その門を開けましたか？"

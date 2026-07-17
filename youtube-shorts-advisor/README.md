@@ -8,17 +8,20 @@
 
 対象:
 
-- **INSIGHT MANGA**（ストーリー・教育・感情ドラマ）
-- **I Entered the Story**（歴史没入・Vlog・ストーリー）
+- **Time Streets**（最優先・今いちばん動いている）
+- **I Entered the Story**
+- **INSIGHT MANGA / Five Boys and Me**
+- **I Love Ninja**（ID未確定）
 
 参考: [アドネス「YouTubeショートアルゴリズム完全解説」](https://addness.co.jp/media/youtube-short-algorithms/)  
 ※記事の数値は運用事例の参考値であり、YouTube公式の合格基準ではありません。
 
 ## まず読むもの
 
-1. [EXECUTION_PLAN.md](./EXECUTION_PLAN.md) … 意図の実行方法
-2. [DATA_ACQUISITION.md](./DATA_ACQUISITION.md) … 未完了だったデータ取得の埋め方
-3. [schema/metrics_columns.md](./schema/metrics_columns.md) … シート必須列
+1. [SHEET_MULTI_CHANNEL.md](./SHEET_MULTI_CHANNEL.md) … **シートにTime Streets等を追加する手順**
+2. [EXECUTION_PLAN.md](./EXECUTION_PLAN.md) … 意図の実行方法
+3. [DATA_ACQUISITION.md](./DATA_ACQUISITION.md) … データ取得の埋め方
+4. [schema/metrics_columns.md](./schema/metrics_columns.md) … シート必須列
 
 ## 使い方
 
@@ -26,11 +29,17 @@
 cd youtube-shorts-advisor
 pip install -r requirements.txt
 
-# サンプルでレポート生成
-python scripts/generate_daily_report.py
+# 登録チャンネル確認（priority=1 が Time Streets）
+python3 scripts/generate_daily_report.py --list-channels
+
+# 最優先チャンネル（Time Streets）でレポート
+python3 scripts/generate_daily_report.py --focus-active
+
+# スプレッドシート『日次分析』CSV
+python3 scripts/generate_daily_report.py --sheet-csv /path/to/daily.csv --focus-active
 
 # 自分のCSV
-python scripts/generate_daily_report.py --csv data/your_metrics.csv --out reports
+python3 scripts/generate_daily_report.py --csv data/your_metrics.csv --out reports
 ```
 
 出力例: `reports/YYYYMMDD_<channel>_<video>.md`

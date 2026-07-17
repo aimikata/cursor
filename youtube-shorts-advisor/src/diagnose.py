@@ -6,6 +6,7 @@ from typing import Any, Optional
 
 from .loaders import load_advice_templates, load_benchmarks, load_channels
 from .models import ActionMode, Band, Diagnosis, DiagnosisType, VideoMetrics
+from .registry import advice_channel_config, resolve_channel_id
 
 
 def classify_band(value: Optional[float], bands: dict[str, Any]) -> Band:
@@ -103,12 +104,13 @@ def diagnose_video(metrics: VideoMetrics) -> Diagnosis:
     templates = load_advice_templates()
     bands = benchmarks["shared_bands"]
 
-    channel = channels.get(metrics.channel_id)
-    if channel is None:
+    resolved_id = resolve_channel_id(channel_id=metrics.channel_id) or metrics.channel_id
+    channel = advice_channel_config(resolved_id, channels)
+    if not channel:
         return Diagnosis(
             diagnosis_type=DiagnosisType.INSUFFICIENT_DATA,
             label="チャンネル未登録",
-            focus="config/channels.yaml にチャンネル定義を追加してください。",
+            focus="config/channels.yaml と channel_registry.yaml にチャンネル定義を追加してください。",
             primary_metric="channel_id",
             current_value=None,
             target_value=None,
@@ -131,8 +133,27 @@ def diagnose_video(metrics: VideoMetrics) -> Diagnosis:
         "エンゲージメント率": classify_band(engagement, bands["engagement_rate_pct"]).value,
     }
 
-    # 最低限の切り分けに必要な数値が無い場合
+    # 視聴選択率・維持率が両方無い場合でも、再生数とタイトルがあれば入口改善を出す
     if "chose_to_watch_pct" in missing and "avg_view_pct" in missing:
+        if metrics.views is not None and (metrics.title or metrics.current_hook_text):
+            demand = _build_weak_demand(
+                metrics,
+                channel,
+                templates,
+                band_summary,
+                float(targets["avg_view_pct"]),
+                missing,
+            )
+            demand.focus = (
+                "Studioの視聴選択率・平均視聴率が未取得のため、"
+                "今取れる情報（再生数とタイトル/冒頭）から入口改善を提案。"
+            )
+            demand.reasons = [
+                "視聴を選んだ割合と平均視聴率が未取得なので、冒頭/中盤の切り分けは未確定",
+                *demand.reasons,
+                "次の一手: Studioまたはシートに視聴選択率・平均視聴率・動画尺を追記して再診断",
+            ]
+            return demand
         return Diagnosis(
             diagnosis_type=DiagnosisType.INSUFFICIENT_DATA,
             label="診断に必要な数値が不足",
@@ -371,10 +392,27 @@ def _build_weak_demand(
 ) -> Diagnosis:
     tmpl = templates["diagnosis_types"]["weak_demand"]
     titles = channel.get("title_patterns", {})
-    weak = titles.get("weak", metrics.title or "(弱いタイトル)")
-    strong = titles.get("strong", "人物 + 危機 + 結末 が一瞬で分かるタイトル")
-    strong_ja = titles.get("strong_ja", "")
-    why = titles.get("why", "場所説明より、人物・危機・結末が同時に伝わる入口の方が需要に刺さりやすい")
+    hooks = channel.get("hook_patterns", {})
+    goods = hooks.get("good_examples") or []
+    weak = metrics.title or metrics.current_hook_text or titles.get("weak", "(弱いタイトル)")
+    # Through Time / 場所説明タイトルなら旅程・作品名型へ
+    title_l = (weak or "").lower()
+    if "through time" in title_l or "→" in (weak or "") or "->" in title_l:
+        city = "This City"
+        for name in ("Okinawa", "Osaka", "Kyoto", "Tokyo", "Nara", "Hokkaido", "Hiroshima"):
+            if name.lower() in title_l:
+                city = name
+                break
+        strong = f"{city} in One Day: This Exact Order Saves Hours."
+        strong_ja = f"{city}を1日で。この順番なら無駄な移動を削れる。"
+        why = titles.get(
+            "why",
+            "Through Timeは眺めの約束。One Day / Route / 作品名の方が保存・検索需要に刺さる",
+        )
+    else:
+        strong = titles.get("strong", goods[0]["text"] if goods else "人物 + 危機 + 結末 が一瞬で分かるタイトル")
+        strong_ja = titles.get("strong_ja", goods[0].get("ja", "") if goods else "")
+        why = titles.get("why", "場所説明より、人物・危機・結末が同時に伝わる入口の方が需要に刺さりやすい")
 
     return Diagnosis(
         diagnosis_type=DiagnosisType.WEAK_DEMAND,
@@ -385,7 +423,7 @@ def _build_weak_demand(
         target_value=None,
         gap_points=None,
         action_mode=ActionMode.NEXT_VIDEO,
-        change_before=weak if not metrics.title else metrics.title,
+        change_before=weak,
         change_after=strong,
         change_after_ja=strong_ja,
         visual_changes=[
@@ -393,12 +431,20 @@ def _build_weak_demand(
             *[f"確認順: {item}" for item in tmpl.get("check_order", [])],
         ],
         reasons=[
-            f"平均視聴率は {metrics.avg_view_pct}% で目安前後のため、編集より入口を優先",
+            (
+                f"平均視聴率は {metrics.avg_view_pct}% で目安前後のため、編集より入口を優先"
+                if metrics.avg_view_pct is not None
+                else "維持率が未取得のため、今はタイトル/冒頭の需要入口を優先"
+            ),
             why,
             tmpl["article_evidence"].strip().replace("\n", ""),
         ],
         success_criteria=[
-            "次の新作でタイトルに人物・危機・結末を含める",
+            (
+                "次の新作でタイトルに One Day / Route / 作品名 のいずれかを入れる"
+                if channel.get("genre") == "travel_plan"
+                else "次の新作でタイトルに人物・危機・結末を含める"
+            ),
             "視聴を選んだ割合とShortsフィード表示数が前回比で改善",
         ],
         missing_fields=missing,

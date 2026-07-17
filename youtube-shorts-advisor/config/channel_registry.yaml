@@ -1,0 +1,59 @@
+# Googleシート / YouTube チャンネルID ↔ 診断用 channel_id の対応表
+# priority: 数値が小さいほど「今動いているチャンネル」として優先
+
+channels:
+  - channel_id: time_streets
+    display_name: Time Streets
+    youtube_channel_id: UCkD8_KvuA5egxWtW2vDmuKQ
+    handle: "@TimeStreets"
+    priority: 1
+    in_sheet_analytics: false
+    note: |
+      2026-07-17時点で最も再生が動いているチャンネル（沖縄1.3千 / 大阪1.2千など）。
+      自動シートの取得対象に未追加。最優先で追加する。
+
+  - channel_id: i_entered_the_story
+    display_name: I Entered the Story
+    youtube_channel_id: UC6eXFB1x8324KleWR7B5RcQ
+    handle: null
+    priority: 2
+    in_sheet_analytics: true
+    note: |
+      シートの日次ダッシュボードが現在取得している唯一のチャンネル。
+      ただし OAuth トークン失効で平均視聴率などが0になっている日がある。
+
+  - channel_id: five_boys_and_me
+    display_name: Five Boys and Me
+    youtube_channel_id: UCWJqUpEo71A5yYS5PathY5g
+    handle: "@FiveBoysandMe"
+    priority: 3
+    in_sheet_analytics: false
+    aliases: [insight_manga]
+    note: |
+      INSIGHT MANGA系の感情ドラマ台本がこのチャンネルURLを参照している。
+      シートの ChatGPT入力用は「INSIGHT MANGA」表記だが、中身は I Entered のデータになっている誤ラベルあり。
+
+  - channel_id: insight_manga
+    display_name: INSIGHT MANGA
+    youtube_channel_id: UCWJqUpEo71A5yYS5PathY5g  # 現状の公開先候補（Five Boys and Me）
+    handle: "@INSIGHT-MANGA"
+    priority: 4
+    in_sheet_analytics: false
+    aliases: [five_boys_and_me]
+    note: |
+      ブランド名。公開チャンネルが Five Boys and Me と同一の可能性がある。
+      別チャンネルIDが分かったらここを更新する。
+
+  - channel_id: i_love_ninja
+    display_name: I Love Ninja
+    youtube_channel_id: null
+    handle: null
+    priority: 5
+    in_sheet_analytics: false
+    note: 制作フォルダ枠のみ。YouTubeチャンネルID未確定。
+
+# シートの「全チャンネル」に入れるべき YouTube ID（確定分）
+sheet_channels_to_enable:
+  - UCkD8_KvuA5egxWtW2vDmuKQ  # Time Streets ★最優先
+  - UC6eXFB1x8324KleWR7B5RcQ  # I Entered the Story（既存）
+  - UCWJqUpEo71A5yYS5PathY5g  # Five Boys and Me / INSIGHT系
