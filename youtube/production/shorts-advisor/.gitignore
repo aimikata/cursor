@@ -1,8 +1,10 @@
-secrets/
 __pycache__/
 *.pyc
 .pytest_cache/
 .venv/
 venv/
+secrets/
+reports/
 data/your_metrics.csv
 data/api_metrics.csv
+data/*_sheet_*.csv

@@ -42,3 +42,4 @@
 | [gas/TimeStreets_YouTubeDashboard_V2.1.gs](./gas/TimeStreets_YouTubeDashboard_V2.1.gs) | スプレッドシート用GAS本体 |
 | [gas/README.md](./gas/README.md) | 貼り付け手順 |
 | [../../shorts-advisor/](../../shorts-advisor/) | 日次改善レポート生成 |
+
